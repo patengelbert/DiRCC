@@ -1,45 +1,20 @@
-
-# ignore hdl source files in top level directory
-*.vhd
-*.v
-
-# ignore Quartus II generated files
-*sopc_*
-*.jdi
-*.ptf.*
-*.sof
-*.pof
+# Quartus build files
 *.qws
-*.smsg
-*_inst.vhd
-*_generation_script*
-*.done
-*.txt
-*.qarlog
-*.rpt
-*.summary
-*.qws
-*.cmp
-*.eqn
-*.html
-*.jpg
-*.bak
-*.qar
-*.sopc_builder
-*example*
-*~
-*.sdc
-*.tcl
-*.pin
-*.mif
-*.hex
+*_dump.txt
 
-# ignore Quartus II generated folders
+**/incremental_db/
+**.qsys_edit
+**/simulation
 db/
-incremental_db/
-simulation/
-timing/
-testbench/
-*_sim/
 
-.qsys_edit
+# Quartus build folder
+build/*
+!build/build_chain.cdf
+
+# Log files
+*.html
+*.rpt
+
+# Working files
+*.swp
+*.a
