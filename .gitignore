@@ -41,3 +41,5 @@ simulation/
 timing/
 testbench/
 *_sim/
+
+.qsys_edit
