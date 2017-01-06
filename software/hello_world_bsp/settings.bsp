@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Jan 6, 2017 4:43:29 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1483721009068</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Jan 6, 2017 5:05:40 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1483722340110</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/patrick/Documents/Coursework/DiRCC/software/hello_world_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../fpga/poets_system.sopcinfo</SopcDesignFile>
