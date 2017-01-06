@@ -4,8 +4,11 @@
 
 **/incremental_db/
 **.qsys_edit
-**/simulation
 db/
+
+# Simulation files
+**/simulation/
+**/*_sim/
 
 # Quartus build folder
 build/*
@@ -14,7 +17,14 @@ build/*
 # Log files
 *.html
 *.rpt
+*.qmsg
 
 # Working files
 *.swp
 *.a
+
+# Compiled files
+**/obj/
+*.elf
+*.objdump
+*.map
