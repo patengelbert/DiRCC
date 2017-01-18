@@ -4,6 +4,8 @@
 
 ## Background
 
+- Using DE1: Has Cyclone V FPGA and is easily available
+
 ## Implementation Plan
 
 1.  Create single node NIOS
@@ -18,7 +20,7 @@
 3.  Expand to multi node FPGA  
     -   Extract IO buffers for each node to dedicated hardware
     -   Extract pipe data as fixed values
-    -   Investigate HLS for event handlers (OpenCL may be interesting)
+    -   Investigate HLS for event handlers (OpenCL may be interesting, unfortunatley A++ not yet available)
 4.  Attach Network Intefaces (verilog)  
     -   Depends on hardware (most likely ethernet with custom layer on top)
     -   DE1 has ethernet h/w built in and Qsys has ethernet adapter available (might not be compatible)
@@ -28,3 +30,10 @@
 6.  Create simple tool to convert programs
 
 ## Evaluation
+
+-   Size of node / max nodes on system
+-   Ease of use to convert (subjective?)
+-   Power used (how to test on DE1?)
+-   Flexibility of design
+-   Speedup compared to CPU version
+-   Done at end of every milestone (allows comparison between version)
