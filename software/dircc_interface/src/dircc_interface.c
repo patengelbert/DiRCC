@@ -20,11 +20,14 @@ uint32_t dircc_my_id() {
     return DIRCC_ERROR_NOT_IMPLEMENTED;
 }
 
-dircc_err_code dircc_init_fifo(uint32_t csr_address) {
-    if (altera_avalon_fifo_init(csr_address, 0, ALMOST_EMPTY, ALMOST_FULL) != ALTERA_AVALON_FIFO_OK) {
+dircc_err_code dircc_init_fifo(uint32_t csr_address, uint16_t almost_empty, uint16_t almost_full) {
+    if (altera_avalon_fifo_init(csr_address, 0, almost_empty, almost_full) != ALTERA_AVALON_FIFO_OK) {
         DIRCC_LOG_PRINTF("Error initializing %s\n", STREAMING_0_FIFO_IN_IN_CSR_NAME);
         return DIRCC_ERROR_INIT_FAILURE;
     }
+    DIRCC_LOG_PRINTF("Initialised FIFO at %d\n", csr_address);
+    DIRCC_LOG_PRINTF("Almost Empty: %d\n", almost_empty);
+    DIRCC_LOG_PRINTF("Almost Full: %d\n", almost_full);
     return DIRCC_SUCCESS;
 }
 
@@ -34,8 +37,8 @@ void dircc_print_status(alt_u32 csr_address) {
     DIRCC_LOG_PRINTF("STATUS = %u\n", altera_avalon_fifo_read_status(csr_address, ALTERA_AVALON_FIFO_STATUS_ALL));
     DIRCC_LOG_PRINTF("EVENT = %u\n", altera_avalon_fifo_read_event(csr_address, ALTERA_AVALON_FIFO_EVENT_ALL));
     DIRCC_LOG_PRINTF("IENABLE = %u\n", altera_avalon_fifo_read_ienable(csr_address, ALTERA_AVALON_FIFO_IENABLE_ALL));
-    DIRCC_LOG_PRINTF("ALMOSTEMPTY = %u\n", altera_avalon_fifo_read_almostempty(csr_address));
-    DIRCC_LOG_PRINTF("ALMOSTFULL = %u\n\n", altera_avalon_fifo_read_almostfull(csr_address));
+    DIRCC_LOG_PRINTF("ALMOSTEMPTYTHRES = %u\n", altera_avalon_fifo_read_almostempty(csr_address));
+    DIRCC_LOG_PRINTF("ALMOSTFULLTHRES = %u\n", altera_avalon_fifo_read_almostfull(csr_address));
 }
 
 dircc_err_code dircc_can_send(uint32_t csr_address) {
@@ -128,8 +131,8 @@ uint32_t dircc_get_level(uint32_t csr_address) {
 }
 
 int main() {
-    dircc_init_fifo(STREAMING_0_FIFO_IN_IN_CSR_BASE); // Init input fifo
-    dircc_init_fifo(STREAMING_0_FIFO_OUT_IN_CSR_BASE); //Init output fifo
+    dircc_init_fifo(STREAMING_0_FIFO_IN_IN_CSR_BASE, DIRCC_MSG_SIZE - 1, STREAMING_0_FIFO_IN_OUT_FIFO_DEPTH - DIRCC_MSG_SIZE); // Init input fifo
+    dircc_init_fifo(STREAMING_0_FIFO_OUT_IN_CSR_BASE, DIRCC_MSG_SIZE - 1, STREAMING_0_FIFO_OUT_IN_FIFO_DEPTH - DIRCC_MSG_SIZE); //Init output fifo
 
     // Drop any messages still waiting in the input fifo
     dircc_clr_fifo(STREAMING_0_FIFO_IN_OUT_BASE, STREAMING_0_FIFO_IN_IN_CSR_BASE);
@@ -137,15 +140,11 @@ int main() {
     dircc_msg_t msg = { .dest = 0x00000001, .source = 0x00000002, .src_port = 0x0003, .dest_port = 0x0004, .data = "Hello!!" };
 
     // Send the message
-    dircc_send(STREAMING_0_FIFO_OUT_IN_BASE, STREAMING_0_FIFO_OUT_IN_CSR_BASE, &msg);
-    dircc_send(STREAMING_0_FIFO_OUT_IN_BASE, STREAMING_0_FIFO_OUT_IN_CSR_BASE, &msg);
-    dircc_send(STREAMING_0_FIFO_OUT_IN_BASE, STREAMING_0_FIFO_OUT_IN_CSR_BASE, &msg);
-    dircc_send(STREAMING_0_FIFO_OUT_IN_BASE, STREAMING_0_FIFO_OUT_IN_CSR_BASE, &msg);
-    dircc_send(STREAMING_0_FIFO_OUT_IN_BASE, STREAMING_0_FIFO_OUT_IN_CSR_BASE, &msg);
-    dircc_send(STREAMING_0_FIFO_OUT_IN_BASE, STREAMING_0_FIFO_OUT_IN_CSR_BASE, &msg);
-    dircc_send(STREAMING_0_FIFO_OUT_IN_BASE, STREAMING_0_FIFO_OUT_IN_CSR_BASE, &msg);
-    dircc_send(STREAMING_0_FIFO_OUT_IN_BASE, STREAMING_0_FIFO_OUT_IN_CSR_BASE, &msg);
-    dircc_send(STREAMING_0_FIFO_OUT_IN_BASE, STREAMING_0_FIFO_OUT_IN_CSR_BASE, &msg);
+    uint32_t err = dircc_send(STREAMING_0_FIFO_OUT_IN_BASE, STREAMING_0_FIFO_OUT_IN_CSR_BASE, &msg);
+    while (err == DIRCC_SUCCESS) {
+        DIRCC_LOG_PRINTF("Can send: %d\n", dircc_can_send(STREAMING_0_FIFO_OUT_IN_CSR_BASE) == DIRCC_SUCCESS ? 1 : 0);
+        err = dircc_send(STREAMING_0_FIFO_OUT_IN_BASE, STREAMING_0_FIFO_OUT_IN_CSR_BASE, &msg);
+    }
 
     // Check status of messages
     DIRCC_LOG_PRINTF("Status for out fifo\n");
@@ -155,14 +154,14 @@ int main() {
 
     // Receive message
     dircc_msg_t rcvMsg;
-    uint32_t err = dircc_recv(STREAMING_0_FIFO_IN_OUT_BASE, STREAMING_0_FIFO_IN_IN_CSR_BASE, &rcvMsg);
+    err = dircc_recv(STREAMING_0_FIFO_IN_OUT_BASE, STREAMING_0_FIFO_IN_IN_CSR_BASE, &rcvMsg);
     while (err == DIRCC_SUCCESS) {
         DIRCC_LOG_PRINTF("MSG:\n");
-        DIRCC_LOG_PRINTF("%d\n", rcvMsg.dest);
-        DIRCC_LOG_PRINTF("%d\n", rcvMsg.source);
-        DIRCC_LOG_PRINTF("%d\n", rcvMsg.src_port);
-        DIRCC_LOG_PRINTF("%d\n", rcvMsg.dest_port);
-        DIRCC_LOG_PRINTF("%s\n", rcvMsg.data);
+        DIRCC_LOG_PRINTF("Dest:\t\t%d\n", rcvMsg.dest);
+        DIRCC_LOG_PRINTF("Source:\t%d\n", rcvMsg.source);
+        DIRCC_LOG_PRINTF("Source Port:\t%d\n", rcvMsg.src_port);
+        DIRCC_LOG_PRINTF("Dest Port:\t%d\n", rcvMsg.dest_port);
+        DIRCC_LOG_PRINTF("Data:\t\t%s\n", rcvMsg.data);
         DIRCC_LOG_PRINTF("Can recv: %d\n", dircc_can_recv(STREAMING_0_FIFO_IN_IN_CSR_BASE) == DIRCC_SUCCESS ? 1 : 0);
         err = dircc_recv(STREAMING_0_FIFO_IN_OUT_BASE, STREAMING_0_FIFO_IN_IN_CSR_BASE, &rcvMsg);
     }

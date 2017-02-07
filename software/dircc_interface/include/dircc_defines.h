@@ -30,7 +30,7 @@
 #ifdef ALT_LOG_ENABLE
 // Always print filename before debug message
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
-#define DIRCC_LOG_PRINTF(fmt, ...) ALT_LOG_PRINTF("[%s] " fmt, __FILENAME__, ##__VA_ARGS__)
+#define DIRCC_LOG_PRINTF(fmt, ...) ALT_LOG_PRINTF("[%s:%d] " fmt, __FILENAME__, __LINE__, ##__VA_ARGS__)
 #elif
 // Disable if logging is disabled
 #define DIRCC_LOG_PRINTF(...)
