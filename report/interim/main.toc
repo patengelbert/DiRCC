@@ -1,0 +1,113 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {english}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Introduction}{3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Project Description}{3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1}POETS Description}{3}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline \Gls {poets} specification}{4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2}\Gls {dircc} Project Description}{4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Background}{5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1}Similar Research}{5}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline SpiNNaker}{5}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline PRISM}{8}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Distributed \gls {fpga} Research Platform}{8}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2}Networking}{8}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3}Hardware}{8}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Field-Programmable Gate Array}{8}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Design}{9}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1}Design Decisions}{9}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2}Deliverables}{10}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Project Plan}{10}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1}Timeline}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2}Required Milestones}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.2.1}Create Test-bench}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Description}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Risks}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.2.2}Single \gls {nios}-based POETS System}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Description}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Risks}{13}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.2.3}Network on Chip Infrastructure}{13}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Description}{13}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Risks}{14}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.2.4}Multi NIOS-based POETS System}{14}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Description}{14}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Risks}{15}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3}Optional Milestones}{15}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.3.1}Replace NIOS with Custom Hardware}{15}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Description}{15}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Risks}{15}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.3.2}Automatic Node Creation Script}{15}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Description}{15}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Risks}{15}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.4}Extension Milestones}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.4.1}High Level Synthesis for Custom Hardware}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Description}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Risks}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Evaluation Plan}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1}Evaluation Criteria}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {6.1.1}Quantitative}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Correctness}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Nodes On Chip}{17}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Speed-up compared to CPU implementation}{18}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Speed-up compared to other FPGA implementations}{18}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Power-usage compared to other Field-Programmable Gate Array designs}{18}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Maximum Clock Frequency}{19}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {6.1.2}Qualitative}{19}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Ease of Scaling}{19}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Flexibility of Application}{19}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}Conclusion}{20}
