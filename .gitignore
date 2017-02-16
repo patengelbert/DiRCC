@@ -28,3 +28,7 @@ build/*
 *.elf
 *.objdump
 *.map
+
+GPATH
+GTAGS
+GRTAGS
