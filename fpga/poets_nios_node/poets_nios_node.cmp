@@ -1,0 +1,19 @@
+	component poets_nios_node is
+		port (
+			clk_clk                  : in  std_logic                     := 'X';             -- clk
+			reset_reset_n            : in  std_logic                     := 'X';             -- reset_n
+			stream_in_valid          : in  std_logic                     := 'X';             -- valid
+			stream_in_data           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- data
+			stream_in_startofpacket  : in  std_logic                     := 'X';             -- startofpacket
+			stream_in_endofpacket    : in  std_logic                     := 'X';             -- endofpacket
+			stream_in_empty          : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- empty
+			stream_in_ready          : out std_logic;                                        -- ready
+			stream_out_valid         : out std_logic;                                        -- valid
+			stream_out_data          : out std_logic_vector(31 downto 0);                    -- data
+			stream_out_startofpacket : out std_logic;                                        -- startofpacket
+			stream_out_endofpacket   : out std_logic;                                        -- endofpacket
+			stream_out_empty         : out std_logic_vector(1 downto 0);                     -- empty
+			stream_out_ready         : in  std_logic                     := 'X'              -- ready
+		);
+	end component poets_nios_node;
+
