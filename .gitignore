@@ -32,3 +32,5 @@ build/*
 GPATH
 GTAGS
 GRTAGS
+
+*.do
