@@ -34,3 +34,6 @@ GTAGS
 GRTAGS
 
 *.do
+
+#VS code
+.vscode/*
