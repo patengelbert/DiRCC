@@ -18,7 +18,7 @@ uint32_t dev_ready_to_send_handler(
         ((stillGoing && currentFull) ? OUTPUT_FLAG_dev_out : 0)
         |
         ((!stillGoing && !dState->halted) ? OUTPUT_FLAG_halt_out : 0);
-    DIRCC_LOG_PRINTF("dev_ready: state={%u,%u,%u}, ready={%u,%u,%u}\n", dState->t, dState->seenNow, dState->seenNext, stillGoing, currentFull, v);
+    DIRCC_LOG_PRINTF("dev_ready: state={%u,%u,%u}, ready={%u,%u,%u}", dState->t, dState->seenNow, dState->seenNext, stillGoing, currentFull, v);
     return v;
 }
 
@@ -30,7 +30,7 @@ void dev_in_receive_handler(
     void *eState,
     tick_msg *msg
 ){
-    DIRCC_LOG_PRINTF("dev_in: state={%u,%u,%u}, msg={%u}\n", dState->t, dState->seenNow, dState->seenNext, msg->t);
+    DIRCC_LOG_PRINTF("dev_in: state={%u,%u,%u}, msg={%u}", dState->t, dState->seenNow, dState->seenNext, msg->t);
 
     if(msg->t == dState->t){
         dState->seenNow++;
@@ -47,7 +47,7 @@ bool dev_out_send_handler(
     dev_state *dState,
     tick_msg *msg
 ){
-    DIRCC_LOG_PRINTF("dev_out: state={%u,%u,%u}\n", dState->t, dState->seenNow, dState->seenNext);
+    DIRCC_LOG_PRINTF("dev_out: state={%u,%u,%u}", dState->t, dState->seenNow, dState->seenNext);
 
     if (dState->t < gProps->maxTime ||
     		dState->seenNow >= gProps->devCount)
@@ -111,14 +111,14 @@ void halt_in_receive_handler(
     void *eState,
     done_msg *msg
 ){
-    DIRCC_LOG_PRINTF("halt_in: state={%u}, gProps={%u}\n", dState->seen, gProps->devCount);
+    DIRCC_LOG_PRINTF("halt_in: state={%u}, gProps={%u}", dState->seen, gProps->devCount);
 
 
     dState->seen++;
 
     if(dState->seen == gProps->devCount){
         // Break the fourth wall
-        DIRCC_LOG_PRINTF("Woo, devices have halted.\n");
+        DIRCC_LOG_PRINTF("Woo, devices have halted.");
         exit(EXIT_SUCCESS);
     }
 }

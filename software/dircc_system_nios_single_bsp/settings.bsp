@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>16.1</BspVersion>
-        <BspGeneratedTimeStamp>Feb 9, 2017 7:06:14 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1486667174490</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Feb 17, 2017 2:04:31 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1487340271145</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/patrick/Documents/Coursework/DiRCC/software/dircc_system_nios_single_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../fpga/dircc_system_nios_single.sopcinfo</SopcDesignFile>

@@ -126,6 +126,10 @@ LIB_NAME := dircc
 C_SRCS += src/dircc_fifo_interface.c
 C_SRCS += src/dircc_main.c
 C_SRCS += src/dircc_on_receive.c
+C_SRCS += src/dircc_rts.c
+C_SRCS += src/dircc_init.c
+C_SRCS += src/dircc_on_idle.c
+C_SRCS += src/dircc_on_send.c
 CXX_SRCS :=
 ASM_SRCS :=
 

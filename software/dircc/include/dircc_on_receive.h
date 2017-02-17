@@ -4,6 +4,6 @@
 
 #include "dircc.h"
 
-void dircc_on_receive(PThreadContext *ctxt, const void *message);
+void dircc_onReceive(PThreadContext *ctxt, const void *message);
 
 #endif // DIRCC_ON_RECEIVE_H_
