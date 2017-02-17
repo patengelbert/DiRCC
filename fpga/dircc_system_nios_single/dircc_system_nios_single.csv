@@ -1,12 +1,12 @@
-# system info dircc_system_nios_single on 2017.02.09.18:41:18
+# system info dircc_system_nios_single on 2017.02.17.14:59:10
 system_info:
 name,value
 DEVICE,5CSEMA5F31C6
 DEVICE_FAMILY,Cyclone V
-GENERATION_ID,1486665670
+GENERATION_ID,1487343544
 #
 #
-# Files generated for dircc_system_nios_single on 2017.02.09.18:41:18
+# Files generated for dircc_system_nios_single on 2017.02.17.14:59:10
 files:
 filepath,kind,attributes,module,is_top
 simulation/dircc_system_nios_single.v,VERILOG,,dircc_system_nios_single,true

@@ -23,14 +23,14 @@ module dircc_system_nios_single_node_0 (
 	wire  [31:0] cpu_data_master_readdata;                                  // mm_interconnect_0:cpu_data_master_readdata -> cpu:d_readdata
 	wire         cpu_data_master_waitrequest;                               // mm_interconnect_0:cpu_data_master_waitrequest -> cpu:d_waitrequest
 	wire         cpu_data_master_debugaccess;                               // cpu:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:cpu_data_master_debugaccess
-	wire  [16:0] cpu_data_master_address;                                   // cpu:d_address -> mm_interconnect_0:cpu_data_master_address
+	wire  [17:0] cpu_data_master_address;                                   // cpu:d_address -> mm_interconnect_0:cpu_data_master_address
 	wire   [3:0] cpu_data_master_byteenable;                                // cpu:d_byteenable -> mm_interconnect_0:cpu_data_master_byteenable
 	wire         cpu_data_master_read;                                      // cpu:d_read -> mm_interconnect_0:cpu_data_master_read
 	wire         cpu_data_master_write;                                     // cpu:d_write -> mm_interconnect_0:cpu_data_master_write
 	wire  [31:0] cpu_data_master_writedata;                                 // cpu:d_writedata -> mm_interconnect_0:cpu_data_master_writedata
 	wire  [31:0] cpu_instruction_master_readdata;                           // mm_interconnect_0:cpu_instruction_master_readdata -> cpu:i_readdata
 	wire         cpu_instruction_master_waitrequest;                        // mm_interconnect_0:cpu_instruction_master_waitrequest -> cpu:i_waitrequest
-	wire  [16:0] cpu_instruction_master_address;                            // cpu:i_address -> mm_interconnect_0:cpu_instruction_master_address
+	wire  [17:0] cpu_instruction_master_address;                            // cpu:i_address -> mm_interconnect_0:cpu_instruction_master_address
 	wire         cpu_instruction_master_read;                               // cpu:i_read -> mm_interconnect_0:cpu_instruction_master_read
 	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect;  // mm_interconnect_0:jtag_uart_avalon_jtag_slave_chipselect -> jtag_uart:av_chipselect
 	wire  [31:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_readdata;    // jtag_uart:av_readdata -> mm_interconnect_0:jtag_uart_avalon_jtag_slave_readdata
@@ -72,7 +72,7 @@ module dircc_system_nios_single_node_0 (
 	wire  [15:0] mm_interconnect_0_timer_s1_writedata;                      // mm_interconnect_0:timer_s1_writedata -> timer:writedata
 	wire         mm_interconnect_0_mem_s1_chipselect;                       // mm_interconnect_0:mem_s1_chipselect -> mem:chipselect
 	wire  [31:0] mm_interconnect_0_mem_s1_readdata;                         // mem:readdata -> mm_interconnect_0:mem_s1_readdata
-	wire  [12:0] mm_interconnect_0_mem_s1_address;                          // mm_interconnect_0:mem_s1_address -> mem:address
+	wire  [13:0] mm_interconnect_0_mem_s1_address;                          // mm_interconnect_0:mem_s1_address -> mem:address
 	wire   [3:0] mm_interconnect_0_mem_s1_byteenable;                       // mm_interconnect_0:mem_s1_byteenable -> mem:byteenable
 	wire         mm_interconnect_0_mem_s1_write;                            // mm_interconnect_0:mem_s1_write -> mem:write
 	wire  [31:0] mm_interconnect_0_mem_s1_writedata;                        // mm_interconnect_0:mem_s1_writedata -> mem:writedata
