@@ -15,7 +15,7 @@
 #ifdef ALT_LOG_ENABLE
 // Always print filename before debug message
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
-#define DIRCC_LOG_PRINTF(fmt, ...) ALT_LOG_PRINTF("[%s:%d] dircc_node %d: %s -> " fmt "\n", __FILENAME__, __LINE__, __FUNCTION__, NIOS2_CPU_ID_VALUE, ##__VA_ARGS__)
+#define DIRCC_LOG_PRINTF(fmt, ...) ALT_LOG_PRINTF("[%s:%d] dircc_node %d: %s -> " fmt "\n", __FILENAME__, __LINE__, NIOS2_CPU_ID_VALUE,  __FUNCTION__, ##__VA_ARGS__)
 #elif
 // Disable if logging is disabled
 #define DIRCC_LOG_PRINTF(...)
@@ -59,7 +59,7 @@ typedef uint8_t port_index_t;
 #define  DIRCC_ERROR_NOT_IMPLEMENTED 0x80000000
 
 #define MAX_DATA_LEN 8
-#define DIRCC_PACKET_SIZE sizeof(packet_t) / sizeof(uint32_t) // 5 32 bit words long
+#define DIRCC_PACKET_SIZE sizeof(packet_t) / sizeof(uint32_t) // 7 32 bit words long
 
 #define MAX_INPUT_PORTS UINT8_MAX
 #define MAX_OUTPUT_PORTS UINT8_MAX
