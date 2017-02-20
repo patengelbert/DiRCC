@@ -15,10 +15,7 @@
 #include "dircc_impl.h"
 #include "system.h"
 
-#pragma GCC diagnostic ignored "-Wformat"
-
 int main() {
-
 	PThreadContext *ctxt = dircc_thread_contexts + dircc_my_id();
 
 	DIRCC_LOG_PRINTF("init");
@@ -36,6 +33,9 @@ int main() {
 	uint32_t currSendTodo = 0;
 	uint32_t currSize = 0;
 
+	if (ctxt->numDevices == 0)
+		DIRCC_LOG_AND_EXIT("Number of devices is 0");
+
 	DIRCC_LOG_PRINTF("starting loop");
 
 	while (true) {
@@ -50,11 +50,16 @@ int main() {
 		// Run idle if:
 		// - There is nothing to receive
 		// - we aren't able to send or we don't want to send
-		while ((dircc_can_recv(NODE_0_FIFO_IN_IN_CSR_BASE) == DIRCC_ERROR_FIFO_EMPTY)
-				&& (!wantToSend || dircc_can_send(NODE_0_FIFO_OUT_IN_CSR_BASE) == DIRCC_ERROR_FIFO_FULL)) {
-			if (!dircc_onIdle(ctxt))
-				break;
+		bool wantRTC = true;
+		while ((dircc_can_recv(NODE_0_FIFO_IN_IN_CSR_BASE) != DIRCC_SUCCESS)
+				&&(!wantToSend || dircc_can_send(NODE_0_FIFO_OUT_IN_CSR_BASE) != DIRCC_SUCCESS)) {
+			DIRCC_LOG_PRINTF("calling onIdle");
+			if (wantRTC) {
+				wantRTC = dircc_onIdle(ctxt);
+			}
 		}
+		DIRCC_LOG_PRINTF("Finishing onIdle");
+
 
 		if (dircc_can_recv(NODE_0_FIFO_IN_IN_CSR_BASE) == DIRCC_SUCCESS) {
 			DIRCC_LOG_PRINTF("receive branch");
@@ -64,7 +69,10 @@ int main() {
 			DIRCC_LOG_PRINTF("calling recv");
 
 			packet_t recvBuffer;
-			dircc_recv(NODE_0_FIFO_IN_OUT_BASE, NODE_0_FIFO_IN_IN_CSR_BASE, &recvBuffer); // Take the buffer from receive pool
+
+			err = dircc_recv(NODE_0_FIFO_IN_OUT_BASE, NODE_0_FIFO_IN_IN_CSR_BASE, &recvBuffer); // Take the buffer from receive pool
+			if (err != DIRCC_SUCCESS)
+				DIRCC_LOG_AND_EXIT("Error sending: 0x%08x", err);
 
 			DIRCC_LOG_PRINTF("calling onRecieve, recvBuffer=%p", &recvBuffer);
 			dircc_onReceive(ctxt, (const void *) &recvBuffer); // Decode and dispatch
@@ -73,7 +81,7 @@ int main() {
 			DIRCC_LOG_PRINTF("send branch");
 
 			assert(wantToSend); // Only come here if we have something to do
-			assert(dircc_can_send(NODE_0_FIFO_OUT_IN_CSR_BASE)); // Only reason we could have got here
+			assert(dircc_can_send(NODE_0_FIFO_OUT_IN_CSR_BASE) == DIRCC_SUCCESS); // Only reason we could have got here
 
 			/* Either we have to finish sending a previous message to more
 			 addresses, or we get the chance to send a new message. */
@@ -83,7 +91,7 @@ int main() {
 
 				// Prepare a new packet to send
 				dircc_onSend(ctxt, (void*) &sendBuffer,
-						currSendTodo, currSendAddressList);
+						&currSendTodo, &currSendAddressList);
 			} else {
 				// We still have more addresses to deliver the last message to
 				DIRCC_LOG_PRINTF("forwarding current message");
@@ -100,8 +108,9 @@ int main() {
 			// TODO: Shouldn't there be something like mboxForward as part of
 			// the API, which only takes the address?
 			DIRCC_LOG_PRINTF("doing send");
-			dircc_send(NODE_0_FIFO_OUT_IN_BASE, NODE_0_FIFO_OUT_IN_CSR_BASE, &sendBuffer);
-
+			err = dircc_send(NODE_0_FIFO_OUT_IN_BASE, NODE_0_FIFO_OUT_IN_CSR_BASE, &sendBuffer);
+			if (err != DIRCC_SUCCESS)
+				DIRCC_LOG_AND_EXIT("Error sending: 0x%08x", err);
 			// Move onto next address for next time
 			currSendTodo--; // If this reaches zero, we are done with the message
 			currSendAddressList++;
