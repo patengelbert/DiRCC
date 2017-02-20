@@ -21,12 +21,12 @@ static unsigned right_most_one(uint32_t x)
     \param pTargets If numTargets>0, this will be pointed at an array with numTargets elements
     \retval Size of message in bytes
 */
-unsigned dircc_onSend(PThreadContext *ctxt, void *message, uint32_t numTargets, const address_t *pTargets)
+unsigned dircc_onSend(PThreadContext *ctxt, void *message, uint32_t *numTargets, const address_t **pTargets)
 {
     DIRCC_LOG_PRINTF("begin");
 
-    numTargets=0;
-    pTargets=0;
+    *numTargets=0;
+    *pTargets=0;
     
     DeviceContext *dev = dircc_PopRTS(ctxt);
     if(!dev){
@@ -57,15 +57,15 @@ unsigned dircc_onSend(PThreadContext *ctxt, void *message, uint32_t numTargets, 
 
     
     if(doSend){
-        numTargets=dev->targets[portIndex].numTargets;
-        pTargets=dev->targets[portIndex].targets;
+        *numTargets=dev->targets[portIndex].numTargets;
+        *pTargets=dev->targets[portIndex].targets;
         ((packet_t*)message)->source.hw_node=ctxt->threadId;
         ((packet_t*)message)->source.sw_node=dev->index;
         ((packet_t*)message)->source.port=portIndex;
         ((packet_t*)message)->lamport=ctxt->lamport;
     }
     
-    DIRCC_LOG_PRINTF("numTargets=%u, pTargets=%p", numTargets, pTargets);    
+    DIRCC_LOG_PRINTF("numTargets=%u, pTargets=%p", *numTargets, *pTargets);
 
     DIRCC_LOG_PRINTF("updating RTS");    
     dev->rtsFlags=0;    // Reflect that it is no longer on the RTC list due to the pop
