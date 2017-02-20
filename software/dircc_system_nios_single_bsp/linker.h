@@ -4,7 +4,7 @@
  * Machine generated for CPU 'node_0_cpu' in SOPC Builder design 'dircc_system_nios_single'
  * SOPC Builder design path: ../../fpga/dircc_system_nios_single.sopcinfo
  *
- * Generated: Thu Feb 09 18:47:43 GMT 2017
+ * Generated: Fri Feb 17 15:09:23 GMT 2017
  */
 
 /*
@@ -65,9 +65,9 @@
  *
  */
 
-#define NODE_0_MEM_REGION_BASE 0x8020
-#define NODE_0_MEM_REGION_SPAN 20448
-#define RESET_REGION_BASE 0x8000
+#define NODE_0_MEM_REGION_BASE 0x10020
+#define NODE_0_MEM_REGION_SPAN 40928
+#define RESET_REGION_BASE 0x10000
 #define RESET_REGION_SPAN 32
 
 

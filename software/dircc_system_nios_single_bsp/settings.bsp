@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>16.1</BspVersion>
-        <BspGeneratedTimeStamp>Feb 17, 2017 2:04:31 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1487340271145</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Feb 20, 2017 6:08:54 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1487614134204</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/patrick/Documents/Coursework/DiRCC/software/dircc_system_nios_single_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../fpga/dircc_system_nios_single.sopcinfo</SopcDesignFile>
@@ -900,43 +900,43 @@
         </Setting>
         <MemoryMap>
                 <slaveDescriptor>node_0_mem</slaveDescriptor>
-                <addressRange>0x00008000 - 0x0000CFFF</addressRange>
-                <addressSpan>20480</addressSpan>
+                <addressRange>0x00010000 - 0x00019FFF</addressRange>
+                <addressSpan>40960</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>node_0_timer</slaveDescriptor>
-                <addressRange>0x00011000 - 0x0001101F</addressRange>
+                <addressRange>0x00021000 - 0x0002101F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>node_0_fifo_in_in_csr</slaveDescriptor>
-                <addressRange>0x00011020 - 0x0001103F</addressRange>
+                <addressRange>0x00021020 - 0x0002103F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>node_0_fifo_out_in_csr</slaveDescriptor>
-                <addressRange>0x00011040 - 0x0001105F</addressRange>
+                <addressRange>0x00021040 - 0x0002105F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>node_0_fifo_in_out</slaveDescriptor>
-                <addressRange>0x00011060 - 0x00011067</addressRange>
+                <addressRange>0x00021060 - 0x00021067</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>node_0_fifo_out_in</slaveDescriptor>
-                <addressRange>0x00011068 - 0x0001106F</addressRange>
+                <addressRange>0x00021068 - 0x0002106F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>node_0_jtag_uart</slaveDescriptor>
-                <addressRange>0x00011070 - 0x00011077</addressRange>
+                <addressRange>0x00021070 - 0x00021077</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

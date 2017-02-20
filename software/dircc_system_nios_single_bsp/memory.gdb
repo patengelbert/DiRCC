@@ -3,7 +3,7 @@
 # Machine generated for CPU 'node_0_cpu' in SOPC Builder design 'dircc_system_nios_single'
 # SOPC Builder design path: ../../fpga/dircc_system_nios_single.sopcinfo
 #
-# Generated: Thu Feb 09 18:47:43 GMT 2017
+# Generated: Fri Feb 17 15:09:23 GMT 2017
 
 # DO NOT MODIFY THIS FILE
 #
@@ -47,4 +47,4 @@
 # by allowing GDB to cache memory contents on the host.
 
 # node_0_mem
-memory 0x8000 0xd000 cache
+memory 0x10000 0x1a000 cache
