@@ -5,9 +5,9 @@
 
 dircc_err_code dircc_init_fifos() {
 	dircc_err_code err_in = dircc_init_fifo(NODE_0_FIFO_IN_IN_CSR_BASE,
-	DIRCC_PACKET_SIZE, NODE_0_FIFO_IN_IN_CSR_FIFO_DEPTH - DIRCC_PACKET_SIZE);
+	DIRCC_PACKET_SIZE-1, NODE_0_FIFO_IN_IN_CSR_FIFO_DEPTH - DIRCC_PACKET_SIZE);
 	dircc_err_code err_out = dircc_init_fifo(NODE_0_FIFO_OUT_IN_CSR_BASE,
-	DIRCC_PACKET_SIZE, NODE_0_FIFO_OUT_IN_CSR_FIFO_DEPTH - DIRCC_PACKET_SIZE);
+	DIRCC_PACKET_SIZE-1, NODE_0_FIFO_OUT_IN_CSR_FIFO_DEPTH - DIRCC_PACKET_SIZE);
 	return err_in | err_out;
 }
 
