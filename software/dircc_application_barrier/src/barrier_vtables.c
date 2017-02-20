@@ -1,5 +1,7 @@
+#include <stdbool.h>
+#include <stdlib.h>
+#include <assert.h>
 #include "barrier.h"
-#include "stdlib.h"
 
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #pragma GCC diagnostic ignored "-Wformat"
@@ -49,9 +51,8 @@ bool dev_out_send_handler(
 ){
     DIRCC_LOG_PRINTF("dev_out: state={%u,%u,%u}", dState->t, dState->seenNow, dState->seenNext);
 
-    if (dState->t < gProps->maxTime ||
-    		dState->seenNow >= gProps->devCount)
-    	exit(EXIT_FAILURE);
+    assert(dState->t < gProps->maxTime);
+    assert(dState->seenNow >= gProps->devCount);
 
     dState->t++;
 

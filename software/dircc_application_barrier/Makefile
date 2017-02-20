@@ -142,7 +142,7 @@ ACDS_VERSION := 16.1
 ELF := dircc_application_barrier.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := src/barrier_vtables.c
+C_SRCS := src/barrier_vtables.c src/barrier_dev3.c
 CXX_SRCS :=
 ASM_SRCS :=
 

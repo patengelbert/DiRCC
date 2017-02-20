@@ -1,8 +1,7 @@
 #include "barrier.h"
 
-static const unsigned DEVICE_INSTANCE_COUNT = 3;
-
-static const unsigned DEVICE_INSTANCE_COUNT_thread0 = DEVICE_INSTANCE_COUNT;
+#define DEVICE_INSTANCE_COUNT 3
+#define DEVICE_INSTANCE_COUNT_thread0 DEVICE_INSTANCE_COUNT
 
 graph_props inst0_props = {
 		.maxTime = 100,
@@ -22,13 +21,13 @@ address_t dev0_out_addresses[] = {
 				.hw_node = 0,
 				.sw_node = 0,
 				.port = INPUT_INDEX_dev_in,
-				.flags = DIRCC_ADDRESS_FLAG_NONE
+				.flag = DIRCC_ADDRESS_FLAG_NONE
 		},
 		{
 				.hw_node = 0,
 				.sw_node = 1,
 				.port = INPUT_INDEX_dev_in,
-				.flags = DIRCC_ADDRESS_FLAG_NONE
+				.flag = DIRCC_ADDRESS_FLAG_NONE
 		}
 };
 
@@ -37,7 +36,7 @@ address_t dev0_halt_addresses[] = {
 				.hw_node = 0,
 				.sw_node = 2,
 				.port = INPUT_INDEX_halt_in,
-				.flags = DIRCC_ADDRESS_FLAG_NONE
+				.flag = DIRCC_ADDRESS_FLAG_NONE
 		}
 };
 

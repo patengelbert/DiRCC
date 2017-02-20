@@ -62,5 +62,6 @@ typedef struct _halt_state{
 } halt_state;
 
 PThreadContext dircc_thread_contexts[THREAD_COUNT];
+DeviceTypeVTable DEVICE_TYPE_VTABLES[DEVICE_TYPE_COUNT];
 
 #endif

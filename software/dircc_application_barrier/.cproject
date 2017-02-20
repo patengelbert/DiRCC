@@ -12,10 +12,6 @@
 							<targetPlatform id="altera.nios2.linux.gcc4.820744538" name="Nios II" osList="linux" superClass="altera.nios2.linux.gcc4"/>
 							<builder buildPath="${workspace_loc://dircc_application_barrier}" id="altera.tool.gnu.builder.1349100706" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="altera.tool.gnu.builder"/>
 							<tool id="altera.tool.gnu.c.compiler.1827275270" name="Nios II GCC C Compiler" superClass="altera.tool.gnu.c.compiler">
-								<option id="gnu.c.compiler.option.include.paths.1547442252" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_barrier/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc/include}&quot;"/>
-								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.166460783" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="altera.tool.gnu.cpp.compiler.1553036938" name="Nios II GCC C++ Compiler" superClass="altera.tool.gnu.cpp.compiler">
