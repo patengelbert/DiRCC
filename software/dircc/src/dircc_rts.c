@@ -13,7 +13,7 @@
 static void rts_sanity(PThreadContext *pCtxt) {
 	// Checks that linked list is valid
 	if (pCtxt->rtsHead != 0) {
-	    assert(pCtxt->rtsTail == 0);
+	    assert(pCtxt->rtsTail != 0);
 
 	    DeviceContext *curr = pCtxt->rtsHead;
 	    while (curr)
@@ -23,7 +23,7 @@ static void rts_sanity(PThreadContext *pCtxt) {
 		curr = curr->next;
 		}
 	} else {
-	    assert(!pCtxt->rtsTail != 0);
+	    assert(pCtxt->rtsTail == 0);
 	}
 }
 #else
