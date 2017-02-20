@@ -31,6 +31,12 @@ void dev_in_receive_handler(
 
     dState->count++;
     dState->rts = true;
+
+    if (dState->count >= gProps->maxTime) {
+        // Break the fourth wall
+        DIRCC_LOG_PRINTF("Woo, devices have halted.");
+        exit(EXIT_SUCCESS);
+    }
 }
 
 bool dev_out_send_handler(
