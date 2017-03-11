@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="System" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element clk
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element input_fifo_0
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element input_fifo_1
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element input_fifo_2
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element input_fifo_4
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element input_mux
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element output_demux
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="5CSEMA5F31C6" />
+ <parameter name="deviceFamily" value="Cyclone V" />
+ <parameter name="deviceSpeedGrade" value="6" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="lockedInterfaceDefinition" value="" />
+ <parameter name="maxAdditionalLatency" value="1" />
+ <parameter name="projectName" value="DIRCC.qpf" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceScript></instanceScript>
+ <interface name="clk" internal="clk.clk_in" type="clock" dir="end" />
+ <interface
+   name="input_east"
+   internal="input_fifo_2.in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="input_north"
+   internal="input_fifo_0.in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="input_poets"
+   internal="input_mux.in0"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="input_south"
+   internal="input_fifo_4.in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="input_west"
+   internal="input_fifo_1.in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="output_east"
+   internal="output_demux.out4"
+   type="avalon_streaming"
+   dir="start" />
+ <interface
+   name="output_north"
+   internal="output_demux.out1"
+   type="avalon_streaming"
+   dir="start" />
+ <interface
+   name="output_poets"
+   internal="output_demux.out0"
+   type="avalon_streaming"
+   dir="start" />
+ <interface
+   name="output_south"
+   internal="output_demux.out3"
+   type="avalon_streaming"
+   dir="start" />
+ <interface
+   name="output_west"
+   internal="output_demux.out2"
+   type="avalon_streaming"
+   dir="start" />
+ <interface name="reset" internal="clk.clk_in_reset" type="reset" dir="end" />
+ <module name="clk" kind="clock_source" version="16.1" enabled="1">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module
+   name="input_fifo_0"
+   kind="altera_avalon_sc_fifo"
+   version="16.1"
+   enabled="1">
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="CHANNEL_WIDTH" value="0" />
+  <parameter name="EMPTY_LATENCY" value="3" />
+  <parameter name="ENABLE_EXPLICIT_MAXCHANNEL" value="false" />
+  <parameter name="ERROR_WIDTH" value="0" />
+  <parameter name="EXPLICIT_MAXCHANNEL" value="0" />
+  <parameter name="FIFO_DEPTH" value="16" />
+  <parameter name="SYMBOLS_PER_BEAT" value="4" />
+  <parameter name="USE_ALMOST_EMPTY_IF" value="0" />
+  <parameter name="USE_ALMOST_FULL_IF" value="0" />
+  <parameter name="USE_FILL_LEVEL" value="0" />
+  <parameter name="USE_MEMORY_BLOCKS" value="1" />
+  <parameter name="USE_PACKETS" value="1" />
+  <parameter name="USE_STORE_FORWARD" value="0" />
+ </module>
+ <module
+   name="input_fifo_1"
+   kind="altera_avalon_sc_fifo"
+   version="16.1"
+   enabled="1">
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="CHANNEL_WIDTH" value="0" />
+  <parameter name="EMPTY_LATENCY" value="3" />
+  <parameter name="ENABLE_EXPLICIT_MAXCHANNEL" value="false" />
+  <parameter name="ERROR_WIDTH" value="0" />
+  <parameter name="EXPLICIT_MAXCHANNEL" value="0" />
+  <parameter name="FIFO_DEPTH" value="16" />
+  <parameter name="SYMBOLS_PER_BEAT" value="4" />
+  <parameter name="USE_ALMOST_EMPTY_IF" value="0" />
+  <parameter name="USE_ALMOST_FULL_IF" value="0" />
+  <parameter name="USE_FILL_LEVEL" value="0" />
+  <parameter name="USE_MEMORY_BLOCKS" value="1" />
+  <parameter name="USE_PACKETS" value="1" />
+  <parameter name="USE_STORE_FORWARD" value="0" />
+ </module>
+ <module
+   name="input_fifo_2"
+   kind="altera_avalon_sc_fifo"
+   version="16.1"
+   enabled="1">
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="CHANNEL_WIDTH" value="0" />
+  <parameter name="EMPTY_LATENCY" value="3" />
+  <parameter name="ENABLE_EXPLICIT_MAXCHANNEL" value="false" />
+  <parameter name="ERROR_WIDTH" value="0" />
+  <parameter name="EXPLICIT_MAXCHANNEL" value="0" />
+  <parameter name="FIFO_DEPTH" value="16" />
+  <parameter name="SYMBOLS_PER_BEAT" value="4" />
+  <parameter name="USE_ALMOST_EMPTY_IF" value="0" />
+  <parameter name="USE_ALMOST_FULL_IF" value="0" />
+  <parameter name="USE_FILL_LEVEL" value="0" />
+  <parameter name="USE_MEMORY_BLOCKS" value="1" />
+  <parameter name="USE_PACKETS" value="1" />
+  <parameter name="USE_STORE_FORWARD" value="0" />
+ </module>
+ <module
+   name="input_fifo_4"
+   kind="altera_avalon_sc_fifo"
+   version="16.1"
+   enabled="1">
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="CHANNEL_WIDTH" value="0" />
+  <parameter name="EMPTY_LATENCY" value="3" />
+  <parameter name="ENABLE_EXPLICIT_MAXCHANNEL" value="false" />
+  <parameter name="ERROR_WIDTH" value="0" />
+  <parameter name="EXPLICIT_MAXCHANNEL" value="0" />
+  <parameter name="FIFO_DEPTH" value="16" />
+  <parameter name="SYMBOLS_PER_BEAT" value="4" />
+  <parameter name="USE_ALMOST_EMPTY_IF" value="0" />
+  <parameter name="USE_ALMOST_FULL_IF" value="0" />
+  <parameter name="USE_FILL_LEVEL" value="0" />
+  <parameter name="USE_MEMORY_BLOCKS" value="1" />
+  <parameter name="USE_PACKETS" value="1" />
+  <parameter name="USE_STORE_FORWARD" value="0" />
+ </module>
+ <module name="input_mux" kind="multiplexer" version="16.1" enabled="1">
+  <parameter name="bitsPerSymbol" value="8" />
+  <parameter name="errorWidth" value="0" />
+  <parameter name="numInputInterfaces" value="5" />
+  <parameter name="outChannelWidth" value="3" />
+  <parameter name="packetScheduling" value="true" />
+  <parameter name="schedulingSize" value="2" />
+  <parameter name="symbolsPerBeat" value="4" />
+  <parameter name="useHighBitsOfChannel" value="true" />
+  <parameter name="usePackets" value="true" />
+ </module>
+ <module name="output_demux" kind="demultiplexer" version="16.1" enabled="1">
+  <parameter name="bitsPerSymbol" value="8" />
+  <parameter name="errorWidth" value="0" />
+  <parameter name="inChannelWidth" value="3" />
+  <parameter name="numOutputInterfaces" value="5" />
+  <parameter name="symbolsPerBeat" value="4" />
+  <parameter name="useHighBitsOfChannel" value="true" />
+  <parameter name="usePackets" value="true" />
+ </module>
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="input_mux.out"
+   end="output_demux.in" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="input_fifo_4.out"
+   end="input_mux.in1" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="input_fifo_2.out"
+   end="input_mux.in2" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="input_fifo_1.out"
+   end="input_mux.in3" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="input_fifo_0.out"
+   end="input_mux.in4" />
+ <connection kind="clock" version="16.1" start="clk.clk" end="input_mux.clk" />
+ <connection kind="clock" version="16.1" start="clk.clk" end="input_fifo_0.clk" />
+ <connection kind="clock" version="16.1" start="clk.clk" end="input_fifo_1.clk" />
+ <connection kind="clock" version="16.1" start="clk.clk" end="input_fifo_2.clk" />
+ <connection kind="clock" version="16.1" start="clk.clk" end="input_fifo_4.clk" />
+ <connection kind="clock" version="16.1" start="clk.clk" end="output_demux.clk" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk.clk_reset"
+   end="input_fifo_0.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk.clk_reset"
+   end="input_fifo_2.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk.clk_reset"
+   end="input_fifo_4.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk.clk_reset"
+   end="input_fifo_1.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk.clk_reset"
+   end="input_mux.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk.clk_reset"
+   end="output_demux.reset" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
+</system>

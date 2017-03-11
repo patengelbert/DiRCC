@@ -141,7 +141,7 @@ agreement for further details.
 		(text "endofpacket" (rect 217 115 500 240)(font "Arial" (color 0 0 0)))
 		(text "empty" (rect 242 131 514 272)(font "Arial" (color 0 0 0)))
 		(text "ready" (rect 244 147 518 304)(font "Arial" (color 0 0 0)))
-		(text " poets_nios_node " (rect 341 248 784 506)(font "Arial" ))
+		(text " system " (rect 381 248 810 506)(font "Arial" ))
 		(line (pt 128 32)(pt 272 32)(line_width 1))
 		(line (pt 272 32)(pt 272 248)(line_width 1))
 		(line (pt 128 248)(pt 272 248)(line_width 1))
