@@ -22,6 +22,9 @@ build/*
 # Working files
 *.swp
 *.a
+software/**/.cproject
+software/**/.project
+software/**/.settings
 
 # Compiled files
 **/obj/
