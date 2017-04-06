@@ -25,6 +25,7 @@ build/*
 software/**/.cproject
 software/**/.project
 software/**/.settings
+*.bak
 
 # Compiled files
 **/obj/
