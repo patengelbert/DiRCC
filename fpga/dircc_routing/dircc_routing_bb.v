@@ -31,6 +31,7 @@ module dircc_routing (
 	input_west_startofpacket,
 	input_west_endofpacket,
 	input_west_empty,
+	node_address_address,
 	output_east_data,
 	output_east_valid,
 	output_east_ready,
@@ -61,8 +62,7 @@ module dircc_routing (
 	output_west_startofpacket,
 	output_west_endofpacket,
 	output_west_empty,
-	reset_reset_n,
-	node_address_address);	
+	reset_reset_n);	
 
 	input		clk_clk;
 	input	[31:0]	input_east_data;
@@ -95,6 +95,7 @@ module dircc_routing (
 	input		input_west_startofpacket;
 	input		input_west_endofpacket;
 	input	[1:0]	input_west_empty;
+	input	[31:0]	node_address_address;
 	output	[31:0]	output_east_data;
 	output		output_east_valid;
 	input		output_east_ready;
@@ -126,5 +127,4 @@ module dircc_routing (
 	output		output_west_endofpacket;
 	output	[1:0]	output_west_empty;
 	input		reset_reset_n;
-	input	[31:0]	node_address_address;
 endmodule

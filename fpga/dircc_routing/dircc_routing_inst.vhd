@@ -31,6 +31,7 @@
 			input_west_startofpacket   : in  std_logic                     := 'X';             -- startofpacket
 			input_west_endofpacket     : in  std_logic                     := 'X';             -- endofpacket
 			input_west_empty           : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- empty
+			node_address_address       : in  std_logic_vector(31 downto 0) := (others => 'X'); -- address
 			output_east_data           : out std_logic_vector(31 downto 0);                    -- data
 			output_east_valid          : out std_logic;                                        -- valid
 			output_east_ready          : in  std_logic                     := 'X';             -- ready
@@ -61,8 +62,7 @@
 			output_west_startofpacket  : out std_logic;                                        -- startofpacket
 			output_west_endofpacket    : out std_logic;                                        -- endofpacket
 			output_west_empty          : out std_logic_vector(1 downto 0);                     -- empty
-			reset_reset_n              : in  std_logic                     := 'X';             -- reset_n
-			node_address_address       : in  std_logic_vector(31 downto 0) := (others => 'X')  -- address
+			reset_reset_n              : in  std_logic                     := 'X'              -- reset_n
 		);
 	end component dircc_routing;
 
@@ -99,6 +99,7 @@
 			input_west_startofpacket   => CONNECTED_TO_input_west_startofpacket,   --             .startofpacket
 			input_west_endofpacket     => CONNECTED_TO_input_west_endofpacket,     --             .endofpacket
 			input_west_empty           => CONNECTED_TO_input_west_empty,           --             .empty
+			node_address_address       => CONNECTED_TO_node_address_address,       -- node_address.address
 			output_east_data           => CONNECTED_TO_output_east_data,           --  output_east.data
 			output_east_valid          => CONNECTED_TO_output_east_valid,          --             .valid
 			output_east_ready          => CONNECTED_TO_output_east_ready,          --             .ready
@@ -129,7 +130,6 @@
 			output_west_startofpacket  => CONNECTED_TO_output_west_startofpacket,  --             .startofpacket
 			output_west_endofpacket    => CONNECTED_TO_output_west_endofpacket,    --             .endofpacket
 			output_west_empty          => CONNECTED_TO_output_west_empty,          --             .empty
-			reset_reset_n              => CONNECTED_TO_reset_reset_n,              --        reset.reset_n
-			node_address_address       => CONNECTED_TO_node_address_address        -- node_address.address
+			reset_reset_n              => CONNECTED_TO_reset_reset_n               --        reset.reset_n
 		);
 

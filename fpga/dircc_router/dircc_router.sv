@@ -7,13 +7,21 @@ module dircc_router #(
     BITS_PER_SYMBOL = 8,
     USE_PACKETS = 1, // TODO: Not yet implemented, assumes 1
     USE_EMPTY = 1,
-//    USE_HIGH_BIT_SELECT = 1, // TODO: Not yet implemented, assumes 1
-//    PIPELINE_READY = 1, // TODO: Not yet implemented, assumes 1
+    USE_HIGH_BIT_SELECT = 1, // TODO: Not yet implemented, assumes 1
+    PIPELINE_READY = 1, // TODO: Not yet implemented, assumes 1
     MAX_ROUTE_DIRECTION = 5, // TODO: Not yet implemented, assumes 5
 
     // Optional ST signal widths.  Value "0" means no such port.
     CHANNEL_WIDTH = 0,
-    ERROR_WIDTH = 0
+    ERROR_WIDTH = 0,
+  
+    // Derived parameters
+    DATA_WIDTH = SYMBOLS_PER_BEAT * BITS_PER_SYMBOL,
+    ADDRESS_WIDTH = DATA_WIDTH/2, // TODO: This will not be the case if format changes or number of route directions do
+    CHANNEL_SELECT_WIDTH = $clog2(MAX_ROUTE_DIRECTION),
+    CHANNEL_OUT_WIDTH = CHANNEL_WIDTH + CHANNEL_SELECT_WIDTH,
+    PACKET_WIDTH = USE_PACKETS ? 2 : 0,
+    EMPTY_WIDTH = USE_EMPTY ? $clog2(SYMBOLS_PER_BEAT) : 0
   )
   (
     input wire                                            clk,
@@ -39,14 +47,6 @@ module dircc_router #(
     output reg                                            out_endofpacket,
     output reg [(EMPTY_WIDTH ? (EMPTY_WIDTH - 1) : 0) : 0]              out_empty
 );  
-      
-    // Derived parameters
-    localparam DATA_WIDTH = SYMBOLS_PER_BEAT * BITS_PER_SYMBOL;
-    localparam ADDRESS_WIDTH = DATA_WIDTH/2; // TODO: This will not be the case if format changes or number of route directions do
-    localparam CHANNEL_SELECT_WIDTH = $clog2(MAX_ROUTE_DIRECTION);
-    localparam CHANNEL_OUT_WIDTH = CHANNEL_WIDTH + CHANNEL_SELECT_WIDTH;
-    localparam PACKET_WIDTH = USE_PACKETS ? 2 : 0;
-    localparam EMPTY_WIDTH = USE_EMPTY ? $clog2(SYMBOLS_PER_BEAT) : 0;
     localparam PAYLOAD_WIDTH = 
       DATA_WIDTH +
       PACKET_WIDTH +
@@ -96,7 +96,10 @@ module dircc_router #(
       else if (x_packet_address > x_address) decision = EAST; // Send it east
       else if (y_packet_address < y_address) decision = SOUTH; // Send it south
       else if (x_packet_address < x_address) decision = WEST; // Send it west
-      else assert(0); // Should never reach here 
+      else begin
+        $display("Unknown addresses");
+        decision = NORTH;
+      end
     end
     
     // ---------------------------------------------------------------------
