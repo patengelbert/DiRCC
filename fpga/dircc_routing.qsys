@@ -65,6 +65,22 @@
          type = "int";
       }
    }
+   element poets_routing
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element router
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
 }
 ]]></parameter>
  <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
@@ -111,6 +127,11 @@
    name="input_west"
    internal="input_fifo_1.in"
    type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="node_address"
+   internal="router.address"
+   type="conduit"
    dir="end" />
  <interface
    name="output_east"
@@ -244,30 +265,46 @@
   <parameter name="useHighBitsOfChannel" value="true" />
   <parameter name="usePackets" value="true" />
  </module>
+ <module name="router" kind="dircc_router" version="1.0" enabled="1">
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="CHANNEL_WIDTH" value="0" />
+  <parameter name="ERROR_WIDTH" value="0" />
+  <parameter name="MAX_ROUTE_DIRECTION" value="5" />
+  <parameter name="PIPELINE_READY" value="1" />
+  <parameter name="SYMBOLS_PER_BEAT" value="4" />
+  <parameter name="USE_EMPTY" value="true" />
+  <parameter name="USE_HIGH_BIT_SELECT" value="true" />
+  <parameter name="USE_PACKETS" value="true" />
+ </module>
  <connection
    kind="avalon_streaming"
    version="16.1"
    start="input_mux.out"
+   end="router.in" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="router.out"
    end="output_demux.in" />
  <connection
    kind="avalon_streaming"
    version="16.1"
-   start="input_fifo_4.out"
+   start="input_fifo_0.out"
    end="input_mux.in1" />
  <connection
    kind="avalon_streaming"
    version="16.1"
-   start="input_fifo_2.out"
+   start="input_fifo_1.out"
    end="input_mux.in2" />
  <connection
    kind="avalon_streaming"
    version="16.1"
-   start="input_fifo_1.out"
+   start="input_fifo_2.out"
    end="input_mux.in3" />
  <connection
    kind="avalon_streaming"
    version="16.1"
-   start="input_fifo_0.out"
+   start="input_fifo_4.out"
    end="input_mux.in4" />
  <connection kind="clock" version="16.1" start="clk.clk" end="input_mux.clk" />
  <connection kind="clock" version="16.1" start="clk.clk" end="input_fifo_0.clk" />
@@ -275,6 +312,7 @@
  <connection kind="clock" version="16.1" start="clk.clk" end="input_fifo_2.clk" />
  <connection kind="clock" version="16.1" start="clk.clk" end="input_fifo_4.clk" />
  <connection kind="clock" version="16.1" start="clk.clk" end="output_demux.clk" />
+ <connection kind="clock" version="16.1" start="clk.clk" end="router.clk_in" />
  <connection
    kind="reset"
    version="16.1"
@@ -305,6 +343,11 @@
    version="16.1"
    start="clk.clk_reset"
    end="output_demux.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk.clk_reset"
+   end="router.reset_in" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

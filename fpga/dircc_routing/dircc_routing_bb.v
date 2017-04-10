@@ -1,5 +1,5 @@
 
-module poets_routing (
+module dircc_routing (
 	clk_clk,
 	input_east_data,
 	input_east_valid,
@@ -61,7 +61,8 @@ module poets_routing (
 	output_west_startofpacket,
 	output_west_endofpacket,
 	output_west_empty,
-	reset_reset_n);	
+	reset_reset_n,
+	node_address_address);	
 
 	input		clk_clk;
 	input	[31:0]	input_east_data;
@@ -125,4 +126,5 @@ module poets_routing (
 	output		output_west_endofpacket;
 	output	[1:0]	output_west_empty;
 	input		reset_reset_n;
+	input	[31:0]	node_address_address;
 endmodule

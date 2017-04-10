@@ -1,4 +1,4 @@
-	poets_routing u0 (
+	dircc_routing u0 (
 		.clk_clk                    (<connected-to-clk_clk>),                    //          clk.clk
 		.input_east_data            (<connected-to-input_east_data>),            //   input_east.data
 		.input_east_valid           (<connected-to-input_east_valid>),           //             .valid
@@ -60,6 +60,7 @@
 		.output_west_startofpacket  (<connected-to-output_west_startofpacket>),  //             .startofpacket
 		.output_west_endofpacket    (<connected-to-output_west_endofpacket>),    //             .endofpacket
 		.output_west_empty          (<connected-to-output_west_empty>),          //             .empty
-		.reset_reset_n              (<connected-to-reset_reset_n>)               //        reset.reset_n
+		.reset_reset_n              (<connected-to-reset_reset_n>),              //        reset.reset_n
+		.node_address_address       (<connected-to-node_address_address>)        // node_address.address
 	);
 

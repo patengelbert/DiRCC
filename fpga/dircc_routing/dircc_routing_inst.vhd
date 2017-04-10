@@ -1,4 +1,4 @@
-	component poets_routing is
+	component dircc_routing is
 		port (
 			clk_clk                    : in  std_logic                     := 'X';             -- clk
 			input_east_data            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- data
@@ -61,11 +61,12 @@
 			output_west_startofpacket  : out std_logic;                                        -- startofpacket
 			output_west_endofpacket    : out std_logic;                                        -- endofpacket
 			output_west_empty          : out std_logic_vector(1 downto 0);                     -- empty
-			reset_reset_n              : in  std_logic                     := 'X'              -- reset_n
+			reset_reset_n              : in  std_logic                     := 'X';             -- reset_n
+			node_address_address       : in  std_logic_vector(31 downto 0) := (others => 'X')  -- address
 		);
-	end component poets_routing;
+	end component dircc_routing;
 
-	u0 : component poets_routing
+	u0 : component dircc_routing
 		port map (
 			clk_clk                    => CONNECTED_TO_clk_clk,                    --          clk.clk
 			input_east_data            => CONNECTED_TO_input_east_data,            --   input_east.data
@@ -128,6 +129,7 @@
 			output_west_startofpacket  => CONNECTED_TO_output_west_startofpacket,  --             .startofpacket
 			output_west_endofpacket    => CONNECTED_TO_output_west_endofpacket,    --             .endofpacket
 			output_west_empty          => CONNECTED_TO_output_west_empty,          --             .empty
-			reset_reset_n              => CONNECTED_TO_reset_reset_n               --        reset.reset_n
+			reset_reset_n              => CONNECTED_TO_reset_reset_n,              --        reset.reset_n
+			node_address_address       => CONNECTED_TO_node_address_address        -- node_address.address
 		);
 
