@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element dircc_routing_inst
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element dircc_routing_inst_address_bfm
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element dircc_routing_inst_clk_bfm
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element dircc_routing_inst_input_east_bfm
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element dircc_routing_inst_input_here_bfm
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element dircc_routing_inst_input_north_bfm
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element dircc_routing_inst_input_south_1_bfm
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element dircc_routing_inst_input_west_bfm
+   {
+      datum _sortIndex
+      {
+         value = "8";
+         type = "int";
+      }
+   }
+   element dircc_routing_inst_output_east_bfm
+   {
+      datum _sortIndex
+      {
+         value = "9";
+         type = "int";
+      }
+   }
+   element dircc_routing_inst_output_here_bfm
+   {
+      datum _sortIndex
+      {
+         value = "10";
+         type = "int";
+      }
+   }
+   element dircc_routing_inst_output_north_bfm
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
+      }
+   }
+   element dircc_routing_inst_output_south_bfm
+   {
+      datum _sortIndex
+      {
+         value = "12";
+         type = "int";
+      }
+   }
+   element dircc_routing_inst_output_west_bfm
+   {
+      datum _sortIndex
+      {
+         value = "13";
+         type = "int";
+      }
+   }
+   element dircc_routing_inst_reset_bfm
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="5CSEMA5F31C6" />
+ <parameter name="deviceFamily" value="Cyclone V" />
+ <parameter name="deviceSpeedGrade" value="6" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="lockedInterfaceDefinition" value="" />
+ <parameter name="maxAdditionalLatency" value="1" />
+ <parameter name="projectName" value="" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="dircc_routing" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="true" />
+ <instanceScript></instanceScript>
+ <module
+   name="dircc_routing_inst"
+   kind="dircc_routing"
+   version="1.0"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID" value="dircc_routing" />
+ </module>
+ <module
+   name="dircc_routing_inst_address_bfm"
+   kind="altera_conduit_bfm"
+   version="16.1"
+   enabled="1">
+  <parameter name="CLOCKED_SIGNAL" value="true" />
+  <parameter name="ENABLE_RESET" value="false" />
+  <parameter name="SIGNAL_DIRECTIONS" value="output" />
+  <parameter name="SIGNAL_ROLES" value="address" />
+  <parameter name="SIGNAL_WIDTHS" value="32" />
+ </module>
+ <module
+   name="dircc_routing_inst_clk_bfm"
+   kind="altera_avalon_clock_source"
+   version="16.1"
+   enabled="1">
+  <parameter name="CLOCK_RATE" value="50000000" />
+  <parameter name="CLOCK_UNIT" value="1" />
+ </module>
+ <module
+   name="dircc_routing_inst_input_east_bfm"
+   kind="altera_avalon_st_source_bfm"
+   version="16.1"
+   enabled="1">
+  <parameter name="ST_BEATSPERCYCLE" value="1" />
+  <parameter name="ST_CHANNEL_W" value="1" />
+  <parameter name="ST_ERROR_DESCRIPTOR" value="" />
+  <parameter name="ST_ERROR_W" value="1" />
+  <parameter name="ST_MAX_CHANNELS" value="0" />
+  <parameter name="ST_NUMSYMBOLS" value="4" />
+  <parameter name="ST_READY_LATENCY" value="0" />
+  <parameter name="ST_SYMBOL_W" value="8" />
+  <parameter name="USE_CHANNEL" value="0" />
+  <parameter name="USE_EMPTY" value="1" />
+  <parameter name="USE_ERROR" value="0" />
+  <parameter name="USE_PACKET" value="1" />
+  <parameter name="USE_READY" value="1" />
+  <parameter name="USE_VALID" value="1" />
+  <parameter name="VHDL_ID" value="0" />
+ </module>
+ <module
+   name="dircc_routing_inst_input_here_bfm"
+   kind="altera_avalon_st_source_bfm"
+   version="16.1"
+   enabled="1">
+  <parameter name="ST_BEATSPERCYCLE" value="1" />
+  <parameter name="ST_CHANNEL_W" value="1" />
+  <parameter name="ST_ERROR_DESCRIPTOR" value="" />
+  <parameter name="ST_ERROR_W" value="1" />
+  <parameter name="ST_MAX_CHANNELS" value="0" />
+  <parameter name="ST_NUMSYMBOLS" value="4" />
+  <parameter name="ST_READY_LATENCY" value="0" />
+  <parameter name="ST_SYMBOL_W" value="8" />
+  <parameter name="USE_CHANNEL" value="0" />
+  <parameter name="USE_EMPTY" value="1" />
+  <parameter name="USE_ERROR" value="0" />
+  <parameter name="USE_PACKET" value="1" />
+  <parameter name="USE_READY" value="1" />
+  <parameter name="USE_VALID" value="1" />
+  <parameter name="VHDL_ID" value="1" />
+ </module>
+ <module
+   name="dircc_routing_inst_input_north_bfm"
+   kind="altera_avalon_st_source_bfm"
+   version="16.1"
+   enabled="1">
+  <parameter name="ST_BEATSPERCYCLE" value="1" />
+  <parameter name="ST_CHANNEL_W" value="1" />
+  <parameter name="ST_ERROR_DESCRIPTOR" value="" />
+  <parameter name="ST_ERROR_W" value="1" />
+  <parameter name="ST_MAX_CHANNELS" value="0" />
+  <parameter name="ST_NUMSYMBOLS" value="4" />
+  <parameter name="ST_READY_LATENCY" value="0" />
+  <parameter name="ST_SYMBOL_W" value="8" />
+  <parameter name="USE_CHANNEL" value="0" />
+  <parameter name="USE_EMPTY" value="1" />
+  <parameter name="USE_ERROR" value="0" />
+  <parameter name="USE_PACKET" value="1" />
+  <parameter name="USE_READY" value="1" />
+  <parameter name="USE_VALID" value="1" />
+  <parameter name="VHDL_ID" value="2" />
+ </module>
+ <module
+   name="dircc_routing_inst_input_south_1_bfm"
+   kind="altera_avalon_st_source_bfm"
+   version="16.1"
+   enabled="1">
+  <parameter name="ST_BEATSPERCYCLE" value="1" />
+  <parameter name="ST_CHANNEL_W" value="1" />
+  <parameter name="ST_ERROR_DESCRIPTOR" value="" />
+  <parameter name="ST_ERROR_W" value="1" />
+  <parameter name="ST_MAX_CHANNELS" value="0" />
+  <parameter name="ST_NUMSYMBOLS" value="4" />
+  <parameter name="ST_READY_LATENCY" value="0" />
+  <parameter name="ST_SYMBOL_W" value="8" />
+  <parameter name="USE_CHANNEL" value="0" />
+  <parameter name="USE_EMPTY" value="1" />
+  <parameter name="USE_ERROR" value="0" />
+  <parameter name="USE_PACKET" value="1" />
+  <parameter name="USE_READY" value="1" />
+  <parameter name="USE_VALID" value="1" />
+  <parameter name="VHDL_ID" value="3" />
+ </module>
+ <module
+   name="dircc_routing_inst_input_west_bfm"
+   kind="altera_avalon_st_source_bfm"
+   version="16.1"
+   enabled="1">
+  <parameter name="ST_BEATSPERCYCLE" value="1" />
+  <parameter name="ST_CHANNEL_W" value="1" />
+  <parameter name="ST_ERROR_DESCRIPTOR" value="" />
+  <parameter name="ST_ERROR_W" value="1" />
+  <parameter name="ST_MAX_CHANNELS" value="0" />
+  <parameter name="ST_NUMSYMBOLS" value="4" />
+  <parameter name="ST_READY_LATENCY" value="0" />
+  <parameter name="ST_SYMBOL_W" value="8" />
+  <parameter name="USE_CHANNEL" value="0" />
+  <parameter name="USE_EMPTY" value="1" />
+  <parameter name="USE_ERROR" value="0" />
+  <parameter name="USE_PACKET" value="1" />
+  <parameter name="USE_READY" value="1" />
+  <parameter name="USE_VALID" value="1" />
+  <parameter name="VHDL_ID" value="4" />
+ </module>
+ <module
+   name="dircc_routing_inst_output_east_bfm"
+   kind="altera_avalon_st_sink_bfm"
+   version="16.1"
+   enabled="1">
+  <parameter name="ST_BEATSPERCYCLE" value="1" />
+  <parameter name="ST_CHANNEL_W" value="1" />
+  <parameter name="ST_ERROR_DESCRIPTOR" value="" />
+  <parameter name="ST_ERROR_W" value="1" />
+  <parameter name="ST_MAX_CHANNELS" value="0" />
+  <parameter name="ST_NUMSYMBOLS" value="4" />
+  <parameter name="ST_READY_LATENCY" value="0" />
+  <parameter name="ST_SYMBOL_W" value="8" />
+  <parameter name="USE_CHANNEL" value="0" />
+  <parameter name="USE_EMPTY" value="1" />
+  <parameter name="USE_ERROR" value="0" />
+  <parameter name="USE_PACKET" value="1" />
+  <parameter name="USE_READY" value="1" />
+  <parameter name="USE_VALID" value="1" />
+  <parameter name="VHDL_ID" value="0" />
+ </module>
+ <module
+   name="dircc_routing_inst_output_here_bfm"
+   kind="altera_avalon_st_sink_bfm"
+   version="16.1"
+   enabled="1">
+  <parameter name="ST_BEATSPERCYCLE" value="1" />
+  <parameter name="ST_CHANNEL_W" value="1" />
+  <parameter name="ST_ERROR_DESCRIPTOR" value="" />
+  <parameter name="ST_ERROR_W" value="1" />
+  <parameter name="ST_MAX_CHANNELS" value="0" />
+  <parameter name="ST_NUMSYMBOLS" value="4" />
+  <parameter name="ST_READY_LATENCY" value="0" />
+  <parameter name="ST_SYMBOL_W" value="8" />
+  <parameter name="USE_CHANNEL" value="0" />
+  <parameter name="USE_EMPTY" value="1" />
+  <parameter name="USE_ERROR" value="0" />
+  <parameter name="USE_PACKET" value="1" />
+  <parameter name="USE_READY" value="1" />
+  <parameter name="USE_VALID" value="1" />
+  <parameter name="VHDL_ID" value="1" />
+ </module>
+ <module
+   name="dircc_routing_inst_output_north_bfm"
+   kind="altera_avalon_st_sink_bfm"
+   version="16.1"
+   enabled="1">
+  <parameter name="ST_BEATSPERCYCLE" value="1" />
+  <parameter name="ST_CHANNEL_W" value="1" />
+  <parameter name="ST_ERROR_DESCRIPTOR" value="" />
+  <parameter name="ST_ERROR_W" value="1" />
+  <parameter name="ST_MAX_CHANNELS" value="0" />
+  <parameter name="ST_NUMSYMBOLS" value="4" />
+  <parameter name="ST_READY_LATENCY" value="0" />
+  <parameter name="ST_SYMBOL_W" value="8" />
+  <parameter name="USE_CHANNEL" value="0" />
+  <parameter name="USE_EMPTY" value="1" />
+  <parameter name="USE_ERROR" value="0" />
+  <parameter name="USE_PACKET" value="1" />
+  <parameter name="USE_READY" value="1" />
+  <parameter name="USE_VALID" value="1" />
+  <parameter name="VHDL_ID" value="2" />
+ </module>
+ <module
+   name="dircc_routing_inst_output_south_bfm"
+   kind="altera_avalon_st_sink_bfm"
+   version="16.1"
+   enabled="1">
+  <parameter name="ST_BEATSPERCYCLE" value="1" />
+  <parameter name="ST_CHANNEL_W" value="1" />
+  <parameter name="ST_ERROR_DESCRIPTOR" value="" />
+  <parameter name="ST_ERROR_W" value="1" />
+  <parameter name="ST_MAX_CHANNELS" value="0" />
+  <parameter name="ST_NUMSYMBOLS" value="4" />
+  <parameter name="ST_READY_LATENCY" value="0" />
+  <parameter name="ST_SYMBOL_W" value="8" />
+  <parameter name="USE_CHANNEL" value="0" />
+  <parameter name="USE_EMPTY" value="1" />
+  <parameter name="USE_ERROR" value="0" />
+  <parameter name="USE_PACKET" value="1" />
+  <parameter name="USE_READY" value="1" />
+  <parameter name="USE_VALID" value="1" />
+  <parameter name="VHDL_ID" value="3" />
+ </module>
+ <module
+   name="dircc_routing_inst_output_west_bfm"
+   kind="altera_avalon_st_sink_bfm"
+   version="16.1"
+   enabled="1">
+  <parameter name="ST_BEATSPERCYCLE" value="1" />
+  <parameter name="ST_CHANNEL_W" value="1" />
+  <parameter name="ST_ERROR_DESCRIPTOR" value="" />
+  <parameter name="ST_ERROR_W" value="1" />
+  <parameter name="ST_MAX_CHANNELS" value="0" />
+  <parameter name="ST_NUMSYMBOLS" value="4" />
+  <parameter name="ST_READY_LATENCY" value="0" />
+  <parameter name="ST_SYMBOL_W" value="8" />
+  <parameter name="USE_CHANNEL" value="0" />
+  <parameter name="USE_EMPTY" value="1" />
+  <parameter name="USE_ERROR" value="0" />
+  <parameter name="USE_PACKET" value="1" />
+  <parameter name="USE_READY" value="1" />
+  <parameter name="USE_VALID" value="1" />
+  <parameter name="VHDL_ID" value="4" />
+ </module>
+ <module
+   name="dircc_routing_inst_reset_bfm"
+   kind="altera_avalon_reset_source"
+   version="16.1"
+   enabled="1">
+  <parameter name="ASSERT_HIGH_RESET" value="0" />
+  <parameter name="INITIAL_RESET_CYCLES" value="50" />
+ </module>
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="dircc_routing_inst.output_east"
+   end="dircc_routing_inst_output_east_bfm.sink" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="dircc_routing_inst.output_here"
+   end="dircc_routing_inst_output_here_bfm.sink" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="dircc_routing_inst.output_north"
+   end="dircc_routing_inst_output_north_bfm.sink" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="dircc_routing_inst.output_south"
+   end="dircc_routing_inst_output_south_bfm.sink" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="dircc_routing_inst.output_west"
+   end="dircc_routing_inst_output_west_bfm.sink" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="dircc_routing_inst_input_east_bfm.src"
+   end="dircc_routing_inst.input_east" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="dircc_routing_inst_input_here_bfm.src"
+   end="dircc_routing_inst.input_here" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="dircc_routing_inst_input_north_bfm.src"
+   end="dircc_routing_inst.input_north" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="dircc_routing_inst_input_south_1_bfm.src"
+   end="dircc_routing_inst.input_south_1" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="dircc_routing_inst_input_west_bfm.src"
+   end="dircc_routing_inst.input_west" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="dircc_routing_inst_clk_bfm.clk"
+   end="dircc_routing_inst.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="dircc_routing_inst_clk_bfm.clk"
+   end="dircc_routing_inst_reset_bfm.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="dircc_routing_inst_clk_bfm.clk"
+   end="dircc_routing_inst_address_bfm.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="dircc_routing_inst_clk_bfm.clk"
+   end="dircc_routing_inst_input_east_bfm.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="dircc_routing_inst_clk_bfm.clk"
+   end="dircc_routing_inst_input_here_bfm.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="dircc_routing_inst_clk_bfm.clk"
+   end="dircc_routing_inst_input_north_bfm.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="dircc_routing_inst_clk_bfm.clk"
+   end="dircc_routing_inst_input_south_1_bfm.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="dircc_routing_inst_clk_bfm.clk"
+   end="dircc_routing_inst_input_west_bfm.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="dircc_routing_inst_clk_bfm.clk"
+   end="dircc_routing_inst_output_east_bfm.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="dircc_routing_inst_clk_bfm.clk"
+   end="dircc_routing_inst_output_here_bfm.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="dircc_routing_inst_clk_bfm.clk"
+   end="dircc_routing_inst_output_north_bfm.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="dircc_routing_inst_clk_bfm.clk"
+   end="dircc_routing_inst_output_south_bfm.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="dircc_routing_inst_clk_bfm.clk"
+   end="dircc_routing_inst_output_west_bfm.clk" />
+ <connection
+   kind="conduit"
+   version="16.1"
+   start="dircc_routing_inst_address_bfm.conduit"
+   end="dircc_routing_inst.address">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="reset"
+   version="16.1"
+   start="dircc_routing_inst_reset_bfm.reset"
+   end="dircc_routing_inst_input_east_bfm.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="dircc_routing_inst_reset_bfm.reset"
+   end="dircc_routing_inst_input_here_bfm.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="dircc_routing_inst_reset_bfm.reset"
+   end="dircc_routing_inst_input_north_bfm.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="dircc_routing_inst_reset_bfm.reset"
+   end="dircc_routing_inst_input_south_1_bfm.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="dircc_routing_inst_reset_bfm.reset"
+   end="dircc_routing_inst_input_west_bfm.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="dircc_routing_inst_reset_bfm.reset"
+   end="dircc_routing_inst_output_east_bfm.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="dircc_routing_inst_reset_bfm.reset"
+   end="dircc_routing_inst_output_here_bfm.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="dircc_routing_inst_reset_bfm.reset"
+   end="dircc_routing_inst_output_north_bfm.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="dircc_routing_inst_reset_bfm.reset"
+   end="dircc_routing_inst_output_south_bfm.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="dircc_routing_inst_reset_bfm.reset"
+   end="dircc_routing_inst_output_west_bfm.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="dircc_routing_inst_reset_bfm.reset"
+   end="dircc_routing_inst.reset" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
+</system>

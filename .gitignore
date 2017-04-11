@@ -9,6 +9,8 @@ db/
 # Simulation files
 **/simulation/
 **/*_sim/
+**/libraries/
+transcript
 
 # Quartus build folder
 build/*

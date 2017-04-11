@@ -90,11 +90,11 @@ module dircc_router #(
     //| Routing Algorithm
     // ---------------------------------------------------------------------
     always @* begin
-         
+      // Routing is done on a 2D grid awith the top left corner = 0,0
       if (y_packet_address == y_address && x_packet_address == x_address) decision = HERE; // reached destination
-      else if (y_packet_address > y_address) decision = NORTH; // Send it up
+      else if (y_packet_address < y_address) decision = NORTH; // Send it north
       else if (x_packet_address > x_address) decision = EAST; // Send it east
-      else if (y_packet_address < y_address) decision = SOUTH; // Send it south
+      else if (y_packet_address > y_address) decision = SOUTH; // Send it south
       else if (x_packet_address < x_address) decision = WEST; // Send it west
       else begin
         $display("Unknown addresses");
@@ -126,7 +126,7 @@ module dircc_router #(
     // ---------------------------------------------------------------------
     //| output Pipeline
     // ---------------------------------------------------------------------
-    poets_routing_output_demux_1stage_pipeline#( 
+    poets_routing_output_router_1stage_pipeline#( 
       .PAYLOAD_WIDTH(PAYLOAD_WIDTH)
     ) outpipe
     ( 
@@ -152,46 +152,45 @@ module dircc_router #(
     end
 endmodule
  
- 
-module poets_routing_output_demux_1stage_pipeline#( 
-  parameter 
-    PAYLOAD_WIDTH = 8 
- )
- ( 
-   input                          clk,
-   input                          reset_n,
-   output reg                     in_ready,
-   input                          in_valid,
-   input [PAYLOAD_WIDTH-1:0]      in_payload,
-   input                          out_ready,
-   output reg                     out_valid,
-   output reg [PAYLOAD_WIDTH-1:0] out_payload
-);
+//  --------------------------------------------------------------------------------
+// | single buffered pipeline stage
+//  --------------------------------------------------------------------------------
+module poets_routing_output_router_1stage_pipeline
+  #( parameter PAYLOAD_WIDTH = 8 )
+    ( input                             clk,
+         input                          reset_n,
+         output reg                     in_ready,
+         input                          in_valid,
+         input      [PAYLOAD_WIDTH-1:0] in_payload,
+         input                          out_ready,
+         output reg                     out_valid,
+         output reg [PAYLOAD_WIDTH-1:0] out_payload
+      );
+   reg                                  in_ready1;
 
-  reg                              in_ready1;
-  always @* begin
-    in_ready = out_ready || ~out_valid;
-    in_ready = in_ready1;
-    if (!out_ready)
-      in_ready = 0;
-  end
 
-  always @ (negedge reset_n, posedge clk) begin
-    if (!reset_n) begin
-      in_ready1   <= 0;
-      out_valid   <= 0;
-      out_payload <= 0;
-    end else begin
-      in_ready1 <= out_ready || !out_valid;
-      if (in_valid) begin
-        out_valid <= 1;
-      end else if (out_ready) begin
-        out_valid <= 0;
-      end
-      if(in_valid && in_ready) begin
-        out_payload <= in_payload;
-      end
-    end // else: !if(!reset_n)
-  end // always @ (negedge reset_n, posedge clk)
+   always @* begin
+      in_ready = out_ready || ~out_valid;
+      //     in_ready = in_ready1;
+      //     if (!out_ready)
+      //       in_ready = 0;
+   end
+   always @ (negedge reset_n, posedge clk) begin
+      if (!reset_n) begin
+         in_ready1 <= 0;
+         out_valid <= 0;
+         out_payload <= 0;
+      end else begin
+         in_ready1 <= out_ready || !out_valid;
+         if (in_valid) begin
+            out_valid <= 1;
+         end else if (out_ready) begin
+            out_valid <= 0;
+         end
+         if(in_valid && in_ready) begin
+            out_payload <= in_payload;
+         end
+      end // else: !if(!reset_n)
+   end // always @ (negedge reset_n, posedge clk)
 	
 endmodule //

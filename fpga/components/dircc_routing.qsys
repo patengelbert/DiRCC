@@ -175,7 +175,7 @@
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="false" />
   <parameter name="inputClockFrequency" value="0" />
-  <parameter name="resetSynchronousEdges" value="NONE" />
+  <parameter name="resetSynchronousEdges" value="DEASSERT" />
  </module>
  <module
    name="input_fifo_east"

@@ -1,4 +1,5 @@
 	dircc_routing u0 (
+		.address_address             (<connected-to-address_address>),             //       address.address
 		.clk_clk                     (<connected-to-clk_clk>),                     //           clk.clk
 		.input_east_data             (<connected-to-input_east_data>),             //    input_east.data
 		.input_east_valid            (<connected-to-input_east_valid>),            //              .valid
@@ -6,61 +7,60 @@
 		.input_east_startofpacket    (<connected-to-input_east_startofpacket>),    //              .startofpacket
 		.input_east_endofpacket      (<connected-to-input_east_endofpacket>),      //              .endofpacket
 		.input_east_empty            (<connected-to-input_east_empty>),            //              .empty
-		.input_north_data            (<connected-to-input_north_data>),            //   input_north.data
-		.input_north_valid           (<connected-to-input_north_valid>),           //              .valid
-		.input_north_ready           (<connected-to-input_north_ready>),           //              .ready
-		.input_north_startofpacket   (<connected-to-input_north_startofpacket>),   //              .startofpacket
-		.input_north_endofpacket     (<connected-to-input_north_endofpacket>),     //              .endofpacket
-		.input_north_empty           (<connected-to-input_north_empty>),           //              .empty
 		.input_here_data             (<connected-to-input_here_data>),             //    input_here.data
 		.input_here_valid            (<connected-to-input_here_valid>),            //              .valid
 		.input_here_ready            (<connected-to-input_here_ready>),            //              .ready
 		.input_here_startofpacket    (<connected-to-input_here_startofpacket>),    //              .startofpacket
 		.input_here_endofpacket      (<connected-to-input_here_endofpacket>),      //              .endofpacket
 		.input_here_empty            (<connected-to-input_here_empty>),            //              .empty
-		.input_west_data             (<connected-to-input_west_data>),             //    input_west.data
-		.input_west_valid            (<connected-to-input_west_valid>),            //              .valid
-		.input_west_ready            (<connected-to-input_west_ready>),            //              .ready
-		.input_west_startofpacket    (<connected-to-input_west_startofpacket>),    //              .startofpacket
-		.input_west_endofpacket      (<connected-to-input_west_endofpacket>),      //              .endofpacket
-		.input_west_empty            (<connected-to-input_west_empty>),            //              .empty
+		.input_north_data            (<connected-to-input_north_data>),            //   input_north.data
+		.input_north_valid           (<connected-to-input_north_valid>),           //              .valid
+		.input_north_ready           (<connected-to-input_north_ready>),           //              .ready
+		.input_north_startofpacket   (<connected-to-input_north_startofpacket>),   //              .startofpacket
+		.input_north_endofpacket     (<connected-to-input_north_endofpacket>),     //              .endofpacket
+		.input_north_empty           (<connected-to-input_north_empty>),           //              .empty
 		.input_south_1_data          (<connected-to-input_south_1_data>),          // input_south_1.data
 		.input_south_1_valid         (<connected-to-input_south_1_valid>),         //              .valid
 		.input_south_1_ready         (<connected-to-input_south_1_ready>),         //              .ready
 		.input_south_1_startofpacket (<connected-to-input_south_1_startofpacket>), //              .startofpacket
 		.input_south_1_endofpacket   (<connected-to-input_south_1_endofpacket>),   //              .endofpacket
 		.input_south_1_empty         (<connected-to-input_south_1_empty>),         //              .empty
-		.output_west_data            (<connected-to-output_west_data>),            //   output_west.data
-		.output_west_valid           (<connected-to-output_west_valid>),           //              .valid
-		.output_west_ready           (<connected-to-output_west_ready>),           //              .ready
-		.output_west_startofpacket   (<connected-to-output_west_startofpacket>),   //              .startofpacket
-		.output_west_endofpacket     (<connected-to-output_west_endofpacket>),     //              .endofpacket
-		.output_west_empty           (<connected-to-output_west_empty>),           //              .empty
-		.output_north_data           (<connected-to-output_north_data>),           //  output_north.data
-		.output_north_valid          (<connected-to-output_north_valid>),          //              .valid
-		.output_north_ready          (<connected-to-output_north_ready>),          //              .ready
-		.output_north_startofpacket  (<connected-to-output_north_startofpacket>),  //              .startofpacket
-		.output_north_endofpacket    (<connected-to-output_north_endofpacket>),    //              .endofpacket
-		.output_north_empty          (<connected-to-output_north_empty>),          //              .empty
-		.output_here_data            (<connected-to-output_here_data>),            //   output_here.data
-		.output_here_valid           (<connected-to-output_here_valid>),           //              .valid
-		.output_here_ready           (<connected-to-output_here_ready>),           //              .ready
-		.output_here_startofpacket   (<connected-to-output_here_startofpacket>),   //              .startofpacket
-		.output_here_endofpacket     (<connected-to-output_here_endofpacket>),     //              .endofpacket
-		.output_here_empty           (<connected-to-output_here_empty>),           //              .empty
+		.input_west_data             (<connected-to-input_west_data>),             //    input_west.data
+		.input_west_valid            (<connected-to-input_west_valid>),            //              .valid
+		.input_west_ready            (<connected-to-input_west_ready>),            //              .ready
+		.input_west_startofpacket    (<connected-to-input_west_startofpacket>),    //              .startofpacket
+		.input_west_endofpacket      (<connected-to-input_west_endofpacket>),      //              .endofpacket
+		.input_west_empty            (<connected-to-input_west_empty>),            //              .empty
 		.output_east_data            (<connected-to-output_east_data>),            //   output_east.data
 		.output_east_valid           (<connected-to-output_east_valid>),           //              .valid
 		.output_east_ready           (<connected-to-output_east_ready>),           //              .ready
 		.output_east_startofpacket   (<connected-to-output_east_startofpacket>),   //              .startofpacket
 		.output_east_endofpacket     (<connected-to-output_east_endofpacket>),     //              .endofpacket
 		.output_east_empty           (<connected-to-output_east_empty>),           //              .empty
+		.output_here_data            (<connected-to-output_here_data>),            //   output_here.data
+		.output_here_valid           (<connected-to-output_here_valid>),           //              .valid
+		.output_here_ready           (<connected-to-output_here_ready>),           //              .ready
+		.output_here_startofpacket   (<connected-to-output_here_startofpacket>),   //              .startofpacket
+		.output_here_endofpacket     (<connected-to-output_here_endofpacket>),     //              .endofpacket
+		.output_here_empty           (<connected-to-output_here_empty>),           //              .empty
+		.output_north_data           (<connected-to-output_north_data>),           //  output_north.data
+		.output_north_valid          (<connected-to-output_north_valid>),          //              .valid
+		.output_north_ready          (<connected-to-output_north_ready>),          //              .ready
+		.output_north_startofpacket  (<connected-to-output_north_startofpacket>),  //              .startofpacket
+		.output_north_endofpacket    (<connected-to-output_north_endofpacket>),    //              .endofpacket
+		.output_north_empty          (<connected-to-output_north_empty>),          //              .empty
 		.output_south_data           (<connected-to-output_south_data>),           //  output_south.data
 		.output_south_valid          (<connected-to-output_south_valid>),          //              .valid
 		.output_south_ready          (<connected-to-output_south_ready>),          //              .ready
 		.output_south_startofpacket  (<connected-to-output_south_startofpacket>),  //              .startofpacket
 		.output_south_endofpacket    (<connected-to-output_south_endofpacket>),    //              .endofpacket
 		.output_south_empty          (<connected-to-output_south_empty>),          //              .empty
-		.reset_reset_n               (<connected-to-reset_reset_n>),               //         reset.reset_n
-		.address_address             (<connected-to-address_address>)              //       address.address
+		.output_west_data            (<connected-to-output_west_data>),            //   output_west.data
+		.output_west_valid           (<connected-to-output_west_valid>),           //              .valid
+		.output_west_ready           (<connected-to-output_west_ready>),           //              .ready
+		.output_west_startofpacket   (<connected-to-output_west_startofpacket>),   //              .startofpacket
+		.output_west_endofpacket     (<connected-to-output_west_endofpacket>),     //              .endofpacket
+		.output_west_empty           (<connected-to-output_west_empty>),           //              .empty
+		.reset_reset_n               (<connected-to-reset_reset_n>)                //         reset.reset_n
 	);
 
