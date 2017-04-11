@@ -25,23 +25,15 @@
          type = "String";
       }
    }
-   element input_fifo_0
+   element dircc_routing
    {
-      datum _sortIndex
+      datum _originalDeviceFamily
       {
-         value = "2";
-         type = "int";
+         value = "Cyclone V";
+         type = "String";
       }
    }
-   element input_fifo_1
-   {
-      datum _sortIndex
-      {
-         value = "3";
-         type = "int";
-      }
-   }
-   element input_fifo_2
+   element input_fifo_east
    {
       datum _sortIndex
       {
@@ -49,7 +41,23 @@
          type = "int";
       }
    }
-   element input_fifo_4
+   element input_fifo_north
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element input_fifo_south
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element input_fifo_west
    {
       datum _sortIndex
       {
@@ -103,47 +111,48 @@
  <parameter name="hideFromIPCatalog" value="false" />
  <parameter name="lockedInterfaceDefinition" value="" />
  <parameter name="maxAdditionalLatency" value="1" />
- <parameter name="projectName" value="DIRCC.qpf" />
+ <parameter name="projectName" value="" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="0" />
  <parameter name="testBenchDutName" value="" />
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
+ <interface name="address" internal="router.address" type="conduit" dir="end" />
  <interface name="clk" internal="clk.clk_in" type="clock" dir="end" />
  <interface
    name="input_east"
-   internal="input_fifo_2.in"
+   internal="input_fifo_east.in"
    type="avalon_streaming"
    dir="end" />
  <interface
-   name="input_north"
-   internal="input_fifo_0.in"
-   type="avalon_streaming"
-   dir="end" />
- <interface
-   name="input_poets"
+   name="input_here"
    internal="input_mux.in0"
    type="avalon_streaming"
    dir="end" />
  <interface
-   name="input_south"
-   internal="input_fifo_4.in"
+   name="input_north"
+   internal="input_fifo_north.in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="input_south_1"
+   internal="input_fifo_south.in"
    type="avalon_streaming"
    dir="end" />
  <interface
    name="input_west"
-   internal="input_fifo_1.in"
+   internal="input_fifo_west.in"
    type="avalon_streaming"
    dir="end" />
  <interface
-   name="node_address"
-   internal="router.address"
-   type="conduit"
-   dir="end" />
- <interface
    name="output_east"
-   internal="output_demux.out4"
+   internal="output_demux.out3"
+   type="avalon_streaming"
+   dir="start" />
+ <interface
+   name="output_here"
+   internal="output_demux.out0"
    type="avalon_streaming"
    dir="start" />
  <interface
@@ -152,18 +161,13 @@
    type="avalon_streaming"
    dir="start" />
  <interface
-   name="output_poets"
-   internal="output_demux.out0"
-   type="avalon_streaming"
-   dir="start" />
- <interface
    name="output_south"
-   internal="output_demux.out3"
+   internal="output_demux.out2"
    type="avalon_streaming"
    dir="start" />
  <interface
    name="output_west"
-   internal="output_demux.out2"
+   internal="output_demux.out4"
    type="avalon_streaming"
    dir="start" />
  <interface name="reset" internal="clk.clk_in_reset" type="reset" dir="end" />
@@ -174,7 +178,7 @@
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
  <module
-   name="input_fifo_0"
+   name="input_fifo_east"
    kind="altera_avalon_sc_fifo"
    version="16.1"
    enabled="1">
@@ -194,7 +198,7 @@
   <parameter name="USE_STORE_FORWARD" value="0" />
  </module>
  <module
-   name="input_fifo_1"
+   name="input_fifo_north"
    kind="altera_avalon_sc_fifo"
    version="16.1"
    enabled="1">
@@ -214,7 +218,7 @@
   <parameter name="USE_STORE_FORWARD" value="0" />
  </module>
  <module
-   name="input_fifo_2"
+   name="input_fifo_south"
    kind="altera_avalon_sc_fifo"
    version="16.1"
    enabled="1">
@@ -234,7 +238,7 @@
   <parameter name="USE_STORE_FORWARD" value="0" />
  </module>
  <module
-   name="input_fifo_4"
+   name="input_fifo_west"
    kind="altera_avalon_sc_fifo"
    version="16.1"
    enabled="1">
@@ -287,60 +291,73 @@
  <connection
    kind="avalon_streaming"
    version="16.1"
-   start="input_mux.out"
-   end="router.in" />
- <connection
-   kind="avalon_streaming"
-   version="16.1"
    start="router.out"
    end="output_demux.in" />
  <connection
    kind="avalon_streaming"
    version="16.1"
-   start="input_fifo_0.out"
+   start="input_mux.out"
+   end="router.in" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="input_fifo_north.out"
    end="input_mux.in1" />
  <connection
    kind="avalon_streaming"
    version="16.1"
-   start="input_fifo_1.out"
+   start="input_fifo_south.out"
    end="input_mux.in2" />
  <connection
    kind="avalon_streaming"
    version="16.1"
-   start="input_fifo_2.out"
+   start="input_fifo_east.out"
    end="input_mux.in3" />
  <connection
    kind="avalon_streaming"
    version="16.1"
-   start="input_fifo_4.out"
+   start="input_fifo_west.out"
    end="input_mux.in4" />
  <connection kind="clock" version="16.1" start="clk.clk" end="input_mux.clk" />
- <connection kind="clock" version="16.1" start="clk.clk" end="input_fifo_0.clk" />
- <connection kind="clock" version="16.1" start="clk.clk" end="input_fifo_1.clk" />
- <connection kind="clock" version="16.1" start="clk.clk" end="input_fifo_2.clk" />
- <connection kind="clock" version="16.1" start="clk.clk" end="input_fifo_4.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk.clk"
+   end="input_fifo_north.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk.clk"
+   end="input_fifo_south.clk" />
+ <connection kind="clock" version="16.1" start="clk.clk" end="input_fifo_east.clk" />
+ <connection kind="clock" version="16.1" start="clk.clk" end="input_fifo_west.clk" />
  <connection kind="clock" version="16.1" start="clk.clk" end="output_demux.clk" />
- <connection kind="clock" version="16.1" start="clk.clk" end="router.clk_in" />
+ <connection kind="clock" version="16.1" start="clk.clk" end="router.clk" />
  <connection
    kind="reset"
    version="16.1"
    start="clk.clk_reset"
-   end="input_fifo_0.clk_reset" />
+   end="input_fifo_north.clk_reset" />
  <connection
    kind="reset"
    version="16.1"
    start="clk.clk_reset"
-   end="input_fifo_2.clk_reset" />
+   end="input_fifo_east.clk_reset" />
  <connection
    kind="reset"
    version="16.1"
    start="clk.clk_reset"
-   end="input_fifo_4.clk_reset" />
+   end="input_fifo_west.clk_reset" />
  <connection
    kind="reset"
    version="16.1"
    start="clk.clk_reset"
-   end="input_fifo_1.clk_reset" />
+   end="input_fifo_south.clk_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk.clk_reset"
+   end="router.clk_reset" />
  <connection
    kind="reset"
    version="16.1"
@@ -351,11 +368,6 @@
    version="16.1"
    start="clk.clk_reset"
    end="output_demux.reset" />
- <connection
-   kind="reset"
-   version="16.1"
-   start="clk.clk_reset"
-   end="router.reset_in" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
