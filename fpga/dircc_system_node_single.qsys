@@ -9,14 +9,6 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
-   element address
-   {
-      datum _sortIndex
-      {
-         value = "2";
-         type = "int";
-      }
-   }
    element clk
    {
       datum _sortIndex
@@ -25,7 +17,7 @@
          type = "int";
       }
    }
-   element processing
+   element node_0
    {
       datum _sortIndex
       {
@@ -56,20 +48,13 @@
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk.clk_in" type="clock" dir="end" />
  <interface name="reset" internal="clk.clk_in_reset" type="reset" dir="end" />
- <module name="address" kind="dircc_address" version="1.0" enabled="1">
-  <parameter name="ADDRESS" value="0" />
- </module>
  <module name="clk" kind="clock_source" version="16.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
-  <parameter name="resetSynchronousEdges" value="NONE" />
+  <parameter name="resetSynchronousEdges" value="DEASSERT" />
  </module>
- <module
-   name="processing"
-   kind="dircc_nios_processing"
-   version="1.0"
-   enabled="1">
+ <module name="node_0" kind="dircc_node" version="1.0" enabled="1">
   <parameter name="AUTO_CLK_PROCESSING_CLOCK_DOMAIN" value="1" />
   <parameter name="AUTO_CLK_PROCESSING_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_CLK_PROCESSING_RESET_DOMAIN" value="1" />
@@ -80,44 +65,44 @@
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_processing</parameter>
+  <parameter name="AUTO_UNIQUE_ID" value="$${FILENAME}_node_0" />
  </module>
  <connection
    kind="avalon_streaming"
    version="16.1"
-   start="processing.stream_out"
-   end="processing.stream_in" />
+   start="node_0.output_east"
+   end="node_0.input_east" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_0.output_north"
+   end="node_0.input_north" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_0.output_south"
+   end="node_0.input_south" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_0.output_west"
+   end="node_0.input_west" />
  <connection
    kind="clock"
    version="16.1"
    start="clk.clk"
-   end="processing.clk_processing" />
- <connection
-   kind="clock"
-   version="16.1"
-   start="clk.clk"
-   end="processing.clk_routing" />
- <connection
-   kind="conduit"
-   version="16.1"
-   start="address.address_processing"
-   end="processing.address">
-  <parameter name="endPort" value="" />
-  <parameter name="endPortLSB" value="0" />
-  <parameter name="startPort" value="" />
-  <parameter name="startPortLSB" value="0" />
-  <parameter name="width" value="0" />
- </connection>
+   end="node_0.clk_processing" />
+ <connection kind="clock" version="16.1" start="clk.clk" end="node_0.clk_routing" />
  <connection
    kind="reset"
    version="16.1"
    start="clk.clk_reset"
-   end="processing.reset_processing" />
+   end="node_0.reset_processing" />
  <connection
    kind="reset"
    version="16.1"
    start="clk.clk_reset"
-   end="processing.reset_routing" />
+   end="node_0.reset_routing" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

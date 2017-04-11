@@ -25,7 +25,7 @@
          type = "int";
       }
    }
-   element conduit_avalon_mm_bridge_0
+   element conduit_avalon_mm_bridge
    {
       datum _sortIndex
       {
@@ -33,7 +33,7 @@
          type = "int";
       }
    }
-   element conduit_avalon_mm_bridge_0.out
+   element conduit_avalon_mm_bridge.out
    {
       datum baseAddress
       {
@@ -176,7 +176,7 @@
  <instanceScript></instanceScript>
  <interface
    name="address"
-   internal="conduit_avalon_mm_bridge_0.address"
+   internal="conduit_avalon_mm_bridge.address"
    type="conduit"
    dir="end" />
  <interface
@@ -223,7 +223,7 @@
   <parameter name="resetSynchronousEdges" value="DEASSERT" />
  </module>
  <module
-   name="conduit_avalon_mm_bridge_0"
+   name="conduit_avalon_mm_bridge"
    kind="conduit_avalon_mm_bridge"
    version="1.0"
    enabled="1" />
@@ -247,7 +247,7 @@
   <parameter name="dataAddrWidth" value="18" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='mem.s1' start='0x10000' end='0x1A000' type='altera_avalon_onchip_memory2.s1' /><slave name='cpu.debug_mem_slave' start='0x20800' end='0x21000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='timer.s1' start='0x21000' end='0x21020' type='altera_avalon_timer.s1' /><slave name='fifo_in.in_csr' start='0x21020' end='0x21040' type='altera_avalon_fifo.in_csr' /><slave name='fifo_out.in_csr' start='0x21040' end='0x21060' type='altera_avalon_fifo.in_csr' /><slave name='conduit_avalon_mm_bridge_0.out' start='0x21060' end='0x21068' type='conduit_avalon_mm_bridge.out' /><slave name='fifo_in.out' start='0x21068' end='0x21070' type='altera_avalon_fifo.out' /><slave name='fifo_out.in' start='0x21070' end='0x21078' type='altera_avalon_fifo.in' /><slave name='jtag_uart.avalon_jtag_slave' start='0x21078' end='0x21080' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='mem.s1' start='0x10000' end='0x1A000' type='altera_avalon_onchip_memory2.s1' /><slave name='cpu.debug_mem_slave' start='0x20800' end='0x21000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='timer.s1' start='0x21000' end='0x21020' type='altera_avalon_timer.s1' /><slave name='fifo_in.in_csr' start='0x21020' end='0x21040' type='altera_avalon_fifo.in_csr' /><slave name='fifo_out.in_csr' start='0x21040' end='0x21060' type='altera_avalon_fifo.in_csr' /><slave name='conduit_avalon_mm_bridge.out' start='0x21060' end='0x21068' type='conduit_avalon_mm_bridge.out' /><slave name='fifo_in.out' start='0x21068' end='0x21070' type='altera_avalon_fifo.out' /><slave name='fifo_out.in' start='0x21070' end='0x21078' type='altera_avalon_fifo.in' /><slave name='jtag_uart.avalon_jtag_slave' start='0x21078' end='0x21080' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -472,7 +472,7 @@
    version="16.1"
    enabled="1">
   <parameter name="allowInSystemMemoryContentEditor" value="false" />
-  <parameter name="autoInitializationFileName">dircc_nios_processing_mem</parameter>
+  <parameter name="autoInitializationFileName" value="$${FILENAME}_mem" />
   <parameter name="blockType" value="AUTO" />
   <parameter name="copyInitFile" value="false" />
   <parameter name="dataWidth" value="32" />
@@ -568,7 +568,7 @@
    kind="avalon"
    version="16.1"
    start="cpu.data_master"
-   end="conduit_avalon_mm_bridge_0.out">
+   end="conduit_avalon_mm_bridge.out">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00021060" />
   <parameter name="defaultConnection" value="false" />
@@ -637,7 +637,7 @@
    kind="clock"
    version="16.1"
    start="clk_processing.clk"
-   end="conduit_avalon_mm_bridge_0.clock" />
+   end="conduit_avalon_mm_bridge.clock" />
  <connection kind="interrupt" version="16.1" start="cpu.irq" end="timer.irq">
   <parameter name="irqNumber" value="0" />
  </connection>
@@ -663,7 +663,7 @@
    kind="reset"
    version="16.1"
    start="clk_processing.clk_reset"
-   end="conduit_avalon_mm_bridge_0.reset" />
+   end="conduit_avalon_mm_bridge.reset" />
  <connection
    kind="reset"
    version="16.1"
