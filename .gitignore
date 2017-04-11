@@ -28,6 +28,7 @@ software/**/.cproject
 software/**/.project
 software/**/.settings
 *.bak
+*.BAK.*
 *.*~
 
 # Compiled files
@@ -39,8 +40,6 @@ software/**/.settings
 GPATH
 GTAGS
 GRTAGS
-
-*.do
 
 #VS code
 .vscode/*
