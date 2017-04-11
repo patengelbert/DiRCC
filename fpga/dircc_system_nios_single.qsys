@@ -9,7 +9,7 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
-   element clk_0
+   element clk
    {
       datum _sortIndex
       {
@@ -17,7 +17,7 @@
          type = "int";
       }
    }
-   element node_0
+   element processing
    {
       datum _sortIndex
       {
@@ -46,15 +46,19 @@
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
- <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
- <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
- <module name="clk_0" kind="clock_source" version="16.1" enabled="1">
+ <interface name="clk" internal="clk.clk_in" type="clock" dir="end" />
+ <interface name="reset" internal="clk.clk_in_reset" type="reset" dir="end" />
+ <module name="clk" kind="clock_source" version="16.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
- <module name="node_0" kind="poets_nios_node" version="1.0" enabled="1">
+ <module
+   name="processing"
+   kind="dircc_nios_processing"
+   version="1.0"
+   enabled="1">
   <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
   <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
@@ -62,19 +66,19 @@
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_UNIQUE_ID" value="$${FILENAME}_node_0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_processing</parameter>
  </module>
  <connection
    kind="avalon_streaming"
    version="16.1"
-   start="node_0.stream_out"
-   end="node_0.stream_in" />
- <connection kind="clock" version="16.1" start="clk_0.clk" end="node_0.clk" />
+   start="processing.stream_out"
+   end="processing.stream_in" />
+ <connection kind="clock" version="16.1" start="clk.clk" end="processing.clk" />
  <connection
    kind="reset"
    version="16.1"
-   start="clk_0.clk_reset"
-   end="node_0.reset" />
+   start="clk.clk_reset"
+   end="processing.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

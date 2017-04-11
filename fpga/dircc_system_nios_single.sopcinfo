@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 16.1 196 (Future versions may contain additional information.) -->
- <!-- 2017.02.17.14:59:12 -->
+ <!-- 2017.04.11.14:04:03 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1487343552</value>
+  <value>1491915843</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -99,7 +99,7 @@
   <visible>true</visible>
   <valid>true</valid>
  </parameter>
- <module name="clk_0" kind="clock_source" version="16.1" path="clk_0">
+ <module name="clk" kind="clock_source" version="16.1" path="clk">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <parameter name="clockFrequency">
@@ -336,45 +336,45 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <clockDomainMember>
     <isBridge>true</isBridge>
-    <moduleName>node_0_clk_0</moduleName>
+    <moduleName>processing_clk</moduleName>
     <slaveName>clk_in</slaveName>
-    <name>node_0_clk_0.clk_in</name>
+    <name>processing_clk.clk_in</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>node_0_cpu</moduleName>
+    <moduleName>processing_cpu</moduleName>
     <slaveName>clk</slaveName>
-    <name>node_0_cpu.clk</name>
+    <name>processing_cpu.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>node_0_timer</moduleName>
+    <moduleName>processing_timer</moduleName>
     <slaveName>clk</slaveName>
-    <name>node_0_timer.clk</name>
+    <name>processing_timer.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>node_0_jtag_uart</moduleName>
+    <moduleName>processing_jtag_uart</moduleName>
     <slaveName>clk</slaveName>
-    <name>node_0_jtag_uart.clk</name>
+    <name>processing_jtag_uart.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>node_0_mem</moduleName>
+    <moduleName>processing_mem</moduleName>
     <slaveName>clk1</slaveName>
-    <name>node_0_mem.clk1</name>
+    <name>processing_mem.clk1</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>node_0_fifo_out</moduleName>
+    <moduleName>processing_fifo_out</moduleName>
     <slaveName>clk_in</slaveName>
-    <name>node_0_fifo_out.clk_in</name>
+    <name>processing_fifo_out.clk_in</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>node_0_fifo_in</moduleName>
+    <moduleName>processing_fifo_in</moduleName>
     <slaveName>clk_in</slaveName>
-    <name>node_0_fifo_in.clk_in</name>
+    <name>processing_fifo_in.clk_in</name>
    </clockDomainMember>
   </interface>
   <interface name="clk_reset" kind="reset_source" version="16.1">
@@ -439,12 +439,16 @@ parameters are a RESULT of the module parameters. -->
    </port>
   </interface>
  </module>
- <module name="node_0" kind="poets_nios_node" version="1.0" path="node_0">
+ <module
+   name="processing"
+   kind="dircc_nios_processing"
+   version="1.0"
+   path="processing">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1487343552</value>
+   <value>1491915843</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -453,7 +457,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_UNIQUE_ID">
    <type>java.lang.String</type>
-   <value>dircc_system_nios_single_node_0</value>
+   <value>dircc_system_nios_single_processing</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -960,10 +964,10 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
-   name="node_0_clk_0"
+   name="processing_clk"
    kind="clock_source"
    version="16.1"
-   path="node_0.clk_0">
+   path="processing.clk">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <parameter name="clockFrequency">
@@ -976,7 +980,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="clockFrequencyKnown">
    <type>boolean</type>
-   <value>true</value>
+   <value>false</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -1200,39 +1204,39 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>node_0_cpu</moduleName>
+    <moduleName>processing_cpu</moduleName>
     <slaveName>clk</slaveName>
-    <name>node_0_cpu.clk</name>
+    <name>processing_cpu.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>node_0_timer</moduleName>
+    <moduleName>processing_timer</moduleName>
     <slaveName>clk</slaveName>
-    <name>node_0_timer.clk</name>
+    <name>processing_timer.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>node_0_jtag_uart</moduleName>
+    <moduleName>processing_jtag_uart</moduleName>
     <slaveName>clk</slaveName>
-    <name>node_0_jtag_uart.clk</name>
+    <name>processing_jtag_uart.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>node_0_mem</moduleName>
+    <moduleName>processing_mem</moduleName>
     <slaveName>clk1</slaveName>
-    <name>node_0_mem.clk1</name>
+    <name>processing_mem.clk1</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>node_0_fifo_out</moduleName>
+    <moduleName>processing_fifo_out</moduleName>
     <slaveName>clk_in</slaveName>
-    <name>node_0_fifo_out.clk_in</name>
+    <name>processing_fifo_out.clk_in</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>node_0_fifo_in</moduleName>
+    <moduleName>processing_fifo_in</moduleName>
     <slaveName>clk_in</slaveName>
-    <name>node_0_fifo_in.clk_in</name>
+    <name>processing_fifo_in.clk_in</name>
    </clockDomainMember>
   </interface>
   <interface name="clk_reset" kind="reset_source" version="16.1">
@@ -1298,10 +1302,10 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
-   name="node_0_cpu"
+   name="processing_cpu"
    kind="altera_nios2_gen2"
    version="16.1"
-   path="node_0.cpu">
+   path="processing.cpu">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <assignment>
@@ -1434,7 +1438,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.configuration.breakSlave</name>
-   <value>node_0_cpu.debug_mem_slave</value>
+   <value>processing_cpu.debug_mem_slave</value>
   </assignment>
   <assignment>
    <name>embeddedsw.configuration.cpuArchitecture</name>
@@ -1446,7 +1450,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.configuration.exceptionSlave</name>
-   <value>node_0_mem.s1</value>
+   <value>processing_mem.s1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.configuration.resetOffset</name>
@@ -1454,7 +1458,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.configuration.resetSlave</name>
-   <value>node_0_mem.s1</value>
+   <value>processing_mem.s1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -1914,7 +1918,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="resetSlave">
    <type>java.lang.String</type>
-   <value>node_0_mem.s1</value>
+   <value>processing_mem.s1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -1930,7 +1934,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="exceptionSlave">
    <type>java.lang.String</type>
-   <value>node_0_mem.s1</value>
+   <value>processing_mem.s1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -2682,7 +2686,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="breakSlave_derived">
    <type>java.lang.String</type>
-   <value>node_0_cpu.debug_mem_slave</value>
+   <value>processing_cpu.debug_mem_slave</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -3580,65 +3584,65 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>node_0_jtag_uart</moduleName>
+    <moduleName>processing_jtag_uart</moduleName>
     <slaveName>avalon_jtag_slave</slaveName>
-    <name>node_0_jtag_uart.avalon_jtag_slave</name>
+    <name>processing_jtag_uart.avalon_jtag_slave</name>
     <baseAddress>135280</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>node_0_cpu</moduleName>
+    <moduleName>processing_cpu</moduleName>
     <slaveName>debug_mem_slave</slaveName>
-    <name>node_0_cpu.debug_mem_slave</name>
+    <name>processing_cpu.debug_mem_slave</name>
     <baseAddress>133120</baseAddress>
     <span>2048</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>node_0_fifo_out</moduleName>
+    <moduleName>processing_fifo_out</moduleName>
     <slaveName>in</slaveName>
-    <name>node_0_fifo_out.in</name>
+    <name>processing_fifo_out.in</name>
     <baseAddress>135272</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>node_0_fifo_out</moduleName>
+    <moduleName>processing_fifo_out</moduleName>
     <slaveName>in_csr</slaveName>
-    <name>node_0_fifo_out.in_csr</name>
+    <name>processing_fifo_out.in_csr</name>
     <baseAddress>135232</baseAddress>
     <span>32</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>node_0_fifo_in</moduleName>
+    <moduleName>processing_fifo_in</moduleName>
     <slaveName>in_csr</slaveName>
-    <name>node_0_fifo_in.in_csr</name>
+    <name>processing_fifo_in.in_csr</name>
     <baseAddress>135200</baseAddress>
     <span>32</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>node_0_fifo_in</moduleName>
+    <moduleName>processing_fifo_in</moduleName>
     <slaveName>out</slaveName>
-    <name>node_0_fifo_in.out</name>
+    <name>processing_fifo_in.out</name>
     <baseAddress>135264</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>node_0_timer</moduleName>
+    <moduleName>processing_timer</moduleName>
     <slaveName>s1</slaveName>
-    <name>node_0_timer.s1</name>
+    <name>processing_timer.s1</name>
     <baseAddress>135168</baseAddress>
     <span>32</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>node_0_mem</moduleName>
+    <moduleName>processing_mem</moduleName>
     <slaveName>s1</slaveName>
-    <name>node_0_mem.s1</name>
+    <name>processing_mem.s1</name>
     <baseAddress>65536</baseAddress>
     <span>40960</span>
    </memoryBlock>
@@ -3931,17 +3935,17 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>node_0_cpu</moduleName>
+    <moduleName>processing_cpu</moduleName>
     <slaveName>debug_mem_slave</slaveName>
-    <name>node_0_cpu.debug_mem_slave</name>
+    <name>processing_cpu.debug_mem_slave</name>
     <baseAddress>133120</baseAddress>
     <span>2048</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>node_0_mem</moduleName>
+    <moduleName>processing_mem</moduleName>
     <slaveName>s1</slaveName>
-    <name>node_0_mem.s1</name>
+    <name>processing_mem.s1</name>
     <baseAddress>65536</baseAddress>
     <span>40960</span>
    </memoryBlock>
@@ -4016,16 +4020,16 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <interrupt>
     <isBridge>false</isBridge>
-    <moduleName>node_0_timer</moduleName>
+    <moduleName>processing_timer</moduleName>
     <slaveName>irq</slaveName>
-    <name>node_0_timer.irq</name>
+    <name>processing_timer.irq</name>
     <interruptNumber>0</interruptNumber>
    </interrupt>
    <interrupt>
     <isBridge>false</isBridge>
-    <moduleName>node_0_jtag_uart</moduleName>
+    <moduleName>processing_jtag_uart</moduleName>
     <slaveName>irq</slaveName>
-    <name>node_0_jtag_uart.irq</name>
+    <name>processing_jtag_uart.irq</name>
     <interruptNumber>16</interruptNumber>
    </interrupt>
   </interface>
@@ -4555,10 +4559,10 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
-   name="node_0_fifo_in"
+   name="processing_fifo_in"
    kind="altera_avalon_fifo"
    version="16.1"
-   path="node_0.fifo_in">
+   path="processing.fifo_in">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <assignment>
@@ -5813,10 +5817,10 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
-   name="node_0_fifo_out"
+   name="processing_fifo_out"
    kind="altera_avalon_fifo"
    version="16.1"
-   path="node_0.fifo_out">
+   path="processing.fifo_out">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <assignment>
@@ -7071,10 +7075,10 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
-   name="node_0_jtag_uart"
+   name="processing_jtag_uart"
    kind="altera_avalon_jtag_uart"
    version="16.1"
-   path="node_0.jtag_uart">
+   path="processing.jtag_uart">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <assignment>
@@ -7818,10 +7822,10 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
-   name="node_0_mem"
+   name="processing_mem"
    kind="altera_avalon_onchip_memory2"
    version="16.1"
-   path="node_0.mem">
+   path="processing.mem">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <assignment>
@@ -7846,7 +7850,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_CONTENTS_FILE</name>
-   <value>dircc_system_nios_single_node_0_mem</value>
+   <value>dircc_system_nios_single_processing_mem</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_MEM_CONTENT</name>
@@ -7910,7 +7914,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.memoryInfo.MEM_INIT_FILENAME</name>
-   <value>dircc_system_nios_single_node_0_mem</value>
+   <value>dircc_system_nios_single_processing_mem</value>
   </assignment>
   <assignment>
    <name>postgeneration.simulation.init_file.param_name</name>
@@ -8122,7 +8126,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="autoInitializationFileName">
    <type>java.lang.String</type>
-   <value>dircc_system_nios_single_node_0_mem</value>
+   <value>dircc_system_nios_single_processing_mem</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -8197,7 +8201,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_init_file_name">
    <type>java.lang.String</type>
-   <value>dircc_system_nios_single_node_0_mem.hex</value>
+   <value>dircc_system_nios_single_processing_mem.hex</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -8686,10 +8690,10 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
-   name="node_0_timer"
+   name="processing_timer"
    kind="altera_avalon_timer"
    version="16.1"
-   path="node_0.timer">
+   path="processing.timer">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <assignment>
@@ -9468,11 +9472,11 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <connection
-   name="node_0_cpu.data_master/node_0_jtag_uart.avalon_jtag_slave"
+   name="processing_cpu.data_master/processing_jtag_uart.avalon_jtag_slave"
    kind="avalon"
    version="16.1"
-   start="node_0_cpu.data_master"
-   end="node_0_jtag_uart.avalon_jtag_slave">
+   start="processing_cpu.data_master"
+   end="processing_jtag_uart.avalon_jtag_slave">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -9513,17 +9517,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_cpu</startModule>
+  <startModule>processing_cpu</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>node_0_jtag_uart</endModule>
+  <endModule>processing_jtag_uart</endModule>
   <endConnectionPoint>avalon_jtag_slave</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_cpu.data_master/node_0_cpu.debug_mem_slave"
+   name="processing_cpu.data_master/processing_cpu.debug_mem_slave"
    kind="avalon"
    version="16.1"
-   start="node_0_cpu.data_master"
-   end="node_0_cpu.debug_mem_slave">
+   start="processing_cpu.data_master"
+   end="processing_cpu.debug_mem_slave">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -9564,17 +9568,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_cpu</startModule>
+  <startModule>processing_cpu</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>node_0_cpu</endModule>
+  <endModule>processing_cpu</endModule>
   <endConnectionPoint>debug_mem_slave</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_cpu.data_master/node_0_fifo_out.in"
+   name="processing_cpu.data_master/processing_fifo_out.in"
    kind="avalon"
    version="16.1"
-   start="node_0_cpu.data_master"
-   end="node_0_fifo_out.in">
+   start="processing_cpu.data_master"
+   end="processing_fifo_out.in">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -9615,17 +9619,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_cpu</startModule>
+  <startModule>processing_cpu</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>node_0_fifo_out</endModule>
+  <endModule>processing_fifo_out</endModule>
   <endConnectionPoint>in</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_cpu.data_master/node_0_fifo_out.in_csr"
+   name="processing_cpu.data_master/processing_fifo_out.in_csr"
    kind="avalon"
    version="16.1"
-   start="node_0_cpu.data_master"
-   end="node_0_fifo_out.in_csr">
+   start="processing_cpu.data_master"
+   end="processing_fifo_out.in_csr">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -9666,17 +9670,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_cpu</startModule>
+  <startModule>processing_cpu</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>node_0_fifo_out</endModule>
+  <endModule>processing_fifo_out</endModule>
   <endConnectionPoint>in_csr</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_cpu.data_master/node_0_fifo_in.in_csr"
+   name="processing_cpu.data_master/processing_fifo_in.in_csr"
    kind="avalon"
    version="16.1"
-   start="node_0_cpu.data_master"
-   end="node_0_fifo_in.in_csr">
+   start="processing_cpu.data_master"
+   end="processing_fifo_in.in_csr">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -9717,17 +9721,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_cpu</startModule>
+  <startModule>processing_cpu</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>node_0_fifo_in</endModule>
+  <endModule>processing_fifo_in</endModule>
   <endConnectionPoint>in_csr</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_cpu.data_master/node_0_fifo_in.out"
+   name="processing_cpu.data_master/processing_fifo_in.out"
    kind="avalon"
    version="16.1"
-   start="node_0_cpu.data_master"
-   end="node_0_fifo_in.out">
+   start="processing_cpu.data_master"
+   end="processing_fifo_in.out">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -9768,17 +9772,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_cpu</startModule>
+  <startModule>processing_cpu</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>node_0_fifo_in</endModule>
+  <endModule>processing_fifo_in</endModule>
   <endConnectionPoint>out</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_cpu.data_master/node_0_timer.s1"
+   name="processing_cpu.data_master/processing_timer.s1"
    kind="avalon"
    version="16.1"
-   start="node_0_cpu.data_master"
-   end="node_0_timer.s1">
+   start="processing_cpu.data_master"
+   end="processing_timer.s1">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -9819,17 +9823,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_cpu</startModule>
+  <startModule>processing_cpu</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>node_0_timer</endModule>
+  <endModule>processing_timer</endModule>
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_cpu.data_master/node_0_mem.s1"
+   name="processing_cpu.data_master/processing_mem.s1"
    kind="avalon"
    version="16.1"
-   start="node_0_cpu.data_master"
-   end="node_0_mem.s1">
+   start="processing_cpu.data_master"
+   end="processing_mem.s1">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -9870,17 +9874,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_cpu</startModule>
+  <startModule>processing_cpu</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>node_0_mem</endModule>
+  <endModule>processing_mem</endModule>
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_cpu.instruction_master/node_0_cpu.debug_mem_slave"
+   name="processing_cpu.instruction_master/processing_cpu.debug_mem_slave"
    kind="avalon"
    version="16.1"
-   start="node_0_cpu.instruction_master"
-   end="node_0_cpu.debug_mem_slave">
+   start="processing_cpu.instruction_master"
+   end="processing_cpu.debug_mem_slave">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -9921,17 +9925,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_cpu</startModule>
+  <startModule>processing_cpu</startModule>
   <startConnectionPoint>instruction_master</startConnectionPoint>
-  <endModule>node_0_cpu</endModule>
+  <endModule>processing_cpu</endModule>
   <endConnectionPoint>debug_mem_slave</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_cpu.instruction_master/node_0_mem.s1"
+   name="processing_cpu.instruction_master/processing_mem.s1"
    kind="avalon"
    version="16.1"
-   start="node_0_cpu.instruction_master"
-   end="node_0_mem.s1">
+   start="processing_cpu.instruction_master"
+   end="processing_mem.s1">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -9972,17 +9976,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_cpu</startModule>
+  <startModule>processing_cpu</startModule>
   <startConnectionPoint>instruction_master</startConnectionPoint>
-  <endModule>node_0_mem</endModule>
+  <endModule>processing_mem</endModule>
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_clk_0.clk/node_0_cpu.clk"
+   name="processing_clk.clk/processing_cpu.clk"
    kind="clock"
    version="16.1"
-   start="node_0_clk_0.clk"
-   end="node_0_cpu.clk">
+   start="processing_clk.clk"
+   end="processing_cpu.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -9999,17 +10003,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_clk_0</startModule>
+  <startModule>processing_clk</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>node_0_cpu</endModule>
+  <endModule>processing_cpu</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_clk_0.clk/node_0_timer.clk"
+   name="processing_clk.clk/processing_timer.clk"
    kind="clock"
    version="16.1"
-   start="node_0_clk_0.clk"
-   end="node_0_timer.clk">
+   start="processing_clk.clk"
+   end="processing_timer.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10026,17 +10030,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_clk_0</startModule>
+  <startModule>processing_clk</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>node_0_timer</endModule>
+  <endModule>processing_timer</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_clk_0.clk/node_0_jtag_uart.clk"
+   name="processing_clk.clk/processing_jtag_uart.clk"
    kind="clock"
    version="16.1"
-   start="node_0_clk_0.clk"
-   end="node_0_jtag_uart.clk">
+   start="processing_clk.clk"
+   end="processing_jtag_uart.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10053,17 +10057,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_clk_0</startModule>
+  <startModule>processing_clk</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>node_0_jtag_uart</endModule>
+  <endModule>processing_jtag_uart</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_clk_0.clk/node_0_mem.clk1"
+   name="processing_clk.clk/processing_mem.clk1"
    kind="clock"
    version="16.1"
-   start="node_0_clk_0.clk"
-   end="node_0_mem.clk1">
+   start="processing_clk.clk"
+   end="processing_mem.clk1">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10080,17 +10084,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_clk_0</startModule>
+  <startModule>processing_clk</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>node_0_mem</endModule>
+  <endModule>processing_mem</endModule>
   <endConnectionPoint>clk1</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_clk_0.clk/node_0_fifo_out.clk_in"
+   name="processing_clk.clk/processing_fifo_out.clk_in"
    kind="clock"
    version="16.1"
-   start="node_0_clk_0.clk"
-   end="node_0_fifo_out.clk_in">
+   start="processing_clk.clk"
+   end="processing_fifo_out.clk_in">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10107,17 +10111,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_clk_0</startModule>
+  <startModule>processing_clk</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>node_0_fifo_out</endModule>
+  <endModule>processing_fifo_out</endModule>
   <endConnectionPoint>clk_in</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_clk_0.clk/node_0_fifo_in.clk_in"
+   name="processing_clk.clk/processing_fifo_in.clk_in"
    kind="clock"
    version="16.1"
-   start="node_0_clk_0.clk"
-   end="node_0_fifo_in.clk_in">
+   start="processing_clk.clk"
+   end="processing_fifo_in.clk_in">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10134,17 +10138,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_clk_0</startModule>
+  <startModule>processing_clk</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>node_0_fifo_in</endModule>
+  <endModule>processing_fifo_in</endModule>
   <endConnectionPoint>clk_in</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_cpu.irq/node_0_timer.irq"
+   name="processing_cpu.irq/processing_timer.irq"
    kind="interrupt"
    version="16.1"
-   start="node_0_cpu.irq"
-   end="node_0_timer.irq">
+   start="processing_cpu.irq"
+   end="processing_timer.irq">
   <parameter name="irqNumber">
    <type>int</type>
    <value>0</value>
@@ -10169,17 +10173,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_cpu</startModule>
+  <startModule>processing_cpu</startModule>
   <startConnectionPoint>irq</startConnectionPoint>
-  <endModule>node_0_timer</endModule>
+  <endModule>processing_timer</endModule>
   <endConnectionPoint>irq</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_cpu.irq/node_0_jtag_uart.irq"
+   name="processing_cpu.irq/processing_jtag_uart.irq"
    kind="interrupt"
    version="16.1"
-   start="node_0_cpu.irq"
-   end="node_0_jtag_uart.irq">
+   start="processing_cpu.irq"
+   end="processing_jtag_uart.irq">
   <parameter name="irqNumber">
    <type>int</type>
    <value>16</value>
@@ -10204,17 +10208,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_cpu</startModule>
+  <startModule>processing_cpu</startModule>
   <startConnectionPoint>irq</startConnectionPoint>
-  <endModule>node_0_jtag_uart</endModule>
+  <endModule>processing_jtag_uart</endModule>
   <endConnectionPoint>irq</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_clk_0.clk_reset/node_0_cpu.reset"
+   name="processing_clk.clk_reset/processing_cpu.reset"
    kind="reset"
    version="16.1"
-   start="node_0_clk_0.clk_reset"
-   end="node_0_cpu.reset">
+   start="processing_clk.clk_reset"
+   end="processing_cpu.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10231,17 +10235,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_clk_0</startModule>
+  <startModule>processing_clk</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>node_0_cpu</endModule>
+  <endModule>processing_cpu</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_clk_0.clk_reset/node_0_timer.reset"
+   name="processing_clk.clk_reset/processing_timer.reset"
    kind="reset"
    version="16.1"
-   start="node_0_clk_0.clk_reset"
-   end="node_0_timer.reset">
+   start="processing_clk.clk_reset"
+   end="processing_timer.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10258,17 +10262,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_clk_0</startModule>
+  <startModule>processing_clk</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>node_0_timer</endModule>
+  <endModule>processing_timer</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_clk_0.clk_reset/node_0_jtag_uart.reset"
+   name="processing_clk.clk_reset/processing_jtag_uart.reset"
    kind="reset"
    version="16.1"
-   start="node_0_clk_0.clk_reset"
-   end="node_0_jtag_uart.reset">
+   start="processing_clk.clk_reset"
+   end="processing_jtag_uart.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10285,17 +10289,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_clk_0</startModule>
+  <startModule>processing_clk</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>node_0_jtag_uart</endModule>
+  <endModule>processing_jtag_uart</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_clk_0.clk_reset/node_0_mem.reset1"
+   name="processing_clk.clk_reset/processing_mem.reset1"
    kind="reset"
    version="16.1"
-   start="node_0_clk_0.clk_reset"
-   end="node_0_mem.reset1">
+   start="processing_clk.clk_reset"
+   end="processing_mem.reset1">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10312,17 +10316,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_clk_0</startModule>
+  <startModule>processing_clk</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>node_0_mem</endModule>
+  <endModule>processing_mem</endModule>
   <endConnectionPoint>reset1</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_clk_0.clk_reset/node_0_fifo_out.reset_in"
+   name="processing_clk.clk_reset/processing_fifo_out.reset_in"
    kind="reset"
    version="16.1"
-   start="node_0_clk_0.clk_reset"
-   end="node_0_fifo_out.reset_in">
+   start="processing_clk.clk_reset"
+   end="processing_fifo_out.reset_in">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10339,17 +10343,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_clk_0</startModule>
+  <startModule>processing_clk</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>node_0_fifo_out</endModule>
+  <endModule>processing_fifo_out</endModule>
   <endConnectionPoint>reset_in</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_clk_0.clk_reset/node_0_fifo_in.reset_in"
+   name="processing_clk.clk_reset/processing_fifo_in.reset_in"
    kind="reset"
    version="16.1"
-   start="node_0_clk_0.clk_reset"
-   end="node_0_fifo_in.reset_in">
+   start="processing_clk.clk_reset"
+   end="processing_fifo_in.reset_in">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10366,17 +10370,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_clk_0</startModule>
+  <startModule>processing_clk</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>node_0_fifo_in</endModule>
+  <endModule>processing_fifo_in</endModule>
   <endConnectionPoint>reset_in</endConnectionPoint>
  </connection>
  <connection
-   name="node_0_fifo_out.out/node_0_fifo_in.in"
+   name="processing_fifo_out.out/processing_fifo_in.in"
    kind="avalon_streaming"
    version="16.1"
-   start="node_0_fifo_out.out"
-   end="node_0_fifo_in.in">
+   start="processing_fifo_out.out"
+   end="processing_fifo_in.in">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10393,17 +10397,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>node_0_fifo_out</startModule>
+  <startModule>processing_fifo_out</startModule>
   <startConnectionPoint>out</startConnectionPoint>
-  <endModule>node_0_fifo_in</endModule>
+  <endModule>processing_fifo_in</endModule>
   <endConnectionPoint>in</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/node_0_clk_0.clk_in"
+   name="clk.clk/processing_clk.clk_in"
    kind="clock"
    version="16.1"
-   start="clk_0.clk"
-   end="node_0_clk_0.clk_in">
+   start="clk.clk"
+   end="processing_clk.clk_in">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10420,17 +10424,17 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>clk</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>node_0_clk_0</endModule>
+  <endModule>processing_clk</endModule>
   <endConnectionPoint>clk_in</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/node_0_clk_0.clk_in_reset"
+   name="clk.clk_reset/processing_clk.clk_in_reset"
    kind="reset"
    version="16.1"
-   start="clk_0.clk_reset"
-   end="node_0_clk_0.clk_in_reset">
+   start="clk.clk_reset"
+   end="processing_clk.clk_in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -10447,9 +10451,9 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>clk</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>node_0_clk_0</endModule>
+  <endModule>processing_clk</endModule>
   <endConnectionPoint>clk_in_reset</endConnectionPoint>
  </connection>
  <plugin>
@@ -10494,10 +10498,10 @@ parameters are a RESULT of the module parameters. -->
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
-  <name>poets_nios_node</name>
+  <name>dircc_nios_processing</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>poets_nios_node</displayName>
+  <displayName>dircc_nios_processing</displayName>
   <version>1.0</version>
  </plugin>
  <plugin>
