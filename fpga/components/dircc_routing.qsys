@@ -136,7 +136,7 @@
    type="avalon_streaming"
    dir="end" />
  <interface
-   name="input_south_1"
+   name="input_south"
    internal="input_fifo_south.in"
    type="avalon_streaming"
    dir="end" />

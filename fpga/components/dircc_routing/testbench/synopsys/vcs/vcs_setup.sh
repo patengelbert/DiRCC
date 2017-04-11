@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 16.1 196 linux 2017.04.11.17:31:51
+# ACDS 16.1 196 linux 2017.04.11.17:33:53
 
 # ----------------------------------------
 # vcs - auto-generated simulation script
@@ -94,7 +94,7 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 16.1 196 linux 2017.04.11.17:31:51
+# ACDS 16.1 196 linux 2017.04.11.17:33:53
 # ----------------------------------------
 # initialize variables
 TOP_LEVEL_NAME="dircc_routing_tb"

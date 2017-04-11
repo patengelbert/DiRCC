@@ -57,7 +57,7 @@
          type = "int";
       }
    }
-   element dircc_routing_inst_input_south_1_bfm
+   element dircc_routing_inst_input_south_bfm
    {
       datum _sortIndex
       {
@@ -239,7 +239,7 @@
   <parameter name="VHDL_ID" value="2" />
  </module>
  <module
-   name="dircc_routing_inst_input_south_1_bfm"
+   name="dircc_routing_inst_input_south_bfm"
    kind="altera_avalon_st_source_bfm"
    version="16.1"
    enabled="1">
@@ -436,8 +436,8 @@
  <connection
    kind="avalon_streaming"
    version="16.1"
-   start="dircc_routing_inst_input_south_1_bfm.src"
-   end="dircc_routing_inst.input_south_1" />
+   start="dircc_routing_inst_input_south_bfm.src"
+   end="dircc_routing_inst.input_south" />
  <connection
    kind="avalon_streaming"
    version="16.1"
@@ -477,7 +477,7 @@
    kind="clock"
    version="16.1"
    start="dircc_routing_inst_clk_bfm.clk"
-   end="dircc_routing_inst_input_south_1_bfm.clk" />
+   end="dircc_routing_inst_input_south_bfm.clk" />
  <connection
    kind="clock"
    version="16.1"
@@ -538,7 +538,7 @@
    kind="reset"
    version="16.1"
    start="dircc_routing_inst_reset_bfm.reset"
-   end="dircc_routing_inst_input_south_1_bfm.clk_reset" />
+   end="dircc_routing_inst_input_south_bfm.clk_reset" />
  <connection
    kind="reset"
    version="16.1"

@@ -20,12 +20,12 @@ module dircc_routing (
 	input_north_startofpacket,
 	input_north_endofpacket,
 	input_north_empty,
-	input_south_1_data,
-	input_south_1_valid,
-	input_south_1_ready,
-	input_south_1_startofpacket,
-	input_south_1_endofpacket,
-	input_south_1_empty,
+	input_south_data,
+	input_south_valid,
+	input_south_ready,
+	input_south_startofpacket,
+	input_south_endofpacket,
+	input_south_empty,
 	input_west_data,
 	input_west_valid,
 	input_west_ready,
@@ -84,12 +84,12 @@ module dircc_routing (
 	input		input_north_startofpacket;
 	input		input_north_endofpacket;
 	input	[1:0]	input_north_empty;
-	input	[31:0]	input_south_1_data;
-	input		input_south_1_valid;
-	output		input_south_1_ready;
-	input		input_south_1_startofpacket;
-	input		input_south_1_endofpacket;
-	input	[1:0]	input_south_1_empty;
+	input	[31:0]	input_south_data;
+	input		input_south_valid;
+	output		input_south_ready;
+	input		input_south_startofpacket;
+	input		input_south_endofpacket;
+	input	[1:0]	input_south_empty;
 	input	[31:0]	input_west_data;
 	input		input_west_valid;
 	output		input_west_ready;

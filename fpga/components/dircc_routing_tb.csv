@@ -1,12 +1,12 @@
-# system info dircc_routing_tb on 2017.04.11.17:31:50
+# system info dircc_routing_tb on 2017.04.11.17:33:52
 system_info:
 name,value
 DEVICE,5CSEMA5F31C6
 DEVICE_FAMILY,Cyclone V
-GENERATION_ID,1491928310
+GENERATION_ID,1491928432
 #
 #
-# Files generated for dircc_routing_tb on 2017.04.11.17:31:50
+# Files generated for dircc_routing_tb on 2017.04.11.17:33:52
 files:
 filepath,kind,attributes,module,is_top
 dircc_routing/testbench/dircc_routing_tb/simulation/dircc_routing_tb.v,VERILOG,,dircc_routing_tb,true
@@ -52,7 +52,7 @@ dircc_routing_tb.dircc_routing_inst_clk_bfm,altera_avalon_clock_source
 dircc_routing_tb.dircc_routing_inst_input_east_bfm,altera_avalon_st_source_bfm
 dircc_routing_tb.dircc_routing_inst_input_here_bfm,altera_avalon_st_source_bfm
 dircc_routing_tb.dircc_routing_inst_input_north_bfm,altera_avalon_st_source_bfm
-dircc_routing_tb.dircc_routing_inst_input_south_1_bfm,altera_avalon_st_source_bfm
+dircc_routing_tb.dircc_routing_inst_input_south_bfm,altera_avalon_st_source_bfm
 dircc_routing_tb.dircc_routing_inst_input_west_bfm,altera_avalon_st_source_bfm
 dircc_routing_tb.dircc_routing_inst_output_east_bfm,altera_avalon_st_sink_bfm
 dircc_routing_tb.dircc_routing_inst_output_here_bfm,altera_avalon_st_sink_bfm
