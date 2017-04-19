@@ -6,7 +6,6 @@
 
 #include "dircc_defines.h"
 #include "dircc_fifo_interface.h"
-#include "system.h"
 
 union dircc_msg_u
 {
@@ -16,7 +15,7 @@ union dircc_msg_u
 
 uint32_t dircc_my_id()
 {
-    return NIOS2_CPU_ID_VALUE;
+	return NIOS2_CPU_ID_VALUE;
 }
 
 dircc_err_code dircc_init_fifo(uint32_t csr_address, uint32_t almost_empty, uint32_t almost_full)
@@ -31,7 +30,7 @@ dircc_err_code dircc_init_fifo(uint32_t csr_address, uint32_t almost_empty, uint
     return DIRCC_SUCCESS;
 }
 
-void dircc_print_status(alt_u32 csr_address)
+void dircc_print_status(uint32_t csr_address)
 {
     DIRCC_LOG_PRINTF("--------------------------------------");
     DIRCC_LOG_PRINTF("LEVEL = %u", altera_avalon_fifo_read_level(csr_address));

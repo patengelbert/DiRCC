@@ -8,7 +8,7 @@
 #ifndef DIRCC_H_
 #define DIRCC_H_
 
-//#include <stdbool.h>
+#include <stdbool.h>
 #include "dircc_defines.h"
 
 typedef struct _address {
@@ -136,11 +136,12 @@ typedef struct _PThreadContext {
 
 extern PThreadContext dircc_thread_contexts[];
 
-// TODO: Check how to get corerct values for the node
 extern uint32_t dircc_fifo_in_csr_address;
 extern uint32_t dircc_fifo_in_data_address;
+extern uint32_t dircc_fifo_in_depth;
 
 extern uint32_t dircc_fifo_out_csr_address;
 extern uint32_t dircc_fifo_out_data_address;
+extern uint32_t dircc_fifo_out_depth;
 
 #endif /* DIRCC_H_ */

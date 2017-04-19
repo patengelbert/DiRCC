@@ -123,15 +123,19 @@ ACDS_VERSION := 16.1
 LIB_NAME := dircc
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += src/dircc_fifo_interface.c
-C_SRCS += src/dircc_main.c
-C_SRCS += src/dircc_on_receive.c
-C_SRCS += src/dircc_rts.c
-C_SRCS += src/dircc_init.c
-C_SRCS += src/dircc_on_idle.c
-C_SRCS += src/dircc_on_send.c
+C_SRCS :=
 CXX_SRCS :=
 ASM_SRCS :=
+SRC_DIR_01 := $(call adjust-path,src)
+SDIR_C_SRCS += $(SRC_DIR_01)/dircc_fifo_interface.c
+SDIR_C_SRCS += $(SRC_DIR_01)/dircc_init.c
+SDIR_C_SRCS += $(SRC_DIR_01)/dircc_main.c
+SDIR_C_SRCS += $(SRC_DIR_01)/dircc_on_idle.c
+SDIR_C_SRCS += $(SRC_DIR_01)/dircc_on_receive.c
+SDIR_C_SRCS += $(SRC_DIR_01)/dircc_on_send.c
+SDIR_C_SRCS += $(SRC_DIR_01)/dircc_rts.c
+SDIR_CXX_SRCS :=
+SDIR_ASM_SRCS :=
 
 
 # Path to root of object file tree.
@@ -158,7 +162,7 @@ BUILD_PRE_PROCESS :=
 BUILD_POST_PROCESS :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := ../dircc_system_nios_single_bsp/
+BSP_ROOT_DIR := ../dircc_processing_testbench_bsp
 
 # List of public include directories for -I compiler option (-I added when used).
 

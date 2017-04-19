@@ -13,7 +13,6 @@
 #include "dircc_defines.h"
 #include "dircc_fifo_interface.h"
 #include "dircc_impl.h"
-#include "system.h"
 
 int main() {
 	PThreadContext *ctxt = dircc_thread_contexts + dircc_my_id();
@@ -25,7 +24,7 @@ int main() {
 
 	// Clear the input FIFO
 	dircc_err_code err;
-	if ((err = dircc_clr_fifo(NODE_0_FIFO_IN_OUT_BASE, NODE_0_FIFO_IN_IN_CSR_BASE)) != DIRCC_SUCCESS)
+	if ((err = dircc_clr_fifo(dircc_fifo_in_data_address, dircc_fifo_in_csr_address)) != DIRCC_SUCCESS)
 		DIRCC_LOG_AND_EXIT("Error clearing input FIFO: 0x%08x", err);
 
 	packet_t sendBuffer;
@@ -51,8 +50,8 @@ int main() {
 		// - There is nothing to receive
 		// - we aren't able to send or we don't want to send
 		bool wantRTC = true;
-		while ((dircc_can_recv(NODE_0_FIFO_IN_IN_CSR_BASE) != DIRCC_SUCCESS)
-				&&(!wantToSend || dircc_can_send(NODE_0_FIFO_OUT_IN_CSR_BASE) != DIRCC_SUCCESS)) {
+		while ((dircc_can_recv(dircc_fifo_in_csr_address) != DIRCC_SUCCESS)
+				&&(!wantToSend || dircc_can_send(dircc_fifo_out_csr_address) != DIRCC_SUCCESS)) {
 			DIRCC_LOG_PRINTF("calling onIdle");
 			if (wantRTC) {
 				wantRTC = dircc_onIdle(ctxt);
@@ -61,7 +60,7 @@ int main() {
 		DIRCC_LOG_PRINTF("Finishing onIdle");
 
 
-		if (dircc_can_recv(NODE_0_FIFO_IN_IN_CSR_BASE) == DIRCC_SUCCESS) {
+		if (dircc_can_recv(dircc_fifo_in_csr_address) == DIRCC_SUCCESS) {
 			DIRCC_LOG_PRINTF("receive branch");
 
 			/*! We always receive messages, even while a send is in progress (currSendTodo > 0) */
@@ -70,7 +69,7 @@ int main() {
 
 			packet_t recvBuffer;
 
-			err = dircc_recv(NODE_0_FIFO_IN_OUT_BASE, NODE_0_FIFO_IN_IN_CSR_BASE, &recvBuffer); // Take the buffer from receive pool
+			err = dircc_recv(dircc_fifo_in_data_address, dircc_fifo_in_csr_address, &recvBuffer); // Take the buffer from receive pool
 			if (err != DIRCC_SUCCESS)
 				DIRCC_LOG_AND_EXIT("Error sending: 0x%08x", err);
 
@@ -81,7 +80,7 @@ int main() {
 			DIRCC_LOG_PRINTF("send branch");
 
 			assert(wantToSend); // Only come here if we have something to do
-			assert(dircc_can_send(NODE_0_FIFO_OUT_IN_CSR_BASE) == DIRCC_SUCCESS); // Only reason we could have got here
+			assert(dircc_can_send(dircc_fifo_out_csr_address) == DIRCC_SUCCESS); // Only reason we could have got here
 
 			/* Either we have to finish sending a previous message to more
 			 addresses, or we get the chance to send a new message. */
@@ -108,7 +107,7 @@ int main() {
 			// TODO: Shouldn't there be something like mboxForward as part of
 			// the API, which only takes the address?
 			DIRCC_LOG_PRINTF("doing send");
-			err = dircc_send(NODE_0_FIFO_OUT_IN_BASE, NODE_0_FIFO_OUT_IN_CSR_BASE, &sendBuffer);
+			err = dircc_send(dircc_fifo_out_data_address, dircc_fifo_out_csr_address, &sendBuffer);
 			if (err != DIRCC_SUCCESS)
 				DIRCC_LOG_AND_EXIT("Error sending: 0x%08x", err);
 			// Move onto next address for next time
