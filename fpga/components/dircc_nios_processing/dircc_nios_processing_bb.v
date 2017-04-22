@@ -3,6 +3,13 @@ module dircc_nios_processing (
 	address_address,
 	clk_processing_clk,
 	clk_routing_clk,
+	mem_address,
+	mem_chipselect,
+	mem_clken,
+	mem_write,
+	mem_readdata,
+	mem_writedata,
+	mem_byteenable,
 	reset_processing_reset_n,
 	reset_routing_reset_n,
 	stream_in_valid,
@@ -21,6 +28,13 @@ module dircc_nios_processing (
 	input	[31:0]	address_address;
 	input		clk_processing_clk;
 	input		clk_routing_clk;
+	input	[14:0]	mem_address;
+	input		mem_chipselect;
+	input		mem_clken;
+	input		mem_write;
+	output	[15:0]	mem_readdata;
+	input	[15:0]	mem_writedata;
+	input	[1:0]	mem_byteenable;
 	input		reset_processing_reset_n;
 	input		reset_routing_reset_n;
 	input		stream_in_valid;

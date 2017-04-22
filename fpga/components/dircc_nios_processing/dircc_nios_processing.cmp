@@ -3,6 +3,13 @@
 			address_address          : in  std_logic_vector(31 downto 0) := (others => 'X'); -- address
 			clk_processing_clk       : in  std_logic                     := 'X';             -- clk
 			clk_routing_clk          : in  std_logic                     := 'X';             -- clk
+			mem_address              : in  std_logic_vector(14 downto 0) := (others => 'X'); -- address
+			mem_chipselect           : in  std_logic                     := 'X';             -- chipselect
+			mem_clken                : in  std_logic                     := 'X';             -- clken
+			mem_write                : in  std_logic                     := 'X';             -- write
+			mem_readdata             : out std_logic_vector(15 downto 0);                    -- readdata
+			mem_writedata            : in  std_logic_vector(15 downto 0) := (others => 'X'); -- writedata
+			mem_byteenable           : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- byteenable
 			reset_processing_reset_n : in  std_logic                     := 'X';             -- reset_n
 			reset_routing_reset_n    : in  std_logic                     := 'X';             -- reset_n
 			stream_in_valid          : in  std_logic                     := 'X';             -- valid

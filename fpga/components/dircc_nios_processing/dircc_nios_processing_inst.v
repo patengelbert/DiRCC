@@ -2,6 +2,13 @@
 		.address_address          (<connected-to-address_address>),          //          address.address
 		.clk_processing_clk       (<connected-to-clk_processing_clk>),       //   clk_processing.clk
 		.clk_routing_clk          (<connected-to-clk_routing_clk>),          //      clk_routing.clk
+		.mem_address              (<connected-to-mem_address>),              //              mem.address
+		.mem_chipselect           (<connected-to-mem_chipselect>),           //                 .chipselect
+		.mem_clken                (<connected-to-mem_clken>),                //                 .clken
+		.mem_write                (<connected-to-mem_write>),                //                 .write
+		.mem_readdata             (<connected-to-mem_readdata>),             //                 .readdata
+		.mem_writedata            (<connected-to-mem_writedata>),            //                 .writedata
+		.mem_byteenable           (<connected-to-mem_byteenable>),           //                 .byteenable
 		.reset_processing_reset_n (<connected-to-reset_processing_reset_n>), // reset_processing.reset_n
 		.reset_routing_reset_n    (<connected-to-reset_routing_reset_n>),    //    reset_routing.reset_n
 		.stream_in_valid          (<connected-to-stream_in_valid>),          //        stream_in.valid
