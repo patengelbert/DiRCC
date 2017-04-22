@@ -1,4 +1,5 @@
 #include "counter.h"
+#include "system.h"
 
 #define DEVICE_INSTANCE_COUNT 1
 #define DEVICE_INSTANCE_COUNT_thread0 DEVICE_INSTANCE_COUNT
@@ -61,4 +62,14 @@ PThreadContext dircc_thread_contexts[THREAD_COUNT] = {
 				.lamport = 0
 		}
 };
+
+uint32_t dircc_fifo_in_csr_address = NODE_0_PROCESSING_FIFO_IN_IN_CSR_BASE;
+uint32_t dircc_fifo_in_data_address = NODE_0_PROCESSING_FIFO_IN_OUT_BASE;
+uint32_t dircc_fifo_in_depth = NODE_0_PROCESSING_FIFO_IN_OUT_FIFO_DEPTH;
+
+uint32_t dircc_fifo_out_csr_address = NODE_0_PROCESSING_FIFO_OUT_IN_CSR_BASE;
+uint32_t dircc_fifo_out_data_address = NODE_0_PROCESSING_FIFO_OUT_IN_BASE;
+uint32_t dircc_fifo_out_depth = NODE_0_PROCESSING_FIFO_OUT_IN_FIFO_DEPTH;
+
+uint32_t dircc_address_data_address = NODE_0_PROCESSING_ADDRESS_BASE;
 

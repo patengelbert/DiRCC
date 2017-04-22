@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "counter.h"
+#include "dircc_helpers.h"
 
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #pragma GCC diagnostic ignored "-Wformat"
