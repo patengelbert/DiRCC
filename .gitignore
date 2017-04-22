@@ -43,3 +43,5 @@ GRTAGS
 
 #VS code
 .vscode/*
+
+.force_*
