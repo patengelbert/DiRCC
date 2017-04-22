@@ -68,26 +68,6 @@
   <parameter name="AUTO_UNIQUE_ID" value="$${FILENAME}_node_0" />
  </module>
  <connection
-   kind="avalon_streaming"
-   version="16.1"
-   start="node_0.output_east"
-   end="node_0.input_east" />
- <connection
-   kind="avalon_streaming"
-   version="16.1"
-   start="node_0.output_north"
-   end="node_0.input_north" />
- <connection
-   kind="avalon_streaming"
-   version="16.1"
-   start="node_0.output_south"
-   end="node_0.input_south" />
- <connection
-   kind="avalon_streaming"
-   version="16.1"
-   start="node_0.output_west"
-   end="node_0.input_west" />
- <connection
    kind="clock"
    version="16.1"
    start="clk.clk"

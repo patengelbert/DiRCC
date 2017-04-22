@@ -1,102 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport
  name="dircc_system_node_single"
- kind="dircc_system_node_single"
- version="1.0"
+ kind="system"
+ version="16.1"
  fabric="QSYS">
  <!-- Format version 16.1 196 (Future versions may contain additional information.) -->
- <!-- 2017.04.22.12:46:40 -->
+ <!-- 2017.04.22.12:03:05 -->
  <!-- A collection of modules and connections -->
- <parameter name="AUTO_GENERATION_ID">
-  <type>java.lang.Integer</type>
-  <value>1492861600</value>
+ <parameter name="clockCrossingAdapter">
+  <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
+  <value>HANDSHAKE</value>
   <derived>false</derived>
   <enabled>true</enabled>
-  <visible>false</visible>
+  <visible>true</visible>
   <valid>true</valid>
-  <sysinfo_type>GENERATION_ID</sysinfo_type>
  </parameter>
- <parameter name="AUTO_UNIQUE_ID">
-  <type>java.lang.String</type>
-  <value></value>
-  <derived>false</derived>
-  <enabled>true</enabled>
-  <visible>false</visible>
-  <valid>true</valid>
-  <sysinfo_type>UNIQUE_ID</sysinfo_type>
- </parameter>
- <parameter name="AUTO_DEVICE_FAMILY">
-  <type>java.lang.String</type>
-  <value>CYCLONEV</value>
-  <derived>false</derived>
-  <enabled>true</enabled>
-  <visible>false</visible>
-  <valid>true</valid>
-  <sysinfo_type>DEVICE_FAMILY</sysinfo_type>
- </parameter>
- <parameter name="AUTO_DEVICE">
+ <parameter name="device">
   <type>java.lang.String</type>
   <value>5CSEMA5F31C6</value>
   <derived>false</derived>
   <enabled>true</enabled>
-  <visible>false</visible>
+  <visible>true</visible>
   <valid>true</valid>
-  <sysinfo_type>DEVICE</sysinfo_type>
  </parameter>
- <parameter name="AUTO_DEVICE_SPEEDGRADE">
+ <parameter name="deviceFamily">
+  <type>java.lang.String</type>
+  <value>CYCLONEV</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>true</visible>
+  <valid>true</valid>
+ </parameter>
+ <parameter name="deviceSpeedGrade">
   <type>java.lang.String</type>
   <value>6</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
   <valid>true</valid>
-  <sysinfo_type>DEVICE_SPEEDGRADE</sysinfo_type>
  </parameter>
- <parameter name="AUTO_CLK_CLOCK_RATE">
-  <type>java.lang.Long</type>
-  <value>-1</value>
+ <parameter name="fabricMode">
+  <type>com.altera.sopcmodel.ensemble.Ensemble$EFabricMode</type>
+  <value>QSYS</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
   <valid>true</valid>
-  <sysinfo_type>CLOCK_RATE</sysinfo_type>
-  <sysinfo_arg>clk</sysinfo_arg>
- </parameter>
- <parameter name="AUTO_CLK_CLOCK_DOMAIN">
-  <type>java.lang.Integer</type>
-  <value>-1</value>
-  <derived>false</derived>
-  <enabled>true</enabled>
-  <visible>false</visible>
-  <valid>true</valid>
-  <sysinfo_type>CLOCK_DOMAIN</sysinfo_type>
-  <sysinfo_arg>clk</sysinfo_arg>
- </parameter>
- <parameter name="AUTO_CLK_RESET_DOMAIN">
-  <type>java.lang.Integer</type>
-  <value>-1</value>
-  <derived>false</derived>
-  <enabled>true</enabled>
-  <visible>false</visible>
-  <valid>true</valid>
-  <sysinfo_type>RESET_DOMAIN</sysinfo_type>
-  <sysinfo_arg>clk</sysinfo_arg>
- </parameter>
- <parameter name="deviceFamily">
-  <type>java.lang.String</type>
-  <value>Cyclone V</value>
-  <derived>false</derived>
-  <enabled>true</enabled>
-  <visible>false</visible>
-  <valid>true</valid>
-  <sysinfo_type>DEVICE_FAMILY</sysinfo_type>
  </parameter>
  <parameter name="generateLegacySim">
   <type>boolean</type>
   <value>false</value>
   <derived>false</derived>
   <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+ </parameter>
+ <parameter name="generationId">
+  <type>int</type>
+  <value>1492858969</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
   <visible>true</visible>
+  <valid>true</valid>
+ </parameter>
+ <parameter name="globalResetBus">
+  <type>boolean</type>
+  <value>false</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+ </parameter>
+ <parameter name="hdlLanguage">
+  <type>com.altera.entityinterfaces.moduleext.IModuleGenerateHDL$HDLLanguage</type>
+  <value>VERILOG</value>
+  <derived>false</derived>
+  <enabled>false</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+ </parameter>
+ <parameter name="hideFromIPCatalog">
+  <type>boolean</type>
+  <value>false</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>true</visible>
+  <valid>true</valid>
+ </parameter>
+ <parameter name="lockedInterfaceDefinition">
+  <type>com.altera.sopcmodel.definition.BoundaryDefinition</type>
+  <value></value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+ </parameter>
+ <parameter name="maxAdditionalLatency">
+  <type>int</type>
+  <value>1</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>true</visible>
+  <valid>true</valid>
+ </parameter>
+ <parameter name="projectName">
+  <type>java.lang.String</type>
+  <value>DIRCC.qpf</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+ </parameter>
+ <parameter name="sopcBorderPoints">
+  <type>boolean</type>
+  <value>false</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+ </parameter>
+ <parameter name="systemHash">
+  <type>long</type>
+  <value>0</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+ </parameter>
+ <parameter name="testBenchDutName">
+  <type>java.lang.String</type>
+  <value></value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+ </parameter>
+ <parameter name="timeStamp">
+  <type>long</type>
+  <value>0</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+ </parameter>
+ <parameter name="useTestBenchNamingPattern">
+  <type>boolean</type>
+  <value>false</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
   <valid>true</valid>
  </parameter>
  <module name="clk" kind="clock_source" version="16.1" path="clk">
@@ -528,7 +580,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1492861600</value>
+   <value>1492858969</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -630,14 +682,6 @@ the requested settings for a module instance. -->
    <valid>true</valid>
    <sysinfo_type>RESET_DOMAIN</sysinfo_type>
    <sysinfo_arg>clk_routing</sysinfo_arg>
-  </parameter>
-  <parameter name="ADDRESS">
-   <type>java.lang.Integer</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
   </parameter>
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -2051,7 +2095,7 @@ parameters are a RESULT of the module parameters. -->
     <value>DYNAMIC</value>
     <derived>false</derived>
     <enabled>true</enabled>
-    <visible>false</visible>
+    <visible>true</visible>
     <valid>true</valid>
    </parameter>
    <parameter name="addressGroup">
@@ -2099,7 +2143,7 @@ parameters are a RESULT of the module parameters. -->
     <value>reset_processing</value>
     <derived>false</derived>
     <enabled>true</enabled>
-    <visible>true</visible>
+    <visible>false</visible>
     <valid>true</valid>
    </parameter>
    <parameter name="bitsPerSymbol">
@@ -2107,7 +2151,7 @@ parameters are a RESULT of the module parameters. -->
     <value>8</value>
     <derived>false</derived>
     <enabled>true</enabled>
-    <visible>true</visible>
+    <visible>false</visible>
     <valid>true</valid>
    </parameter>
    <parameter name="bridgedAddressOffset">
@@ -2139,7 +2183,7 @@ parameters are a RESULT of the module parameters. -->
     <value>WORDS</value>
     <derived>false</derived>
     <enabled>true</enabled>
-    <visible>true</visible>
+    <visible>false</visible>
     <valid>true</valid>
    </parameter>
    <parameter name="constantBurstBehavior">
@@ -2195,7 +2239,7 @@ parameters are a RESULT of the module parameters. -->
     <value>true</value>
     <derived>false</derived>
     <enabled>true</enabled>
-    <visible>false</visible>
+    <visible>true</visible>
     <valid>true</valid>
    </parameter>
    <parameter name="isNonVolatileStorage">
@@ -2203,7 +2247,7 @@ parameters are a RESULT of the module parameters. -->
     <value>false</value>
     <derived>false</derived>
     <enabled>true</enabled>
-    <visible>false</visible>
+    <visible>true</visible>
     <valid>true</valid>
    </parameter>
    <parameter name="linewrapBursts">
@@ -2243,7 +2287,7 @@ parameters are a RESULT of the module parameters. -->
     <value>false</value>
     <derived>false</derived>
     <enabled>true</enabled>
-    <visible>false</visible>
+    <visible>true</visible>
     <valid>true</valid>
    </parameter>
    <parameter name="readLatency">
@@ -3351,7 +3395,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1492861600</value>
+   <value>1492858969</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -14346,7 +14390,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1492861600</value>
+   <value>1492858969</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -24395,5 +24439,5 @@ parameters are a RESULT of the module parameters. -->
   <version>16.1</version>
  </plugin>
  <reportVersion>16.1 196</reportVersion>
- <uniqueIdentifier></uniqueIdentifier>
+ <uniqueIdentifier>7C5CF827F7180000015B95542409</uniqueIdentifier>
 </EnsembleReport>
