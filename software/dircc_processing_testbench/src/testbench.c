@@ -1,4 +1,5 @@
 #include "testbench.h"
+#include "system.h"
 
 #define DEVICE_INSTANCE_COUNT 1
 #define DEVICE_INSTANCE_COUNT_thread0 DEVICE_INSTANCE_COUNT
@@ -67,5 +68,6 @@ uint32_t dircc_fifo_in_depth = FIFO_IN_IN_CSR_FIFO_DEPTH;
 uint32_t dircc_fifo_out_csr_address = FIFO_OUT_IN_CSR_BASE;
 uint32_t dircc_fifo_out_data_address = FIFO_OUT_IN_BASE;
 uint32_t dircc_fifo_out_depth = FIFO_OUT_IN_CSR_FIFO_DEPTH;
+uint32_t dircc_address_data_address = ADDRESS_BASE;
 
 
