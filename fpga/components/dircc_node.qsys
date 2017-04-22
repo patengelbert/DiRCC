@@ -77,7 +77,23 @@
  <parameter name="testBenchDutName" value="" />
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
- <instanceScript></instanceScript>
+ <instanceParameter
+   name="ADDRESS"
+   displayName="ADDRESS"
+   type="integer"
+   defaultValue="0"
+   legalRanges=""
+   description="" />
+ <instanceScript><![CDATA[# request a specific version of the scripting API
+package require -exact qsys 16.1
+
+# Set the name of the procedure to manipulate parameters
+set_module_property COMPOSITION_CALLBACK compose
+
+proc compose {} {
+    # manipulate parameters in here
+    set_instance_parameter_value dircc_address ADDRESS [ get_parameter_value ADDRESS ]
+}]]></instanceScript>
  <interface
    name="clk_processing"
    internal="clk_processing.clk_in"
@@ -129,6 +145,11 @@
    type="avalon_streaming"
    dir="start" />
  <interface
+   name="processing_mem"
+   internal="processing.mem"
+   type="avalon"
+   dir="end" />
+ <interface
    name="reset_processing"
    internal="clk_processing.clk_in_reset"
    type="reset"
@@ -161,24 +182,24 @@
   <parameter name="AUTO_CLK_PROCESSING_CLOCK_DOMAIN" value="1" />
   <parameter name="AUTO_CLK_PROCESSING_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_CLK_PROCESSING_RESET_DOMAIN" value="1" />
-  <parameter name="AUTO_CLK_ROUTING_CLOCK_DOMAIN" value="2" />
+  <parameter name="AUTO_CLK_ROUTING_CLOCK_DOMAIN" value="3" />
   <parameter name="AUTO_CLK_ROUTING_CLOCK_RATE" value="50000000" />
-  <parameter name="AUTO_CLK_ROUTING_RESET_DOMAIN" value="2" />
+  <parameter name="AUTO_CLK_ROUTING_RESET_DOMAIN" value="3" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_processing</parameter>
+  <parameter name="AUTO_UNIQUE_ID">dircc_node_processing</parameter>
  </module>
  <module name="routing" kind="dircc_routing" version="1.0" enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="2" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="3" />
   <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="2" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="3" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_routing</parameter>
+  <parameter name="AUTO_UNIQUE_ID" value="dircc_node_routing" />
  </module>
  <connection
    kind="avalon_streaming"

@@ -50,6 +50,13 @@
 			output_west_startofpacket  : out std_logic;                                        -- startofpacket
 			output_west_endofpacket    : out std_logic;                                        -- endofpacket
 			output_west_empty          : out std_logic_vector(1 downto 0);                     -- empty
+			processing_mem_address     : in  std_logic_vector(14 downto 0) := (others => 'X'); -- address
+			processing_mem_chipselect  : in  std_logic                     := 'X';             -- chipselect
+			processing_mem_clken       : in  std_logic                     := 'X';             -- clken
+			processing_mem_write       : in  std_logic                     := 'X';             -- write
+			processing_mem_readdata    : out std_logic_vector(15 downto 0);                    -- readdata
+			processing_mem_writedata   : in  std_logic_vector(15 downto 0) := (others => 'X'); -- writedata
+			processing_mem_byteenable  : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- byteenable
 			reset_processing_reset_n   : in  std_logic                     := 'X';             -- reset_n
 			reset_routing_reset_n      : in  std_logic                     := 'X'              -- reset_n
 		);
@@ -107,6 +114,13 @@
 			output_west_startofpacket  => CONNECTED_TO_output_west_startofpacket,  --                 .startofpacket
 			output_west_endofpacket    => CONNECTED_TO_output_west_endofpacket,    --                 .endofpacket
 			output_west_empty          => CONNECTED_TO_output_west_empty,          --                 .empty
+			processing_mem_address     => CONNECTED_TO_processing_mem_address,     --   processing_mem.address
+			processing_mem_chipselect  => CONNECTED_TO_processing_mem_chipselect,  --                 .chipselect
+			processing_mem_clken       => CONNECTED_TO_processing_mem_clken,       --                 .clken
+			processing_mem_write       => CONNECTED_TO_processing_mem_write,       --                 .write
+			processing_mem_readdata    => CONNECTED_TO_processing_mem_readdata,    --                 .readdata
+			processing_mem_writedata   => CONNECTED_TO_processing_mem_writedata,   --                 .writedata
+			processing_mem_byteenable  => CONNECTED_TO_processing_mem_byteenable,  --                 .byteenable
 			reset_processing_reset_n   => CONNECTED_TO_reset_processing_reset_n,   -- reset_processing.reset_n
 			reset_routing_reset_n      => CONNECTED_TO_reset_routing_reset_n       --    reset_routing.reset_n
 		);

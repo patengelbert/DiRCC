@@ -50,6 +50,13 @@
 			output_west_startofpacket  : out std_logic;                                        -- startofpacket
 			output_west_endofpacket    : out std_logic;                                        -- endofpacket
 			output_west_empty          : out std_logic_vector(1 downto 0);                     -- empty
+			processing_mem_address     : in  std_logic_vector(14 downto 0) := (others => 'X'); -- address
+			processing_mem_chipselect  : in  std_logic                     := 'X';             -- chipselect
+			processing_mem_clken       : in  std_logic                     := 'X';             -- clken
+			processing_mem_write       : in  std_logic                     := 'X';             -- write
+			processing_mem_readdata    : out std_logic_vector(15 downto 0);                    -- readdata
+			processing_mem_writedata   : in  std_logic_vector(15 downto 0) := (others => 'X'); -- writedata
+			processing_mem_byteenable  : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- byteenable
 			reset_processing_reset_n   : in  std_logic                     := 'X';             -- reset_n
 			reset_routing_reset_n      : in  std_logic                     := 'X'              -- reset_n
 		);

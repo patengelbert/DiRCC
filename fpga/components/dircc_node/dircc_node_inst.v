@@ -49,6 +49,13 @@
 		.output_west_startofpacket  (<connected-to-output_west_startofpacket>),  //                 .startofpacket
 		.output_west_endofpacket    (<connected-to-output_west_endofpacket>),    //                 .endofpacket
 		.output_west_empty          (<connected-to-output_west_empty>),          //                 .empty
+		.processing_mem_address     (<connected-to-processing_mem_address>),     //   processing_mem.address
+		.processing_mem_chipselect  (<connected-to-processing_mem_chipselect>),  //                 .chipselect
+		.processing_mem_clken       (<connected-to-processing_mem_clken>),       //                 .clken
+		.processing_mem_write       (<connected-to-processing_mem_write>),       //                 .write
+		.processing_mem_readdata    (<connected-to-processing_mem_readdata>),    //                 .readdata
+		.processing_mem_writedata   (<connected-to-processing_mem_writedata>),   //                 .writedata
+		.processing_mem_byteenable  (<connected-to-processing_mem_byteenable>),  //                 .byteenable
 		.reset_processing_reset_n   (<connected-to-reset_processing_reset_n>),   // reset_processing.reset_n
 		.reset_routing_reset_n      (<connected-to-reset_routing_reset_n>)       //    reset_routing.reset_n
 	);

@@ -50,6 +50,13 @@ module dircc_node (
 	output_west_startofpacket,
 	output_west_endofpacket,
 	output_west_empty,
+	processing_mem_address,
+	processing_mem_chipselect,
+	processing_mem_clken,
+	processing_mem_write,
+	processing_mem_readdata,
+	processing_mem_writedata,
+	processing_mem_byteenable,
 	reset_processing_reset_n,
 	reset_routing_reset_n);	
 
@@ -103,6 +110,13 @@ module dircc_node (
 	output		output_west_startofpacket;
 	output		output_west_endofpacket;
 	output	[1:0]	output_west_empty;
+	input	[14:0]	processing_mem_address;
+	input		processing_mem_chipselect;
+	input		processing_mem_clken;
+	input		processing_mem_write;
+	output	[15:0]	processing_mem_readdata;
+	input	[15:0]	processing_mem_writedata;
+	input	[1:0]	processing_mem_byteenable;
 	input		reset_processing_reset_n;
 	input		reset_routing_reset_n;
 endmodule
