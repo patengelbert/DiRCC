@@ -8,20 +8,7 @@
 #ifndef DIRCC_DEFINES_H_
 #define DIRCC_DEFINES_H_
 
-#include <stdlib.h>
 #include <stdint.h>
-#include "sys/alt_log_printf.h"
-
-#ifdef ALT_LOG_ENABLE
-// Always print filename before debug message
-#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
-#define DIRCC_LOG_PRINTF(fmt, ...) ALT_LOG_PRINTF("[%s:%d] dircc_node %d: %s -> " fmt "\n", __FILENAME__, __LINE__, NIOS2_CPU_ID_VALUE,  __FUNCTION__, ##__VA_ARGS__)
-#else
-// Disable if logging is disabled
-#define DIRCC_LOG_PRINTF(...)
-#endif
-
-#define DIRCC_LOG_AND_EXIT(fmt, ...) {DIRCC_LOG_PRINTF(fmt, ##__VA_ARGS__); exit(EXIT_FAILURE); }
 
 // Define bool stdbool.h seems to be broken on nios, fix here
 //#ifdef __bool_true_false_are_defined
@@ -70,5 +57,16 @@ typedef uint8_t port_index_t;
 #define DIRCC_HANDLER_NULL 0
 
 #define IDLE_SWEEP_CHUNK_SIZE 32
+
+// Assorted addresses to allow for interface to the hardware
+extern uint32_t dircc_fifo_in_csr_address;
+extern uint32_t dircc_fifo_in_data_address;
+extern uint32_t dircc_fifo_in_depth;
+
+extern uint32_t dircc_fifo_out_csr_address;
+extern uint32_t dircc_fifo_out_data_address;
+extern uint32_t dircc_fifo_out_depth;
+
+extern uint32_t dircc_address_data_address;
 
 #endif /* DIRCC_DEFINES_H_ */

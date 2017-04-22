@@ -2,6 +2,7 @@
 #include <assert.h>
 #include "dircc_defines.h"
 #include "dircc_on_receive.h"
+#include "dircc_helpers.h"
 #include "dircc_rts.h"
 
 void dircc_onReceive(PThreadContext *ctxt, const void *message)
@@ -29,7 +30,7 @@ void dircc_onReceive(PThreadContext *ctxt, const void *message)
 
     // For now assume that these are always 0
     if(port->propertiesSize | port->stateSize){
-    	DIRCC_LOG_AND_EXIT("Edge properties and states are not yet supported");
+    	DIRCC_EXIT_FAILURE("Edge properties and states are not yet supported");
         // We have to look up the edge info associated with this edge
 
     //    DIRCC_LOG_PRINTF("finding edge info, src=%08x:%04x:%02x", packet->source.hw_node, packet->source.sw_node, packet->source.port);

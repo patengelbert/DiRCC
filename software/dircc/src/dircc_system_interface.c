@@ -5,7 +5,8 @@
 #include "altera_avalon_fifo_util.h"
 
 #include "dircc_defines.h"
-#include "dircc_fifo_interface.h"
+#include "dircc_helpers.h"
+#include "dircc_system_interface.h"
 
 union dircc_msg_u
 {
@@ -13,24 +14,24 @@ union dircc_msg_u
     uint32_t as_arr[DIRCC_PACKET_SIZE];
 };
 
-uint32_t dircc_my_id()
+uint32_t dircc_dev_id()
 {
-	return NIOS2_CPU_ID_VALUE;
+	return *(uint32_t *)dircc_address_data_address;
 }
 
 dircc_err_code dircc_init_fifo(uint32_t csr_address, uint32_t almost_empty, uint32_t almost_full)
 {
     if (altera_avalon_fifo_init(csr_address, 0, almost_empty, almost_full) != ALTERA_AVALON_FIFO_OK) {
-        DIRCC_LOG_PRINTF("Error initializing %d", csr_address);
+        DIRCC_LOG_PRINTF("Error initializing %u", csr_address);
         return DIRCC_ERROR_INIT_FAILURE;
     }
-    DIRCC_LOG_PRINTF("Initialised FIFO at %d", csr_address);
-    DIRCC_LOG_PRINTF("Almost Empty: %d", almost_empty);
-    DIRCC_LOG_PRINTF("Almost Full: %d", almost_full);
+    DIRCC_LOG_PRINTF("Initialized FIFO at %u", csr_address);
+    DIRCC_LOG_PRINTF("Almost Empty: %u", almost_empty);
+    DIRCC_LOG_PRINTF("Almost Full: %u", almost_full);
     return DIRCC_SUCCESS;
 }
 
-void dircc_print_status(uint32_t csr_address)
+void dircc_print_status(const uint32_t csr_address)
 {
     DIRCC_LOG_PRINTF("--------------------------------------");
     DIRCC_LOG_PRINTF("LEVEL = %u", altera_avalon_fifo_read_level(csr_address));
@@ -41,6 +42,14 @@ void dircc_print_status(uint32_t csr_address)
     DIRCC_LOG_PRINTF("ALMOSTFULLTHRES = %u", altera_avalon_fifo_read_almostfull(csr_address));
 }
 
+void dircc_print_packet(const packet_t *msg)
+{
+	DIRCC_LOG_PRINTF("Dest: %u.%u.%u + %u", msg->dest.hw_node, msg->dest.sw_node, msg->dest.port, msg->dest.flag);
+	DIRCC_LOG_PRINTF("Src: %u.%u.%u + %u", msg->source.hw_node, msg->source.sw_node, msg->source.port, msg->source.flag);
+	DIRCC_LOG_PRINTF("Lamport: %u", msg->lamport);
+	DIRCC_LOG_PRINTF("Data:%s", msg->payload);
+}
+
 dircc_err_code dircc_can_send(uint32_t csr_address)
 {
     return altera_avalon_fifo_read_status(csr_address, ALTERA_AVALON_FIFO_STATUS_AF_MSK) ? DIRCC_ERROR_FIFO_FULL
@@ -49,6 +58,9 @@ dircc_err_code dircc_can_send(uint32_t csr_address)
 
 dircc_err_code dircc_send(uint32_t data_address, uint32_t csr_address, const packet_t* msg)
 {
+
+	DIRCC_LOG_PRINTF("Sending packet");
+	dircc_print_packet(msg);
 
     union dircc_msg_u msg_serializer = {.as_struct = *msg};
 
@@ -70,7 +82,7 @@ dircc_err_code dircc_send(uint32_t data_address, uint32_t csr_address, const pac
     // Send final data
     altera_avalon_fifo_write_fifo(data_address, csr_address, msg_serializer.as_arr[DIRCC_PACKET_SIZE - 1]);
 
-    DIRCC_LOG_PRINTF("Successfuly sent packet of size: %d", sizeof(msg_serializer));
+    DIRCC_LOG_PRINTF("Successfully sent packet of size: %d", sizeof(msg_serializer));
 
     return DIRCC_SUCCESS;
 }
@@ -86,7 +98,6 @@ dircc_err_code dircc_recv(uint32_t data_address, uint32_t csr_address, packet_t*
 
     // TODO: Fix if not whole packet has been received
     // TODO: This will discard any data before SOP
-    // Metadata is always in the slot behind the actual data, so pop data, then read attached metadata
 
     union dircc_msg_u msg_deserializer;
 
@@ -112,7 +123,11 @@ dircc_err_code dircc_recv(uint32_t data_address, uint32_t csr_address, packet_t*
     // Copy the data to release ownership
     memcpy(msg, &(msg_deserializer.as_struct), sizeof(msg_deserializer.as_struct));
 
-    DIRCC_LOG_PRINTF("Successfuly received packet of size: %d", sizeof(msg_deserializer));
+    DIRCC_LOG_PRINTF("Successfully received packet of size: %d", sizeof(msg_deserializer));
+
+	DIRCC_LOG_PRINTF("Received packet");
+	dircc_print_packet(msg);
+
     return DIRCC_SUCCESS;
 }
 

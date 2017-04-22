@@ -3,7 +3,7 @@
 
 #include "dircc.h"
 
-uint32_t dircc_my_id();
+uint32_t dircc_dev_id();
 
 dircc_err_code dircc_init_fifo(uint32_t csr_address, uint32_t almost_empty,
 		uint32_t almost_full);

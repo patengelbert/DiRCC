@@ -8,6 +8,7 @@
 #include <assert.h>
 #include "dircc_defines.h"
 #include "dircc_rts.h"
+#include "dircc_helpers.h"
 
 #ifndef NDEBUG
 static void rts_sanity(PThreadContext *pCtxt) {

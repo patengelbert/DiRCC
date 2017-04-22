@@ -2,6 +2,7 @@
 #include <assert.h>
 #include "dircc_on_send.h"
 #include "dircc_rts.h"
+#include "dircc_helpers.h"
 
 static unsigned right_most_one(uint32_t x)
 {

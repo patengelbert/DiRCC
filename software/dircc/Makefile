@@ -127,13 +127,13 @@ C_SRCS :=
 CXX_SRCS :=
 ASM_SRCS :=
 SRC_DIR_01 := $(call adjust-path,src)
-SDIR_C_SRCS += $(SRC_DIR_01)/dircc_fifo_interface.c
 SDIR_C_SRCS += $(SRC_DIR_01)/dircc_init.c
 SDIR_C_SRCS += $(SRC_DIR_01)/dircc_main.c
 SDIR_C_SRCS += $(SRC_DIR_01)/dircc_on_idle.c
 SDIR_C_SRCS += $(SRC_DIR_01)/dircc_on_receive.c
 SDIR_C_SRCS += $(SRC_DIR_01)/dircc_on_send.c
 SDIR_C_SRCS += $(SRC_DIR_01)/dircc_rts.c
+SDIR_C_SRCS += $(SRC_DIR_01)/dircc_system_interface.c
 SDIR_CXX_SRCS :=
 SDIR_ASM_SRCS :=
 
@@ -144,7 +144,7 @@ OBJ_ROOT_DIR := obj
 # Common arguments for LIB_CFLAGS
 LIB_CFLAGS_DEFINED_SYMBOLS :=
 LIB_CFLAGS_UNDEFINED_SYMBOLS :=
-LIB_CFLAGS_OPTIMIZATION := -O0
+LIB_CFLAGS_OPTIMIZATION := -Os
 LIB_CFLAGS_DEBUG_LEVEL := -g
 LIB_CFLAGS_WARNINGS := -Wall
 LIB_CFLAGS_USER_FLAGS :=
@@ -162,7 +162,7 @@ BUILD_PRE_PROCESS :=
 BUILD_POST_PROCESS :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := ../dircc_processing_testbench_bsp
+BSP_ROOT_DIR := 
 
 # List of public include directories for -I compiler option (-I added when used).
 

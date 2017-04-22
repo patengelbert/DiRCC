@@ -1,4 +1,5 @@
 #include "dircc_on_idle.h"
+#include "dircc_helpers.h"
 #include "dircc_rts.h"
 
 bool dircc_onIdle(PThreadContext *ctxt)

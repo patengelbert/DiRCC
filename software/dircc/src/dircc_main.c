@@ -11,11 +11,12 @@
 
 #include "dircc.h"
 #include "dircc_defines.h"
-#include "dircc_fifo_interface.h"
+#include "dircc_system_interface.h"
+#include "dircc_helpers.h"
 #include "dircc_impl.h"
 
 int main() {
-	PThreadContext *ctxt = dircc_thread_contexts + dircc_my_id();
+	PThreadContext *ctxt = dircc_thread_contexts + dircc_dev_id();
 
 	DIRCC_LOG_PRINTF("init");
 
@@ -25,15 +26,14 @@ int main() {
 	// Clear the input FIFO
 	dircc_err_code err;
 	if ((err = dircc_clr_fifo(dircc_fifo_in_data_address, dircc_fifo_in_csr_address)) != DIRCC_SUCCESS)
-		DIRCC_LOG_AND_EXIT("Error clearing input FIFO: 0x%08x", err);
+		DIRCC_EXIT_FAILURE("Error clearing input FIFO: 0x%08x", err);
 
 	packet_t sendBuffer;
 	const address_t *currSendAddressList = 0;
 	uint32_t currSendTodo = 0;
-	uint32_t currSize = 0;
 
 	if (ctxt->numDevices == 0)
-		DIRCC_LOG_AND_EXIT("Number of devices is 0");
+		DIRCC_EXIT_FAILURE("Number of devices is 0");
 
 	DIRCC_LOG_PRINTF("starting loop");
 
@@ -71,7 +71,7 @@ int main() {
 
 			err = dircc_recv(dircc_fifo_in_data_address, dircc_fifo_in_csr_address, &recvBuffer); // Take the buffer from receive pool
 			if (err != DIRCC_SUCCESS)
-				DIRCC_LOG_AND_EXIT("Error sending: 0x%08x", err);
+				DIRCC_EXIT_FAILURE("Error sending: 0x%08x", err);
 
 			DIRCC_LOG_PRINTF("calling onRecieve, recvBuffer=%p", &recvBuffer);
 			dircc_onReceive(ctxt, (const void *) &recvBuffer); // Decode and dispatch
@@ -109,7 +109,7 @@ int main() {
 			DIRCC_LOG_PRINTF("doing send");
 			err = dircc_send(dircc_fifo_out_data_address, dircc_fifo_out_csr_address, &sendBuffer);
 			if (err != DIRCC_SUCCESS)
-				DIRCC_LOG_AND_EXIT("Error sending: 0x%08x", err);
+				DIRCC_EXIT_FAILURE("Error sending: 0x%08x", err);
 			// Move onto next address for next time
 			currSendTodo--; // If this reaches zero, we are done with the message
 			currSendAddressList++;

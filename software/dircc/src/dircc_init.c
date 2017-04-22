@@ -1,5 +1,6 @@
 #include "dircc.h"
-#include "dircc_fifo_interface.h"
+#include "dircc_helpers.h"
+#include "dircc_system_interface.h"
 #include "dircc_rts.h"
 
 dircc_err_code dircc_init_fifos() {
@@ -14,7 +15,7 @@ void dircc_init(PThreadContext *ctxt)
 {
 	dircc_err_code err;
     if ((err = dircc_init_fifos()) != DIRCC_SUCCESS)
-		DIRCC_LOG_AND_EXIT("Error initilizing FIFOs: 0x%08x", err);
+		DIRCC_EXIT_FAILURE("Error initializing FIFOs: 0x%08x", err);
 
     ctxt->rtsHead = 0;
     ctxt->rtsTail=0;
