@@ -4,7 +4,7 @@
  * Machine generated for CPU 'node_0_processing_cpu' in SOPC Builder design 'dircc_system_node_single'
  * SOPC Builder design path: ../../fpga/dircc_system_node_single.sopcinfo
  *
- * Generated: Sat Apr 22 12:16:30 BST 2017
+ * Generated: Sat Apr 22 16:32:37 BST 2017
  */
 
 /*
@@ -149,12 +149,10 @@
 #define ALT_DEVICE_FAMILY "Cyclone V"
 #define ALT_ENHANCED_INTERRUPT_API_PRESENT
 #define ALT_IRQ_BASE NULL
-#define ALT_LOG_PORT "/dev/node_0_processing_jtag_uart"
-#define ALT_LOG_PORT_BASE 0x21078
-#define ALT_LOG_PORT_DEV node_0_processing_jtag_uart
-#define ALT_LOG_PORT_IS_JTAG_UART
-#define ALT_LOG_PORT_PRESENT
-#define ALT_LOG_PORT_TYPE ALTERA_AVALON_JTAG_UART
+#define ALT_LOG_PORT "/dev/null"
+#define ALT_LOG_PORT_BASE 0x0
+#define ALT_LOG_PORT_DEV null
+#define ALT_LOG_PORT_TYPE ""
 #define ALT_NUM_EXTERNAL_INTERRUPT_CONTROLLERS 0
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1

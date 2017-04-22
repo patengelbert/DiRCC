@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>16.1</BspVersion>
-        <BspGeneratedTimeStamp>Apr 22, 2017 1:23:36 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1492863816660</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Apr 22, 2017 4:32:56 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1492875176174</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/patrick/Documents/Coursework/DiRCC/software/dircc_system_node_single_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../fpga/dircc_system_node_single.sopcinfo</SopcDesignFile>
@@ -230,7 +230,7 @@
                 <SettingName>hal.log_port</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>node_0_processing_jtag_uart</Value>
+                <Value>none</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>public_mk_define</DestinationFile>
                 <Description>Slave descriptor of debug logging character-mode device. If defined, it enables extra debug messages in the HAL source. This setting is used by the ALT_LOG_PORT family of defines in system.h.</Description>
@@ -266,7 +266,7 @@
                 <SettingName>hal.make.bsp_cflags_defined_symbols</SettingName>
                 <Identifier>BSP_CFLAGS_DEFINED_SYMBOLS</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>-DALT_LOG_ENABLE</Value>
+                <Value>none</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>makefile_variable</DestinationFile>
                 <Description>Preprocessor macros to define. A macro definition in this setting has the same effect as a "#define" in source code. Adding "-DALT_DEBUG" to this setting has the same effect as "#define ALT_DEBUG" in a souce file. Adding "-DFOO=1" to this setting is equivalent to the macro "#define FOO 1" in a source file. Macros defined with this setting are applied to all .S, .c, and C++ files in the BSP. This setting defines the value of BSP_CFLAGS_DEFINED_SYMBOLS in the BSP Makefile.</Description>
