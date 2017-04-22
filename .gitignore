@@ -27,6 +27,7 @@ build/*
 software/**/.cproject
 software/**/.project
 software/**/.settings
+software/**/.force_*
 *.bak
 *.BAK.*
 *.*~
@@ -36,6 +37,9 @@ software/**/.settings
 *.elf
 *.objdump
 *.map
+*.dat
+*.hex
+*.ver
 
 GPATH
 GTAGS
@@ -44,4 +48,3 @@ GRTAGS
 #VS code
 .vscode/*
 
-.force_*
