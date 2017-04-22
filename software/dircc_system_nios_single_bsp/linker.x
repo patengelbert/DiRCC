@@ -1,10 +1,10 @@
 /*
  * linker.x - Linker script
  *
- * Machine generated for CPU 'node_0_cpu' in SOPC Builder design 'dircc_system_nios_single'
+ * Machine generated for CPU 'processing_cpu' in SOPC Builder design 'dircc_system_nios_single'
  * SOPC Builder design path: ../../fpga/dircc_system_nios_single.sopcinfo
  *
- * Generated: Fri Feb 17 15:09:23 GMT 2017
+ * Generated: Fri Apr 21 18:05:47 BST 2017
  */
 
 /*
@@ -51,11 +51,11 @@
 MEMORY
 {
     reset : ORIGIN = 0x10000, LENGTH = 32
-    node_0_mem : ORIGIN = 0x10020, LENGTH = 40928
+    processing_mem : ORIGIN = 0x10020, LENGTH = 40928
 }
 
 /* Define symbols for each memory base-address */
-__alt_mem_node_0_mem = 0x10000;
+__alt_mem_processing_mem = 0x10000;
 
 OUTPUT_FORMAT( "elf32-littlenios2",
                "elf32-littlenios2",
@@ -111,7 +111,7 @@ SECTIONS
         KEEP (*(.exceptions.exit));
         KEEP (*(.exceptions));
         PROVIDE (__ram_exceptions_end = ABSOLUTE(.));
-    } > node_0_mem
+    } > processing_mem
 
     PROVIDE (__flash_exceptions_start = LOADADDR(.exceptions));
 
@@ -207,7 +207,7 @@ SECTIONS
         PROVIDE (__DTOR_END__ = ABSOLUTE(.));
         KEEP (*(.jcr))
         . = ALIGN(4);
-    } > node_0_mem = 0x3a880100 /* NOP instruction (always in big-endian byte ordering) */
+    } > processing_mem = 0x3a880100 /* NOP instruction (always in big-endian byte ordering) */
 
     .rodata :
     {
@@ -217,7 +217,7 @@ SECTIONS
         *(.rodata1)
         . = ALIGN(4);
         PROVIDE (__ram_rodata_end = ABSOLUTE(.));
-    } > node_0_mem
+    } > processing_mem
 
     PROVIDE (__flash_rodata_start = LOADADDR(.rodata));
 
@@ -251,7 +251,7 @@ SECTIONS
         _edata = ABSOLUTE(.);
         PROVIDE (edata = ABSOLUTE(.));
         PROVIDE (__ram_rwdata_end = ABSOLUTE(.));
-    } > node_0_mem
+    } > processing_mem
 
     PROVIDE (__flash_rwdata_start = LOADADDR(.rwdata));
 
@@ -282,7 +282,7 @@ SECTIONS
 
         . = ALIGN(4);
         __bss_end = ABSOLUTE(.);
-    } > node_0_mem
+    } > processing_mem
 
     /*
      *
@@ -307,18 +307,18 @@ SECTIONS
      *
      */
 
-    .node_0_mem LOADADDR (.bss) + SIZEOF (.bss) : AT ( LOADADDR (.bss) + SIZEOF (.bss) )
+    .processing_mem LOADADDR (.bss) + SIZEOF (.bss) : AT ( LOADADDR (.bss) + SIZEOF (.bss) )
     {
-        PROVIDE (_alt_partition_node_0_mem_start = ABSOLUTE(.));
-        *(.node_0_mem .node_0_mem. node_0_mem.*)
+        PROVIDE (_alt_partition_processing_mem_start = ABSOLUTE(.));
+        *(.processing_mem .processing_mem. processing_mem.*)
         . = ALIGN(4);
-        PROVIDE (_alt_partition_node_0_mem_end = ABSOLUTE(.));
+        PROVIDE (_alt_partition_processing_mem_end = ABSOLUTE(.));
         _end = ABSOLUTE(.);
         end = ABSOLUTE(.);
         __alt_stack_base = ABSOLUTE(.);
-    } > node_0_mem
+    } > processing_mem
 
-    PROVIDE (_alt_partition_node_0_mem_load_addr = LOADADDR(.node_0_mem));
+    PROVIDE (_alt_partition_processing_mem_load_addr = LOADADDR(.processing_mem));
 
     /*
      * Stabs debugging sections.

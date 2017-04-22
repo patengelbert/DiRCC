@@ -113,8 +113,8 @@ BSP_TYPE := hal
 # setting CDX is false
 
 # CPU Name 
-# setting CPU_NAME is node_0_cpu
-CPU_NAME = node_0_cpu
+# setting CPU_NAME is processing_cpu
+CPU_NAME = processing_cpu
 ELF_PATCH_FLAG  += --cpu_name $(CPU_NAME)
 
 # Hardware Divider present. 
@@ -254,7 +254,7 @@ ALT_CPPFLAGS += -DALT_LOG_FLAGS=0
 # Slave descriptor of debug logging character-mode device. If defined, it 
 # enables extra debug messages in the HAL source. This setting is used by the 
 # ALT_LOG_PORT family of defines in system.h. none 
-# setting hal.log_port is node_0_jtag_uart
+# setting hal.log_port is processing_jtag_uart
 ALT_CPPFLAGS += -DALT_LOG_ENABLE
 
 # C/C++ compiler to generate (do not generate) GP-relative accesses. 'none' 
@@ -345,18 +345,18 @@ ALT_CFLAGS += -mgpopt=global
 
 # Slave descriptor of STDERR character-mode device. This setting is used by the 
 # ALT_STDERR family of defines in system.h. none 
-# setting hal.stderr is node_0_jtag_uart
-ELF_PATCH_FLAG  += --stderr_dev node_0_jtag_uart
+# setting hal.stderr is processing_jtag_uart
+ELF_PATCH_FLAG  += --stderr_dev processing_jtag_uart
 
 # Slave descriptor of STDIN character-mode device. This setting is used by the 
 # ALT_STDIN family of defines in system.h. none 
-# setting hal.stdin is node_0_jtag_uart
-ELF_PATCH_FLAG  += --stdin_dev node_0_jtag_uart
+# setting hal.stdin is processing_jtag_uart
+ELF_PATCH_FLAG  += --stdin_dev processing_jtag_uart
 
 # Slave descriptor of STDOUT character-mode device. This setting is used by the 
 # ALT_STDOUT family of defines in system.h. none 
-# setting hal.stdout is node_0_jtag_uart
-ELF_PATCH_FLAG  += --stdout_dev node_0_jtag_uart
+# setting hal.stdout is processing_jtag_uart
+ELF_PATCH_FLAG  += --stdout_dev processing_jtag_uart
 
 
 #------------------------------------------------------------------------------

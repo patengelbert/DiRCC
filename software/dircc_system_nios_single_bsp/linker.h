@@ -1,10 +1,10 @@
 /*
  * linker.h - Linker script mapping information
  *
- * Machine generated for CPU 'node_0_cpu' in SOPC Builder design 'dircc_system_nios_single'
+ * Machine generated for CPU 'processing_cpu' in SOPC Builder design 'dircc_system_nios_single'
  * SOPC Builder design path: ../../fpga/dircc_system_nios_single.sopcinfo
  *
- * Generated: Fri Feb 17 15:09:23 GMT 2017
+ * Generated: Fri Apr 21 18:05:47 BST 2017
  */
 
 /*
@@ -65,8 +65,8 @@
  *
  */
 
-#define NODE_0_MEM_REGION_BASE 0x10020
-#define NODE_0_MEM_REGION_SPAN 40928
+#define PROCESSING_MEM_REGION_BASE 0x10020
+#define PROCESSING_MEM_REGION_SPAN 40928
 #define RESET_REGION_BASE 0x10000
 #define RESET_REGION_SPAN 32
 
@@ -76,11 +76,11 @@
  *
  */
 
-#define ALT_EXCEPTIONS_DEVICE NODE_0_MEM
-#define ALT_RESET_DEVICE NODE_0_MEM
-#define ALT_RODATA_DEVICE NODE_0_MEM
-#define ALT_RWDATA_DEVICE NODE_0_MEM
-#define ALT_TEXT_DEVICE NODE_0_MEM
+#define ALT_EXCEPTIONS_DEVICE PROCESSING_MEM
+#define ALT_RESET_DEVICE PROCESSING_MEM
+#define ALT_RODATA_DEVICE PROCESSING_MEM
+#define ALT_RWDATA_DEVICE PROCESSING_MEM
+#define ALT_TEXT_DEVICE PROCESSING_MEM
 
 
 /*

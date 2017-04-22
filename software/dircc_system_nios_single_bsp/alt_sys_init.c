@@ -1,10 +1,10 @@
 /*
  * alt_sys_init.c - HAL initialization source
  *
- * Machine generated for CPU 'node_0_cpu' in SOPC Builder design 'dircc_system_nios_single'
+ * Machine generated for CPU 'processing_cpu' in SOPC Builder design 'dircc_system_nios_single'
  * SOPC Builder design path: ../../fpga/dircc_system_nios_single.sopcinfo
  *
- * Generated: Thu Feb 09 18:47:43 GMT 2017
+ * Generated: Fri Apr 21 18:05:47 BST 2017
  */
 
 /*
@@ -67,11 +67,11 @@
  * Allocate the device storage
  */
 
-ALTERA_NIOS2_GEN2_IRQ_INSTANCE ( NODE_0_CPU, node_0_cpu);
-ALTERA_AVALON_FIFO_INSTANCE ( NODE_0_FIFO_IN, node_0_fifo_in);
-ALTERA_AVALON_FIFO_INSTANCE ( NODE_0_FIFO_OUT, node_0_fifo_out);
-ALTERA_AVALON_JTAG_UART_INSTANCE ( NODE_0_JTAG_UART, node_0_jtag_uart);
-ALTERA_AVALON_TIMER_INSTANCE ( NODE_0_TIMER, node_0_timer);
+ALTERA_NIOS2_GEN2_IRQ_INSTANCE ( PROCESSING_CPU, processing_cpu);
+ALTERA_AVALON_FIFO_INSTANCE ( PROCESSING_FIFO_IN, processing_fifo_in);
+ALTERA_AVALON_FIFO_INSTANCE ( PROCESSING_FIFO_OUT, processing_fifo_out);
+ALTERA_AVALON_JTAG_UART_INSTANCE ( PROCESSING_JTAG_UART, processing_jtag_uart);
+ALTERA_AVALON_TIMER_INSTANCE ( PROCESSING_TIMER, processing_timer);
 
 /*
  * Initialize the interrupt controller devices
@@ -83,7 +83,7 @@ ALTERA_AVALON_TIMER_INSTANCE ( NODE_0_TIMER, node_0_timer);
 
 void alt_irq_init ( const void* base )
 {
-    ALTERA_NIOS2_GEN2_IRQ_INIT ( NODE_0_CPU, node_0_cpu);
+    ALTERA_NIOS2_GEN2_IRQ_INIT ( PROCESSING_CPU, processing_cpu);
     alt_irq_cpu_enable_interrupts();
 }
 
@@ -94,8 +94,8 @@ void alt_irq_init ( const void* base )
 
 void alt_sys_init( void )
 {
-    ALTERA_AVALON_TIMER_INIT ( NODE_0_TIMER, node_0_timer);
-    ALTERA_AVALON_FIFO_INIT ( NODE_0_FIFO_IN, node_0_fifo_in);
-    ALTERA_AVALON_FIFO_INIT ( NODE_0_FIFO_OUT, node_0_fifo_out);
-    ALTERA_AVALON_JTAG_UART_INIT ( NODE_0_JTAG_UART, node_0_jtag_uart);
+    ALTERA_AVALON_TIMER_INIT ( PROCESSING_TIMER, processing_timer);
+    ALTERA_AVALON_FIFO_INIT ( PROCESSING_FIFO_IN, processing_fifo_in);
+    ALTERA_AVALON_FIFO_INIT ( PROCESSING_FIFO_OUT, processing_fifo_out);
+    ALTERA_AVALON_JTAG_UART_INIT ( PROCESSING_JTAG_UART, processing_jtag_uart);
 }
