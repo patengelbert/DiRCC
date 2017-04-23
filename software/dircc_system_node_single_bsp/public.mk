@@ -324,7 +324,7 @@ ALT_CFLAGS += -mgpopt=global
 # Enable BSP generation to query SOPC system for system ID. If true ignores 
 # export of 'SOPC_SYSID_FLAG += --id=<sysid>' and 'ELF_PATCH_FLAG += 
 # --id=<sysid>' to public.mk. none 
-# setting hal.make.ignore_system_derived.sopc_system_id is false
+# setting hal.make.ignore_system_derived.sopc_system_id is true
 
 # Enable BSP generation to query SOPC system for system timestamp. If true 
 # ignores export of 'SOPC_SYSID_FLAG += --timestamp=<timestamp>' and 

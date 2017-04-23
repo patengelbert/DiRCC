@@ -55,6 +55,7 @@
   <parameter name="resetSynchronousEdges" value="DEASSERT" />
  </module>
  <module name="node_0" kind="dircc_node" version="1.0" enabled="1">
+  <parameter name="ADDRESS" value="1" />
   <parameter name="AUTO_CLK_PROCESSING_CLOCK_DOMAIN" value="1" />
   <parameter name="AUTO_CLK_PROCESSING_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_CLK_PROCESSING_RESET_DOMAIN" value="1" />

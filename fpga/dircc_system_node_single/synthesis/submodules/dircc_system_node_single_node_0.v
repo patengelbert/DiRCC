@@ -93,7 +93,7 @@ module dircc_system_node_single_node_0 (
 	wire   [1:0] avalon_st_adapter_001_out_0_empty;         // avalon_st_adapter_001:out_0_empty -> routing:input_here_empty
 
 	dircc_address_gen #(
-		.ADDRESS (0)
+		.ADDRESS (1)
 	) dircc_address (
 		.address_processing (dircc_address_address_processing_address), // address_processing.address
 		.address_routing    (dircc_address_address_routing_address)     //    address_routing.address

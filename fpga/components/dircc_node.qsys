@@ -182,24 +182,24 @@ proc compose {} {
   <parameter name="AUTO_CLK_PROCESSING_CLOCK_DOMAIN" value="1" />
   <parameter name="AUTO_CLK_PROCESSING_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_CLK_PROCESSING_RESET_DOMAIN" value="1" />
-  <parameter name="AUTO_CLK_ROUTING_CLOCK_DOMAIN" value="3" />
+  <parameter name="AUTO_CLK_ROUTING_CLOCK_DOMAIN" value="2" />
   <parameter name="AUTO_CLK_ROUTING_CLOCK_RATE" value="50000000" />
-  <parameter name="AUTO_CLK_ROUTING_RESET_DOMAIN" value="3" />
+  <parameter name="AUTO_CLK_ROUTING_RESET_DOMAIN" value="2" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_UNIQUE_ID">dircc_node_processing</parameter>
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_processing</parameter>
  </module>
  <module name="routing" kind="dircc_routing" version="1.0" enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="3" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="2" />
   <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="3" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="2" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_UNIQUE_ID" value="dircc_node_routing" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_routing</parameter>
  </module>
  <connection
    kind="avalon_streaming"

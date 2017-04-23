@@ -134,10 +134,10 @@ module dircc_system_node_single_node_0_processing_mm_interconnect_0_router
     // Figure out the number of bits to mask off for each slave span
     // during address decoding
     // -------------------------------------------------------
-    localparam PAD0 = log2ceil(64'h20000 - 64'h10000); 
-    localparam PAD1 = log2ceil(64'h21000 - 64'h20800); 
-    localparam PAD2 = log2ceil(64'h21020 - 64'h21000); 
-    localparam PAD3 = log2ceil(64'h21040 - 64'h21020); 
+    localparam PAD0 = log2ceil(64'h20 - 64'h0); 
+    localparam PAD1 = log2ceil(64'h20000 - 64'h10000); 
+    localparam PAD2 = log2ceil(64'h21000 - 64'h20800); 
+    localparam PAD3 = log2ceil(64'h21020 - 64'h21000); 
     localparam PAD4 = log2ceil(64'h21060 - 64'h21040); 
     localparam PAD5 = log2ceil(64'h21068 - 64'h21060); 
     localparam PAD6 = log2ceil(64'h21070 - 64'h21068); 
@@ -203,28 +203,28 @@ module dircc_system_node_single_node_0_processing_mm_interconnect_0_router
         // Sets the channel and destination ID based on the address
         // --------------------------------------------------
 
+    // ( 0x0 .. 0x20 )
+    if ( {address[RG:PAD0],{PAD0{1'b0}}} == 18'h0   ) begin
+            src_channel = 9'b001000000;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
+    end
+
     // ( 0x10000 .. 0x20000 )
-    if ( {address[RG:PAD0],{PAD0{1'b0}}} == 18'h10000   ) begin
+    if ( {address[RG:PAD1],{PAD1{1'b0}}} == 18'h10000   ) begin
             src_channel = 9'b100000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 7;
     end
 
     // ( 0x20800 .. 0x21000 )
-    if ( {address[RG:PAD1],{PAD1{1'b0}}} == 18'h20800   ) begin
+    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 18'h20800   ) begin
             src_channel = 9'b000000010;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
     end
 
     // ( 0x21000 .. 0x21020 )
-    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 18'h21000   ) begin
+    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 18'h21000   ) begin
             src_channel = 9'b010000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 8;
-    end
-
-    // ( 0x21020 .. 0x21040 )
-    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 18'h21020   ) begin
-            src_channel = 9'b000010000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
     end
 
     // ( 0x21040 .. 0x21060 )
@@ -235,13 +235,13 @@ module dircc_system_node_single_node_0_processing_mm_interconnect_0_router
 
     // ( 0x21060 .. 0x21068 )
     if ( {address[RG:PAD5],{PAD5{1'b0}}} == 18'h21060  && read_transaction  ) begin
-            src_channel = 9'b001000000;
+            src_channel = 9'b000100000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
     end
 
     // ( 0x21068 .. 0x21070 )
     if ( {address[RG:PAD6],{PAD6{1'b0}}} == 18'h21068  && read_transaction  ) begin
-            src_channel = 9'b000100000;
+            src_channel = 9'b000010000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
     end
 

@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>16.1</BspVersion>
-        <BspGeneratedTimeStamp>Apr 22, 2017 4:32:56 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1492875176174</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Apr 23, 2017 12:28:02 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1492946882376</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/patrick/Documents/Coursework/DiRCC/software/dircc_system_node_single_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../fpga/dircc_system_node_single.sopcinfo</SopcDesignFile>
@@ -554,7 +554,7 @@
                 <SettingName>hal.make.ignore_system_derived.sopc_system_id</SettingName>
                 <Identifier>none</Identifier>
                 <Type>Boolean</Type>
-                <Value>0</Value>
+                <Value>1</Value>
                 <DefaultValue>0</DefaultValue>
                 <DestinationFile>public_mk_define</DestinationFile>
                 <Description>Enable BSP generation to query SOPC system for system ID. If true ignores export of 'SOPC_SYSID_FLAG += --id=&lt;sysid>' and 'ELF_PATCH_FLAG  += --id=&lt;sysid>' to public.mk.</Description>
@@ -899,6 +899,12 @@
                 <Group xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </Setting>
         <MemoryMap>
+                <slaveDescriptor>node_0_processing_fifo_in_out_csr</slaveDescriptor>
+                <addressRange>0x00000000 - 0x0000001F</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>node_0_processing_mem</slaveDescriptor>
                 <addressRange>0x00010000 - 0x00019FFF</addressRange>
                 <addressSpan>40960</addressSpan>
@@ -909,12 +915,6 @@
                 <addressRange>0x00021000 - 0x0002101F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>timer</attributes>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>node_0_processing_fifo_in_in_csr</slaveDescriptor>
-                <addressRange>0x00021020 - 0x0002103F</addressRange>
-                <addressSpan>32</addressSpan>
-                <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>node_0_processing_fifo_out_in_csr</slaveDescriptor>

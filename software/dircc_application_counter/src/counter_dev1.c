@@ -63,7 +63,7 @@ PThreadContext dircc_thread_contexts[THREAD_COUNT] = {
 		}
 };
 
-uint32_t dircc_fifo_in_csr_address = NODE_0_PROCESSING_FIFO_IN_IN_CSR_BASE;
+uint32_t dircc_fifo_in_csr_address = NODE_0_PROCESSING_FIFO_IN_OUT_CSR_BASE;
 uint32_t dircc_fifo_in_data_address = NODE_0_PROCESSING_FIFO_IN_OUT_BASE;
 uint32_t dircc_fifo_in_depth = NODE_0_PROCESSING_FIFO_IN_OUT_FIFO_DEPTH;
 
