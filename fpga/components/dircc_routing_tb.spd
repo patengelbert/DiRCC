@@ -11,22 +11,6 @@
    library="altera_common_sv_packages"
    systemVerilogPackageName="avalon_vip_avalon_utilities_pkg" />
  <file
-   path="dircc_routing/testbench/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_001_channel_adapter_0.sv"
-   type="SYSTEM_VERILOG"
-   library="channel_adapter_0" />
- <file
-   path="dircc_routing/testbench/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_channel_adapter_0.sv"
-   type="SYSTEM_VERILOG"
-   library="channel_adapter_0" />
- <file
-   path="dircc_routing/testbench/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_001.v"
-   type="VERILOG"
-   library="avalon_st_adapter_001" />
- <file
-   path="dircc_routing/testbench/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter.v"
-   type="VERILOG"
-   library="avalon_st_adapter" />
- <file
    path="dircc_routing/testbench/dircc_routing_tb/simulation/submodules/dircc_router.sv"
    type="SYSTEM_VERILOG"
    library="router" />

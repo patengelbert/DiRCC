@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 16.1 196 linux 2017.04.11.17:33:53
+# ACDS 16.1 196 linux 2017.04.23.20:48:10
 
 # ----------------------------------------
 # ncsim - auto-generated simulation script
@@ -101,7 +101,7 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 16.1 196 linux 2017.04.11.17:33:53
+# ACDS 16.1 196 linux 2017.04.23.20:48:10
 # ----------------------------------------
 # initialize variables
 TOP_LEVEL_NAME="dircc_routing_tb"
@@ -142,9 +142,6 @@ fi
 # create compilation libraries
 mkdir -p ./libraries/work/
 mkdir -p ./libraries/altera_common_sv_packages/
-mkdir -p ./libraries/channel_adapter_0/
-mkdir -p ./libraries/avalon_st_adapter_001/
-mkdir -p ./libraries/avalon_st_adapter/
 mkdir -p ./libraries/router/
 mkdir -p ./libraries/output_demux/
 mkdir -p ./libraries/input_mux/
@@ -187,23 +184,19 @@ fi
 # ----------------------------------------
 # compile design files in correct order
 if [ $SKIP_COM -eq 0 ]; then
-  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/verbosity_pkg.sv"                                         -work altera_common_sv_packages          -cdslib ./cds_libs/altera_common_sv_packages.cds.lib         
-  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/avalon_utilities_pkg.sv"                                  -work altera_common_sv_packages          -cdslib ./cds_libs/altera_common_sv_packages.cds.lib         
-  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_001_channel_adapter_0.sv" -work channel_adapter_0                  -cdslib ./cds_libs/channel_adapter_0.cds.lib                 
-  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_channel_adapter_0.sv"     -work channel_adapter_0                  -cdslib ./cds_libs/channel_adapter_0.cds.lib                 
-  ncvlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_001.v"                    -work avalon_st_adapter_001              -cdslib ./cds_libs/avalon_st_adapter_001.cds.lib             
-  ncvlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter.v"                        -work avalon_st_adapter                  -cdslib ./cds_libs/avalon_st_adapter.cds.lib                 
-  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_router.sv"                                          -work router                             -cdslib ./cds_libs/router.cds.lib                            
-  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_output_demux.sv"                            -work output_demux                       -cdslib ./cds_libs/output_demux.cds.lib                      
-  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_input_mux.sv"                               -work input_mux                          -cdslib ./cds_libs/input_mux.cds.lib                         
-  ncvlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_sc_fifo.v"                                  -work input_fifo_east                    -cdslib ./cds_libs/input_fifo_east.cds.lib                   
-  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_reset_source.sv"                            -work dircc_routing_inst_reset_bfm       -cdslib ./cds_libs/dircc_routing_inst_reset_bfm.cds.lib      
-  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_st_sink_bfm.sv"                             -work dircc_routing_inst_output_east_bfm -cdslib ./cds_libs/dircc_routing_inst_output_east_bfm.cds.lib
-  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_st_source_bfm.sv"                           -work dircc_routing_inst_input_east_bfm  -cdslib ./cds_libs/dircc_routing_inst_input_east_bfm.cds.lib 
-  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_clock_source.sv"                            -work dircc_routing_inst_clk_bfm         -cdslib ./cds_libs/dircc_routing_inst_clk_bfm.cds.lib        
-  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_conduit_bfm.sv"                                    -work dircc_routing_inst_address_bfm     -cdslib ./cds_libs/dircc_routing_inst_address_bfm.cds.lib    
-  ncvlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing.v"                                          -work dircc_routing_inst                 -cdslib ./cds_libs/dircc_routing_inst.cds.lib                
-  ncvlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/dircc_routing_tb.v"                                                                                                                                                        
+  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/verbosity_pkg.sv"               -work altera_common_sv_packages          -cdslib ./cds_libs/altera_common_sv_packages.cds.lib         
+  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/avalon_utilities_pkg.sv"        -work altera_common_sv_packages          -cdslib ./cds_libs/altera_common_sv_packages.cds.lib         
+  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_router.sv"                -work router                             -cdslib ./cds_libs/router.cds.lib                            
+  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_output_demux.sv"  -work output_demux                       -cdslib ./cds_libs/output_demux.cds.lib                      
+  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_input_mux.sv"     -work input_mux                          -cdslib ./cds_libs/input_mux.cds.lib                         
+  ncvlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_sc_fifo.v"        -work input_fifo_east                    -cdslib ./cds_libs/input_fifo_east.cds.lib                   
+  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_reset_source.sv"  -work dircc_routing_inst_reset_bfm       -cdslib ./cds_libs/dircc_routing_inst_reset_bfm.cds.lib      
+  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_st_sink_bfm.sv"   -work dircc_routing_inst_output_east_bfm -cdslib ./cds_libs/dircc_routing_inst_output_east_bfm.cds.lib
+  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_st_source_bfm.sv" -work dircc_routing_inst_input_east_bfm  -cdslib ./cds_libs/dircc_routing_inst_input_east_bfm.cds.lib 
+  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_clock_source.sv"  -work dircc_routing_inst_clk_bfm         -cdslib ./cds_libs/dircc_routing_inst_clk_bfm.cds.lib        
+  ncvlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_conduit_bfm.sv"          -work dircc_routing_inst_address_bfm     -cdslib ./cds_libs/dircc_routing_inst_address_bfm.cds.lib    
+  ncvlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing.v"                -work dircc_routing_inst                 -cdslib ./cds_libs/dircc_routing_inst.cds.lib                
+  ncvlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/dircc_routing_tb.v"                                                                                                                              
 fi
 
 # ----------------------------------------

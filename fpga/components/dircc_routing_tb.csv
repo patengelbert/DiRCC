@@ -1,12 +1,12 @@
-# system info dircc_routing_tb on 2017.04.11.17:33:52
+# system info dircc_routing_tb on 2017.04.23.20:48:09
 system_info:
 name,value
 DEVICE,5CSEMA5F31C6
 DEVICE_FAMILY,Cyclone V
-GENERATION_ID,1491928432
+GENERATION_ID,1492976888
 #
 #
-# Files generated for dircc_routing_tb on 2017.04.11.17:33:52
+# Files generated for dircc_routing_tb on 2017.04.23.20:48:09
 files:
 filepath,kind,attributes,module,is_top
 dircc_routing/testbench/dircc_routing_tb/simulation/dircc_routing_tb.v,VERILOG,,dircc_routing_tb,true
@@ -27,10 +27,6 @@ dircc_routing/testbench/dircc_routing_tb/simulation/submodules/altera_avalon_sc_
 dircc_routing/testbench/dircc_routing_tb/simulation/submodules/dircc_routing_input_mux.sv,SYSTEM_VERILOG,,dircc_routing_input_mux,false
 dircc_routing/testbench/dircc_routing_tb/simulation/submodules/dircc_routing_output_demux.sv,SYSTEM_VERILOG,,dircc_routing_output_demux,false
 dircc_routing/testbench/dircc_routing_tb/simulation/submodules/dircc_router.sv,SYSTEM_VERILOG,,dircc_router,false
-dircc_routing/testbench/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter.v,VERILOG,,dircc_routing_avalon_st_adapter,false
-dircc_routing/testbench/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_001.v,VERILOG,,dircc_routing_avalon_st_adapter_001,false
-dircc_routing/testbench/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_channel_adapter_0.sv,SYSTEM_VERILOG,,dircc_routing_avalon_st_adapter_channel_adapter_0,false
-dircc_routing/testbench/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_001_channel_adapter_0.sv,SYSTEM_VERILOG,,dircc_routing_avalon_st_adapter_001_channel_adapter_0,false
 #
 # Map from instance-path to kind of module
 instances:
@@ -43,10 +39,6 @@ dircc_routing_tb.dircc_routing_inst.input_fifo_west,altera_avalon_sc_fifo
 dircc_routing_tb.dircc_routing_inst.input_mux,dircc_routing_input_mux
 dircc_routing_tb.dircc_routing_inst.output_demux,dircc_routing_output_demux
 dircc_routing_tb.dircc_routing_inst.router,dircc_router
-dircc_routing_tb.dircc_routing_inst.avalon_st_adapter,dircc_routing_avalon_st_adapter
-dircc_routing_tb.dircc_routing_inst.avalon_st_adapter.channel_adapter_0,dircc_routing_avalon_st_adapter_channel_adapter_0
-dircc_routing_tb.dircc_routing_inst.avalon_st_adapter_001,dircc_routing_avalon_st_adapter_001
-dircc_routing_tb.dircc_routing_inst.avalon_st_adapter_001.channel_adapter_0,dircc_routing_avalon_st_adapter_001_channel_adapter_0
 dircc_routing_tb.dircc_routing_inst_address_bfm,altera_conduit_bfm
 dircc_routing_tb.dircc_routing_inst_clk_bfm,altera_avalon_clock_source
 dircc_routing_tb.dircc_routing_inst_input_east_bfm,altera_avalon_st_source_bfm

@@ -33,6 +33,38 @@
          type = "String";
       }
    }
+   element dircc_routing
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element dircc_routing
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element dircc_routing
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element dircc_routing
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
    element input_fifo_east
    {
       datum _sortIndex
@@ -173,7 +205,7 @@
  <interface name="reset" internal="clk.clk_in_reset" type="reset" dir="end" />
  <module name="clk" kind="clock_source" version="16.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
-  <parameter name="clockFrequencyKnown" value="false" />
+  <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="DEASSERT" />
  </module>
@@ -279,7 +311,7 @@
  </module>
  <module name="router" kind="dircc_router" version="1.0" enabled="1">
   <parameter name="BITS_PER_SYMBOL" value="8" />
-  <parameter name="CHANNEL_WIDTH" value="0" />
+  <parameter name="CHANNEL_WIDTH" value="3" />
   <parameter name="ERROR_WIDTH" value="0" />
   <parameter name="MAX_ROUTE_DIRECTION" value="5" />
   <parameter name="PIPELINE_READY" value="1" />
@@ -287,6 +319,7 @@
   <parameter name="USE_EMPTY" value="true" />
   <parameter name="USE_HIGH_BIT_SELECT" value="true" />
   <parameter name="USE_PACKETS" value="true" />
+  <parameter name="maxChannel" value="7" />
  </module>
  <connection
    kind="avalon_streaming"

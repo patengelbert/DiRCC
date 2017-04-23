@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 16.1 196 linux 2017.04.11.17:33:53
+# ACDS 16.1 196 linux 2017.04.23.20:48:09
 
 # ----------------------------------------
 # vcs - auto-generated simulation script
@@ -94,7 +94,7 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 16.1 196 linux 2017.04.11.17:33:53
+# ACDS 16.1 196 linux 2017.04.23.20:48:09
 # ----------------------------------------
 # initialize variables
 TOP_LEVEL_NAME="dircc_routing_tb"
@@ -145,10 +145,6 @@ vcs -lca -timescale=1ps/1ps -sverilog +verilog2001ext+.v -ntb_opts dtm $ELAB_OPT
   -v $QUARTUS_INSTALL_DIR/eda/sim_lib/cyclonev_pcie_hip_atoms.v \
   $QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/verbosity_pkg.sv \
   $QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/avalon_utilities_pkg.sv \
-  $QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_001_channel_adapter_0.sv \
-  $QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_channel_adapter_0.sv \
-  $QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_001.v \
-  $QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter.v \
   $QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_router.sv \
   $QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_output_demux.sv \
   $QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_input_mux.sv \

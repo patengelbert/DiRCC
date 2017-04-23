@@ -13,6 +13,7 @@ module dircc_router #(
 
     // Optional ST signal widths.  Value "0" means no such port.
     CHANNEL_WIDTH = 0,
+    maxChannel = 0,
     ERROR_WIDTH = 0,
   
     // Derived parameters
@@ -32,7 +33,7 @@ module dircc_router #(
     output reg                                            in_ready,
     input                                                 in_valid,
     input wire [DATA_WIDTH - 1 : 0]                            in_data,
-//    input wire [(CHANNEL_WIDTH ? (CHANNEL_WIDTH - 1) : 0) : 0] in_channel,
+    input wire [(CHANNEL_WIDTH ? (CHANNEL_WIDTH - 1) : 0) : 0] in_channel,
 //    input wire [(ERROR_WIDTH ? (ERROR_WIDTH - 1) : 0) : 0]     in_error,
     input wire                                            in_startofpacket,
     input wire                                            in_endofpacket,

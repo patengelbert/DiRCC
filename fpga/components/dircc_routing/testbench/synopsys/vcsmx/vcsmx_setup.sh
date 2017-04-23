@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 16.1 196 linux 2017.04.11.17:33:53
+# ACDS 16.1 196 linux 2017.04.23.20:48:10
 
 # ----------------------------------------
 # vcsmx - auto-generated simulation script
@@ -101,7 +101,7 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 16.1 196 linux 2017.04.11.17:33:53
+# ACDS 16.1 196 linux 2017.04.23.20:48:10
 # ----------------------------------------
 # initialize variables
 TOP_LEVEL_NAME="dircc_routing_tb"
@@ -142,9 +142,6 @@ fi
 # create compilation libraries
 mkdir -p ./libraries/work/
 mkdir -p ./libraries/altera_common_sv_packages/
-mkdir -p ./libraries/channel_adapter_0/
-mkdir -p ./libraries/avalon_st_adapter_001/
-mkdir -p ./libraries/avalon_st_adapter/
 mkdir -p ./libraries/router/
 mkdir -p ./libraries/output_demux/
 mkdir -p ./libraries/input_mux/
@@ -187,23 +184,19 @@ fi
 # ----------------------------------------
 # compile design files in correct order
 if [ $SKIP_COM -eq 0 ]; then
-  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/verbosity_pkg.sv"                                         -work altera_common_sv_packages         
-  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/avalon_utilities_pkg.sv"                                  -work altera_common_sv_packages         
-  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_001_channel_adapter_0.sv" -work channel_adapter_0                 
-  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_channel_adapter_0.sv"     -work channel_adapter_0                 
-  vlogan +v2k $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_001.v"                    -work avalon_st_adapter_001             
-  vlogan +v2k $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter.v"                        -work avalon_st_adapter                 
-  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_router.sv"                                          -work router                            
-  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_output_demux.sv"                            -work output_demux                      
-  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_input_mux.sv"                               -work input_mux                         
-  vlogan +v2k $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_sc_fifo.v"                                  -work input_fifo_east                   
-  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_reset_source.sv"                            -work dircc_routing_inst_reset_bfm      
-  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_st_sink_bfm.sv"                             -work dircc_routing_inst_output_east_bfm
-  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_st_source_bfm.sv"                           -work dircc_routing_inst_input_east_bfm 
-  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_clock_source.sv"                            -work dircc_routing_inst_clk_bfm        
-  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_conduit_bfm.sv"                                    -work dircc_routing_inst_address_bfm    
-  vlogan +v2k $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing.v"                                          -work dircc_routing_inst                
-  vlogan +v2k $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/dircc_routing_tb/simulation/dircc_routing_tb.v"                                                                                          
+  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/verbosity_pkg.sv"               -work altera_common_sv_packages         
+  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/avalon_utilities_pkg.sv"        -work altera_common_sv_packages         
+  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_router.sv"                -work router                            
+  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_output_demux.sv"  -work output_demux                      
+  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_input_mux.sv"     -work input_mux                         
+  vlogan +v2k $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_sc_fifo.v"        -work input_fifo_east                   
+  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_reset_source.sv"  -work dircc_routing_inst_reset_bfm      
+  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_st_sink_bfm.sv"   -work dircc_routing_inst_output_east_bfm
+  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_st_source_bfm.sv" -work dircc_routing_inst_input_east_bfm 
+  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_clock_source.sv"  -work dircc_routing_inst_clk_bfm        
+  vlogan +v2k -sverilog $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_conduit_bfm.sv"          -work dircc_routing_inst_address_bfm    
+  vlogan +v2k $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing.v"                -work dircc_routing_inst                
+  vlogan +v2k $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/dircc_routing_tb/simulation/dircc_routing_tb.v"                                                                
 fi
 
 # ----------------------------------------

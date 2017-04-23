@@ -92,7 +92,7 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 16.1 196 linux 2017.04.11.17:33:53
+# ACDS 16.1 196 linux 2017.04.23.20:48:09
 
 # ----------------------------------------
 # Initialize variables
@@ -162,12 +162,6 @@ if ![ string match "*ModelSim ALTERA*" [ vsim -version ] ] {
 }
 ensure_lib                                    ./libraries/altera_common_sv_packages/         
 vmap       altera_common_sv_packages          ./libraries/altera_common_sv_packages/         
-ensure_lib                                    ./libraries/channel_adapter_0/                 
-vmap       channel_adapter_0                  ./libraries/channel_adapter_0/                 
-ensure_lib                                    ./libraries/avalon_st_adapter_001/             
-vmap       avalon_st_adapter_001              ./libraries/avalon_st_adapter_001/             
-ensure_lib                                    ./libraries/avalon_st_adapter/                 
-vmap       avalon_st_adapter                  ./libraries/avalon_st_adapter/                 
 ensure_lib                                    ./libraries/router/                            
 vmap       router                             ./libraries/router/                            
 ensure_lib                                    ./libraries/output_demux/                      
@@ -213,37 +207,33 @@ alias dev_com {
 # Compile the design files in correct order
 alias com {
   echo "\[exec\] com"
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/verbosity_pkg.sv"                                                                      -work altera_common_sv_packages         
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/avalon_utilities_pkg.sv"                                                               -work altera_common_sv_packages         
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_001_channel_adapter_0.sv" -L altera_common_sv_packages -work channel_adapter_0                 
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_channel_adapter_0.sv"     -L altera_common_sv_packages -work channel_adapter_0                 
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter_001.v"                                                 -work avalon_st_adapter_001             
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_avalon_st_adapter.v"                                                     -work avalon_st_adapter                 
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_router.sv"                                          -L altera_common_sv_packages -work router                            
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_output_demux.sv"                            -L altera_common_sv_packages -work output_demux                      
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_input_mux.sv"                               -L altera_common_sv_packages -work input_mux                         
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_sc_fifo.v"                                                               -work input_fifo_east                   
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_reset_source.sv"                            -L altera_common_sv_packages -work dircc_routing_inst_reset_bfm      
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_st_sink_bfm.sv"                             -L altera_common_sv_packages -work dircc_routing_inst_output_east_bfm
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_st_source_bfm.sv"                           -L altera_common_sv_packages -work dircc_routing_inst_input_east_bfm 
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_clock_source.sv"                            -L altera_common_sv_packages -work dircc_routing_inst_clk_bfm        
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_conduit_bfm.sv"                                    -L altera_common_sv_packages -work dircc_routing_inst_address_bfm    
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing.v"                                                                       -work dircc_routing_inst                
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/dircc_routing_tb.v"                                                                                                                       
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/verbosity_pkg.sv"                                            -work altera_common_sv_packages         
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/avalon_utilities_pkg.sv"                                     -work altera_common_sv_packages         
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_router.sv"                -L altera_common_sv_packages -work router                            
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_output_demux.sv"  -L altera_common_sv_packages -work output_demux                      
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing_input_mux.sv"     -L altera_common_sv_packages -work input_mux                         
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_sc_fifo.v"                                     -work input_fifo_east                   
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_reset_source.sv"  -L altera_common_sv_packages -work dircc_routing_inst_reset_bfm      
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_st_sink_bfm.sv"   -L altera_common_sv_packages -work dircc_routing_inst_output_east_bfm
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_st_source_bfm.sv" -L altera_common_sv_packages -work dircc_routing_inst_input_east_bfm 
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_avalon_clock_source.sv"  -L altera_common_sv_packages -work dircc_routing_inst_clk_bfm        
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/altera_conduit_bfm.sv"          -L altera_common_sv_packages -work dircc_routing_inst_address_bfm    
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/submodules/dircc_routing.v"                                             -work dircc_routing_inst                
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_routing_tb/simulation/dircc_routing_tb.v"                                                                                             
 }
 
 # ----------------------------------------
 # Elaborate top level design
 alias elab {
   echo "\[exec\] elab"
-  eval vsim -t ps $ELAB_OPTIONS $USER_DEFINED_ELAB_OPTIONS -L work -L work_lib -L altera_common_sv_packages -L channel_adapter_0 -L avalon_st_adapter_001 -L avalon_st_adapter -L router -L output_demux -L input_mux -L input_fifo_east -L dircc_routing_inst_reset_bfm -L dircc_routing_inst_output_east_bfm -L dircc_routing_inst_input_east_bfm -L dircc_routing_inst_clk_bfm -L dircc_routing_inst_address_bfm -L dircc_routing_inst -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
+  eval vsim -t ps $ELAB_OPTIONS $USER_DEFINED_ELAB_OPTIONS -L work -L work_lib -L altera_common_sv_packages -L router -L output_demux -L input_mux -L input_fifo_east -L dircc_routing_inst_reset_bfm -L dircc_routing_inst_output_east_bfm -L dircc_routing_inst_input_east_bfm -L dircc_routing_inst_clk_bfm -L dircc_routing_inst_address_bfm -L dircc_routing_inst -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
 }
 
 # ----------------------------------------
 # Elaborate the top level design with novopt option
 alias elab_debug {
   echo "\[exec\] elab_debug"
-  eval vsim -novopt -t ps $ELAB_OPTIONS $USER_DEFINED_ELAB_OPTIONS -L work -L work_lib -L altera_common_sv_packages -L channel_adapter_0 -L avalon_st_adapter_001 -L avalon_st_adapter -L router -L output_demux -L input_mux -L input_fifo_east -L dircc_routing_inst_reset_bfm -L dircc_routing_inst_output_east_bfm -L dircc_routing_inst_input_east_bfm -L dircc_routing_inst_clk_bfm -L dircc_routing_inst_address_bfm -L dircc_routing_inst -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
+  eval vsim -novopt -t ps $ELAB_OPTIONS $USER_DEFINED_ELAB_OPTIONS -L work -L work_lib -L altera_common_sv_packages -L router -L output_demux -L input_mux -L input_fifo_east -L dircc_routing_inst_reset_bfm -L dircc_routing_inst_output_east_bfm -L dircc_routing_inst_input_east_bfm -L dircc_routing_inst_clk_bfm -L dircc_routing_inst_address_bfm -L dircc_routing_inst -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
 }
 
 # ----------------------------------------

@@ -161,7 +161,7 @@
    kind="altera_conduit_bfm"
    version="16.1"
    enabled="1">
-  <parameter name="CLOCKED_SIGNAL" value="true" />
+  <parameter name="CLOCKED_SIGNAL" value="false" />
   <parameter name="ENABLE_RESET" value="false" />
   <parameter name="SIGNAL_DIRECTIONS" value="output" />
   <parameter name="SIGNAL_ROLES" value="address" />
@@ -453,11 +453,6 @@
    version="16.1"
    start="dircc_routing_inst_clk_bfm.clk"
    end="dircc_routing_inst_reset_bfm.clk" />
- <connection
-   kind="clock"
-   version="16.1"
-   start="dircc_routing_inst_clk_bfm.clk"
-   end="dircc_routing_inst_address_bfm.clk" />
  <connection
    kind="clock"
    version="16.1"
