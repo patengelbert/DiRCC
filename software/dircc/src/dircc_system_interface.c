@@ -107,37 +107,33 @@ dircc_err_code dircc_recv(uint32_t data_address, uint32_t csr_address, packet_t*
     DIRCC_LOG_PRINTF("Found %d words to read", altera_avalon_fifo_read_level(csr_address));
     while (altera_avalon_fifo_read_level(csr_address) > 0){
     	data = altera_avalon_fifo_read_fifo(data_address, csr_address);
-    	uint32_t e_data = altera_avalon_fifo_read_other_info(data_address);
-    	DIRCC_LOG_PRINTF("Data %d -> %d", SWAP_UINT32(data), e_data);
-
     	// Pop data until start of packet
         msg_deserializer.as_arr[0] = SWAP_UINT32(data);
 
-        if((e_data & DIRCC_FIFO_START_PACKET) != 0) break;
+        if((altera_avalon_fifo_read_other_info(data_address) & DIRCC_FIFO_START_PACKET) != 0) break;
     }
 
     if (altera_avalon_fifo_read_level(csr_address) == 0) {
         DIRCC_LOG_PRINTF("Error reading packet: no start of packet found");
-    	DIRCC_LOG_PRINTF("Found %d words left to read", altera_avalon_fifo_read_level(csr_address));
         return DIRCC_ERROR_FIFO_EMPTY;
     }
 
     // read the packet data
     for (uint32_t i = 1; i < DIRCC_PACKET_SIZE - 1; i++) {
         data = altera_avalon_fifo_read_fifo(data_address, csr_address);
+        msg_deserializer.as_arr[i] = SWAP_UINT32(data);
         if (altera_avalon_fifo_read_other_info(data_address) & DIRCC_FIFO_END_PACKET) {
             DIRCC_LOG_PRINTF("Error reading packet: Unexpected end of packet at word %d", i);
             return DIRCC_ERROR_MISMATCHED_PACKET;
         }
-        msg_deserializer.as_arr[i] = SWAP_UINT32(data);
     }
 
     data = altera_avalon_fifo_read_fifo(data_address, csr_address);
+    msg_deserializer.as_arr[DIRCC_PACKET_SIZE-1] = SWAP_UINT32(data);
     if ((altera_avalon_fifo_read_other_info(data_address) & DIRCC_FIFO_END_PACKET) == 0) {
         DIRCC_LOG_PRINTF("Error reading packet: no end of packet found");
         return DIRCC_ERROR_MISMATCHED_PACKET;
     }
-    msg_deserializer.as_arr[DIRCC_PACKET_SIZE-1] = SWAP_UINT32(data);
 
     // Copy the data to release ownership
     memcpy(msg, &(msg_deserializer.as_struct), sizeof(msg_deserializer.as_struct));
