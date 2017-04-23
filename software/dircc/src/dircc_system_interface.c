@@ -8,6 +8,8 @@
 #include "dircc_helpers.h"
 #include "dircc_system_interface.h"
 
+#define SWAP_UINT32(x) ((((x) & 0xFF000000) >> 24) | (((x) & 0x00FF0000) >> 8) | (((x) & 0x0000FF00) << 8) | (((x) & 0x000000FF) << 24))
+
 union dircc_msg_u
 {
     packet_t as_struct;
@@ -75,12 +77,12 @@ dircc_err_code dircc_send(uint32_t data_address, uint32_t csr_address, const pac
 
     // Send packet data
     for (uint32_t i = 0; i < DIRCC_PACKET_SIZE - 1; i++)
-        altera_avalon_fifo_write_fifo(data_address, csr_address, msg_serializer.as_arr[i]);
+        altera_avalon_fifo_write_fifo(data_address, csr_address, SWAP_UINT32(msg_serializer.as_arr[i]));
 
     // Set up end of packet
     altera_avalon_fifo_write_other_info(data_address, csr_address, DIRCC_FIFO_END_PACKET);
     // Send final data
-    altera_avalon_fifo_write_fifo(data_address, csr_address, msg_serializer.as_arr[DIRCC_PACKET_SIZE - 1]);
+    altera_avalon_fifo_write_fifo(data_address, csr_address, SWAP_UINT32(msg_serializer.as_arr[DIRCC_PACKET_SIZE - 1]));
 
     DIRCC_LOG_PRINTF("Successfully sent packet of size: %d", sizeof(msg_serializer));
 
@@ -100,25 +102,42 @@ dircc_err_code dircc_recv(uint32_t data_address, uint32_t csr_address, packet_t*
     // TODO: This will discard any data before SOP
 
     union dircc_msg_u msg_deserializer;
+    uint32_t data;
 
-    while (!(altera_avalon_fifo_read_other_info(data_address) & DIRCC_FIFO_START_PACKET)) {
+    DIRCC_LOG_PRINTF("Found %d words to read", altera_avalon_fifo_read_level(csr_address));
+    while (altera_avalon_fifo_read_level(csr_address) > 0){
+    	data = altera_avalon_fifo_read_fifo(data_address, csr_address);
+    	uint32_t e_data = altera_avalon_fifo_read_other_info(data_address);
+    	DIRCC_LOG_PRINTF("Data %d -> %d", SWAP_UINT32(data), e_data);
 
-        msg_deserializer.as_arr[0] = altera_avalon_fifo_read_fifo(data_address, csr_address);
+    	// Pop data until start of packet
+        msg_deserializer.as_arr[0] = SWAP_UINT32(data);
 
-        if (altera_avalon_fifo_read_status(csr_address, ALTERA_AVALON_FIFO_STATUS_E_MSK)) {
-            DIRCC_LOG_PRINTF("Error reading packet: no start of packet found");
-            return DIRCC_ERROR_FIFO_EMPTY;
-        }
+        if((e_data & DIRCC_FIFO_START_PACKET) != 0) break;
+    }
+
+    if (altera_avalon_fifo_read_level(csr_address) == 0) {
+        DIRCC_LOG_PRINTF("Error reading packet: no start of packet found");
+    	DIRCC_LOG_PRINTF("Found %d words left to read", altera_avalon_fifo_read_level(csr_address));
+        return DIRCC_ERROR_FIFO_EMPTY;
     }
 
     // read the packet data
-    for (uint32_t i = 1; i < DIRCC_PACKET_SIZE; i++) {
+    for (uint32_t i = 1; i < DIRCC_PACKET_SIZE - 1; i++) {
+        data = altera_avalon_fifo_read_fifo(data_address, csr_address);
         if (altera_avalon_fifo_read_other_info(data_address) & DIRCC_FIFO_END_PACKET) {
             DIRCC_LOG_PRINTF("Error reading packet: Unexpected end of packet at word %d", i);
             return DIRCC_ERROR_MISMATCHED_PACKET;
         }
-        msg_deserializer.as_arr[i] = altera_avalon_fifo_read_fifo(data_address, csr_address);
+        msg_deserializer.as_arr[i] = SWAP_UINT32(data);
     }
+
+    data = altera_avalon_fifo_read_fifo(data_address, csr_address);
+    if ((altera_avalon_fifo_read_other_info(data_address) & DIRCC_FIFO_END_PACKET) == 0) {
+        DIRCC_LOG_PRINTF("Error reading packet: no end of packet found");
+        return DIRCC_ERROR_MISMATCHED_PACKET;
+    }
+    msg_deserializer.as_arr[DIRCC_PACKET_SIZE-1] = SWAP_UINT32(data);
 
     // Copy the data to release ownership
     memcpy(msg, &(msg_deserializer.as_struct), sizeof(msg_deserializer.as_struct));

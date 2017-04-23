@@ -15,8 +15,19 @@
 #include "dircc_helpers.h"
 #include "dircc_impl.h"
 
+PThreadContext *get_thread_context(int id)
+{
+	for(unsigned i = 0; i < dircc_thread_count; i++)
+	{
+		if ((dircc_thread_contexts + i)->threadId == id)
+			return (PThreadContext *)(dircc_thread_contexts + i);
+	}
+	DIRCC_EXIT_FAILURE("Cannot initialize context for thread %u. No such context available", id);
+
+}
+
 int main() {
-	PThreadContext *ctxt = dircc_thread_contexts + dircc_dev_id();
+	PThreadContext *ctxt = get_thread_context(dircc_dev_id());
 
 	DIRCC_LOG_PRINTF("init");
 
@@ -71,7 +82,7 @@ int main() {
 
 			err = dircc_recv(dircc_fifo_in_data_address, dircc_fifo_in_csr_address, &recvBuffer); // Take the buffer from receive pool
 			if (err != DIRCC_SUCCESS)
-				DIRCC_EXIT_FAILURE("Error sending: 0x%08x", err);
+				DIRCC_EXIT_FAILURE("Error receiving: 0x%08x", err);
 
 			DIRCC_LOG_PRINTF("calling onRecieve, recvBuffer=%p", &recvBuffer);
 			dircc_onReceive(ctxt, (const void *) &recvBuffer); // Decode and dispatch

@@ -16,7 +16,7 @@ dev_state dev0_state = {
 // fanout out
 address_t dev0_out_addresses[] = {
 		{
-				.hw_node = 0,
+				.hw_node = 1,
 				.sw_node = 0,
 				.port = INPUT_INDEX_dev_in,
 				.flag = DIRCC_ADDRESS_FLAG_NONE
@@ -53,7 +53,7 @@ DeviceContext DEVICE_INSTANCE_CONTEXTS_thread0[DEVICE_INSTANCE_COUNT_thread0] =
 
 PThreadContext dircc_thread_contexts[THREAD_COUNT] = {
 		{
-				.threadId = 0,
+				.threadId = 1,
 				.graphProps = &inst0_props,
 				.numVTables =  DEVICE_TYPE_COUNT,
 				.vtables = DEVICE_TYPE_VTABLES,
@@ -62,6 +62,8 @@ PThreadContext dircc_thread_contexts[THREAD_COUNT] = {
 				.lamport = 0
 		}
 };
+
+uint32_t dircc_thread_count = THREAD_COUNT;
 
 uint32_t dircc_fifo_in_csr_address = NODE_0_PROCESSING_FIFO_IN_OUT_CSR_BASE;
 uint32_t dircc_fifo_in_data_address = NODE_0_PROCESSING_FIFO_IN_OUT_BASE;

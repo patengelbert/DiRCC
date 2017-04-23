@@ -58,15 +58,4 @@ typedef uint8_t port_index_t;
 
 #define IDLE_SWEEP_CHUNK_SIZE 32
 
-// Assorted addresses to allow for interface to the hardware
-extern uint32_t dircc_fifo_in_csr_address;
-extern uint32_t dircc_fifo_in_data_address;
-extern uint32_t dircc_fifo_in_depth;
-
-extern uint32_t dircc_fifo_out_csr_address;
-extern uint32_t dircc_fifo_out_data_address;
-extern uint32_t dircc_fifo_out_depth;
-
-extern uint32_t dircc_address_data_address;
-
 #endif /* DIRCC_DEFINES_H_ */
