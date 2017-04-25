@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 16.1 196 (Future versions may contain additional information.) -->
- <!-- 2017.04.23.14:51:48 -->
+ <!-- 2017.04.25.11:34:38 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1492955508</value>
+  <value>1493116477</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -528,7 +528,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1492955508</value>
+   <value>1493116477</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -3351,7 +3351,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1492955508</value>
+   <value>1493116477</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -11656,19 +11656,19 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <assignment>
    <name>embeddedsw.CMacro.READ_DEPTH</name>
-   <value>64</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.READ_THRESHOLD</name>
-   <value>8</value>
+   <value>4</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.WRITE_DEPTH</name>
-   <value>64</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.WRITE_THRESHOLD</name>
-   <value>8</value>
+   <value>4</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -11704,7 +11704,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="readBufferDepth">
    <type>int</type>
-   <value>64</value>
+   <value>8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -11712,7 +11712,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="readIRQThreshold">
    <type>int</type>
-   <value>8</value>
+   <value>4</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -11760,7 +11760,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="writeBufferDepth">
    <type>int</type>
-   <value>64</value>
+   <value>8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -11768,7 +11768,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="writeIRQThreshold">
    <type>int</type>
-   <value>8</value>
+   <value>4</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -14430,7 +14430,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1492955508</value>
+   <value>1493116477</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -16247,7 +16247,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="clockFrequencyKnown">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -21107,9 +21107,17 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CHANNEL_WIDTH">
    <type>int</type>
-   <value>0</value>
+   <value>3</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="maxChannel">
+   <type>int</type>
+   <value>7</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -21207,7 +21215,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="maxChannel">
     <type>int</type>
-    <value>0</value>
+    <value>7</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -21368,7 +21376,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="maxChannel">
     <type>int</type>
-    <value>0</value>
+    <value>7</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -21451,6 +21459,12 @@ parameters are a RESULT of the module parameters. -->
     <direction>Input</direction>
     <width>2</width>
     <role>empty</role>
+   </port>
+   <port>
+    <name>in_channel</name>
+    <direction>Input</direction>
+    <width>3</width>
+    <role>channel</role>
    </port>
   </interface>
   <interface name="address" kind="conduit_end" version="16.1">
