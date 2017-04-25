@@ -16,7 +16,7 @@ union dircc_msg_u
     uint32_t as_arr[DIRCC_PACKET_SIZE];
 };
 
-uint32_t dircc_dev_id()
+uint32_t dircc_thread_id()
 {
 	return *(uint32_t *)dircc_address_data_address;
 }
@@ -49,7 +49,7 @@ void dircc_print_packet(const packet_t *msg)
 	DIRCC_LOG_PRINTF("Dest: %u.%u.%u + %u", msg->dest.hw_node, msg->dest.sw_node, msg->dest.port, msg->dest.flag);
 	DIRCC_LOG_PRINTF("Src: %u.%u.%u + %u", msg->source.hw_node, msg->source.sw_node, msg->source.port, msg->source.flag);
 	DIRCC_LOG_PRINTF("Lamport: %u", msg->lamport);
-	DIRCC_LOG_PRINTF("Data:%s", msg->payload);
+	DIRCC_LOG_PRINTF("Data:%s", (char *)msg->payload);
 }
 
 dircc_err_code dircc_can_send(uint32_t csr_address)

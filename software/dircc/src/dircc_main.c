@@ -17,17 +17,18 @@
 
 PThreadContext *get_thread_context(int id)
 {
+	// Could probably do with a filter function use
 	for(unsigned i = 0; i < dircc_thread_count; i++)
 	{
 		if ((dircc_thread_contexts + i)->threadId == id)
-			return (PThreadContext *)(dircc_thread_contexts + i);
+			return dircc_thread_contexts + i;
 	}
 	DIRCC_EXIT_FAILURE("Cannot initialize context for thread %u. No such context available", id);
 
 }
 
 int main() {
-	PThreadContext *ctxt = get_thread_context(dircc_dev_id());
+	PThreadContext *ctxt = get_thread_context(dircc_thread_id());
 
 	DIRCC_LOG_PRINTF("init");
 
@@ -63,7 +64,7 @@ int main() {
 		bool wantRTC = true;
 		while ((dircc_can_recv(dircc_fifo_in_csr_address) != DIRCC_SUCCESS)
 				&&(!wantToSend || dircc_can_send(dircc_fifo_out_csr_address) != DIRCC_SUCCESS)) {
-			DIRCC_LOG_PRINTF("calling onIdle");
+			// DIRCC_LOG_PRINTF("calling onIdle");
 			if (wantRTC) {
 				wantRTC = dircc_onIdle(ctxt);
 			}

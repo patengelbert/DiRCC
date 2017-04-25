@@ -162,7 +162,7 @@ BUILD_PRE_PROCESS :=
 BUILD_POST_PROCESS :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := ../dircc_system_node_single_bsp
+BSP_ROOT_DIR := ../dircc_system_node_dual_bsp_0
 
 # List of public include directories for -I compiler option (-I added when used).
 

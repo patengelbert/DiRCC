@@ -5,11 +5,16 @@
 #include "dircc_helpers.h"
 #include "dircc_rts.h"
 
+#define MAX(a, b) a > b ? a : b
+
 void dircc_onReceive(PThreadContext *ctxt, const void *message)
 {
     DIRCC_LOG_PRINTF("begin");
 
     const packet_t *packet=(const packet_t*)message;
+
+    // Update Lamport
+    ctxt->lamport = MAX(ctxt->lamport, packet->lamport) + 1;
 
     // Map to the device and its vtable
     unsigned deviceIndex=packet->dest.sw_node;
