@@ -14,6 +14,12 @@ graph_props inst0_props = {
 // fanout out
 address_t dev0_out_addresses[] = {
 		{
+				.hw_node = 0,
+				.sw_node = 0,
+				.port = INPUT_INDEX_dev_in,
+				.flag = DIRCC_ADDRESS_FLAG_NONE
+		},
+		{
 				.hw_node = 1,
 				.sw_node = 0,
 				.port = INPUT_INDEX_dev_in,
@@ -21,16 +27,39 @@ address_t dev0_out_addresses[] = {
 		}
 };
 
+edge_props dev0_in0_props = {
+		.one = 1
+};
+
+edge_state dev0_in0_state = {
+		.received = 0
+};
+
+InputPortBinding dev0_in_bindings[] = {
+		{
+				.source =
+				{
+						.hw_node = 0,
+						.sw_node = 0,
+						.port = INPUT_INDEX_dev_in,
+						.flag = DIRCC_ADDRESS_FLAG_NONE
+				},
+				.edgeProperties = &dev0_in0_props,
+				.edgeState = &dev0_in0_state
+
+		}
+};
+
 InputPortSources dev0_sources[] = {
 		{
-				.numSources = 0,
-				.sourceBindings = 0
+				.numSources = 1,
+				.sourceBindings = dev0_in_bindings
 		}
 };
 
 OutputPortTargets dev0_targets[] = {
 		{
-				.numTargets = 1,
+				.numTargets = 2,
 				.targets = dev0_out_addresses
 		}
 };

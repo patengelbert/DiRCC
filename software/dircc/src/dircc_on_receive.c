@@ -33,33 +33,39 @@ void dircc_onReceive(PThreadContext *ctxt, const void *message)
     const void *eProps=0;
     void *eState=0;
 
-    // For now assume that these are always 0
-    if(port->propertiesSize | port->stateSize){
-    	DIRCC_EXIT_FAILURE("Edge properties and states are not yet supported");
+    if(port->propertiesSize || port->stateSize){
+
         // We have to look up the edge info associated with this edge
+        DIRCC_LOG_PRINTF("finding edge info, src=%08x:%04x:%02x", packet->source.hw_node, packet->source.sw_node, packet->source.port);
 
-    //    DIRCC_LOG_PRINTF("finding edge info, src=%08x:%04x:%02x", packet->source.hw_node, packet->source.sw_node, packet->source.port);
+        const InputPortBinding *edge=NULL;
 
+        for (unsigned i = 0; i < dev->sources[portIndex].numSources; i++)
+        {
+        	edge = dev->sources[portIndex].sourceBindings + i;
+        	if (edge->source.hw_node == packet->source.hw_node
+        			&& edge->source.sw_node == packet->source.sw_node
+        			&& edge->source.port == packet->source.port
+        			)
+        	{
+        		DIRCC_LOG_PRINTF("found edge info %u", i);
+        		break;
+        	}
 
-    //    const InputPortBinding *begin=dev->sources[portIndex].sourceBindings;
-    //    const InputPortBinding *end=dev->sources[portIndex].sourceBindings+dev->sources[portIndex].numSources;
+        }
 
-    //    // This will compile away into pure code, no library stuff
-    //    auto edge=std::lower_bound(begin, end, packet->source, [](const InputPortBinding &a, const address_t &b){
-    //        if(a.source.thread < b.thread) return true;
-    //        if(a.source.thread > b.thread) return false;
-    //        if(a.source.device < b.device) return true;
-    //        if(a.source.device > b.device) return false;
-    //        return a.source.port < b.port;
-    //    });
+#ifndef NDEBUG
+        if(!(edge->source.hw_node==packet->source.hw_node && edge->source.sw_node==packet->source.sw_node && edge->source.port==packet->source.port))
+        {
+        	DIRCC_EXIT_FAILURE("Could not find edge info");
+        }
+#endif
 
-    //    assert(edge->source.device==packet->source.device && edge->source.thread==packet->source.thread && edge->source.port==packet->source.port);
-
-    //    eProps=edge->edgeProperties;
-    //    eState=edge->edgeState;
-    //    // If an edge has properties or state, you must deliver some
-    //    assert(!port->propertiesSize || eProps);
-    //    assert(!port->stateSize || eState);
+        eProps=edge->edgeProperties;
+        eState=edge->edgeState;
+        // If an edge has properties or state, you must deliver some
+        assert(!port->propertiesSize || eProps);
+        assert(!port->stateSize || eState);
     }
 
 

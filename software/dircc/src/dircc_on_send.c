@@ -27,7 +27,7 @@ unsigned dircc_onSend(PThreadContext *ctxt, void *message, uint32_t *numTargets,
     DIRCC_LOG_PRINTF("begin");
 
     *numTargets=0;
-    *pTargets=0;
+    *pTargets=NULL;
     
     DeviceContext *dev = dircc_PopRTS(ctxt);
     if(!dev){
@@ -36,7 +36,8 @@ unsigned dircc_onSend(PThreadContext *ctxt, void *message, uint32_t *numTargets,
     
     const DeviceTypeVTable *vtable=dev->vtable;
 
-    assert(dev->rtsFlags);
+    // Check we want to send and not just compute
+    assert(dev->rtsFlags & ~DIRCC_RTS_FLAGS_COMPUTE);
 
     unsigned portIndex=right_most_one(dev->rtsFlags);
     
@@ -63,6 +64,8 @@ unsigned dircc_onSend(PThreadContext *ctxt, void *message, uint32_t *numTargets,
         ((packet_t*)message)->source.hw_node=ctxt->threadId;
         ((packet_t*)message)->source.sw_node=dev->index;
         ((packet_t*)message)->source.port=portIndex;
+        // TODO: Determine how flags are used
+        ((packet_t*)message)->source.flag = DIRCC_ADDRESS_FLAG_NONE;
         ((packet_t*)message)->lamport=ctxt->lamport;
     }
     

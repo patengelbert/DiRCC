@@ -16,7 +16,7 @@ DeviceState devStates[MAX_VIRTUAL_ADDRESS] __attribute__((section(".shared")));
 void dircc_LoadState(PThreadContext *pCtxt, DeviceContext *dev) {
 	DeviceState *state = devStates + dev->index;
 	state->dirccState=0;
-	state->userState=0;
+	state->userState= dircc_thread_id() + dev->index == 0 ? 0x00010000 : 0;
 
 	dev->state = state;
 	DIRCC_LOG_PRINTF("Using state at address 0x%08x", state);

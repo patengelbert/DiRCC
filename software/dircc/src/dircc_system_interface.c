@@ -17,7 +17,7 @@ inline uint32_t change_endianness(uint32_t x)
 }
 
 #define DIRCC_LOG_PAYLOAD(x) \
-	do{DIRCC_LOG_PRINTF("PAYLOAD: %02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x", x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7]);} while(0)
+	do{DIRCC_LOG_PRINTF("Payload: %02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x", x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7]);} while(0)
 
 union dircc_msg_u
 {

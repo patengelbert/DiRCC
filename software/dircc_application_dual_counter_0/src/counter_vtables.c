@@ -24,12 +24,13 @@ void dev_in_receive_handler(
     const graph_props *gProps,
     const dev_props *dProps,
     dev_state *dState,
-    const void *eProps,
-    void *eState,
+    const edge_props *eProps,
+    edge_state *eState,
     tick_msg *msg
 ){
-    DIRCC_LOG_PRINTF("dev_in: state={%u}, msg={%u}", dState->count, msg->tick);
+    DIRCC_LOG_PRINTF("dev_in: state={%u}, edge={%u,%u}, msg={%u}", dState->count, eProps->one, eState->received, msg->tick);
 
+    eState->received += 1;
     dState->count=msg->tick + 1;
     dState->rts = true;
 
@@ -58,8 +59,8 @@ InputPortVTable INPUT_VTABLES_dev[INPUT_COUNT_dev]={
     {
         (receive_handler_t)dev_in_receive_handler,
         sizeof(packet_t)+sizeof(tick_msg),
-        0,
-        0
+        1,
+        1
     }
 };
 
