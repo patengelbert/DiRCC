@@ -8,7 +8,16 @@
 #include "dircc_helpers.h"
 #include "dircc_system_interface.h"
 
-#define SWAP_UINT32(x) ((((x) & 0xFF000000) >> 24) | (((x) & 0x00FF0000) >> 8) | (((x) & 0x0000FF00) << 8) | (((x) & 0x000000FF) << 24))
+inline uint32_t change_endianness(uint32_t x)
+{
+	return 	(((x & 0xFF000000) >> 24)
+			|((x & 0x00FF0000) >> 8)
+			|((x & 0x0000FF00) << 8)
+			|((x & 0x000000FF) << 24));
+}
+
+#define DIRCC_LOG_PAYLOAD(x) \
+	do{DIRCC_LOG_PRINTF("PAYLOAD: %02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x", x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7]);} while(0)
 
 union dircc_msg_u
 {
@@ -24,18 +33,20 @@ uint32_t dircc_thread_id()
 dircc_err_code dircc_init_fifo(uint32_t csr_address, uint32_t almost_empty, uint32_t almost_full)
 {
     if (altera_avalon_fifo_init(csr_address, 0, almost_empty, almost_full) != ALTERA_AVALON_FIFO_OK) {
-        DIRCC_LOG_PRINTF("Error initializing %u", csr_address);
+        DIRCC_LOG_PRINTF("Error initializing 0x%08x", csr_address);
         return DIRCC_ERROR_INIT_FAILURE;
     }
-    DIRCC_LOG_PRINTF("Initialized FIFO at %u", csr_address);
+    DIRCC_LOG_PRINTF("Initialized FIFO at 0x%08x", csr_address);
     DIRCC_LOG_PRINTF("Almost Empty: %u", almost_empty);
     DIRCC_LOG_PRINTF("Almost Full: %u", almost_full);
     return DIRCC_SUCCESS;
 }
 
+#ifndef NDEBUG
 void dircc_print_status(const uint32_t csr_address)
 {
     DIRCC_LOG_PRINTF("--------------------------------------");
+    DIRCC_LOG_PRINTF("FIFO = 0x%08x", csr_address);
     DIRCC_LOG_PRINTF("LEVEL = %u", altera_avalon_fifo_read_level(csr_address));
     DIRCC_LOG_PRINTF("STATUS = %u", altera_avalon_fifo_read_status(csr_address, ALTERA_AVALON_FIFO_STATUS_ALL));
     DIRCC_LOG_PRINTF("EVENT = %u", altera_avalon_fifo_read_event(csr_address, ALTERA_AVALON_FIFO_EVENT_ALL));
@@ -49,8 +60,13 @@ void dircc_print_packet(const packet_t *msg)
 	DIRCC_LOG_PRINTF("Dest: %u.%u.%u + %u", msg->dest.hw_node, msg->dest.sw_node, msg->dest.port, msg->dest.flag);
 	DIRCC_LOG_PRINTF("Src: %u.%u.%u + %u", msg->source.hw_node, msg->source.sw_node, msg->source.port, msg->source.flag);
 	DIRCC_LOG_PRINTF("Lamport: %u", msg->lamport);
-	DIRCC_LOG_PRINTF("Data:%s", (char *)msg->payload);
+	DIRCC_LOG_PAYLOAD(msg->payload);
 }
+
+#else
+void dircc_print_status(const uint32_t csr_address) ((void)0)
+void dircc_print_packet(const packet_t *msg) ((void)0)
+#endif
 
 dircc_err_code dircc_can_send(uint32_t csr_address)
 {
@@ -77,12 +93,12 @@ dircc_err_code dircc_send(uint32_t data_address, uint32_t csr_address, const pac
 
     // Send packet data
     for (uint32_t i = 0; i < DIRCC_PACKET_SIZE - 1; i++)
-        altera_avalon_fifo_write_fifo(data_address, csr_address, SWAP_UINT32(msg_serializer.as_arr[i]));
+        altera_avalon_fifo_write_fifo(data_address, csr_address, change_endianness(msg_serializer.as_arr[i]));
 
     // Set up end of packet
     altera_avalon_fifo_write_other_info(data_address, csr_address, DIRCC_FIFO_END_PACKET);
     // Send final data
-    altera_avalon_fifo_write_fifo(data_address, csr_address, SWAP_UINT32(msg_serializer.as_arr[DIRCC_PACKET_SIZE - 1]));
+    altera_avalon_fifo_write_fifo(data_address, csr_address, change_endianness(msg_serializer.as_arr[DIRCC_PACKET_SIZE - 1]));
 
     DIRCC_LOG_PRINTF("Successfully sent packet of size: %d", sizeof(msg_serializer));
 
@@ -108,7 +124,7 @@ dircc_err_code dircc_recv(uint32_t data_address, uint32_t csr_address, packet_t*
     while (altera_avalon_fifo_read_level(csr_address) > 0){
     	data = altera_avalon_fifo_read_fifo(data_address, csr_address);
     	// Pop data until start of packet
-        msg_deserializer.as_arr[0] = SWAP_UINT32(data);
+        msg_deserializer.as_arr[0] = change_endianness(data);
 
         if((altera_avalon_fifo_read_other_info(data_address) & DIRCC_FIFO_START_PACKET) != 0) break;
     }
@@ -121,7 +137,7 @@ dircc_err_code dircc_recv(uint32_t data_address, uint32_t csr_address, packet_t*
     // read the packet data
     for (uint32_t i = 1; i < DIRCC_PACKET_SIZE - 1; i++) {
         data = altera_avalon_fifo_read_fifo(data_address, csr_address);
-        msg_deserializer.as_arr[i] = SWAP_UINT32(data);
+        msg_deserializer.as_arr[i] = change_endianness(data);
         if (altera_avalon_fifo_read_other_info(data_address) & DIRCC_FIFO_END_PACKET) {
             DIRCC_LOG_PRINTF("Error reading packet: Unexpected end of packet at word %d", i);
             return DIRCC_ERROR_MISMATCHED_PACKET;
@@ -129,7 +145,7 @@ dircc_err_code dircc_recv(uint32_t data_address, uint32_t csr_address, packet_t*
     }
 
     data = altera_avalon_fifo_read_fifo(data_address, csr_address);
-    msg_deserializer.as_arr[DIRCC_PACKET_SIZE-1] = SWAP_UINT32(data);
+    msg_deserializer.as_arr[DIRCC_PACKET_SIZE-1] = change_endianness(data);
     if ((altera_avalon_fifo_read_other_info(data_address) & DIRCC_FIFO_END_PACKET) == 0) {
         DIRCC_LOG_PRINTF("Error reading packet: no end of packet found");
         return DIRCC_ERROR_MISMATCHED_PACKET;
@@ -151,7 +167,7 @@ dircc_err_code dircc_clr_fifo(uint32_t data_address, uint32_t csr_address)
     while (altera_avalon_fifo_read_level(csr_address) != 0)
         altera_avalon_fifo_read_fifo(data_address, csr_address);
     altera_avalon_fifo_clear_event(csr_address, ALTERA_AVALON_FIFO_EVENT_ALL);
-    DIRCC_LOG_PRINTF("Cleared FIFO at %u", data_address);
+    DIRCC_LOG_PRINTF("Cleared FIFO at 0x%08x", data_address);
     return DIRCC_SUCCESS;
 }
 

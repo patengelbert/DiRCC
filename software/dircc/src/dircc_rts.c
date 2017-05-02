@@ -107,7 +107,7 @@ void dircc_UpdateRTS(PThreadContext *pCtxt, DeviceContext *dev) {
 			);
 
 	// Look at RTC flag
-	uint32_t rtc = flags & 0x80000000ul;
+	uint32_t rtc = flags & DIRCC_RTS_FLAGS_COMPUTE;
 	if (rtc) {
 		pCtxt->rtcChecked = 0; // Force another complete loop
 	}

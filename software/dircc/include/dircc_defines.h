@@ -58,4 +58,6 @@ typedef uint8_t port_index_t;
 
 #define IDLE_SWEEP_CHUNK_SIZE 32
 
+#define DIRCC_RTS_FLAGS_COMPUTE 0x80000000
+
 #endif /* DIRCC_DEFINES_H_ */

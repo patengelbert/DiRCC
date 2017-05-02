@@ -11,7 +11,9 @@ bool dircc_onIdle(PThreadContext *ctxt)
         return false; // We already did a complete loop and there was nothing
     }
 
-    for(unsigned i=0; i<IDLE_SWEEP_CHUNK_SIZE;i++){
+    unsigned unswept = ctxt->numDevices - ctxt->rtcChecked;
+    unsigned sweep_left = IDLE_SWEEP_CHUNK_SIZE < unswept ? IDLE_SWEEP_CHUNK_SIZE : unswept;
+    for(unsigned i=0; i<sweep_left;i++){
         dev=ctxt->devices + ctxt->rtcOffset;
     	DIRCC_LOG_PRINTF("checking device %u", dev->index);
 
@@ -21,13 +23,13 @@ bool dircc_onIdle(PThreadContext *ctxt)
             ctxt->rtcOffset=0;
         }
 
-        if( dev->rtsFlags&0x80000000 ){
+        if( dev->rtsFlags & DIRCC_RTS_FLAGS_COMPUTE){
             DIRCC_LOG_PRINTF("device %u wishes to compute", dev->index);
             break;
         }
     }
 
-    if(dev) {
+    if(!(dev->rtsFlags & DIRCC_RTS_FLAGS_COMPUTE)) {
     	DIRCC_LOG_PRINTF("couldn't find device this time");
         return true; // Didn't find one this time, but there might still be one
     }
@@ -38,7 +40,7 @@ bool dircc_onIdle(PThreadContext *ctxt)
     vtable->computeHandler(
         ctxt->graphProps,
         dev->properties,
-        dev->state
+        &(((DeviceState *)dev->state)->userState)
     );
 
     dircc_UpdateRTS(ctxt, dev);

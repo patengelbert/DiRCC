@@ -24,6 +24,7 @@ PThreadContext *get_thread_context(int id)
 			return dircc_thread_contexts + i;
 	}
 	DIRCC_EXIT_FAILURE("Cannot initialize context for thread %u. No such context available", id);
+	return NULL; // This will never be called
 
 }
 
