@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>16.1</BspVersion>
-        <BspGeneratedTimeStamp>May 2, 2017 4:39:51 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1493739591831</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>May 2, 2017 5:15:42 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1493741742150</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/patrick/Documents/Coursework/DiRCC/software/dircc_system_node_dual_bsp_0</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../fpga/dircc_system_node_dual.sopcinfo</SopcDesignFile>
