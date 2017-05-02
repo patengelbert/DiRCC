@@ -3,7 +3,6 @@
 
 #include <stdint.h>
 #include <stdio.h>
-#include <stdbool.h>
 
 #include "dircc.h"
 
@@ -35,8 +34,8 @@ typedef struct _dev_props{
 } dev_props;
 
 typedef struct _dev_state{
-	uint32_t count;
-	bool rts;
+	uint16_t count;
+	uint16_t rts;
 } dev_state;
 
 PThreadContext dircc_thread_contexts[THREAD_COUNT];

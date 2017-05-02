@@ -51,7 +51,7 @@ unsigned dircc_onSend(PThreadContext *ctxt, void *message, uint32_t *numTargets,
     bool doSend=handler(
         ctxt->graphProps,
         dev->properties, 
-        dev->state,
+        &(((DeviceState *)dev->state)->userState),
         ((packet_t*)message)->payload
     );
     DIRCC_LOG_PRINTF("application handler done, doSend=%d", doSend?1:0);    

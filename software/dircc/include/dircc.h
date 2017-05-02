@@ -25,6 +25,11 @@ typedef struct _packet_t {
 	uint8_t payload[MAX_DATA_LEN];
 } packet_t;
 
+typedef struct _DeviceState {
+	uint32_t dirccState;
+	uint32_t userState;
+} DeviceState;
+
 typedef uint32_t (*ready_to_send_handler_t)(const void *graphProps,
 		const void *devProps, void *devState);
 
@@ -92,9 +97,9 @@ typedef struct _DeviceContext {
 	DeviceTypeVTable *vtable;
 	const void *properties;
 	void *state;
-	unsigned index;
-	OutputPortTargets *targets;  // One entry per output port
-	InputPortSources *sources;   // One entry per input port
+	const unsigned index;
+	const OutputPortTargets *targets;  // One entry per output port
+	const InputPortSources *sources;   // One entry per input port
 
 	uint32_t rtsFlags;
 	bool rtc;

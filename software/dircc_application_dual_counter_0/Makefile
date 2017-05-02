@@ -173,7 +173,7 @@ APP_LDFLAGS_USER :=
 
 # Linker options that have default values assigned later if not
 # assigned here.
-LINKER_SCRIPT :=
+LINKER_SCRIPT := custom_linker.x
 CRT0 :=
 SYS_LIB :=
 

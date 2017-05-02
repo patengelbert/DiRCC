@@ -5,7 +5,7 @@
  version="16.1"
  fabric="QSYS">
  <!-- Format version 16.1 196 (Future versions may contain additional information.) -->
- <!-- 2017.04.25.11:33:27 -->
+ <!-- 2017.05.02.16:21:48 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -57,7 +57,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1493116392</value>
+  <value>1493738494</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -712,7 +712,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1493116392</value>
+   <value>1493738494</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -3535,7 +3535,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1493116392</value>
+   <value>1493738494</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -5145,7 +5145,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="clockFrequencyKnown">
    <type>boolean</type>
-   <value>true</value>
+   <value>false</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -12619,7 +12619,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.NON_DEFAULT_INIT_FILE_ENABLED</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.RAM_BLOCK_TYPE</name>
@@ -12747,9 +12747,9 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="initializationFileName">
    <type>java.lang.String</type>
-   <value>onchip_mem.hex</value>
+   <value>/home/patrick/Documents/Coursework/DiRCC/software/dircc_application_dual_counter_0/mem_init/dircc_system_node_dual_node_0_processing_mem.hex</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -12835,7 +12835,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="useNonDefaultInitFile">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -12845,7 +12845,7 @@ the requested settings for a module instance. -->
    <type>boolean</type>
    <value>false</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>false</visible>
    <valid>true</valid>
   </parameter>
@@ -12958,7 +12958,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_init_file_name">
    <type>java.lang.String</type>
-   <value>dircc_system_node_dual_node_0_processing_mem.hex</value>
+   <value>/home/patrick/Documents/Coursework/DiRCC/software/dircc_application_dual_counter_0/mem_init/dircc_system_node_dual_node_0_processing_mem.hex</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -14614,7 +14614,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1493116392</value>
+   <value>1493738494</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -21792,7 +21792,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1493116392</value>
+   <value>1493738494</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -24615,7 +24615,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1493116392</value>
+   <value>1493738494</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -26225,7 +26225,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="clockFrequencyKnown">
    <type>boolean</type>
-   <value>true</value>
+   <value>false</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -33687,7 +33687,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_CONTENTS_FILE</name>
-   <value>dircc_system_node_dual_node_1_processing_mem</value>
+   <value>dircc_system_node_dual_node_0_processing_mem</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_MEM_CONTENT</name>
@@ -33699,7 +33699,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.NON_DEFAULT_INIT_FILE_ENABLED</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.RAM_BLOCK_TYPE</name>
@@ -33751,7 +33751,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.memoryInfo.MEM_INIT_FILENAME</name>
-   <value>dircc_system_node_dual_node_1_processing_mem</value>
+   <value>dircc_system_node_dual_node_0_processing_mem</value>
   </assignment>
   <assignment>
    <name>postgeneration.simulation.init_file.param_name</name>
@@ -33827,9 +33827,9 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="initializationFileName">
    <type>java.lang.String</type>
-   <value>onchip_mem.hex</value>
+   <value>/home/patrick/Documents/Coursework/DiRCC/software/dircc_application_dual_counter_0/mem_init/dircc_system_node_dual_node_0_processing_mem.hex</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -33915,7 +33915,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="useNonDefaultInitFile">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -33925,7 +33925,7 @@ the requested settings for a module instance. -->
    <type>boolean</type>
    <value>false</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>false</visible>
    <valid>true</valid>
   </parameter>
@@ -34038,7 +34038,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_init_file_name">
    <type>java.lang.String</type>
-   <value>dircc_system_node_dual_node_1_processing_mem.hex</value>
+   <value>/home/patrick/Documents/Coursework/DiRCC/software/dircc_application_dual_counter_0/mem_init/dircc_system_node_dual_node_0_processing_mem.hex</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -35694,7 +35694,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1493116392</value>
+   <value>1493738494</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -48935,5 +48935,5 @@ parameters are a RESULT of the module parameters. -->
   <version>16.1</version>
  </plugin>
  <reportVersion>16.1 196</reportVersion>
- <uniqueIdentifier>7C5CF827F7180000015BA4AC1B0A</uniqueIdentifier>
+ <uniqueIdentifier>7C5CF827F7180000015BC9C0A18F</uniqueIdentifier>
 </EnsembleReport>

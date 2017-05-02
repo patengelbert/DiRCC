@@ -4,7 +4,7 @@
  * Machine generated for CPU 'node_0_processing_cpu' in SOPC Builder design 'dircc_system_node_dual'
  * SOPC Builder design path: ../../fpga/dircc_system_node_dual.sopcinfo
  *
- * Generated: Tue Apr 25 11:40:34 BST 2017
+ * Generated: Tue May 02 16:38:54 BST 2017
  */
 
 /*
@@ -185,7 +185,7 @@
 #define ALT_INCLUDE_INSTRUCTION_RELATED_EXCEPTION_API
 #define ALT_MAX_FD 32
 #define ALT_SYS_CLK NODE_0_PROCESSING_TIMER
-#define ALT_TIMESTAMP_CLK none
+#define ALT_TIMESTAMP_CLK NODE_0_PROCESSING_TIMER
 
 
 /*
@@ -366,7 +366,7 @@
 #define NODE_0_PROCESSING_MEM_IRQ -1
 #define NODE_0_PROCESSING_MEM_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define NODE_0_PROCESSING_MEM_NAME "/dev/node_0_processing_mem"
-#define NODE_0_PROCESSING_MEM_NON_DEFAULT_INIT_FILE_ENABLED 0
+#define NODE_0_PROCESSING_MEM_NON_DEFAULT_INIT_FILE_ENABLED 1
 #define NODE_0_PROCESSING_MEM_RAM_BLOCK_TYPE "AUTO"
 #define NODE_0_PROCESSING_MEM_READ_DURING_WRITE_MODE "OLD_DATA"
 #define NODE_0_PROCESSING_MEM_SINGLE_CLOCK_OP 1

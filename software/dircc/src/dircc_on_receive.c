@@ -68,7 +68,7 @@ void dircc_onReceive(PThreadContext *ctxt, const void *message)
     handler(
         ctxt->graphProps,
         dev->properties,
-        dev->state,
+        &(((DeviceState *)dev->state)->userState),
         eProps,
         eState,
         packet->payload

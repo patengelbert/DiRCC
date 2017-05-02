@@ -1,19 +1,14 @@
 #include "counter.h"
 #include "system.h"
 
-#define DEVICE_INSTANCE_COUNT 1
-#define DEVICE_INSTANCE_COUNT_thread0 DEVICE_INSTANCE_COUNT
-#define DEVICE_INSTANCE_COUNT_thread1 DEVICE_INSTANCE_COUNT
+#define DEVICE_INSTANCE_COUNT 2
+#define DEVICE_INSTANCE_COUNT_thread0 1
+#define DEVICE_INSTANCE_COUNT_thread1 1
 
 // Thread 0
 
 graph_props inst0_props = {
 		.maxTime = 10
-};
-
-dev_state dev0_state = {
-		.count = 0,
-		.rts = true
 };
 
 // fanout out
@@ -45,7 +40,6 @@ DeviceContext DEVICE_INSTANCE_CONTEXTS_thread0[DEVICE_INSTANCE_COUNT_thread0] =
 				{
 						.vtable = DEVICE_TYPE_VTABLES + DEVICE_TYPE_INDEX_dev,
 						.properties = 0, // no properties
-						.state = &dev0_state,
 						.index = 0,
 						.targets = dev0_targets,
 						.sources = dev0_sources,
@@ -59,11 +53,6 @@ DeviceContext DEVICE_INSTANCE_CONTEXTS_thread0[DEVICE_INSTANCE_COUNT_thread0] =
 
 graph_props inst1_props = {
 		.maxTime = 10
-};
-
-dev_state dev1_state = {
-		.count = 0,
-		.rts = false
 };
 
 // fanout out
@@ -95,7 +84,6 @@ DeviceContext DEVICE_INSTANCE_CONTEXTS_thread1[DEVICE_INSTANCE_COUNT_thread1] =
 				{
 						.vtable = DEVICE_TYPE_VTABLES + DEVICE_TYPE_INDEX_dev,
 						.properties = 0, // no properties
-						.state = &dev1_state,
 						.index = 0,
 						.targets = dev1_targets,
 						.sources = dev1_sources,

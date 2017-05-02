@@ -100,8 +100,11 @@ void dircc_UpdateRTS(PThreadContext *pCtxt, DeviceContext *dev) {
 
 	// Find out if the handler wants to send or compute in the future
 	DIRCC_LOG_PRINTF("begin");
-	uint32_t flags = dev->vtable->readyToSendHandler(pCtxt->graphProps,
-			dev->properties, dev->state);
+	uint32_t flags = dev->vtable->readyToSendHandler(
+			pCtxt->graphProps,
+			dev->properties,
+			&(((DeviceState *)dev->state)->userState)
+			);
 
 	// Look at RTC flag
 	uint32_t rtc = flags & 0x80000000ul;

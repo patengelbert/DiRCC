@@ -14,9 +14,9 @@ uint32_t dev_ready_to_send_handler(
     const dev_props *dProps,
     const dev_state *dState
 ){
-    bool stillGoing = dState->count < gProps->maxTime;
+    uint32_t stillGoing = dState->count < gProps->maxTime;
     unsigned v = ((stillGoing && dState->rts) ? OUTPUT_FLAG_dev_out : 0);
-    DIRCC_LOG_PRINTF("dev_ready: state={%u}, ready={%u,%u}", dState->count, stillGoing, v);
+    DIRCC_LOG_PRINTF("dev_ready: state={%u,%u}, ready={%u,%u}", dState->count, dState->rts, stillGoing, v);
     return v;
 }
 

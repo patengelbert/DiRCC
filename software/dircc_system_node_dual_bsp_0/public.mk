@@ -189,7 +189,8 @@ ALT_CPPFLAGS += -DALT_NO_C_PLUS_PLUS
 # devices. If true, adds -DALT_USE_DIRECT_DRIVERS to ALT_CPPFLAGS in public.mk. 
 # The Altera Host and read-only ZIP file systems can't be used if 
 # hal.enable_lightweight_device_driver_api is true. 
-# setting hal.enable_lightweight_device_driver_api is false
+# setting hal.enable_lightweight_device_driver_api is true
+ALT_CPPFLAGS += -DALT_USE_DIRECT_DRIVERS
 
 # Adds code to emulate multiply and divide instructions in case they are 
 # executed but aren't present in the CPU. Normally this isn't required because 
@@ -243,7 +244,8 @@ ALT_CPPFLAGS += -DSMALL_C_LIB
 # application .elf file (and BSP it is linked against) corresponds to the 
 # hardware design on the target. If false, adds --accept-bad-sysid to 
 # SOPC_SYSID_FLAG in public.mk. none 
-# setting hal.enable_sopc_sysid_check is true
+# setting hal.enable_sopc_sysid_check is false
+SOPC_SYSID_FLAG += --accept-bad-sysid
 
 # C/C++ compiler to generate (do not generate) GP-relative accesses. 'none' 
 # tells the compilter not to generate GP-relative accesses. 'local' will 

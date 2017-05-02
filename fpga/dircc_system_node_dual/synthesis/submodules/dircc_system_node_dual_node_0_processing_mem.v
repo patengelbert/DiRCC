@@ -43,7 +43,7 @@ module dircc_system_node_dual_node_0_processing_mem (
                                                     )
 ;
 
-  parameter INIT_FILE = "dircc_system_node_dual_node_0_processing_mem.hex";
+  parameter INIT_FILE = "/home/patrick/Documents/Coursework/DiRCC/software/dircc_application_dual_counter_0/mem_init/dircc_system_node_dual_node_0_processing_mem.hex";
 
 
   output  [ 31: 0] readdata;
