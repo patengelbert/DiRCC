@@ -13,7 +13,7 @@
 
 typedef struct _address {
 	uint32_t hw_node;    // hardware
-	uint16_t sw_node;    // software
+	uint8_t sw_node;    // software
 	uint8_t port;       // software
 	uint8_t flag; //=0; // software
 } address_t;

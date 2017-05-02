@@ -45,7 +45,7 @@ typedef uint8_t port_index_t;
 #define  DIRCC_ERROR_INTERNAL_ERROR 0x00000020
 #define  DIRCC_ERROR_NOT_IMPLEMENTED 0x80000000
 
-#define MAX_DATA_LEN 8
+#define MAX_DATA_LEN 10
 #define DIRCC_PACKET_SIZE sizeof(packet_t) / sizeof(uint32_t) // 7 32 bit words long
 
 #define MAX_INPUT_PORTS UINT8_MAX
