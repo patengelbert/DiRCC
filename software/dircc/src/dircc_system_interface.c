@@ -16,33 +16,32 @@ inline uint32_t change_endianness(uint32_t x)
 			|((x & 0x000000FF) << 24));
 }
 
-#define DIRCC_LOG_PAYLOAD(x) \
-	do{DIRCC_LOG_PRINTF("Payload: %02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x", x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7]);} while(0)
-
 union dircc_msg_u
 {
     packet_t as_struct;
     uint32_t as_arr[DIRCC_PACKET_SIZE];
 };
 
-uint32_t dircc_thread_id()
-{
-	return *(uint32_t *)dircc_address_data_address;
-}
-
-dircc_err_code dircc_init_fifo(uint32_t csr_address, uint32_t almost_empty, uint32_t almost_full)
-{
-    if (altera_avalon_fifo_init(csr_address, 0, almost_empty, almost_full) != ALTERA_AVALON_FIFO_OK) {
-        DIRCC_LOG_PRINTF("Error initializing 0x%08x", csr_address);
-        return DIRCC_ERROR_INIT_FAILURE;
-    }
-    DIRCC_LOG_PRINTF("Initialized FIFO at 0x%08x", csr_address);
-    DIRCC_LOG_PRINTF("Almost Empty: %u", almost_empty);
-    DIRCC_LOG_PRINTF("Almost Full: %u", almost_full);
-    return DIRCC_SUCCESS;
-}
-
 #ifndef NDEBUG
+
+void dircc_log_payload(const uint8_t *x)
+{
+		fprintf(stderr, "[%s:%d] dircc_node %lu: %s -> Payload: ", __FILENAME__, __LINE__, dircc_thread_id(),  __FUNCTION__);
+		for(unsigned i=0; i < MAX_DATA_LEN-1; i++)
+		{
+			fprintf(stderr, "%02x:", x[i]);
+		}
+
+		if(MAX_DATA_LEN > 0)
+		{
+			fprintf(stderr, "%02x", x[MAX_DATA_LEN-1]);
+		}
+		fprintf(stderr, "\n");
+}
+
+#define DIRCC_LOG_PAYLOAD(x) dircc_log_payload(x)
+
+
 void dircc_print_status(const uint32_t csr_address)
 {
     DIRCC_LOG_PRINTF("--------------------------------------");
@@ -64,9 +63,32 @@ void dircc_print_packet(const packet_t *msg)
 }
 
 #else
+
+#define DIRCC_LOG_PAYLOAD(x) do { } while(0)
+void dircc_log_payload(const uint8_t *x) ((void)0)
 void dircc_print_status(const uint32_t csr_address) ((void)0)
 void dircc_print_packet(const packet_t *msg) ((void)0)
 #endif
+
+
+uint32_t dircc_thread_id()
+{
+	return *(uint32_t *)dircc_address_data_address;
+}
+
+dircc_err_code dircc_init_fifo(uint32_t csr_address, uint32_t almost_empty, uint32_t almost_full)
+{
+    if (altera_avalon_fifo_init(csr_address, 0, almost_empty, almost_full) != ALTERA_AVALON_FIFO_OK) {
+        DIRCC_LOG_PRINTF("Error initializing 0x%08x", csr_address);
+        return DIRCC_ERROR_INIT_FAILURE;
+    }
+    DIRCC_LOG_PRINTF("Initialized FIFO at 0x%08x", csr_address);
+    DIRCC_LOG_PRINTF("Almost Empty: %u", almost_empty);
+    DIRCC_LOG_PRINTF("Almost Full: %u", almost_full);
+    return DIRCC_SUCCESS;
+}
+
+
 
 dircc_err_code dircc_can_send(uint32_t csr_address)
 {
