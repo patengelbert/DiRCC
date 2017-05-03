@@ -41,7 +41,7 @@ InputPortBinding dev0_in_bindings[] = {
 				{
 						.hw_node = 0,
 						.sw_node = 0,
-						.port = INPUT_INDEX_dev_in,
+						.port = OUTPUT_INDEX_dev_out,
 						.flag = DIRCC_ADDRESS_FLAG_NONE
 				},
 				.edgeProperties = &dev0_in0_props,
@@ -97,7 +97,7 @@ address_t dev1_out_addresses[] = {
 InputPortSources dev1_sources[] = {
 		{
 				.numSources = 0,
-				.sourceBindings = 0
+				.sourceBindings = DIRCC_BINDING_NONE
 		}
 };
 

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'node_0_processing_cpu' in SOPC Builder design 'dircc_system_node_dual'
  * SOPC Builder design path: ../../fpga/dircc_system_node_dual.sopcinfo
  *
- * Generated: Tue May 02 16:38:54 BST 2017
+ * Generated: Tue May 02 20:14:52 BST 2017
  */
 
 /*
@@ -72,7 +72,7 @@
 #define ALT_CPU_DCACHE_LINE_SIZE 0
 #define ALT_CPU_DCACHE_LINE_SIZE_LOG2 0
 #define ALT_CPU_DCACHE_SIZE 0
-#define ALT_CPU_EXCEPTION_ADDR 0x00010020
+#define ALT_CPU_EXCEPTION_ADDR 0x00011820
 #define ALT_CPU_FLASH_ACCELERATOR_LINES 0
 #define ALT_CPU_FLASH_ACCELERATOR_LINE_SIZE 0
 #define ALT_CPU_FLUSHDA_SUPPORTED
@@ -90,7 +90,7 @@
 #define ALT_CPU_INST_ADDR_WIDTH 0x12
 #define ALT_CPU_NAME "node_0_processing_cpu"
 #define ALT_CPU_OCI_VERSION 1
-#define ALT_CPU_RESET_ADDR 0x00010000
+#define ALT_CPU_RESET_ADDR 0x00011800
 
 
 /*
@@ -109,7 +109,7 @@
 #define NIOS2_DCACHE_LINE_SIZE 0
 #define NIOS2_DCACHE_LINE_SIZE_LOG2 0
 #define NIOS2_DCACHE_SIZE 0
-#define NIOS2_EXCEPTION_ADDR 0x00010020
+#define NIOS2_EXCEPTION_ADDR 0x00011820
 #define NIOS2_FLASH_ACCELERATOR_LINES 0
 #define NIOS2_FLASH_ACCELERATOR_LINE_SIZE 0
 #define NIOS2_FLUSHDA_SUPPORTED
@@ -125,7 +125,7 @@
 #define NIOS2_ICACHE_SIZE 0
 #define NIOS2_INST_ADDR_WIDTH 0x12
 #define NIOS2_OCI_VERSION 1
-#define NIOS2_RESET_ADDR 0x00010000
+#define NIOS2_RESET_ADDR 0x00011800
 
 
 /*

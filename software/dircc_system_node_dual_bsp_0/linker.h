@@ -4,7 +4,7 @@
  * Machine generated for CPU 'node_0_processing_cpu' in SOPC Builder design 'dircc_system_node_dual'
  * SOPC Builder design path: ../../fpga/dircc_system_node_dual.sopcinfo
  *
- * Generated: Tue May 02 12:22:16 BST 2017
+ * Generated: Tue May 02 20:14:52 BST 2017
  */
 
 /*
@@ -65,12 +65,14 @@
  *
  */
 
-#define NODE_0_PROCESSING_MEM_REGION_BASE 0x10020
-#define NODE_0_PROCESSING_MEM_REGION_SPAN 38888
-#define RESET_REGION_BASE 0x10000
+#define NODE_0_PROCESSING_MEM_REGION_BASE 0x11820
+#define NODE_0_PROCESSING_MEM_REGION_SPAN 34784
+#define RESET_REGION_BASE 0x11800
 #define RESET_REGION_SPAN 32
-#define SHARED_HPS_REGION_BASE 0x19808
-#define SHARED_HPS_REGION_SPAN 2040
+#define SHARED_DEV_DATA_REGION_BASE 0x10000
+#define SHARED_DEV_DATA_REGION_SPAN 3072
+#define SHARED_EDGE_DATA_REGION_BASE 0x10c00
+#define SHARED_EDGE_DATA_REGION_SPAN 3072
 
 
 /*

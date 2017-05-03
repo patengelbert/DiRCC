@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 16.1 196 (Future versions may contain additional information.) -->
- <!-- 2017.05.02.16:24:46 -->
+ <!-- 2017.05.03.13:58:13 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1493738686</value>
+  <value>1493816293</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -590,7 +590,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1493738686</value>
+   <value>1493816293</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -2898,7 +2898,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.EXCEPTION_ADDR</name>
-   <value>0x00010020</value>
+   <value>0x00011820</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.FLASH_ACCELERATOR_LINES</name>
@@ -2962,7 +2962,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.RESET_ADDR</name>
-   <value>0x00010000</value>
+   <value>0x00011800</value>
   </assignment>
   <assignment>
    <name>embeddedsw.configuration.DataCacheVictimBufImpl</name>
@@ -2986,7 +2986,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.configuration.exceptionOffset</name>
-   <value>32</value>
+   <value>6176</value>
   </assignment>
   <assignment>
    <name>embeddedsw.configuration.exceptionSlave</name>
@@ -2994,7 +2994,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.configuration.resetOffset</name>
-   <value>0</value>
+   <value>6144</value>
   </assignment>
   <assignment>
    <name>embeddedsw.configuration.resetSlave</name>
@@ -3014,7 +3014,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,exception-addr</name>
-   <value>0x00010020</value>
+   <value>0x00011820</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,implementation</name>
@@ -3022,7 +3022,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,reset-addr</name>
-   <value>0x00010000</value>
+   <value>0x00011800</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.clock-frequency</name>
@@ -3410,7 +3410,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="resetOffset">
    <type>int</type>
-   <value>0</value>
+   <value>6144</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -3418,7 +3418,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="exceptionOffset">
    <type>int</type>
-   <value>32</value>
+   <value>6176</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4178,7 +4178,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="resetAbsoluteAddr">
    <type>int</type>
-   <value>65536</value>
+   <value>71680</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4186,7 +4186,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="exceptionAbsoluteAddr">
    <type>int</type>
-   <value>65568</value>
+   <value>71712</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>true</visible>

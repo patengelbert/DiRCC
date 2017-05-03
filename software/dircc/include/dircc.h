@@ -27,8 +27,16 @@ typedef struct _packet_t {
 
 typedef struct _DeviceState {
 	uint32_t dirccState;
-	uint32_t userState;
+	uint8_t userState[MAX_DEVICE_USER_STATE_BYTES];
 } DeviceState;
+
+typedef struct _EdgeState {
+	uint32_t src_hw_node;
+	uint8_t dest_sw_node;
+	uint8_t src_sw_node;
+	uint8_t src_port;
+	uint8_t userState[MAX_EDGE_USER_STATE_BYTES];
+} EdgeState;
 
 typedef uint32_t (*ready_to_send_handler_t)(const void *graphProps,
 		const void *devProps, void *devState);
@@ -87,7 +95,7 @@ typedef struct _InputPortBinding {
  the destination properties into the message?
  */
 typedef struct _InputPortSources {
-	unsigned numSources;  // This will be null if the input has properties/state
+	unsigned numSources;  // This will be null if the input has no properties/state
 	InputPortBinding *sourceBindings; // This will be null if the input had no properties or state
 } InputPortSources;
 
@@ -97,7 +105,7 @@ typedef struct _DeviceContext {
 	DeviceTypeVTable *vtable;
 	const void *properties;
 	void *state;
-	const unsigned index;
+	const uint8_t index;
 	const OutputPortTargets *targets;  // One entry per output port
 	const InputPortSources *sources;   // One entry per input port
 
@@ -117,14 +125,14 @@ typedef struct _DeviceContext {
 typedef struct _PThreadContext {
 	// Read-only parts
 
-	unsigned threadId;
+	uint32_t threadId;
 
 	const void *graphProps; // Application-specific graph properties (read-only)
 
 	unsigned numVTables;      // Number of distinct device types available
 	DeviceTypeVTable *vtables; // VTable structure for each device type (read-only, could be shared with other pthread contexts)
 
-	unsigned numDevices;    // Number of devices this thread is managing
+	uint32_t numDevices;    // Number of devices this thread is managing
 	DeviceContext *devices; // Fixed-size contexs for each device (must be private to thread)
 
 	// Mutable parts

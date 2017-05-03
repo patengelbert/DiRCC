@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>16.1</BspVersion>
-        <BspGeneratedTimeStamp>May 2, 2017 5:15:42 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1493741742150</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>/home/patrick/Documents/Coursework/DiRCC/software/dircc_system_node_dual_bsp_0</BspGeneratedLocation>
-        <BspSettingsFile>settings.bsp</BspSettingsFile>
+        <BspGeneratedTimeStamp>03-May-2017 14:02:47</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1493816567817</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>./</BspGeneratedLocation>
+        <BspSettingsFile>../dircc_system_node_dual_bsp_0/settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../fpga/dircc_system_node_dual.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>node_0_processing_cpu</Cpu>
@@ -899,28 +899,36 @@
                 <Group xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </Setting>
         <LinkerRegion>
-                <regionName>reset</regionName>
+                <regionName>shared_dev_data</regionName>
                 <memoryName>node_0_processing_mem</memoryName>
                 <offset>0</offset>
-                <size>32</size>
+                <size>3072</size>
                 <baseAddress>0x10000</baseAddress>
-                <addressRange>0x00010000 - 0x0001001F</addressRange>
+                <addressRange>0x00010000 - 0x00010BFF</addressRange>
+        </LinkerRegion>
+        <LinkerRegion>
+                <regionName>shared_edge_data</regionName>
+                <memoryName>node_0_processing_mem</memoryName>
+                <offset>3072</offset>
+                <size>3072</size>
+                <baseAddress>0x10c00</baseAddress>
+                <addressRange>0x00010C00 - 0x000117FF</addressRange>
+        </LinkerRegion>
+        <LinkerRegion>
+                <regionName>reset</regionName>
+                <memoryName>node_0_processing_mem</memoryName>
+                <offset>6144</offset>
+                <size>32</size>
+                <baseAddress>0x11800</baseAddress>
+                <addressRange>0x00011800 - 0x0001181F</addressRange>
         </LinkerRegion>
         <LinkerRegion>
                 <regionName>node_0_processing_mem</regionName>
                 <memoryName>node_0_processing_mem</memoryName>
-                <offset>32</offset>
-                <size>38888</size>
-                <baseAddress>0x10020</baseAddress>
-                <addressRange>0x00010020 - 0x00019807</addressRange>
-        </LinkerRegion>
-        <LinkerRegion>
-                <regionName>shared_hps</regionName>
-                <memoryName>node_0_processing_mem</memoryName>
-                <offset>38920</offset>
-                <size>2040</size>
-                <baseAddress>0x19808</baseAddress>
-                <addressRange>0x00019808 - 0x00019FFF</addressRange>
+                <offset>6176</offset>
+                <size>34784</size>
+                <baseAddress>0x11820</baseAddress>
+                <addressRange>0x00011820 - 0x00019FFF</addressRange>
         </LinkerRegion>
         <MemoryMap>
                 <slaveDescriptor>node_0_processing_fifo_in_out_csr</slaveDescriptor>
@@ -995,7 +1003,11 @@
                 <regionName>node_0_processing_mem</regionName>
         </LinkerSection>
         <LinkerSection>
-                <sectionName>.shared</sectionName>
-                <regionName>shared_hps</regionName>
+                <sectionName>.shared_dev_data</sectionName>
+                <regionName>shared_dev_data</regionName>
+        </LinkerSection>
+        <LinkerSection>
+                <sectionName>.shared_edge_data</sectionName>
+                <regionName>shared_edge_data</regionName>
         </LinkerSection>
 </sch:Settings>

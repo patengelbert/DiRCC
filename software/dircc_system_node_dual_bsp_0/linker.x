@@ -4,7 +4,7 @@
  * Machine generated for CPU 'node_0_processing_cpu' in SOPC Builder design 'dircc_system_node_dual'
  * SOPC Builder design path: ../../fpga/dircc_system_node_dual.sopcinfo
  *
- * Generated: Tue May 02 12:57:40 BST 2017
+ * Generated: Wed May 03 12:45:30 BST 2017
  */
 
 /*
@@ -50,9 +50,10 @@
 
 MEMORY
 {
-    reset : ORIGIN = 0x10000, LENGTH = 32
-    node_0_processing_mem : ORIGIN = 0x10020, LENGTH = 38888
-    shared_hps : ORIGIN = 0x19808, LENGTH = 2040
+    shared_dev_data : ORIGIN = 0x10000, LENGTH = 3072
+    shared_edge_data : ORIGIN = 0x10c00, LENGTH = 3072
+    reset : ORIGIN = 0x11800, LENGTH = 32
+    node_0_processing_mem : ORIGIN = 0x11820, LENGTH = 34784
 }
 
 /* Define symbols for each memory base-address */
@@ -116,13 +117,21 @@ SECTIONS
 
     PROVIDE (__flash_exceptions_start = LOADADDR(.exceptions));
 
-    .shared :
+    .shared_dev_data :
     {
-        PROVIDE (_alt_partition_shared_start = ABSOLUTE(.));
-        *(.shared .shared.*)
+        PROVIDE (_alt_partition_shared_dev_data_start = ABSOLUTE(.));
+        *(.shared_dev_data .shared_dev_data.*)
         . = ALIGN(4);
-        PROVIDE (_alt_partition_shared_end = ABSOLUTE(.));
-    } > shared_hps
+        PROVIDE (_alt_partition_shared_dev_data_end = ABSOLUTE(.));
+    } > shared_dev_data
+
+    .shared_edge_data :
+    {
+        PROVIDE (_alt_partition_shared_edge_data_start = ABSOLUTE(.));
+        *(.shared_edge_data .shared_edge_data.*)
+        . = ALIGN(4);
+        PROVIDE (_alt_partition_shared_edge_data_end = ABSOLUTE(.));
+    } > shared_edge_data
 
     .text :
     {
@@ -383,7 +392,7 @@ SECTIONS
 /*
  * Don't override this, override the __alt_stack_* symbols instead.
  */
-__alt_data_end = 0x19808;
+__alt_data_end = 0x1a000;
 
 /*
  * The next two symbols define the location of the default stack.  You can
@@ -399,4 +408,4 @@ PROVIDE( __alt_stack_limit   = __alt_stack_base );
  * Override this symbol to put the heap in a different memory.
  */
 PROVIDE( __alt_heap_start    = end );
-PROVIDE( __alt_heap_limit    = 0x19808 );
+PROVIDE( __alt_heap_limit    = 0x1a000 );
