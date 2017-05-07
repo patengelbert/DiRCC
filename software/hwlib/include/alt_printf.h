@@ -55,6 +55,14 @@ static __inline int null_printf(const char *format, ...){return 0;}
 static __inline int null_vfprintf(FILE *stream, const char *format, va_list args){return 0;}
 
 #ifdef PRINTF_HOST
+  /*
+   * Override printf to fix bug if no parameter is passed causing it to not be executed
+   */
+  #define printf(fmt, ...) 									\
+	_Pragma("GCC diagnostic ignored \"-Wformat\"")			\
+	do { printf("%s" fmt, "", ##__VA_ARGS__); } while(0)	\
+	_Pragma("GCC diagnostic warning \"-Wformat\"")
+
   #define ALT_PRINTF printf
   int snprintf(char *to, size_t n, const char *format, ...);
 #else 
