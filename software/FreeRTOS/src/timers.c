@@ -80,8 +80,6 @@ task.h is included from an application file. */
 #include "queue.h"
 #include "timers.h"
 
-#include <alt_printf.h>
-
 #if ( INCLUDE_xTimerPendFunctionCall == 1 ) && ( configUSE_TIMERS == 0 )
 	#error configUSE_TIMERS must be set to 1 to make the xTimerPendFunctionCall() function available.
 #endif
@@ -544,8 +542,6 @@ BaseType_t xListWasEmpty;
 
 	/* Just to avoid compiler warnings. */
 	( void ) pvParameters;
-
-	ALT_PRINTF("[timers.c] prvTimerTask starts executing..\r\n");
 
 	#if( configUSE_DAEMON_TASK_STARTUP_HOOK == 1 )
 	{

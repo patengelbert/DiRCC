@@ -658,6 +658,14 @@ extern "C" {
 	#define traceTASK_NOTIFY_GIVE_FROM_ISR()
 #endif
 
+#ifndef configSETUP_PROCESSING_LED
+	#define configSETUP_PROCESSING_LED()
+#endif
+
+#ifndef traceSET_PROCESSING_LED
+	#define  traceSET_PROCESSING_LED( xValue )
+#endif
+
 #ifndef configGENERATE_RUN_TIME_STATS
 	#define configGENERATE_RUN_TIME_STATS 0
 #endif

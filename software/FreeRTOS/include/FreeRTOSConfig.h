@@ -131,8 +131,8 @@ uint8_t ucHeap[ configTOTAL_HEAP_SIZE ];
 #define configUSE_TICKLESS_IDLE					0
 #define configTICK_RATE_HZ						( ( TickType_t ) 1000 )//( ( TickType_t ) 1000 )
 #define configUSE_PREEMPTION					1
-#define configUSE_IDLE_HOOK						1
-#define configUSE_TICK_HOOK						1
+#define configUSE_IDLE_HOOK						0
+#define configUSE_TICK_HOOK						0
 #define configMAX_PRIORITIES					( 7 )
 #define configMINIMAL_STACK_SIZE				( ( unsigned short ) 200 )
 #define configTOTAL_HEAP_SIZE					( 50 * 1024 )//50 * 1024
@@ -233,7 +233,13 @@ void vConfigureTickInterrupt( void );
 #define configSETUP_TICK_INTERRUPT() vConfigureTickInterrupt();
 
 void vClearTickInterrupt( void );
-#define configCLEAR_TICK_INTERRUPT() alt_gpt_int_clear_pending( ALT_GPT_CPU_PRIVATE_TMR );
+#define configCLEAR_TICK_INTERRUPT() alt_gpt_int_if_pending_clear( ALT_GPT_CPU_PRIVATE_TMR );
+
+void vConfigureProcessingLED( void );
+#define configSETUP_PROCESSING_LED() vConfigureProcessingLED();
+
+void vTraceSetProcessingLED( uint32_t xValue );
+#define traceSET_PROCESSING_LED( xValue ) vTraceSetProcessingLED( xValue );
 
 /* The following constant describe the hardware, and are correct for the
 Cyclone V SoC. */
@@ -245,8 +251,6 @@ Cyclone V SoC. */
 //#define configINTERRUPT_CONTROLLER_CPU_INTERFACE_OFFSET ( 0x1000 )
 //The number of unique priorities that can be specified in the GIC:
 #define configUNIQUE_INTERRUPT_PRIORITIES				32
-
-void vApplicationSetLED( unsigned long xValue );
 
 #endif /* FREERTOS_CONFIG_H */
 

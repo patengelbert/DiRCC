@@ -77,6 +77,7 @@
 
 #include "port_asm.h"
 
+
 #ifndef configINTERRUPT_CONTROLLER_BASE_ADDRESS
 	#error configINTERRUPT_CONTROLLER_BASE_ADDRESS must be defined.  See http://www.freertos.org/Using-FreeRTOS-on-Cortex-A-Embedded-Processors.html
 #endif
@@ -427,6 +428,9 @@ uint32_t ulAPSR;
 			executing. */
 			portCPU_IRQ_DISABLE();
 
+			/* Setup the processing LED */
+			configSETUP_PROCESSING_LED();
+
 			/* Start the timer that generates the tick ISR. */
 			configSETUP_TICK_INTERRUPT();
 
@@ -503,11 +507,11 @@ void FreeRTOS_Tick_Handler( void )
 	so there is no need to save and restore the current mask value.  It is
 	necessary to turn off interrupts in the CPU itself while the ICCPMR is being
 	updated. */
-//	ALT_PRINTF("Tick_Handler\n");
-	if((cnt>>5)&1){
-		vApplicationSetLED(0x1);
+
+	if(cnt & 0xA0){
+		traceSET_PROCESSING_LED(0x1);
 	}else{
-		vApplicationSetLED(0x0);
+		traceSET_PROCESSING_LED(0x0);
 	}
 	cnt++;
 

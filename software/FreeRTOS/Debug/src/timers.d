@@ -16,8 +16,7 @@ src/timers.d: ../src/timers.c \
  /home/patrick/Documents/Coursework/DiRCC/software/FreeRTOS/include/list.h \
  /home/patrick/Documents/Coursework/DiRCC/software/FreeRTOS/include/queue.h \
  /home/patrick/Documents/Coursework/DiRCC/software/FreeRTOS/include/timers.h \
- /home/patrick/Documents/Coursework/DiRCC/software/FreeRTOS/include/task.h \
- /home/patrick/Documents/Coursework/DiRCC/software/hwlib/include/alt_printf.h
+ /home/patrick/Documents/Coursework/DiRCC/software/FreeRTOS/include/task.h
 
 /home/patrick/Documents/Coursework/DiRCC/software/FreeRTOS/include/FreeRTOS.h:
 
@@ -54,5 +53,3 @@ src/timers.d: ../src/timers.c \
 /home/patrick/Documents/Coursework/DiRCC/software/FreeRTOS/include/timers.h:
 
 /home/patrick/Documents/Coursework/DiRCC/software/FreeRTOS/include/task.h:
-
-/home/patrick/Documents/Coursework/DiRCC/software/hwlib/include/alt_printf.h:
