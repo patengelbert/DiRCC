@@ -28,6 +28,7 @@ build/*
 *.d
 software/**/.settings
 software/**/.force_*
+**/*.config
 *.bak
 *.BAK.*
 *.*~
@@ -40,6 +41,7 @@ software/**/.force_*
 *.dat
 *.hex
 *.ver
+*.bin
 
 GPATH
 GTAGS
