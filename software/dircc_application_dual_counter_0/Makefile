@@ -178,7 +178,7 @@ CRT0 :=
 SYS_LIB :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := ../dircc_system_node_dual_bsp_0
+BSP_ROOT_DIR := ../dircc_system_node_dual_hps_bsp
 
 # List of application specific include directories, library directories and library names
 APP_INCLUDE_DIRS += ../dircc/include

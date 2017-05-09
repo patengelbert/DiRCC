@@ -4,12 +4,21 @@
  kind="dircc_system_node_dual"
  version="1.0"
  fabric="QSYS">
+<<<<<<< Updated upstream
  <!-- Format version 16.1 196 (Future versions may contain additional information.) -->
  <!-- 2017.05.03.13:57:47 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
   <value>1493816267</value>
+=======
+ <!-- Format version 16.1 203 (Future versions may contain additional information.) -->
+ <!-- 2017.05.03.20:12:09 -->
+ <!-- A collection of modules and connections -->
+ <parameter name="AUTO_GENERATION_ID">
+  <type>java.lang.Integer</type>
+  <value>1493838728</value>
+>>>>>>> Stashed changes
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -654,7 +663,11 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
+<<<<<<< Updated upstream
    <value>1493816267</value>
+=======
+   <value>1493838728</value>
+>>>>>>> Stashed changes
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -3477,7 +3490,11 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
+<<<<<<< Updated upstream
    <value>1493816267</value>
+=======
+   <value>1493838728</value>
+>>>>>>> Stashed changes
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -14556,7 +14573,11 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
+<<<<<<< Updated upstream
    <value>1493816267</value>
+=======
+   <value>1493838728</value>
+>>>>>>> Stashed changes
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -21734,7 +21755,11 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
+<<<<<<< Updated upstream
    <value>1493816267</value>
+=======
+   <value>1493838728</value>
+>>>>>>> Stashed changes
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -24557,7 +24582,11 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
+<<<<<<< Updated upstream
    <value>1493816267</value>
+=======
+   <value>1493838728</value>
+>>>>>>> Stashed changes
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -35636,7 +35665,11 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
+<<<<<<< Updated upstream
    <value>1493816267</value>
+=======
+   <value>1493838728</value>
+>>>>>>> Stashed changes
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -48423,6 +48456,6 @@ parameters are a RESULT of the module parameters. -->
   <displayName>Conduit Connection</displayName>
   <version>16.1</version>
  </plugin>
- <reportVersion>16.1 196</reportVersion>
+ <reportVersion>16.1 203</reportVersion>
  <uniqueIdentifier></uniqueIdentifier>
 </EnsembleReport>
