@@ -24,8 +24,8 @@ build/*
 # Working files
 *.swp
 *.a
-software/**/.cproject
-software/**/.project
+*.o
+*.d
 software/**/.settings
 software/**/.force_*
 *.bak
