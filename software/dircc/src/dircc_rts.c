@@ -5,7 +5,6 @@
  *      Author: patrick
  */
 
-#include <assert.h>
 #include "dircc_defines.h"
 #include "dircc_rts.h"
 #include "dircc_helpers.h"
@@ -14,17 +13,17 @@
 static void rts_sanity(PThreadContext *pCtxt) {
 	// Checks that linked list is valid
 	if (pCtxt->rtsHead != 0) {
-	    assert(pCtxt->rtsTail != 0);
+	    DIRCC_ASSERT(pCtxt, pCtxt->rtsTail != 0);
 
 	    DeviceContext *curr = pCtxt->rtsHead;
 	    while (curr)
 	    {
-		assert((curr->prev == 0 && pCtxt->rtsHead == curr) || curr->prev->next == curr);
-		assert((curr->next == 0 && pCtxt->rtsTail == curr) || curr->next->prev == curr);
-		curr = curr->next;
+	    	DIRCC_ASSERT(pCtxt, (curr->prev == 0 && pCtxt->rtsHead == curr) || curr->prev->next == curr);
+	    	DIRCC_ASSERT(pCtxt, (curr->next == 0 && pCtxt->rtsTail == curr) || curr->next->prev == curr);
+	    	curr = curr->next;
 		}
 	} else {
-	    assert(pCtxt->rtsTail == 0);
+		DIRCC_ASSERT(pCtxt, pCtxt->rtsTail == 0);
 	}
 }
 #else
@@ -55,7 +54,7 @@ static void rts_remove(PThreadContext *pCtxt, DeviceContext *dCtxt) {
 			"begin, rtsHead=%p, rtsTail=%p, dCtxt->prev=%p, dCtxt->next=%p",
 			pCtxt->rtsHead, pCtxt->rtsTail, dCtxt->prev, dCtxt->next);
 
-	assert(pCtxt->rtsHead != 0);
+	DIRCC_ASSERT(pCtxt, pCtxt->rtsHead != 0);
 
 	if (pCtxt->rtsHead == dCtxt) {          // 1
 		pCtxt->rtsHead = dCtxt->next;     // 1
@@ -78,7 +77,7 @@ static DeviceContext *rts_pop(PThreadContext *pCtxt) {
 
 	DeviceContext *head = pCtxt->rtsHead;   // 1
 	if (head) {            // 1
-	    assert(head->prev == 0);
+	    DIRCC_ASSERT(pCtxt, head->prev == 0);
 
 	    DeviceContext *next = head->next; // 1
 	    if (next)
@@ -137,7 +136,7 @@ void dircc_UpdateRTS(PThreadContext *pCtxt, DeviceContext *dev) {
 
 DeviceContext *dircc_PopRTS(PThreadContext *pCtxt) {
 	DeviceContext *dev = rts_pop(pCtxt);
-	assert(dev);
+	DIRCC_ASSERT(pCtxt, dev);
 	// These need to be recomputed
 	return dev;
 }

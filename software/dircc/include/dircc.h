@@ -9,6 +9,7 @@
 #define DIRCC_H_
 
 #include <stdbool.h>
+#include <stdlib.h>
 #include "dircc_defines.h"
 
 typedef struct _address {
@@ -147,6 +148,10 @@ typedef struct _PThreadContext {
     uint32_t rtcOffset;  // Where we are in the checking list (to make things somewhat fair)
 
 } PThreadContext;
+
+void dircc_exit(dircc_err_code status);
+
+DeviceContext *dircc_getActiveDevice();
 
 extern PThreadContext dircc_thread_contexts[];
 

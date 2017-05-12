@@ -21,14 +21,6 @@ address_t dev0_out_addresses[] = {
 		}
 };
 
-edge_props dev0_in0_props = {
-		.one = 1
-};
-
-edge_state dev0_in0_state = {
-		.received = 0
-};
-
 InputPortSources dev0_sources[] = {
 		{
 				.numSources = 0,
@@ -76,7 +68,7 @@ address_t dev1_out_addresses[] = {
 InputPortSources dev1_sources[] = {
 		{
 				.numSources = 0,
-				.sourceBindings = DIRCC_BINDING_NONE
+				.sourceBindings = 0
 		}
 };
 

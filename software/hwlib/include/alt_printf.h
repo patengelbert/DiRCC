@@ -79,6 +79,7 @@ static __inline int null_vfprintf(FILE *stream, const char *format, va_list args
 
     #define ALT_PRINTF alt_printf
     #define printf alt_printf
+	#define fprintf alt_fprintf
   #else
     #define ALT_PRINTF null_printf
     #define printf null_printf

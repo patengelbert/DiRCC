@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "counter.h"
+#include "dircc_system_state.h"
 #include "dircc_helpers.h"
 
 #pragma GCC diagnostic ignored "-Wunused-parameter"
@@ -36,8 +37,8 @@ void dev_in_receive_handler(
 
     if (dState->count >= gProps->maxTime) {
         // Break the fourth wall
-        DIRCC_LOG_PRINTF("Woo, devices have halted.");
-        exit(EXIT_SUCCESS);
+    	DIRCC_LOG_PRINTF("Woo, devices have halted.");
+        dircc_exit(DIRCC_STATE_DONE);
     }
 }
 

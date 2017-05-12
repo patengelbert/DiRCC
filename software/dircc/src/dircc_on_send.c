@@ -1,12 +1,11 @@
 
-#include <assert.h>
-#include "dircc_on_send.h"
+#include "dircc_impl.h"
 #include "dircc_rts.h"
 #include "dircc_helpers.h"
+#include "dircc_system_state.h"
 
 static unsigned right_most_one(uint32_t x)
 {
-    assert(x);
 
     unsigned index=0;
     while(!(x&1)){
@@ -30,14 +29,16 @@ unsigned dircc_onSend(PThreadContext *ctxt, void *message, uint32_t *numTargets,
     *pTargets=NULL;
     
     DeviceContext *dev = dircc_PopRTS(ctxt);
-    if(!dev){
-        return 0;
-    }
+
+    dircc_unsetState(dev, DIRCC_STATE_IDLE);
+    dircc_setState(dev, DIRCC_STATE_SEND, &(dev->index));
+
+    activeDevice = dev;
     
     const DeviceTypeVTable *vtable=dev->vtable;
 
     // Check we want to send and not just compute
-    assert(dev->rtsFlags & ~DIRCC_RTS_FLAGS_COMPUTE);
+    DIRCC_ASSERT(ctxt, dev->rtsFlags & ~DIRCC_RTS_FLAGS_COMPUTE);
 
     unsigned portIndex=right_most_one(dev->rtsFlags);
     
@@ -69,6 +70,11 @@ unsigned dircc_onSend(PThreadContext *ctxt, void *message, uint32_t *numTargets,
         ((packet_t*)message)->lamport=ctxt->lamport;
     }
     
+    activeDevice = NULL;
+
+    dircc_unsetState(dev, DIRCC_STATE_SEND);
+    dircc_setState(dev, DIRCC_STATE_IDLE, NULL);
+
     DIRCC_LOG_PRINTF("numTargets=%u, pTargets=%p", *numTargets, *pTargets);
 
     DIRCC_LOG_PRINTF("updating RTS");    

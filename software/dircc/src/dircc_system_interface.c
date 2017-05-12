@@ -16,6 +16,8 @@ static uint32_t change_endianness(uint32_t x)
 			|((x & 0x000000FF) << 24));
 }
 
+static uint32_t dircc_get_level(uint32_t csr_address);
+
 union dircc_msg_u
 {
     packet_t as_struct;
@@ -24,7 +26,7 @@ union dircc_msg_u
 
 #ifndef NDEBUG
 
-void dircc_log_payload(const uint8_t *x)
+static void dircc_log_payload(const uint8_t *x)
 {
 		fprintf(stderr, "[%s:%d] dircc_node %lu: %s -> Payload: ", __FILENAME__, __LINE__, dircc_thread_id(),  __FUNCTION__);
 		for(unsigned i=0; i < MAX_DATA_LEN-1; i++)
@@ -42,7 +44,7 @@ void dircc_log_payload(const uint8_t *x)
 #define DIRCC_LOG_PAYLOAD(x) dircc_log_payload(x)
 
 
-void dircc_print_status(const uint32_t csr_address)
+static void dircc_print_status(const uint32_t csr_address)
 {
     DIRCC_LOG_PRINTF("--------------------------------------");
     DIRCC_LOG_PRINTF("FIFO = 0x%08x", csr_address);
@@ -54,7 +56,7 @@ void dircc_print_status(const uint32_t csr_address)
     DIRCC_LOG_PRINTF("ALMOSTFULLTHRES = %u", altera_avalon_fifo_read_almostfull(csr_address));
 }
 
-void dircc_print_packet(const packet_t *msg)
+static void dircc_print_packet(const packet_t *msg)
 {
 	DIRCC_LOG_PRINTF("Dest: %u.%u.%u + %u", msg->dest.hw_node, msg->dest.sw_node, msg->dest.port, msg->dest.flag);
 	DIRCC_LOG_PRINTF("Src: %u.%u.%u + %u", msg->source.hw_node, msg->source.sw_node, msg->source.port, msg->source.flag);
@@ -65,9 +67,9 @@ void dircc_print_packet(const packet_t *msg)
 #else
 
 #define DIRCC_LOG_PAYLOAD(x) do { } while(0)
-void dircc_log_payload(const uint8_t *x) {}
-void dircc_print_status(const uint32_t csr_address) {}
-void dircc_print_packet(const packet_t *msg) {}
+static void dircc_log_payload(const uint8_t *x) {}
+static void dircc_print_status(const uint32_t csr_address) {}
+static void dircc_print_packet(const packet_t *msg) {}
 #endif
 
 
@@ -85,6 +87,7 @@ dircc_err_code dircc_init_fifo(uint32_t csr_address, uint32_t almost_empty, uint
     DIRCC_LOG_PRINTF("Initialized FIFO at 0x%08x", csr_address);
     DIRCC_LOG_PRINTF("Almost Empty: %u", almost_empty);
     DIRCC_LOG_PRINTF("Almost Full: %u", almost_full);
+
     return DIRCC_SUCCESS;
 }
 
@@ -193,9 +196,9 @@ dircc_err_code dircc_clr_fifo(uint32_t data_address, uint32_t csr_address)
     return DIRCC_SUCCESS;
 }
 
-uint32_t dircc_get_level(uint32_t csr_address)
+static uint32_t dircc_get_level(uint32_t csr_address)
 {
     uint32_t level = altera_avalon_fifo_read_level(csr_address);
-    DIRCC_LOG_PRINTF("Read level %d from address %d", level, csr_address);
+    DIRCC_LOG_PRINTF("Read level %d from address %08x", level, csr_address);
     return level;
 }

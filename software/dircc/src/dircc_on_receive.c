@@ -1,9 +1,9 @@
 
-#include <assert.h>
 #include "dircc_defines.h"
-#include "dircc_on_receive.h"
+#include "dircc_impl.h"
 #include "dircc_helpers.h"
 #include "dircc_rts.h"
+#include "dircc_system_state.h"
 
 #define MAX(a, b) a > b ? a : b
 
@@ -19,14 +19,17 @@ void dircc_onReceive(PThreadContext *ctxt, const void *message)
     // Map to the device and its vtable
     unsigned deviceIndex=packet->dest.sw_node;
     DIRCC_LOG_PRINTF("finding vtable, device inst index=%u", deviceIndex);
-    assert(deviceIndex < ctxt->numDevices);
+    DIRCC_ASSERT(ctxt, deviceIndex < ctxt->numDevices);
     DeviceContext *dev=ctxt->devices + deviceIndex;
     const DeviceTypeVTable *vtable=dev->vtable;
+
+    dircc_unsetState(dev, DIRCC_STATE_IDLE);
+    dircc_setState(dev, DIRCC_STATE_RECEIVE, &(dev->index));
 
     // Map to the particular port
     unsigned portIndex=packet->dest.port;
     DIRCC_LOG_PRINTF("finding port, port name index=%u", portIndex);
-    assert(portIndex < vtable->numInputs);
+    DIRCC_ASSERT(ctxt, portIndex < vtable->numInputs);
     const InputPortVTable *port=vtable->inputPorts + portIndex;
     receive_handler_t handler=port->receiveHandler;
 
@@ -64,10 +67,11 @@ void dircc_onReceive(PThreadContext *ctxt, const void *message)
         eProps=edge->edgeProperties;
         eState=edge->edgeState;
         // If an edge has properties or state, you must deliver some
-        assert(!port->propertiesSize || eProps);
-        assert(!port->stateSize || eState);
+        DIRCC_ASSERT(ctxt, !port->propertiesSize || eProps);
+        DIRCC_ASSERT(ctxt, !port->stateSize || eState);
     }
 
+    activeDevice = dev;
 
     // Call the application level handler
     DIRCC_LOG_PRINTF("begin application handler, packet=%p, payload=%p", packet, packet->payload);
@@ -79,6 +83,12 @@ void dircc_onReceive(PThreadContext *ctxt, const void *message)
         eState,
         packet->payload
     );
+
+    activeDevice = NULL;
+
+    dircc_unsetState(dev, DIRCC_STATE_RECEIVE);
+    dircc_setState(dev, DIRCC_STATE_IDLE, NULL);
+
     DIRCC_LOG_PRINTF("end application handler");
 
     DIRCC_LOG_PRINTF("updating RTS");

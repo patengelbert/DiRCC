@@ -20,6 +20,4 @@ dircc_err_code dircc_recv(uint32_t data_address, uint32_t csr_address,
 
 dircc_err_code dircc_clr_fifo(uint32_t data_address, uint32_t csr_address);
 
-uint32_t dircc_get_level(uint32_t csr_address);
-
 #endif // !DIRCC_FIFO_INTERFACE

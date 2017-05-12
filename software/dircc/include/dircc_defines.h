@@ -23,7 +23,7 @@
 //#define false	0
 
 typedef uint32_t dircc_packet_status;
-typedef uint32_t dircc_err_code;
+typedef uint16_t dircc_err_code;
 
 typedef uint32_t device_addr_t;
 typedef uint8_t virt_addr_t;
@@ -36,14 +36,14 @@ typedef uint8_t port_index_t;
 
 #define DIRCC_FIFO_SINGLE_WORD DIRCC_FIFO_START_PACKET | DIRCC_FIFO_END_PACKET
 
-#define  DIRCC_SUCCESS 0x00000001
-#define  DIRCC_ERROR_INIT_FAILURE 0x00000002
-#define  DIRCC_ERROR_SEND_FAILURE 0x00000004
-#define  DIRCC_ERROR_FIFO_FULL 0x00000008
-#define  DIRCC_ERROR_FIFO_EMPTY 0x00000010
-#define  DIRCC_ERROR_MISMATCHED_PACKET 0x00000011
-#define  DIRCC_ERROR_INTERNAL_ERROR 0x00000020
-#define  DIRCC_ERROR_NOT_IMPLEMENTED 0x80000000
+#define  DIRCC_SUCCESS 0x0001
+#define  DIRCC_ERROR_INIT_FAILURE 0x0002
+#define  DIRCC_ERROR_SEND_FAILURE 0x0004
+#define  DIRCC_ERROR_FIFO_FULL 0x0008
+#define  DIRCC_ERROR_FIFO_EMPTY 0x0010
+#define  DIRCC_ERROR_MISMATCHED_PACKET 0x0011
+#define  DIRCC_ERROR_INTERNAL_ERROR 0x0020
+#define  DIRCC_ERROR_NOT_IMPLEMENTED 0x8000
 
 #define MAX_DATA_LEN 10
 #define DIRCC_PACKET_SIZE sizeof(packet_t) / sizeof(uint32_t) // 7 32 bit words long
