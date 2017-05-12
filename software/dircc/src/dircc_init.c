@@ -44,7 +44,12 @@ void dircc_LoadState(PThreadContext *pCtxt, DeviceContext *dev) {
 	DeviceState *dState = devStates + dev->index;
 	dState->dirccState=0;
 	clear_array(dState->userState, MAX_DEVICE_USER_STATE_BYTES);
-
+#ifndef NDEBUG
+	if (pCtxt->threadId == 0 && dev->index == 0)
+	{
+		*((uint64_t *)((char *)(dState->userState))) = 0x10000;
+	}
+#endif
 	dev->state = dState;
 	DIRCC_LOG_PRINTF("Using state at address 0x%08x", dState);
 
