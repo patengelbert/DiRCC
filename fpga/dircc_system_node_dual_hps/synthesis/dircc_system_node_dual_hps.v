@@ -38,6 +38,8 @@ module dircc_system_node_dual_hps (
 	wire         node_1_output_west_startofpacket;                   // node_1:output_west_startofpacket -> node_0:input_east_startofpacket
 	wire         node_1_output_west_endofpacket;                     // node_1:output_west_endofpacket -> node_0:input_east_endofpacket
 	wire   [1:0] node_1_output_west_empty;                           // node_1:output_west_empty -> node_0:input_east_empty
+	wire         pll_outclk0_clk;                                    // pll:outclk_0 -> [HPS:h2f_axi_clk, mm_interconnect_0:pll_outclk0_clk, node_0:clk_routing_clk, node_1:clk_routing_clk, rst_controller_001:clk, rst_controller_002:clk]
+	wire         pll_outclk1_clk;                                    // pll:outclk_1 -> [mm_interconnect_0:pll_outclk1_clk, node_0:clk_processing_clk, node_1:clk_processing_clk, rst_controller:clk]
 	wire   [1:0] hps_h2f_axi_master_awburst;                         // HPS:h2f_AWBURST -> mm_interconnect_0:HPS_h2f_axi_master_awburst
 	wire   [3:0] hps_h2f_axi_master_arlen;                           // HPS:h2f_ARLEN -> mm_interconnect_0:HPS_h2f_axi_master_arlen
 	wire   [3:0] hps_h2f_axi_master_wstrb;                           // HPS:h2f_WSTRB -> mm_interconnect_0:HPS_h2f_axi_master_wstrb
@@ -88,9 +90,10 @@ module dircc_system_node_dual_hps (
 	wire         mm_interconnect_0_node_1_processing_mem_write;      // mm_interconnect_0:node_1_processing_mem_write -> node_1:processing_mem_write
 	wire  [15:0] mm_interconnect_0_node_1_processing_mem_writedata;  // mm_interconnect_0:node_1_processing_mem_writedata -> node_1:processing_mem_writedata
 	wire         mm_interconnect_0_node_1_processing_mem_clken;      // mm_interconnect_0:node_1_processing_mem_clken -> node_1:processing_mem_clken
-	wire         rst_controller_reset_out_reset;                     // rst_controller:reset_out -> [mm_interconnect_0:node_0_reset_processing_reset_bridge_in_reset_reset, node_0:reset_processing_reset_n, node_0:reset_routing_reset_n, node_1:reset_processing_reset_n, node_1:reset_routing_reset_n]
-	wire         hps_h2f_reset_reset;                                // HPS:h2f_rst_n -> [rst_controller:reset_in1, rst_controller_001:reset_in0]
-	wire         rst_controller_001_reset_out_reset;                 // rst_controller_001:reset_out -> mm_interconnect_0:HPS_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset
+	wire         rst_controller_reset_out_reset;                     // rst_controller:reset_out -> [mm_interconnect_0:node_0_reset_processing_reset_bridge_in_reset_reset, node_0:reset_processing_reset_n, node_1:reset_processing_reset_n]
+	wire         hps_h2f_reset_reset;                                // HPS:h2f_rst_n -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_002:reset_in0]
+	wire         rst_controller_001_reset_out_reset;                 // rst_controller_001:reset_out -> [node_0:reset_routing_reset_n, node_1:reset_routing_reset_n]
+	wire         rst_controller_002_reset_out_reset;                 // rst_controller_002:reset_out -> mm_interconnect_0:HPS_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset
 
 	dircc_system_node_dual_hps_HPS #(
 		.F2S_Width (0),
@@ -115,7 +118,7 @@ module dircc_system_node_dual_hps (
 		.hps_io_gpio_inst_GPIO53 (hps_io_hps_io_gpio_inst_GPIO53), //         hps_io.hps_io_gpio_inst_GPIO53
 		.hps_io_gpio_inst_GPIO54 (hps_io_hps_io_gpio_inst_GPIO54), //               .hps_io_gpio_inst_GPIO54
 		.h2f_rst_n               (hps_h2f_reset_reset),            //      h2f_reset.reset_n
-		.h2f_axi_clk             (clk_clk),                        //  h2f_axi_clock.clk
+		.h2f_axi_clk             (pll_outclk0_clk),                //  h2f_axi_clock.clk
 		.h2f_AWID                (hps_h2f_axi_master_awid),        // h2f_axi_master.awid
 		.h2f_AWADDR              (hps_h2f_axi_master_awaddr),      //               .awaddr
 		.h2f_AWLEN               (hps_h2f_axi_master_awlen),       //               .awlen
@@ -155,8 +158,8 @@ module dircc_system_node_dual_hps (
 	);
 
 	dircc_system_node_dual_hps_node_0 node_0 (
-		.clk_processing_clk         (clk_clk),                                            //   clk_processing.clk
-		.clk_routing_clk            (clk_clk),                                            //      clk_routing.clk
+		.clk_processing_clk         (pll_outclk1_clk),                                    //   clk_processing.clk
+		.clk_routing_clk            (pll_outclk0_clk),                                    //      clk_routing.clk
 		.input_east_data            (node_1_output_west_data),                            //       input_east.data
 		.input_east_valid           (node_1_output_west_valid),                           //                 .valid
 		.input_east_ready           (node_1_output_west_ready),                           //                 .ready
@@ -213,12 +216,12 @@ module dircc_system_node_dual_hps (
 		.processing_mem_writedata   (mm_interconnect_0_node_0_processing_mem_writedata),  //                 .writedata
 		.processing_mem_byteenable  (mm_interconnect_0_node_0_processing_mem_byteenable), //                 .byteenable
 		.reset_processing_reset_n   (~rst_controller_reset_out_reset),                    // reset_processing.reset_n
-		.reset_routing_reset_n      (~rst_controller_reset_out_reset)                     //    reset_routing.reset_n
+		.reset_routing_reset_n      (~rst_controller_001_reset_out_reset)                 //    reset_routing.reset_n
 	);
 
 	dircc_system_node_dual_hps_node_1 node_1 (
-		.clk_processing_clk         (clk_clk),                                            //   clk_processing.clk
-		.clk_routing_clk            (clk_clk),                                            //      clk_routing.clk
+		.clk_processing_clk         (pll_outclk1_clk),                                    //   clk_processing.clk
+		.clk_routing_clk            (pll_outclk0_clk),                                    //      clk_routing.clk
 		.input_east_data            (),                                                   //       input_east.data
 		.input_east_valid           (),                                                   //                 .valid
 		.input_east_ready           (),                                                   //                 .ready
@@ -275,7 +278,15 @@ module dircc_system_node_dual_hps (
 		.processing_mem_writedata   (mm_interconnect_0_node_1_processing_mem_writedata),  //                 .writedata
 		.processing_mem_byteenable  (mm_interconnect_0_node_1_processing_mem_byteenable), //                 .byteenable
 		.reset_processing_reset_n   (~rst_controller_reset_out_reset),                    // reset_processing.reset_n
-		.reset_routing_reset_n      (~rst_controller_reset_out_reset)                     //    reset_routing.reset_n
+		.reset_routing_reset_n      (~rst_controller_001_reset_out_reset)                 //    reset_routing.reset_n
+	);
+
+	dircc_system_node_dual_hps_pll pll (
+		.refclk   (clk_clk),         //  refclk.clk
+		.rst      (~reset_reset_n),  //   reset.reset
+		.outclk_0 (pll_outclk0_clk), // outclk0.clk
+		.outclk_1 (pll_outclk1_clk), // outclk1.clk
+		.locked   ()                 // (terminated)
 	);
 
 	dircc_system_node_dual_hps_mm_interconnect_0 mm_interconnect_0 (
@@ -315,8 +326,9 @@ module dircc_system_node_dual_hps (
 		.HPS_h2f_axi_master_rlast                                       (hps_h2f_axi_master_rlast),                           //                                                         .rlast
 		.HPS_h2f_axi_master_rvalid                                      (hps_h2f_axi_master_rvalid),                          //                                                         .rvalid
 		.HPS_h2f_axi_master_rready                                      (hps_h2f_axi_master_rready),                          //                                                         .rready
-		.clk_clk_clk                                                    (clk_clk),                                            //                                                  clk_clk.clk
-		.HPS_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset (rst_controller_001_reset_out_reset),                 // HPS_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
+		.pll_outclk0_clk                                                (pll_outclk0_clk),                                    //                                              pll_outclk0.clk
+		.pll_outclk1_clk                                                (pll_outclk1_clk),                                    //                                              pll_outclk1.clk
+		.HPS_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset (rst_controller_002_reset_out_reset),                 // HPS_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
 		.node_0_reset_processing_reset_bridge_in_reset_reset            (rst_controller_reset_out_reset),                     //            node_0_reset_processing_reset_bridge_in_reset.reset
 		.node_0_processing_mem_address                                  (mm_interconnect_0_node_0_processing_mem_address),    //                                    node_0_processing_mem.address
 		.node_0_processing_mem_write                                    (mm_interconnect_0_node_0_processing_mem_write),      //                                                         .write
@@ -362,7 +374,7 @@ module dircc_system_node_dual_hps (
 	) rst_controller (
 		.reset_in0      (~reset_reset_n),                 // reset_in0.reset
 		.reset_in1      (~hps_h2f_reset_reset),           // reset_in1.reset
-		.clk            (clk_clk),                        //       clk.clk
+		.clk            (pll_outclk1_clk),                //       clk.clk
 		.reset_out      (rst_controller_reset_out_reset), // reset_out.reset
 		.reset_req      (),                               // (terminated)
 		.reset_req_in0  (1'b0),                           // (terminated)
@@ -398,7 +410,7 @@ module dircc_system_node_dual_hps (
 	);
 
 	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (1),
+		.NUM_RESET_INPUTS          (2),
 		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
 		.SYNC_DEPTH                (2),
 		.RESET_REQUEST_PRESENT     (0),
@@ -423,9 +435,72 @@ module dircc_system_node_dual_hps (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_001 (
-		.reset_in0      (~hps_h2f_reset_reset),               // reset_in0.reset
-		.clk            (clk_clk),                            //       clk.clk
+		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
+		.reset_in1      (~hps_h2f_reset_reset),               // reset_in1.reset
+		.clk            (pll_outclk0_clk),                    //       clk.clk
 		.reset_out      (rst_controller_001_reset_out_reset), // reset_out.reset
+		.reset_req      (),                                   // (terminated)
+		.reset_req_in0  (1'b0),                               // (terminated)
+		.reset_req_in1  (1'b0),                               // (terminated)
+		.reset_in2      (1'b0),                               // (terminated)
+		.reset_req_in2  (1'b0),                               // (terminated)
+		.reset_in3      (1'b0),                               // (terminated)
+		.reset_req_in3  (1'b0),                               // (terminated)
+		.reset_in4      (1'b0),                               // (terminated)
+		.reset_req_in4  (1'b0),                               // (terminated)
+		.reset_in5      (1'b0),                               // (terminated)
+		.reset_req_in5  (1'b0),                               // (terminated)
+		.reset_in6      (1'b0),                               // (terminated)
+		.reset_req_in6  (1'b0),                               // (terminated)
+		.reset_in7      (1'b0),                               // (terminated)
+		.reset_req_in7  (1'b0),                               // (terminated)
+		.reset_in8      (1'b0),                               // (terminated)
+		.reset_req_in8  (1'b0),                               // (terminated)
+		.reset_in9      (1'b0),                               // (terminated)
+		.reset_req_in9  (1'b0),                               // (terminated)
+		.reset_in10     (1'b0),                               // (terminated)
+		.reset_req_in10 (1'b0),                               // (terminated)
+		.reset_in11     (1'b0),                               // (terminated)
+		.reset_req_in11 (1'b0),                               // (terminated)
+		.reset_in12     (1'b0),                               // (terminated)
+		.reset_req_in12 (1'b0),                               // (terminated)
+		.reset_in13     (1'b0),                               // (terminated)
+		.reset_req_in13 (1'b0),                               // (terminated)
+		.reset_in14     (1'b0),                               // (terminated)
+		.reset_req_in14 (1'b0),                               // (terminated)
+		.reset_in15     (1'b0),                               // (terminated)
+		.reset_req_in15 (1'b0)                                // (terminated)
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (1),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_002 (
+		.reset_in0      (~hps_h2f_reset_reset),               // reset_in0.reset
+		.clk            (pll_outclk0_clk),                    //       clk.clk
+		.reset_out      (rst_controller_002_reset_out_reset), // reset_out.reset
 		.reset_req      (),                                   // (terminated)
 		.reset_req_in0  (1'b0),                               // (terminated)
 		.reset_in1      (1'b0),                               // (terminated)

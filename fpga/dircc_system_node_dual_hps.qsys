@@ -241,7 +241,7 @@
   <parameter name="FPGA_PERIPHERAL_OUTPUT_CLOCK_FREQ_SPIM1_SCLK_OUT" value="100" />
   <parameter name="GPIO_Enable">No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No</parameter>
   <parameter name="GP_Enable" value="false" />
-  <parameter name="H2F_AXI_CLOCK_FREQ" value="50000000" />
+  <parameter name="H2F_AXI_CLOCK_FREQ" value="200000000" />
   <parameter name="H2F_CTI_CLOCK_FREQ" value="100" />
   <parameter name="H2F_DEBUG_APB_CLOCK_FREQ" value="100" />
   <parameter name="H2F_LW_AXI_CLOCK_FREQ" value="100" />
@@ -628,12 +628,12 @@
  </module>
  <module name="node_0" kind="dircc_node" version="1.0" enabled="1">
   <parameter name="ADDRESS" value="0" />
-  <parameter name="AUTO_CLK_PROCESSING_CLOCK_DOMAIN" value="1" />
-  <parameter name="AUTO_CLK_PROCESSING_CLOCK_RATE" value="50000000" />
-  <parameter name="AUTO_CLK_PROCESSING_RESET_DOMAIN" value="1" />
-  <parameter name="AUTO_CLK_ROUTING_CLOCK_DOMAIN" value="1" />
-  <parameter name="AUTO_CLK_ROUTING_CLOCK_RATE" value="50000000" />
-  <parameter name="AUTO_CLK_ROUTING_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_PROCESSING_CLOCK_DOMAIN" value="5" />
+  <parameter name="AUTO_CLK_PROCESSING_CLOCK_RATE" value="200000000" />
+  <parameter name="AUTO_CLK_PROCESSING_RESET_DOMAIN" value="5" />
+  <parameter name="AUTO_CLK_ROUTING_CLOCK_DOMAIN" value="4" />
+  <parameter name="AUTO_CLK_ROUTING_CLOCK_RATE" value="200000000" />
+  <parameter name="AUTO_CLK_ROUTING_RESET_DOMAIN" value="4" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
@@ -642,19 +642,19 @@
  </module>
  <module name="node_1" kind="dircc_node" version="1.0" enabled="1">
   <parameter name="ADDRESS" value="1" />
-  <parameter name="AUTO_CLK_PROCESSING_CLOCK_DOMAIN" value="1" />
-  <parameter name="AUTO_CLK_PROCESSING_CLOCK_RATE" value="50000000" />
-  <parameter name="AUTO_CLK_PROCESSING_RESET_DOMAIN" value="1" />
-  <parameter name="AUTO_CLK_ROUTING_CLOCK_DOMAIN" value="1" />
-  <parameter name="AUTO_CLK_ROUTING_CLOCK_RATE" value="50000000" />
-  <parameter name="AUTO_CLK_ROUTING_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_PROCESSING_CLOCK_DOMAIN" value="5" />
+  <parameter name="AUTO_CLK_PROCESSING_CLOCK_RATE" value="200000000" />
+  <parameter name="AUTO_CLK_PROCESSING_RESET_DOMAIN" value="5" />
+  <parameter name="AUTO_CLK_ROUTING_CLOCK_DOMAIN" value="4" />
+  <parameter name="AUTO_CLK_ROUTING_CLOCK_RATE" value="200000000" />
+  <parameter name="AUTO_CLK_ROUTING_RESET_DOMAIN" value="4" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
   <parameter name="AUTO_UNIQUE_ID" value="$${FILENAME}_node_1" />
  </module>
- <module name="pll" kind="altera_pll" version="16.1" enabled="0">
+ <module name="pll" kind="altera_pll" version="16.1" enabled="1">
   <parameter name="debug_print_output" value="false" />
   <parameter name="debug_use_rbc_taf_method" value="false" />
   <parameter name="device" value="5CSEMA5F31C6" />
@@ -885,20 +885,32 @@
    version="16.1"
    start="node_1.output_west"
    end="node_0.input_east" />
+ <connection kind="clock" version="16.1" start="clk.clk" end="pll.refclk" />
  <connection
    kind="clock"
    version="16.1"
-   start="clk.clk"
+   start="pll.outclk0"
+   end="node_0.clk_routing" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="pll.outclk0"
+   end="node_1.clk_routing" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="pll.outclk0"
+   end="HPS.h2f_axi_clock" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="pll.outclk1"
    end="node_0.clk_processing" />
  <connection
    kind="clock"
    version="16.1"
-   start="clk.clk"
+   start="pll.outclk1"
    end="node_1.clk_processing" />
- <connection kind="clock" version="16.1" start="clk.clk" end="node_0.clk_routing" />
- <connection kind="clock" version="16.1" start="clk.clk" end="node_1.clk_routing" />
- <connection kind="clock" version="16.1" start="clk.clk" end="HPS.h2f_axi_clock" />
- <connection kind="clock" version="16.1" start="clk.clk" end="pll.refclk" />
  <connection kind="reset" version="16.1" start="clk.clk_reset" end="pll.reset" />
  <connection
    kind="reset"

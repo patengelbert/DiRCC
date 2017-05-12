@@ -47,7 +47,9 @@ void dircc_LoadState(PThreadContext *pCtxt, DeviceContext *dev) {
 #ifndef NDEBUG
 	if (pCtxt->threadId == 0 && dev->index == 0)
 	{
-		*((uint64_t *)((char *)(dState->userState))) = 0x10000;
+#pragma GCC diagnostic ignored "-Wstrict-aliasing"
+		*((uint64_t *)(dState->userState)) = 0x10000;
+#pragma GCC diagnostic warning "-Wstrict-aliasing"
 	}
 #endif
 	dev->state = dState;
