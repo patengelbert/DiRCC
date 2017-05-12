@@ -58,16 +58,16 @@ bool dev_out_send_handler(
 InputPortVTable INPUT_VTABLES_dev[INPUT_COUNT_dev]={
     {
         (receive_handler_t)dev_in_receive_handler,
-        sizeof(packet_t)+sizeof(tick_msg),
-        1,
-        1
+        sizeof(packet_t),
+        0,
+        0
     }
 };
 
 OutputPortVTable OUTPUT_VTABLES_dev[OUTPUT_COUNT_dev]={
     {
         (send_handler_t)dev_out_send_handler,
-        sizeof(packet_t)+sizeof(tick_msg)
+        sizeof(packet_t)
     }
 };
 
@@ -80,6 +80,6 @@ DeviceTypeVTable DEVICE_TYPE_VTABLES[DEVICE_TYPE_COUNT] = {
         OUTPUT_VTABLES_dev,
         INPUT_COUNT_dev,
         INPUT_VTABLES_dev,
-        (compute_handler_t)DIRCC_HANDLER_NULL // No compute handler
+        (compute_handler_t)DIRCC_HANDLER_NONE // No compute handler
     }
 };
