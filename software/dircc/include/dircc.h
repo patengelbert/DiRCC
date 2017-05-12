@@ -26,7 +26,8 @@ typedef struct _packet_t {
 } packet_t;
 
 typedef struct _DeviceState {
-	uint32_t dirccState;
+	uint16_t dirccState;
+	uint16_t dirccStateExtraData;
 	uint8_t userState[MAX_DEVICE_USER_STATE_BYTES];
 } DeviceState;
 

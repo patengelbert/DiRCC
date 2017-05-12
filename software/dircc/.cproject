@@ -2,7 +2,7 @@
 <?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
 	<storageModule moduleId="org.eclipse.cdt.core.settings">
 		<cconfiguration id="altera.nios2.linux.gcc4.302466546">
-			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="altera.nios2.linux.gcc4.302466546" moduleId="org.eclipse.cdt.core.settings" name="Default">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="altera.nios2.linux.gcc4.302466546" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<externalSettings/>
 				<extensions>
 					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -14,13 +14,13 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildProperties="" description="" id="altera.nios2.linux.gcc4.302466546" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="altera.nios2.linux.gcc4.302466546" name="Debug" parent="org.eclipse.cdt.build.core.emptycfg">
 					<folderInfo id="altera.nios2.linux.gcc4.302466546.465518594" name="/" resourcePath="">
 						<toolChain id="altera.nios2.linux.gcc4.481001470" name="altera.nios2.linux.gcc4" superClass="altera.nios2.linux.gcc4">
 							<targetPlatform id="altera.nios2.linux.gcc4.1287742039" name="Nios II" osList="linux" superClass="altera.nios2.linux.gcc4"/>
-							<builder id="altera.tool.gnu.builder.1154680097" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="altera.tool.gnu.builder"/>
+							<builder arguments="ACTIVE_BUILD_CONFIG=${ConfigName}" command="make" id="altera.tool.gnu.builder.1154680097" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="altera.tool.gnu.builder"/>
 							<tool id="altera.tool.gnu.c.compiler.332815369" name="Nios II GCC C Compiler" superClass="altera.tool.gnu.c.compiler">
-								<option id="gnu.c.compiler.option.include.paths.213623279" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath"/>
+								<option id="gnu.c.compiler.option.include.paths.213623279" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.166413587" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="altera.tool.gnu.cpp.compiler.204633892" name="Nios II GCC C++ Compiler" superClass="altera.tool.gnu.cpp.compiler"/>
@@ -45,6 +45,50 @@
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 		</cconfiguration>
+		<cconfiguration id="altera.nios2.linux.gcc4.302466546.1077118937">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="altera.nios2.linux.gcc4.302466546.1077118937" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="altera.nios2.linux.gcc4.302466546.1077118937" name="Release" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="altera.nios2.linux.gcc4.302466546.1077118937." name="/" resourcePath="">
+						<toolChain id="altera.nios2.linux.gcc4.1484128090" name="altera.nios2.linux.gcc4" superClass="altera.nios2.linux.gcc4">
+							<targetPlatform id="altera.nios2.linux.gcc4.1325283989" name="Nios II" osList="linux" superClass="altera.nios2.linux.gcc4"/>
+							<builder arguments="ACTIVE_BUILD_CONFIG=${ConfigName}" command="make" id="altera.tool.gnu.builder.147179421" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="altera.tool.gnu.builder"/>
+							<tool id="altera.tool.gnu.c.compiler.1916591618" name="Nios II GCC C Compiler" superClass="altera.tool.gnu.c.compiler">
+								<option id="gnu.c.compiler.option.include.paths.1683966553" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.588133110" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="altera.tool.gnu.cpp.compiler.1240783163" name="Nios II GCC C++ Compiler" superClass="altera.tool.gnu.cpp.compiler"/>
+							<tool id="altera.tool.gnu.archiver.1677710406" name="Nios II GCC Archiver" superClass="altera.tool.gnu.archiver"/>
+							<tool id="altera.tool.gnu.c.linker.1861816345" name="Nios II GCC C Linker" superClass="altera.tool.gnu.c.linker">
+								<option id="gnu.c.link.option.paths.1313690813" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_system_node_dual_bsp_0}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_system_node_dual_bsp_0/drivers/inc}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.307011373" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="altera.tool.gnu.cpp.linker.1793111520" name="Nios II GCC C++ Linker" superClass="altera.tool.gnu.cpp.linker"/>
+							<tool id="altera.tool.gnu.assembler.552595930" name="Nios II GCC Assembler" superClass="altera.tool.gnu.assembler">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.252120620" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="dircc.null.418998741" name="dircc"/>
@@ -55,5 +99,13 @@
 		<scannerConfigBuildInfo instanceId="altera.nios2.linux.gcc4.302466546;altera.nios2.linux.gcc4.302466546.465518594;altera.tool.gnu.c.compiler.332815369;cdt.managedbuild.tool.gnu.c.compiler.input.166413587">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Default">
+			<resource resourceType="PROJECT" workspacePath="/dircc"/>
+		</configuration>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/dircc"/>
+		</configuration>
 	</storageModule>
 </cproject>

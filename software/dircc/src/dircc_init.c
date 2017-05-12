@@ -3,7 +3,7 @@
 #include "dircc_system_interface.h"
 #include "dircc_rts.h"
 
-inline void clear_array(uint8_t *arr, unsigned size)
+static void clear_array(uint8_t *arr, unsigned size)
 {
 	for (unsigned i=0; i < size; ++i)
 	{

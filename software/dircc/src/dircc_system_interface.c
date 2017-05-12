@@ -8,7 +8,7 @@
 #include "dircc_helpers.h"
 #include "dircc_system_interface.h"
 
-inline uint32_t change_endianness(uint32_t x)
+static uint32_t change_endianness(uint32_t x)
 {
 	return 	(((x & 0xFF000000) >> 24)
 			|((x & 0x00FF0000) >> 8)
@@ -65,9 +65,9 @@ void dircc_print_packet(const packet_t *msg)
 #else
 
 #define DIRCC_LOG_PAYLOAD(x) do { } while(0)
-void dircc_log_payload(const uint8_t *x) ((void)0)
-void dircc_print_status(const uint32_t csr_address) ((void)0)
-void dircc_print_packet(const packet_t *msg) ((void)0)
+void dircc_log_payload(const uint8_t *x) {}
+void dircc_print_status(const uint32_t csr_address) {}
+void dircc_print_packet(const packet_t *msg) {}
 #endif
 
 
