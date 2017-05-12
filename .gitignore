@@ -27,6 +27,8 @@ build/*
 *.d
 software/**/.settings
 software/**/.force_*
+software/**/Debug/
+software/**/Release/
 **/*.config
 *.bak
 *.BAK.*
