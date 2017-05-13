@@ -190,9 +190,10 @@ dircc_err_code dircc_recv(uint32_t data_address, uint32_t csr_address, packet_t*
 dircc_err_code dircc_clr_fifo(uint32_t data_address, uint32_t csr_address)
 {
     while (altera_avalon_fifo_read_level(csr_address) != 0)
+    {
         altera_avalon_fifo_read_fifo(data_address, csr_address);
+    }
     altera_avalon_fifo_clear_event(csr_address, ALTERA_AVALON_FIFO_EVENT_ALL);
-    DIRCC_LOG_PRINTF("Cleared FIFO at 0x%08x", data_address);
     return DIRCC_SUCCESS;
 }
 

@@ -17,23 +17,22 @@
 
 DeviceContext *activeDevice;
 
+static void dircc_drain_fifos();
+
 static PThreadContext *dircc_get_thread_context(int id)
 {
-	DIRCC_LOG_PRINTF("0x%08x", dircc_thread_contexts);
 	// Could probably do with a filter function use
 	for(unsigned i = 0; i < dircc_thread_count; i++)
 	{
 		if ((dircc_thread_contexts + i)->threadId == id)
 			return dircc_thread_contexts + i;
 	}
-	DIRCC_EXIT_FAILURE("Cannot get context for thread %u. No such context available", id);
-	return NULL; // This will never be called
+	DIRCC_LOG_PRINTF("Cannot get context for thread %u. No such context available. Disabling Thread.", id);
+	return NULL;
 
 }
 
 int main() {
-
-	PThreadContext *ctxt = dircc_get_thread_context(dircc_thread_id());
 
 	packet_t sendBuffer;
 	const address_t *currSendAddressList = 0;
@@ -41,6 +40,15 @@ int main() {
 	dircc_err_code err;
 
 	activeDevice = NULL;
+
+	PThreadContext *ctxt = dircc_get_thread_context(dircc_thread_id());
+
+	// If thread is disabled, e still need to drain the FIFO
+	if (ctxt == NULL)
+	{
+		DIRCC_LOG_PRINTF("Setting mode to drain FIFO.");
+		dircc_drain_fifos();
+	}
 
 	DIRCC_LOG_PRINTF("init");
 
@@ -160,5 +168,13 @@ void dircc_exit(dircc_err_code status)
 DeviceContext *dircc_getActiveDevice()
 {
 	return activeDevice;
+}
+
+static void dircc_drain_fifos()
+{
+	while(true)
+	{
+		dircc_clr_fifo(dircc_fifo_in_data_address, dircc_fifo_in_csr_address);
+	}
 }
 
