@@ -112,8 +112,8 @@ void dircc_UpdateRTS(PThreadContext *pCtxt, DeviceContext *dev) {
 	}
 
 	// Flags with compute stripped off - are
-	bool anyReadyPrev = 0 != (dev->rtsFlags & 0x7FFFFFFFul);
-	bool anyReadyNow = 0 != (flags & 0x7FFFFFFFul);
+	bool anyReadyPrev = dev->rtsFlags & ~DIRCC_RTS_FLAGS_COMPUTE;
+	bool anyReadyNow = flags & ~DIRCC_RTS_FLAGS_COMPUTE;
 
 	// Check if overall output RTS status is the same (ignoring which ports)
 	if (anyReadyPrev == anyReadyNow) {
