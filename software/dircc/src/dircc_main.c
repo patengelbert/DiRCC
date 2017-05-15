@@ -60,7 +60,39 @@ int main() {
 	// Initialise the system
 	dircc_init(ctxt);
 
-	// TODO: Wait until start is set
+	// Wait until start is set
+
+	unsigned oldCntLaunched=-1;
+	while(true)
+	{
+
+		unsigned cntLaunched=0;
+		for(unsigned i=0; i < ctxt->numDevices; i++)
+		{
+			DeviceContext *dCtxt = ctxt->devices + i;
+			if (dircc_getState(dCtxt) & DIRCC_STATE_RUNNING)
+			{
+				cntLaunched++;
+			}
+		}
+#ifndef NDEBUG
+		if (cntLaunched != oldCntLaunched)
+		{
+			DIRCC_LOG_PRINTF("%d/%d devices ready to run", cntLaunched, ctxt->numDevices);
+		}
+#endif
+		if(cntLaunched == ctxt->numDevices)
+		{
+			DIRCC_LOG_PRINTF("Launching Thread");
+			// Check RTS
+			for (unsigned i=0; i < ctxt->numDevices; i++)
+			{
+				dircc_UpdateRTS(ctxt, ctxt->devices + i);
+			}
+			break;
+		}
+		oldCntLaunched = cntLaunched;
+	}
 
 	DIRCC_LOG_PRINTF("starting loop");
 
@@ -157,12 +189,12 @@ int main() {
 
 void dircc_exit(dircc_err_code status)
 {
-	if(status == DIRCC_SUCCESS)
+	DeviceContext *dCtxt = dircc_getActiveDevice();
+	if(status == DIRCC_STATE_DONE)
 	{
-		DeviceContext *dCtxt = dircc_getActiveDevice();
 		printf("Device %d has completed", dCtxt->index);
-		dircc_setExclusiveState(dCtxt, status | DIRCC_STATE_STOPPED, NULL);
 	}
+	dircc_setExclusiveState(dCtxt, status | DIRCC_STATE_STOPPED, NULL);
 }
 
 DeviceContext *dircc_getActiveDevice()

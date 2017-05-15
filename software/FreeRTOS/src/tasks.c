@@ -3981,7 +3981,7 @@ TCB_t *pxTCB;
 		/* Allocate an array index for each task.  NOTE!  if
 		configSUPPORT_DYNAMIC_ALLOCATION is set to 0 then pvPortMalloc() will
 		equate to NULL. */
-		pxTaskStatusArray = ( xTASK_STATUS * )pvPortMalloc( uxCurrentNumberOfTasks * sizeof( TaskStatus_t ) );
+		pxTaskStatusArray = ( TaskStatus_t * )pvPortMalloc( uxCurrentNumberOfTasks * sizeof( TaskStatus_t ) );
 
 		if( pxTaskStatusArray != NULL )
 		{
@@ -4082,7 +4082,7 @@ TCB_t *pxTCB;
 		/* Allocate an array index for each task.  NOTE!  If
 		configSUPPORT_DYNAMIC_ALLOCATION is set to 0 then pvPortMalloc() will
 		equate to NULL. */
-		pxTaskStatusArray = ( xTASK_STATUS * )pvPortMalloc( uxCurrentNumberOfTasks * sizeof( TaskStatus_t ) );
+		pxTaskStatusArray = ( TaskStatus_t * )pvPortMalloc( uxCurrentNumberOfTasks * sizeof( TaskStatus_t ) );
 
 		if( pxTaskStatusArray != NULL )
 		{

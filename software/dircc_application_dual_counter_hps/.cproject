@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.92881346">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.92881346" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/dircc_application_dual_counter_hps"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/dircc_application_dual_counter_hps/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="dircc_application_dual_counter_hps" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="a" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.staticLib" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.staticLib,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="clean" description="" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.92881346" name="Debug" parent="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal">
+					<folderInfo id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.92881346." name="/" resourcePath="">
+						<toolChain id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.toolchain.lib.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.894214218" name="Altera Baremetal GCC" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.toolchain.lib.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal" unusedChildren="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.var.com.altera.ds5ae.toolchain.gcc.baremetal">
+							<targetPlatform id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.92881346..1334041045" name=""/>
+							<builder buildPath="${workspace_loc:/dircc_application_dual_counter_hps}/Debug" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.builder.95291688" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.builder"/>
+							<tool id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.var.com.altera.ds5ae.toolchain.gcc.baremetal.1213978113" name="GCC C Compiler" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.var.com.altera.ds5ae.toolchain.gcc.baremetal">
+								<option defaultValue="gnu.c.optimization.level.none" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.opt.572205447" name="Optimization Level" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.opt" valueType="enumerated"/>
+								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debug.808781922" name="Debug Level" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debug"/>
+								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.includepath.266106024" name="Include paths (-I)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.includepath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_hps/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_dual_counter_hps/include}&quot;"/>
+								</option>
+								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.preproc.2075449206" name="Preprocess only (-E)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.preproc" value="false" valueType="boolean"/>
+								<inputType id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.input.315764134" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.input"/>
+							</tool>
+							<tool id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.cpp.linker.var.com.altera.ds5ae.toolchain.gcc.baremetal.802410023" name="GCC C++ Linker" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.cpp.linker.var.com.altera.ds5ae.toolchain.gcc.baremetal"/>
+							<tool id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.cpp.compiler.var.com.altera.ds5ae.toolchain.gcc.baremetal.249140856" name="GCC C++ Compiler" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.cpp.compiler.var.com.altera.ds5ae.toolchain.gcc.baremetal">
+								<option defaultValue="gnu.c.optimization.level.none" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.opt.2025817054" name="Optimization Level" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.opt" valueType="enumerated"/>
+								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debug.1863939838" name="Debug Level" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debug"/>
+							</tool>
+							<tool id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.archiver.var.com.altera.ds5ae.toolchain.gcc.baremetal.627896040" name="GCC Archiver" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.archiver.var.com.altera.ds5ae.toolchain.gcc.baremetal"/>
+							<tool id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.var.com.altera.ds5ae.toolchain.gcc.baremetal.1319175680" name="GCC Assembler" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.var.com.altera.ds5ae.toolchain.gcc.baremetal">
+								<option defaultValue="true" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.debug.1302568991" name="Generate debugging information (-g)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.debug" valueType="boolean"/>
+								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.includes.1901345264" name="Include paths (-I)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_hps/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_dual_counter_hps/include}&quot;"/>
+								</option>
+								<inputType id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.input.722792702" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.release.var.com.altera.ds5ae.toolchain.gcc.baremetal.764798160">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.release.var.com.altera.ds5ae.toolchain.gcc.baremetal.764798160" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/dircc_application_dual_counter_hps"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/dircc_application_dual_counter_hps/Release"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="dircc_application_dual_counter_hps" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.staticLib" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.staticLib,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" cleanCommand="clean" description="" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.release.var.com.altera.ds5ae.toolchain.gcc.baremetal.764798160" name="Release" parent="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.release.var.com.altera.ds5ae.toolchain.gcc.baremetal">
+					<folderInfo id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.release.var.com.altera.ds5ae.toolchain.gcc.baremetal.764798160." name="/" resourcePath="">
+						<toolChain id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.toolchain.lib.release.var.com.altera.ds5ae.toolchain.gcc.baremetal.623691525" name="Altera Baremetal GCC" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.toolchain.lib.release.var.com.altera.ds5ae.toolchain.gcc.baremetal">
+							<targetPlatform id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.release.var.com.altera.ds5ae.toolchain.gcc.baremetal.764798160..279922723" name=""/>
+							<builder buildPath="${workspace_loc:/dircc_application_dual_counter_hps}/Release" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.builder.1200938348" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.builder"/>
+							<tool id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.cpp.compiler.var.com.altera.ds5ae.toolchain.gcc.baremetal.49311935" name="GCC C++ Compiler" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.cpp.compiler.var.com.altera.ds5ae.toolchain.gcc.baremetal">
+								<option defaultValue="gnu.c.optimization.level.most" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.opt.1572021786" name="Optimization Level" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.opt" valueType="enumerated"/>
+								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debug.2082188309" name="Debug Level" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debug" value="gnu.c.debugging.level.none" valueType="enumerated"/>
+							</tool>
+							<tool id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.var.com.altera.ds5ae.toolchain.gcc.baremetal.460054638" name="GCC C Compiler" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.var.com.altera.ds5ae.toolchain.gcc.baremetal">
+								<option defaultValue="gnu.c.optimization.level.most" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.opt.401371114" name="Optimization Level" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.opt" valueType="enumerated"/>
+								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debug.421803035" name="Debug Level" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debug" value="gnu.c.debugging.level.none" valueType="enumerated"/>
+								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.includepath.1955842758" name="Include paths (-I)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.includepath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_hps/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_dual_counter_hps/include}&quot;"/>
+								</option>
+								<inputType id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.input.2019143054" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.input"/>
+							</tool>
+							<tool id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.var.com.altera.ds5ae.toolchain.gcc.baremetal.652724376" name="GCC Assembler" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.var.com.altera.ds5ae.toolchain.gcc.baremetal">
+								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.includes.1486960654" name="Include paths (-I)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_hps/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_dual_counter_hps/include}&quot;"/>
+								</option>
+								<inputType id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.input.1233154154" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.input"/>
+							</tool>
+							<tool id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.cpp.linker.var.com.altera.ds5ae.toolchain.gcc.baremetal.210892697" name="GCC C++ Linker" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.cpp.linker.var.com.altera.ds5ae.toolchain.gcc.baremetal"/>
+							<tool id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.var.com.altera.ds5ae.toolchain.gcc.baremetal.2119223706" name="GCC C Linker" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.var.com.altera.ds5ae.toolchain.gcc.baremetal">
+								<inputType id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.input.1305571916" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.input">
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.archiver.var.com.altera.ds5ae.toolchain.gcc.baremetal.1433792470" name="GCC Archiver" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.archiver.var.com.altera.ds5ae.toolchain.gcc.baremetal"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="dircc_application_dual_counter_hps.com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.lib.var.com.altera.ds5ae.toolchain.gcc.baremetal.1141827843" name="Static Library" projectType="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.lib.var.com.altera.ds5ae.toolchain.gcc.baremetal"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="com.arm.projectSettings" version="5.25"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.92881346;com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.92881346.;com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.var.com.altera.ds5ae.toolchain.gcc.baremetal.1213978113;com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.input.315764134">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.arm.managedbuilder.gcc.ARMGCCDiscoveryProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.release.var.com.altera.ds5ae.toolchain.gcc.baremetal.764798160;com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.release.var.com.altera.ds5ae.toolchain.gcc.baremetal.764798160.;com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.var.com.altera.ds5ae.toolchain.gcc.baremetal.460054638;com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.input.2019143054">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.arm.managedbuilder.gcc.ARMGCCDiscoveryProfileC"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+</cproject>

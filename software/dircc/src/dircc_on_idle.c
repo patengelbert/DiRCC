@@ -26,7 +26,7 @@ bool dircc_onIdle(PThreadContext *ctxt)
         }
 
         // Check for compute ready, excluding any errored devices
-        if( (dev->rtsFlags & DIRCC_RTS_FLAGS_COMPUTE) && !(dircc_getState(dev) & (DIRCC_STATE_DONE | DIRCC_STATE_ERROR))){
+        if( (dev->rtsFlags & DIRCC_RTS_FLAGS_COMPUTE) && !(dircc_getState(dev) & (DIRCC_STATE_DONE | DIRCC_STATE_ERROR | DIRCC_STATE_DISABLED))){
             DIRCC_LOG_PRINTF("device %u wishes to compute", dev->index);
             foundDev = 1;
             break;

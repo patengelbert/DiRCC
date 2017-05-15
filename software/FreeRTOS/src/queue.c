@@ -2424,7 +2424,7 @@ BaseType_t xReturn;
 			}
 			else
 			{
-				( ( Queue_t * ) xQueueOrSemaphore )->pxQueueSetContainer = ( QueueDefinition * ) xQueueSet;
+				( ( Queue_t * ) xQueueOrSemaphore )->pxQueueSetContainer = ( Queue_t * ) xQueueSet;
 				xReturn = pdPASS;
 			}
 		}

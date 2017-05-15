@@ -389,7 +389,7 @@ size_t xTotalHeapSize = configTOTAL_HEAP_SIZE;
 
 	/* xStart is used to hold a pointer to the first item in the list of free
 	blocks.  The void cast is used to prevent compiler warnings. */
-	xStart.pxNextFreeBlock = ( A_BLOCK_LINK * ) pucAlignedHeap;
+	xStart.pxNextFreeBlock = ( BlockLink_t * ) pucAlignedHeap;
 	xStart.xBlockSize = ( size_t ) 0;
 
 	/* pxEnd is used to mark the end of the list of free blocks and is inserted

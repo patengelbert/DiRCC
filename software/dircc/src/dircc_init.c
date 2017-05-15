@@ -49,8 +49,8 @@ EdgeState *dircc_searchEdgeState(DeviceContext *dev, InputPortBinding *binding)
 void dircc_LoadState(PThreadContext *pCtxt, DeviceContext *dev) {
 	DeviceState *dState = devStates + dev->index;
 	dState->dirccState=0;
-	clear_array(dState->userState, MAX_DEVICE_USER_STATE_BYTES);
-#ifndef NDEBUG
+//	clear_array(dState->userState, MAX_DEVICE_USER_STATE_BYTES);
+#if !defined(NDEBUG) && defined(FORCE_START)
 	if (pCtxt->threadId == 0 && dev->index == 0)
 	{
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
@@ -73,7 +73,7 @@ void dircc_LoadState(PThreadContext *pCtxt, DeviceContext *dev) {
 			{
 				// We have an edge state to load
 				EdgeState * eState = dircc_searchEdgeState(dev, binding);
-				clear_array(eState->userState, MAX_EDGE_USER_STATE_BYTES);
+//				clear_array(eState->userState, MAX_EDGE_USER_STATE_BYTES);
 				DIRCC_LOG_PRINTF("Using edge state at address 0x%08x for source {%u,%u,%u}" , eState, binding->source.hw_node, binding->source.sw_node, binding->source.port);
 			}
 		}
@@ -93,7 +93,7 @@ void dircc_init(PThreadContext *ctxt) {
 
 	for (uint32_t i = 0; i < ctxt->numDevices; ++i) {
 		dircc_LoadState(ctxt, ctxt->devices + i);
-		dircc_UpdateRTS(ctxt, ctxt->devices + i);
+//		dircc_UpdateRTS(ctxt, ctxt->devices + i);
 		// This device has booted up
 		dircc_setExclusiveState(ctxt->devices + i, DIRCC_STATE_BOOTED, &i);
 	}
