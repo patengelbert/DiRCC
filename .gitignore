@@ -7,7 +7,7 @@
 db/
 
 # Simulation files
-**/simulation/
+fpga/simulation
 **/*_sim/
 **/libraries/
 transcript
