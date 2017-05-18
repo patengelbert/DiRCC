@@ -1,0 +1,57 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/patrick/Documents/Coursework/DiRCC/fpga/components/dircc_avalon_st_packet_sender/testbench
+Xdircc_types_pkg
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+!s110 1495114186
+!i10b 1
+!s100 TRh;Ue2?zf_];fSzaYSng1
+I:Q4Bn`;MKAc@WW78C13^T2
+V:Q4Bn`;MKAc@WW78C13^T2
+S1
+R0
+w1495037005
+Z2 8./dircc_avalon_st_packet_sender_tb/simulation/submodules/dircc_types.sv
+Z3 F./dircc_avalon_st_packet_sender_tb/simulation/submodules/dircc_types.sv
+L0 5
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1495114186.000000
+!s107 ./dircc_avalon_st_packet_sender_tb/simulation/submodules/dircc_types.sv|
+Z5 !s90 -reportprogress|300|-sv|./dircc_avalon_st_packet_sender_tb/simulation/submodules/dircc_types.sv|-work|dircc_sv_packages|
+!i113 1
+Z6 o-sv -work dircc_sv_packages
+Z7 tCvgOpt 0
+XTypeDefs
+R1
+!s110 1495036944
+!i10b 1
+!s100 `2M8d9D?C]9=4A?nX:NJY2
+If3^nPPIHl^K@Xan8bb?6D3
+Vf3^nPPIHl^K@Xan8bb?6D3
+S1
+R0
+w1495032990
+R2
+R3
+L0 5
+R4
+r1
+!s85 0
+31
+!s108 1495036944.000000
+!s107 ./dircc_avalon_st_packet_sender_tb/simulation/submodules/dircc_types.sv|
+R5
+!i113 1
+R6
+R7
+n@type@defs
