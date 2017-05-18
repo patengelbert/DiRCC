@@ -65,8 +65,8 @@ module dircc_avalon_st_packet_receiver(
 		.ERROR_WIDTH         (0),
 		.USE_PACKETS         (1),
 		.USE_FILL_LEVEL      (0),
-		.EMPTY_LATENCY       (1),
-		.USE_MEMORY_BLOCKS   (1),
+		.EMPTY_LATENCY       (0),
+		.USE_MEMORY_BLOCKS   (0),
 		.USE_STORE_FORWARD   (0),
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
