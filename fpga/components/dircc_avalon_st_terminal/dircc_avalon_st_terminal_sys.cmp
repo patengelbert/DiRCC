@@ -1,0 +1,16 @@
+	component dircc_avalon_st_terminal_sys is
+		port (
+			clk_clk          : in  std_logic                     := 'X';             -- clk
+			reset_reset_n    : in  std_logic                     := 'X';             -- reset_n
+			s1_data          : in  std_logic_vector(31 downto 0) := (others => 'X'); -- data
+			s1_empty         : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- empty
+			s1_endofpacket   : in  std_logic                     := 'X';             -- endofpacket
+			s1_ready         : out std_logic;                                        -- ready
+			s1_startofpacket : in  std_logic                     := 'X';             -- startofpacket
+			s1_valid         : in  std_logic                     := 'X';             -- valid
+			status_readdata  : out std_logic_vector(15 downto 0);                    -- readdata
+			status_address   : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			status_read_n    : in  std_logic                     := 'X'              -- read_n
+		);
+	end component dircc_avalon_st_terminal_sys;
+

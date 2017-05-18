@@ -1,6 +1,6 @@
 
 `timescale 1 ps / 1 ps
-module dircc_avalon_st_terminal #(
+module dircc_avalon_st_terminal_inst #(
 		parameter DATA_WIDTH = 32
 	) (
 		input  wire [DATA_WIDTH-1:0] data,              //                      .data
@@ -15,6 +15,11 @@ module dircc_avalon_st_terminal #(
 		output reg [15:0]  readdata,                    //                      .readdata
 		input  wire        read_n                       //                      .read_n
 	);
+
+	initial begin 
+    ready = 1'b0;
+		readdata = 16'b0;
+	end
   
   always @(posedge clk, negedge reset_n) begin
     if(!reset_n) begin
