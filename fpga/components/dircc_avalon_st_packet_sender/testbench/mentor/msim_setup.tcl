@@ -169,7 +169,7 @@ vmap       dircc_avalon_st_packet_sender_inst_output_bfm      ./libraries/dircc_
 ensure_lib                                                    ./libraries/dircc_avalon_st_packet_sender_inst_clk_bfm/        
 vmap       dircc_avalon_st_packet_sender_inst_clk_bfm         ./libraries/dircc_avalon_st_packet_sender_inst_clk_bfm/
 ensure_lib                                                    ./libraries/dircc_sv_packages/         
-vmap       altera_common_sv_packages                          ./libraries/dircc_sv_packages/   
+vmap       dircc_sv_packages                                  ./libraries/dircc_sv_packages/   
 ensure_lib                                                    ./libraries/dircc_avalon_st_packet_sender_inst/                
 vmap       dircc_avalon_st_packet_sender_inst                 ./libraries/dircc_avalon_st_packet_sender_inst/                
 

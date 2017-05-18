@@ -1,3 +1,6 @@
+
+`timescale 1 ps / 1 ps
+
 module dircc_routing_test;
     parameter TIMEOUT = 1000000000;
 
