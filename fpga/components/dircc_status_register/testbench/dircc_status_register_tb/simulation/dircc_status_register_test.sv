@@ -82,7 +82,7 @@ module dircc_avalon_st_terminal_test;
         waitForResponse(TIMEOUT, rv);
 
         if (rv == TRUE) begin
-            returnState = tb.dircc_status_register_inst_state_dircc_state;
+            returnState = tb.dircc_status_register_inst_read_state.dircc_state;
             assert(returnState == testStatus)
             else begin
                 $sformat(message, "%m: Expected %d, got %d", testStatus, returnState);
@@ -115,7 +115,7 @@ module dircc_avalon_st_terminal_test;
         waitForResponse(TIMEOUT, rv);
 
         if (rv == TRUE) begin
-            returnStateExtra = tb.dircc_status_register_inst_state_dircc_extra_state;
+            returnStateExtra = tb.dircc_status_register_inst_read_state.dircc_state_extra;
             assert(returnStateExtra == testStatusExtra)
             else begin
                 $sformat(message, "%m: Expected %d, got %d", testStatusExtra, returnStateExtra);
@@ -164,7 +164,7 @@ module dircc_avalon_st_terminal_test;
         waitForResponse(TIMEOUT, rv);
 
         if (rv == TRUE) begin
-            returnState = tb.dircc_status_register_inst_state_user_state;
+            returnState = tb.dircc_status_register_inst_read_state.user_state;
             assert(returnState == testUserState)
             else begin
                 $sformat(message, "%m: Expected %d, got %d", testUserState, returnState);
@@ -191,8 +191,8 @@ module dircc_avalon_st_terminal_test;
 
         setupTest();
 
-        tb.dircc_status_register_inst_write_state_dircc_state = testStatus;
-        tb.dircc_status_register_inst_write_state_dircc_extra_state = testExtraState;
+        tb.dircc_status_register_inst_write_state.dircc_state = testStatus;
+        tb.dircc_status_register_inst_write_state.dircc_state_extra = testExtraState;
 
         tb.dircc_status_register_inst_write_state_valid = 1;
         @(posedge clk);

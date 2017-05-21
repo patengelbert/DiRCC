@@ -6,6 +6,8 @@
 module dircc_status_register_tb (
 	);
 
+	import dircc_types_pkg::*;
+
 	wire  [15:0] dircc_status_register_inst_mem_bfm_m0_readdata;
 	wire  [15:0] dircc_status_register_inst_mem_bfm_m0_writedata;
 	wire  [14:0] dircc_status_register_inst_mem_bfm_m0_address;
@@ -13,12 +15,8 @@ module dircc_status_register_tb (
 	wire         dircc_status_register_inst_clk_bfm_clk_clk;          
 	wire         dircc_status_register_inst_reset_bfm_reset_reset;
 
-	wire  [63:0] dircc_status_register_inst_state_user_state;
-	wire  [15:0] dircc_status_register_inst_state_dircc_state;
-	wire  [15:0] dircc_status_register_inst_state_dircc_extra_state;
-	logic [63:0] dircc_status_register_inst_write_state_user_state;
-	logic [15:0] dircc_status_register_inst_write_state_dircc_state;
-	logic [15:0] dircc_status_register_inst_write_state_dircc_extra_state;
+	device_state_t dircc_status_register_inst_read_state;
+	device_state_t dircc_status_register_inst_write_state;
 	logic		 dircc_status_register_inst_write_state_valid;
 
 
@@ -29,12 +27,8 @@ module dircc_status_register_tb (
 		.mem_writedata 	  				(dircc_status_register_inst_mem_bfm_m0_writedata),  		   //             .writedata
 		.mem_address   	  				(dircc_status_register_inst_mem_bfm_m0_address),    		   //             .address
 		.mem_write     	  				(dircc_status_register_inst_mem_bfm_m0_write),       		   //             .write
-		.state_user_state 				(dircc_status_register_inst_state_user_state),          	   //        state.user_state
-    	.state_dircc_state				(dircc_status_register_inst_state_dircc_state),         	   //             .dircc_state
-    	.state_dircc_extra_state		(dircc_status_register_inst_state_dircc_extra_state),   	   //             .extra_state
-    	.write_state_user_state			(dircc_status_register_inst_write_state_user_state),           //  write_state.user_state
-    	.write_state_dircc_state		(dircc_status_register_inst_write_state_dircc_state),          //             .dircc_state
-    	.write_state_dircc_extra_state	(dircc_status_register_inst_write_state_dircc_extra_state),    //             .extra_state
+		.read_state		 				(dircc_status_register_inst_read_state),          	  		   //        state.state
+    	.write_state					(dircc_status_register_inst_write_state),           		   //  write_state.state
     	.write_state_valid				(dircc_status_register_inst_write_state_valid)                 //             .valid
 	);
 
