@@ -146,26 +146,26 @@ module dircc_avalon_st_packet_receiver(
           end
           LAMPORT: begin
             if (input_fifo_out_valid) begin
-              temp_packet.lamport = input_fifo_out_data;
+              temp_packet.lamport <= input_fifo_out_data;
               packet_state <= DATA0;
             end
           end
           DATA0: begin
             if (input_fifo_out_valid) begin
-              temp_packet.data[31:0] = input_fifo_out_data;
+              temp_packet.data[31:0] <= input_fifo_out_data;
               packet_state <= DATA1;
             end
           end
           DATA1: begin
             if (input_fifo_out_valid) begin
-              temp_packet.data[63:32] = input_fifo_out_data;
+              temp_packet.data[63:32] <= input_fifo_out_data;
               packet_state <= DATA2;
             end
           end
           DATA2: begin
             if (input_fifo_out_valid) begin
               assert(input_fifo_out_endofpacket);
-              temp_packet.data[95:64] = input_fifo_out_data;
+              temp_packet.data[95:64] <= input_fifo_out_data;
               packet_state <= DEST_ADDR0;
               packet_done <= TRUE;
               input_fifo_out_ready <= 0;
