@@ -6,6 +6,8 @@
 module dircc_avalon_st_packet_receiver_tb (
 	);
 
+	import dircc_types_pkg::*;
+
 	wire         dircc_avalon_st_packet_receiver_inst_input_valid;                 
 	wire  [31:0] dircc_avalon_st_packet_receiver_inst_input_data;                  
 	wire         dircc_avalon_st_packet_receiver_inst_input_ready;                 
@@ -14,18 +16,24 @@ module dircc_avalon_st_packet_receiver_tb (
 	wire   [1:0] dircc_avalon_st_packet_receiver_inst_input_empty;
 	wire         dircc_avalon_st_packet_receiver_inst_clk_bfm_clk_clk;
 	wire         dircc_avalon_st_packet_receiver_inst_reset_bfm_reset_reset;
-	wire         dircc_avalon_st_packet_receiver_inst_receiving;
+	wire         dircc_avalon_st_packet_receiver_inst_receive_done;
+	wire         dircc_avalon_st_packet_receiver_inst_packet_valid;
+	packet_t     dircc_avalon_st_packet_receiver_inst_packet_data;
+	logic		 dircc_avalon_st_packet_receiver_inst_read_packet;
 
 	dircc_avalon_st_packet_receiver dircc_avalon_st_packet_receiver_inst (
 		.clk	                    (dircc_avalon_st_packet_receiver_inst_clk_bfm_clk_clk),                   //          clk.clk
-		.data           			(dircc_avalon_st_packet_receiver_inst_input_data),                  	  //  	 input.data
+		.data           			(dircc_avalon_st_packet_receiver_inst_input_data),                  	  //  	    input.data
 		.valid          			(dircc_avalon_st_packet_receiver_inst_input_valid),                 	  //             .valid
 		.ready          			(dircc_avalon_st_packet_receiver_inst_input_ready),                 	  //             .ready
 		.startofpacket  			(dircc_avalon_st_packet_receiver_inst_input_startofpacket),         	  //             .startofpacket
 		.endofpacket    			(dircc_avalon_st_packet_receiver_inst_input_endofpacket),           	  //             .endofpacket
 		.empty          			(dircc_avalon_st_packet_receiver_inst_input_empty),                 	  //             .empty
 		.reset_n              		(dircc_avalon_st_packet_receiver_inst_reset_bfm_reset_reset),             //        reset.reset_n
-		.receiving					(dircc_avalon_st_packet_receiver_inst_receiving)						  //		sending.sending
+		.receive_done				(dircc_avalon_st_packet_receiver_inst_receive_done),					  //	  receive.done
+		.packet_valid				(dircc_avalon_st_packet_receiver_inst_packet_valid),					  //       packet.valid
+		.packet_data				(dircc_avalon_st_packet_receiver_inst_packet_data),						  //             .data
+		.read_packet				(dircc_avalon_st_packet_receiver_inst_read_packet)						  //             .read_packet
 	);
 
 	altera_avalon_clock_source #(
@@ -54,14 +62,14 @@ module dircc_avalon_st_packet_receiver_tb (
 	) dircc_avalon_st_packet_receiver_inst_input_bfm (
 		.clk                (dircc_avalon_st_packet_receiver_inst_clk_bfm_clk_clk),         //       clk.clk
 		.reset              (~dircc_avalon_st_packet_receiver_inst_reset_bfm_reset_reset),  // clk_reset.reset
-		.src_data          (dircc_avalon_st_packet_receiver_inst_input_data),          		//       src.data
-		.src_valid         (dircc_avalon_st_packet_receiver_inst_input_valid),         		//          .valid
-		.src_ready         (dircc_avalon_st_packet_receiver_inst_input_ready),         		//          .ready
-		.src_startofpacket (dircc_avalon_st_packet_receiver_inst_input_startofpacket), 		//          .startofpacket
-		.src_endofpacket   (dircc_avalon_st_packet_receiver_inst_input_endofpacket),   		//          .endofpacket
-		.src_empty         (dircc_avalon_st_packet_receiver_inst_input_empty),         		//          .empty
-		.src_channel       (),                                         						// (terminated)
-		.src_error         ()                                          						// (terminated)
+		.src_data           (dircc_avalon_st_packet_receiver_inst_input_data),          	//       src.data
+		.src_valid          (dircc_avalon_st_packet_receiver_inst_input_valid),         	//          .valid
+		.src_ready          (dircc_avalon_st_packet_receiver_inst_input_ready),         	//          .ready
+		.src_startofpacket  (dircc_avalon_st_packet_receiver_inst_input_startofpacket), 	//          .startofpacket
+		.src_endofpacket    (dircc_avalon_st_packet_receiver_inst_input_endofpacket),   	//          .endofpacket
+		.src_empty          (dircc_avalon_st_packet_receiver_inst_input_empty),         	//          .empty
+		.src_channel        (),                                         					// (terminated)
+		.src_error          ()                                          					// (terminated)
 	);
 
 	altera_avalon_reset_source #(

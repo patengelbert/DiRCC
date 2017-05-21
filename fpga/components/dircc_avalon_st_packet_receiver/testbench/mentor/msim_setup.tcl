@@ -207,7 +207,7 @@ alias com {
   eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_avalon_st_packet_receiver_tb/simulation/submodules/altera_avalon_clock_source.sv"                  -L altera_common_sv_packages -work dircc_avalon_st_packet_receiver_inst_clk_bfm       
   eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_avalon_st_packet_receiver_tb/simulation/submodules/dircc_types.sv"                                                              -work dircc_sv_packages    
   eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_avalon_st_packet_receiver_tb/simulation/submodules/dircc_avalon_st_packet_receiver.sv"             -L dircc_sv_packages         -work dircc_avalon_st_packet_receiver_inst                
-  eval  vlog     $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_avalon_st_packet_receiver_tb/simulation/dircc_avalon_st_packet_receiver_tb.v"                                                                                             
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_avalon_st_packet_receiver_tb/simulation/dircc_avalon_st_packet_receiver_tb.sv"                     -L dircc_sv_packages                                                    
 }
 
 # ----------------------------------------

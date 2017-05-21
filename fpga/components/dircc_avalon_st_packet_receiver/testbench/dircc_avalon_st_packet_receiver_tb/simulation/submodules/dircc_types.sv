@@ -26,7 +26,7 @@ package dircc_types_pkg;
     typedef struct packed {
         bit [15:0] dirccState;
         bit [15:0] dirccStateExtra;
-        bit [(8*MAX_DEVICE_USER_STATE_BYTES)-1:0] userState;
+        bit [(8*`MAX_DEVICE_USER_STATE_BYTES)-1:0] userState;
     } deviceState;
     
     typedef struct packed {
@@ -34,7 +34,7 @@ package dircc_types_pkg;
 	    bit [7:0]  dest_sw_node;
 	    bit [7:0] src_sw_node;
 	    bit [7:0] src_port;
-	    bit [(8*MAX_EDGE_USER_STATE_BYTES)-1:0] userState;
+	    bit [(8*`MAX_EDGE_USER_STATE_BYTES)-1:0] userState;
     } edgeState;
 
 endpackage : dircc_types_pkg

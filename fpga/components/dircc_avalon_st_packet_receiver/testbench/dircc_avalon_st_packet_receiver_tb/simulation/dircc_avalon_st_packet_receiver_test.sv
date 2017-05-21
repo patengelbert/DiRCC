@@ -16,12 +16,13 @@ module dircc_avalon_st_packet_receiver_test;
 
     event reset_asserted, reset_deasserted, receiving_done;
 
-    always @(negedge tb.dircc_avalon_st_packet_receiver_inst_receiving) begin
+    always @(posedge tb.dircc_avalon_st_packet_receiver_inst_receive_done) begin
         -> receiving_done;
     end
 
     task automatic setupTest();
         tb.dircc_avalon_st_packet_receiver_inst_reset_bfm.reset_assert();
+        tb.dircc_avalon_st_packet_receiver_inst_read_packet = 0;
         -> reset_asserted;
         repeat(10) @(posedge clk);
         tb.dircc_avalon_st_packet_receiver_inst_reset_bfm.reset_deassert();
@@ -178,6 +179,12 @@ module dircc_avalon_st_packet_receiver_test;
 
     endtask : checkPacket
 
+    task automatic receivePacket(output packet_t packet);
+        tb.dircc_avalon_st_packet_receiver_inst_read_packet = 1;
+        @(posedge tb.dircc_avalon_st_packet_receiver_inst_packet_valid);
+        packet = tb.dircc_avalon_st_packet_receiver_inst_packet_data;
+    endtask : receivePacket
+
     task automatic test_resetCorrect();
         automatic bool rv = FALSE;
         automatic packet_t packetToSend = '{
@@ -201,7 +208,7 @@ module dircc_avalon_st_packet_receiver_test;
         repeat(10) @(posedge clk);
         tb.dircc_avalon_st_packet_receiver_inst_reset_bfm.reset_deassert();
         repeat(10) @(posedge clk);
-        assert (tb.dircc_avalon_st_packet_receiver_inst_receiving)
+        assert (!tb.dircc_avalon_st_packet_receiver_inst_receive_done)
         else begin
             $sformat(message, "%m: - TEST ERROR");
             print(VERBOSITY_ERROR, message);  
@@ -256,8 +263,8 @@ module dircc_avalon_st_packet_receiver_test;
         
         waitWithTimeout(receiving_done, TIMEOUT);
 
-        if(!tb.dircc_avalon_st_packet_receiver_inst.receiving) begin
-            tb.dircc_avalon_st_packet_receiver_inst.receivePacket(receivedPacket);
+        if(tb.dircc_avalon_st_packet_receiver_inst_receive_done) begin
+            receivePacket(receivedPacket); 
             checkPacket (receivedPacket, packetToSend, rv);
         end else begin
             $sformat(message, "%m: - Packet not fully received");
