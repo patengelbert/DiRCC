@@ -10,6 +10,9 @@ module dircc_avalon_st_packet_sender(
   ready,
   valid,
 
+  write_packet,
+  packet_data,
+
   sending
 );
 
@@ -18,6 +21,8 @@ module dircc_avalon_st_packet_sender(
   localparam DATA_WIDTH = BITS_PER_SYMBOL * SYMBOLS_PER_BEAT;
   localparam EMPTY_WIDTH = $clog2(SYMBOLS_PER_BEAT);
   localparam NULL_BYTE = 8'b0;
+
+  import dircc_types_pkg::*;
 
   input  wire                   clk;
   input  wire                   reset_n;
@@ -28,25 +33,26 @@ module dircc_avalon_st_packet_sender(
   output reg                    endofpacket;
   input  wire                   ready;
   output reg                    valid;
+
+  input wire                    write_packet;
+  input packet_t                packet_data;
   
   output wire                   sending;
-
-  import dircc_types_pkg::*;
   
-  typedef enum logic[5:0] {IDLE, DEST_ADDR0, DEST_ADDR1, SRC_ADDR0, SRC_ADDR1, LAMPORT, DATA0, DATA1, DATA2} packetState_t;
+  typedef enum logic[5:0] {IDLE, DEST_ADDR0, DEST_ADDR1, SRC_ADDR0, SRC_ADDR1, LAMPORT, DATA0, DATA1, DATA2} packet_state_t;
   
-  packet_t packetToSend;
-  packetState_t packetState;
+  packet_t packet_to_send;
+  packet_state_t packet_state;
   
-  assign sending = (packetState != IDLE) ? 1 : 0;
+  assign sending = (packet_state != IDLE) ? 1 : 0;
   
   always_ff @(posedge clk or negedge reset_n) begin
     if(!reset_n) begin
       valid <= 0;
-      packetState <= IDLE;
+      packet_state <= IDLE;
     end
     else begin
-      case(packetState)
+      case(packet_state)
         IDLE: begin
           valid <= 0;
         end
@@ -56,8 +62,8 @@ module dircc_avalon_st_packet_sender(
             startofpacket <= 1;
             endofpacket <= 0;
             empty <= 0;
-            data <= packetToSend.dest_addr.hw_addr;
-            packetState <= DEST_ADDR1;
+            data <= packet_to_send.dest_addr.hw_addr;
+            packet_state <= DEST_ADDR1;
           end
           else begin
             valid <= 0;
@@ -69,8 +75,8 @@ module dircc_avalon_st_packet_sender(
             startofpacket <= 0;
             endofpacket <= 0;
             empty <= 0;
-            data <= {packetToSend.dest_addr.sw_addr, packetToSend.dest_addr.port, packetToSend.dest_addr.flag, NULL_BYTE};
-            packetState <= SRC_ADDR0;
+            data <= {packet_to_send.dest_addr.sw_addr, packet_to_send.dest_addr.port, packet_to_send.dest_addr.flag, NULL_BYTE};
+            packet_state <= SRC_ADDR0;
           end
           else begin
             valid <= 0;
@@ -82,8 +88,8 @@ module dircc_avalon_st_packet_sender(
             startofpacket <= 0;
             endofpacket <= 0;
             empty <= 0;
-            data <= packetToSend.src_addr.hw_addr;
-            packetState <= SRC_ADDR1;
+            data <= packet_to_send.src_addr.hw_addr;
+            packet_state <= SRC_ADDR1;
           end
           else begin
             valid <= 0;
@@ -95,8 +101,8 @@ module dircc_avalon_st_packet_sender(
             startofpacket <= 0;
             endofpacket <= 0;
             empty <= 0;
-            data <= {packetToSend.src_addr.sw_addr, packetToSend.src_addr.port, packetToSend.src_addr.flag, NULL_BYTE};
-            packetState <= LAMPORT;
+            data <= {packet_to_send.src_addr.sw_addr, packet_to_send.src_addr.port, packet_to_send.src_addr.flag, NULL_BYTE};
+            packet_state <= LAMPORT;
           end
           else begin
             valid <= 0;
@@ -108,8 +114,8 @@ module dircc_avalon_st_packet_sender(
             startofpacket <= 0;
             endofpacket <= 0;
             empty <= 0;
-            data <= packetToSend.lamport;
-            packetState <= DATA0;
+            data <= packet_to_send.lamport;
+            packet_state <= DATA0;
           end
           else begin
             valid <= 0;
@@ -121,8 +127,8 @@ module dircc_avalon_st_packet_sender(
             startofpacket <= 0;
             endofpacket <= 0;
             empty <= 0;
-            data <= packetToSend.data[31:0];
-            packetState <= DATA1;
+            data <= packet_to_send.data[31:0];
+            packet_state <= DATA1;
           end
           else begin
             valid <= 0;
@@ -134,8 +140,8 @@ module dircc_avalon_st_packet_sender(
             startofpacket <= 0;
             endofpacket <= 0;
             empty <= 0;
-            data <= packetToSend.data[63:32];
-            packetState <= DATA2;
+            data <= packet_to_send.data[63:32];
+            packet_state <= DATA2;
           end
           else begin
             valid <= 0;
@@ -147,20 +153,20 @@ module dircc_avalon_st_packet_sender(
             startofpacket <= 0;
             endofpacket <= 1;
             empty <= 0;
-            data <= packetToSend.data[95:64];
-            packetState <= IDLE;
+            data <= packet_to_send.data[95:64];
+            packet_state <= IDLE;
           end
           else begin
             valid <= 0;
           end
         end
       endcase
+
+      if (write_packet && !sending) begin
+        packet_to_send <= packet_data;
+        packet_state <= DEST_ADDR0;
+      end
     end
   end
-  
-  task sendPacket(input packet_t packet);
-    packetToSend = packet;
-    packetState = DEST_ADDR0;
-  endtask : sendPacket
   
 endmodule : dircc_avalon_st_packet_sender

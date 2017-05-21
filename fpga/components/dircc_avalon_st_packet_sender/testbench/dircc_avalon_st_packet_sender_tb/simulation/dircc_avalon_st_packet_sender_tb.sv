@@ -6,6 +6,8 @@
 module dircc_avalon_st_packet_sender_tb (
 	);
 
+	import dircc_types_pkg::*;
+
 	wire         dircc_avalon_st_packet_sender_inst_output_valid;                 
 	wire  [31:0] dircc_avalon_st_packet_sender_inst_output_data;                  
 	wire         dircc_avalon_st_packet_sender_inst_output_ready;                 
@@ -15,6 +17,8 @@ module dircc_avalon_st_packet_sender_tb (
 	wire         dircc_avalon_st_packet_sender_inst_clk_bfm_clk_clk;
 	wire         dircc_avalon_st_packet_sender_inst_reset_bfm_reset_reset;
 	wire         dircc_avalon_st_packet_sender_inst_sending;
+	packet_t	 dircc_avalon_st_packet_sender_inst_packet_data;
+	logic 		 dircc_avalon_st_packet_sender_inst_write_packet;
 
 	dircc_avalon_st_packet_sender dircc_avalon_st_packet_sender_inst (
 		.clk	                    (dircc_avalon_st_packet_sender_inst_clk_bfm_clk_clk),                   //          clk.clk
@@ -25,7 +29,9 @@ module dircc_avalon_st_packet_sender_tb (
 		.endofpacket    			(dircc_avalon_st_packet_sender_inst_output_endofpacket),           		//             .endofpacket
 		.empty          			(dircc_avalon_st_packet_sender_inst_output_empty),                 		//             .empty
 		.reset_n              		(dircc_avalon_st_packet_sender_inst_reset_bfm_reset_reset),             //        reset.reset_n
-		.sending					(dircc_avalon_st_packet_sender_inst_sending)							//		sending.sending
+		.sending					(dircc_avalon_st_packet_sender_inst_sending),							//		sending.sending
+		.packet_data				(dircc_avalon_st_packet_sender_inst_packet_data),						//		 packet.data
+		.write_packet				(dircc_avalon_st_packet_sender_inst_write_packet)						//		   	   .write_packet
 	);
 
 	altera_avalon_clock_source #(

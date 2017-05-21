@@ -18,6 +18,7 @@ module dircc_avalon_st_packet_sender_test;
 
     task automatic setupTest();
         tb.dircc_avalon_st_packet_sender_inst_reset_bfm.reset_assert();
+        tb.dircc_avalon_st_packet_sender_inst_write_packet = 0;
         -> reset_asserted;
         repeat(10) @(posedge clk);
         tb.dircc_avalon_st_packet_sender_inst_reset_bfm.reset_deassert();
@@ -105,10 +106,16 @@ module dircc_avalon_st_packet_sender_test;
 
     endtask : checkPacket
 
+    task automatic sendPacket(input packet_t packet);
+        tb.dircc_avalon_st_packet_sender_inst_packet_data = packet;
+        tb.dircc_avalon_st_packet_sender_inst_write_packet = 1;
+        @(posedge tb.dircc_avalon_st_packet_sender_inst_sending);
+    endtask : sendPacket
+
     task automatic test_resetCorrect();
         setupTest();
         tb.dircc_avalon_st_packet_sender_inst_reset_bfm.reset_assert();
-        assert (!tb.dircc_avalon_st_packet_sender_inst_output_valid) begin
+        assert (!tb.dircc_avalon_st_packet_sender_inst_output_valid && !tb.dircc_avalon_st_packet_sender_inst_sending) begin
             $sformat(message, "%m: - TEST SUCCESS");
             print(VERBOSITY_INFO, message);  
         end
@@ -140,7 +147,7 @@ module dircc_avalon_st_packet_sender_test;
             data: $random
         };
         setupTest();
-        tb.dircc_avalon_st_packet_sender_inst.sendPacket(packetToSend);
+        sendPacket(packetToSend);
         waitForMessage(TIMEOUT, rv);
         if(rv == TRUE) begin
             checkPacket(packetToSend);
