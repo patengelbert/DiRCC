@@ -24,18 +24,18 @@ package dircc_types_pkg;
     } packet_t;
 
     typedef struct packed {
-        bit [15:0] dirccState;
-        bit [15:0] dirccStateExtra;
-        bit [(8*`MAX_DEVICE_USER_STATE_BYTES)-1:0] userState;
-    } deviceState;
+        bit [15:0] dircc_state;
+        bit [15:0] dircc_state_extra;
+        bit [(8*`MAX_DEVICE_USER_STATE_BYTES)-1:0] user_state;
+    } device_state_t;
     
     typedef struct packed {
 	    bit [31:0] src_hw_node;
 	    bit [7:0]  dest_sw_node;
 	    bit [7:0] src_sw_node;
 	    bit [7:0] src_port;
-	    bit [(8*`MAX_EDGE_USER_STATE_BYTES)-1:0] userState;
-    } edgeState;
+	    bit [(8*`MAX_EDGE_USER_STATE_BYTES)-1:0] user_state;
+    } edge_state_t;
 
 endpackage : dircc_types_pkg
 

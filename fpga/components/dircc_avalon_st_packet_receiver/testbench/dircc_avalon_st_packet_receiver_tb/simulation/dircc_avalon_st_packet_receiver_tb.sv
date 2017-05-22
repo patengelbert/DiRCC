@@ -17,9 +17,9 @@ module dircc_avalon_st_packet_receiver_tb (
 	wire         dircc_avalon_st_packet_receiver_inst_clk_bfm_clk_clk;
 	wire         dircc_avalon_st_packet_receiver_inst_reset_bfm_reset_reset;
 	wire         dircc_avalon_st_packet_receiver_inst_receive_done;
+	wire		 dircc_avalon_st_packet_receiver_inst_receive_nearly_done;
 	wire         dircc_avalon_st_packet_receiver_inst_packet_valid;
 	packet_t     dircc_avalon_st_packet_receiver_inst_packet_data;
-	logic		 dircc_avalon_st_packet_receiver_inst_read_packet;
 
 	dircc_avalon_st_packet_receiver dircc_avalon_st_packet_receiver_inst (
 		.clk	                    (dircc_avalon_st_packet_receiver_inst_clk_bfm_clk_clk),                   //          clk.clk
@@ -31,9 +31,9 @@ module dircc_avalon_st_packet_receiver_tb (
 		.empty          			(dircc_avalon_st_packet_receiver_inst_input_empty),                 	  //             .empty
 		.reset_n              		(dircc_avalon_st_packet_receiver_inst_reset_bfm_reset_reset),             //        reset.reset_n
 		.receive_done				(dircc_avalon_st_packet_receiver_inst_receive_done),					  //	  receive.done
+		.receive_nearly_done		(dircc_avalon_st_packet_receiver_inst_receive_nearly_done),				  //             .nearly_done
 		.packet_valid				(dircc_avalon_st_packet_receiver_inst_packet_valid),					  //       packet.valid
-		.packet_data				(dircc_avalon_st_packet_receiver_inst_packet_data),						  //             .data
-		.read_packet				(dircc_avalon_st_packet_receiver_inst_read_packet)						  //             .read_packet
+		.packet_data				(dircc_avalon_st_packet_receiver_inst_packet_data)						  //             .data
 	);
 
 	altera_avalon_clock_source #(

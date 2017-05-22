@@ -10,11 +10,11 @@ module dircc_avalon_st_packet_receiver(
   ready,
   valid,
 
-  read_packet,
   packet_valid,
   packet_data,
 
-  receive_done
+  receive_done,
+  receive_nearly_done
 );
 
   parameter BITS_PER_SYMBOL = 8;
@@ -36,11 +36,11 @@ module dircc_avalon_st_packet_receiver(
   output reg                    ready;
   input wire                    valid;
 
-  input wire                    read_packet;
   output reg                    packet_valid;
   output packet_t               packet_data;
 
-  output wire                   receive_done;
+  output reg                    receive_done;
+  output reg                    receive_nearly_done;
   
   typedef enum logic[5:0] {IDLE, DEST_ADDR0, DEST_ADDR1, SRC_ADDR0, SRC_ADDR1, LAMPORT, DATA0, DATA1, DATA2} packet_state_t;
   
@@ -51,19 +51,8 @@ module dircc_avalon_st_packet_receiver(
   reg                     input_fifo_out_ready;
   wire                    input_fifo_out_valid;
 
-  bool packet_done;
-
   packet_state_t packet_state;
   packet_t temp_packet;
-
-  assign receive_done = (packet_done == TRUE) ? 1 : 0;
-
-  // assign input_fifo_out_data = data;
-  // assign input_fifo_out_empty = empty;
-  // assign input_fifo_out_endofpacket = endofpacket;
-  // assign ready = input_fifo_out_ready;
-  // assign input_fifo_out_startofpacket = startofpacket;
-  // assign input_fifo_out_valid = valid;
 
   altera_avalon_sc_fifo #(
 		.SYMBOLS_PER_BEAT    (SYMBOLS_PER_BEAT),
@@ -109,79 +98,74 @@ module dircc_avalon_st_packet_receiver(
   always_ff @(posedge clk or negedge reset_n) begin
     if(!reset_n) begin
       input_fifo_out_ready <= 0;
-      packet_done <= FALSE;
+      receive_done <= 0;
+      receive_nearly_done <= 0;
       packet_valid <= 0;
       packet_state <= DEST_ADDR0;
       temp_packet <= 0;
       packet_data <= 0;
     end
     else begin
-      if (packet_done == FALSE) begin
-        input_fifo_out_ready <= 1;
-        case(packet_state)
-          DEST_ADDR0: begin
-            if (input_fifo_out_valid) begin
-              assert(input_fifo_out_startofpacket);
-              temp_packet.dest_addr.hw_addr <= input_fifo_out_data;
-              packet_state <= DEST_ADDR1;
-            end
+      receive_done <= 0;
+      receive_nearly_done <= 0;
+      input_fifo_out_ready <= 1;
+      case(packet_state)
+        DEST_ADDR0: begin
+          if (input_fifo_out_valid) begin
+            assert(input_fifo_out_startofpacket);
+            temp_packet.dest_addr.hw_addr <= input_fifo_out_data;
+            packet_state <= DEST_ADDR1;
           end
-          DEST_ADDR1: begin
-            if (input_fifo_out_valid) begin
-              {temp_packet.dest_addr.sw_addr, temp_packet.dest_addr.port, temp_packet.dest_addr.flag} <= input_fifo_out_data[31:8];
-              packet_state <= SRC_ADDR0;
-            end
+        end
+        DEST_ADDR1: begin
+          if (input_fifo_out_valid) begin
+            {temp_packet.dest_addr.sw_addr, temp_packet.dest_addr.port, temp_packet.dest_addr.flag} <= input_fifo_out_data[31:8];
+            packet_state <= SRC_ADDR0;
           end
-          SRC_ADDR0: begin
-            if (input_fifo_out_valid) begin
-              temp_packet.src_addr.hw_addr <= input_fifo_out_data;
-              packet_state <= SRC_ADDR1;
-            end
+        end
+        SRC_ADDR0: begin
+          if (input_fifo_out_valid) begin
+            temp_packet.src_addr.hw_addr <= input_fifo_out_data;
+            packet_state <= SRC_ADDR1;
           end
-          SRC_ADDR1: begin
-            if (input_fifo_out_valid) begin
-              {temp_packet.src_addr.sw_addr, temp_packet.src_addr.port, temp_packet.src_addr.flag} <= input_fifo_out_data[31:8];
-              packet_state <= LAMPORT;
-            end
+        end
+        SRC_ADDR1: begin
+          if (input_fifo_out_valid) begin
+            {temp_packet.src_addr.sw_addr, temp_packet.src_addr.port, temp_packet.src_addr.flag} <= input_fifo_out_data[31:8];
+            packet_state <= LAMPORT;
           end
-          LAMPORT: begin
-            if (input_fifo_out_valid) begin
-              temp_packet.lamport <= input_fifo_out_data;
-              packet_state <= DATA0;
-            end
+        end
+        LAMPORT: begin
+          if (input_fifo_out_valid) begin
+            temp_packet.lamport <= input_fifo_out_data;
+            packet_state <= DATA0;
           end
-          DATA0: begin
-            if (input_fifo_out_valid) begin
-              temp_packet.data[31:0] <= input_fifo_out_data;
-              packet_state <= DATA1;
-            end
+        end
+        DATA0: begin
+          if (input_fifo_out_valid) begin
+            temp_packet.data[31:0] <= input_fifo_out_data;
+            packet_state <= DATA1;
           end
-          DATA1: begin
-            if (input_fifo_out_valid) begin
-              temp_packet.data[63:32] <= input_fifo_out_data;
-              packet_state <= DATA2;
-            end
+        end
+        DATA1: begin
+          if (input_fifo_out_valid) begin
+            temp_packet.data[63:32] <= input_fifo_out_data;
+            receive_nearly_done <= 1;
+            packet_state <= DATA2;
           end
-          DATA2: begin
-            if (input_fifo_out_valid) begin
-              assert(input_fifo_out_endofpacket);
-              temp_packet.data[95:64] <= input_fifo_out_data;
-              packet_state <= DEST_ADDR0;
-              packet_done <= TRUE;
-              input_fifo_out_ready <= 0;
-            end
+        end
+        DATA2: begin
+          if (input_fifo_out_valid) begin
+            assert(input_fifo_out_endofpacket);
+            packet_data <= temp_packet;
+            packet_data.data[95:64] <= input_fifo_out_data;
+            packet_state <= DEST_ADDR0;
+            packet_valid <= 1;
+            receive_done <= 1;
+            input_fifo_out_ready <= 0;
           end
-        endcase
-      end else begin
-        input_fifo_out_ready <= 0;
-        packet_state <= DEST_ADDR0;
-      end
-      if (read_packet && receive_done) begin
-        packet_data <= temp_packet;
-        packet_valid <= 1;
-        packet_done <= FALSE;
-        input_fifo_out_ready <= 1;
-      end
+        end
+      endcase
     end
   end
   
