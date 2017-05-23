@@ -44,7 +44,7 @@ module dircc_avalon_st_packet_sender(
   packet_t packet_to_send;
   packet_state_t packet_state;
   
-  assign sending = (packet_state != IDLE) ? 1 : 0;
+  assign sending = (packet_state != IDLE) ? '1 : '0;
   
   always_ff @(posedge clk or negedge reset_n) begin
     if(!reset_n) begin

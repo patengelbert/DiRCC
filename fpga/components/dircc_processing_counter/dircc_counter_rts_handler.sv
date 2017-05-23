@@ -1,13 +1,19 @@
 
 
+
 module dircc_rts_handler(
     clk,
     reset_n,
+
+    address,
 
     read_state,
 
     rts_ready
 );
+
+    parameter MEM_ADDRESS_WIDTH = 32;
+    parameter MAX_DEVICE_USER_STATE_BYTES = 8;
 
     import dircc_types_pkg::*;
     import dircc_application_pkg::*;
@@ -15,29 +21,27 @@ module dircc_rts_handler(
     input wire                      clk;
     input wire                      reset_n;
 
-    input dircc_state_t             read_state;
+    input wire [MEM_ADDRESS_WIDTH-1:0] address;
 
-    output reg                      rts_ready;
+    input device_state_t            read_state;
 
-    struct packed {
-        bit [15:0] count;
+    output reg [31:0]               rts_ready;
+
+    typedef struct packed {
         bit [15:0] rts;
-    } dev_state;
-
-    union {
-        bit [(8*`MAX_DEVICE_USER_STATE_BYTES)-1:0] data;
-        dev_state formatted_data;
-    } user_state_u;
+        bit [15:0] count;
+    } dev_state_t;
     
-    dev_state_u dev_state;
-    assign dev_state.data = read_state.user_state;
+    dev_state_t dev_state;
+
+    assign dev_state = read_state.user_state[31:0];
 
     always_ff @(posedge clk, negedge reset_n) begin
         if (!reset_n) begin
             rts_ready <= 0;
         end else begin
-            if (dev_state.formatted_data.rts && 
-                (dev_state.data.count < inst_props.max_time) // stillGoing
+            if (dev_state.rts && 
+                (dev_state.count < dircc_thread_contexts[address].graphProps.maxTime) // stillGoing
                 ) begin
                 rts_ready <= OUTPUT_FLAG_dev_out;
             end else begin
@@ -46,4 +50,4 @@ module dircc_rts_handler(
         end
     end
 
-endmodule : dircc_counter_receive_handler
+endmodule : dircc_rts_handler

@@ -6,43 +6,43 @@ package dircc_application_pkg;
 
     import dircc_types_pkg::*; 
 
-    int THREAD_COUNT = 2;
+    parameter int THREAD_COUNT = 2;
 
-    int DEVICE_INSTANCE_COUNT = 2;
-    int DEVICE_INSTANCE_COUNT_thread0 = 1;
-    int DEVICE_INSTANCE_COUNT_thread1 = 1;
+    parameter int DEVICE_INSTANCE_COUNT = 2;
+    parameter int DEVICE_INSTANCE_COUNT_thread0 = 1;
+    parameter int DEVICE_INSTANCE_COUNT_thread1 = 1;
 
-    int DEV0_OUT_PORT_NUM = 1;
-    int DEV0_IN_PORT_NUM = 1;
-    int DEV0_PORT0_OUT_ADDRESS_NUM = 1;
-    int DEV0_PORT0_SOURCE_BINDING_NUM = 0;
+    parameter int DEV0_OUT_PORT_NUM = 1;
+    parameter int DEV0_IN_PORT_NUM = 1;
+    parameter int DEV0_PORT0_OUT_ADDRESS_NUM = 1;
+    parameter int DEV0_PORT0_SOURCE_BINDING_NUM = 0;
 
-    int INPUT_COUNT_dev = 1;
-    int INPUT_INDEX_dev_in = 0;
+    parameter int INPUT_COUNT_dev = 1;
+    parameter int INPUT_INDEX_dev_in = 0;
     
-    int OUTPUT_COUNT_dev = 1;
-    int OUTPUT_INDEX_dev_out = 0;
-    int OUTPUT_FLAG_dev_out = 1;
+    parameter int OUTPUT_COUNT_dev = 1;
+    parameter int OUTPUT_INDEX_dev_out = 0;
+    parameter int OUTPUT_FLAG_dev_out = 1;
 
-    typedef struct packed {
+    typedef struct {
         int maxTime;
     } graph_props;
 
     typedef struct {
         int numSources;
-        address_t sourceBindings[$];
+        address_t sourceBindings [0:0];
     } InputPortSources;
 
     typedef struct {
         int numTargets;
-        address_t targets[$];
+        address_t targets [0:0];
     } OutputPortTargets;
 
     typedef struct {
         int properties;
         int index;
-        OutputPortTargets targets [$];
-        InputPortSources sources [$];
+        OutputPortTargets targets [0:0];
+        InputPortSources sources [0:0];
         int rtsFlags;
         bool rtc;
     } DeviceContext;
@@ -51,15 +51,24 @@ package dircc_application_pkg;
         int threadId;
         graph_props graphProps;
         int numDevices;
-        DeviceContext devices [$];
+        DeviceContext devices [0:0];
     } PThreadContext;
+    
+    parameter address_t NULL_INPUT_SOURCE[0:0] = '{
+            '{
+                    hw_addr : 0,
+                    sw_addr : 0,
+                    port : 0,
+                    flag : `DIRCC_ADDRESS_FLAG_NONE
+            }
+    };
 
-    graph_props inst_props = '{
+    parameter graph_props inst_props = '{
             maxTime : 10
     };
 
     // fanout out
-    address_t dev0_out_addresses[$] = '{
+    parameter address_t dev0_out_addresses[0:0] = '{
             '{
                     hw_addr : 1,
                     sw_addr : 0,
@@ -68,21 +77,21 @@ package dircc_application_pkg;
             }
     };
 
-    InputPortSources dev0_sources[$] = '{
+    parameter InputPortSources dev0_sources[0:0] = '{
             '{
                     numSources : DEV0_PORT0_SOURCE_BINDING_NUM,
-                    sourceBindings : `DIRCC_BINDING_NONE
+                    sourceBindings : NULL_INPUT_SOURCE
             }
     };
 
-    OutputPortTargets dev0_targets[$] = '{
+    parameter OutputPortTargets dev0_targets[0:0] = '{
             '{
                     numTargets : DEV0_PORT0_OUT_ADDRESS_NUM,
                     targets : dev0_out_addresses
             }
     };
 
-    DeviceContext DEVICE_INSTANCE_CONTEXTS_thread0[$] = '{
+    parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread0[0:0] = '{
             '{
                     properties : 0,
                     index : 0,
@@ -137,7 +146,7 @@ package dircc_application_pkg;
     //                 }
     //         };
 
-    PThreadContext dircc_thread_contexts[$] = '{
+    parameter PThreadContext dircc_thread_contexts[0:0] = '{
             '{
                     threadId : 0,
                     graphProps : inst_props,
@@ -155,6 +164,6 @@ package dircc_application_pkg;
             }
     };
 
-    int dircc_thread_count = THREAD_COUNT;
+    parameter int dircc_thread_count = THREAD_COUNT;
 
 endpackage : dircc_application_pkg

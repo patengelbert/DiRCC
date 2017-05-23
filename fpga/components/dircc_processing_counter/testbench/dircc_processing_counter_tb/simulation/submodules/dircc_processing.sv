@@ -63,10 +63,10 @@ module dircc_processing (
     output reg                   output_valid;
     input                        output_ready;
 
-	input	 [ADDRESS_WIDTH-1:0]	    mem_address;
-	input		                        mem_write;
-	output reg	[MEM_WIDTH-1:0]	        mem_readdata;
-	input	    [MEM_WIDTH-1:0]	        mem_writedata;
+    input	 [ADDRESS_WIDTH-1:0]	    mem_address;
+    input		                        mem_write;
+    output reg	[MEM_WIDTH-1:0]	        mem_readdata;
+    input	    [MEM_WIDTH-1:0]	        mem_writedata;
 
     input    [MEM_ADDRESS_WIDTH-1:0] address;
 
@@ -86,6 +86,8 @@ module dircc_processing (
     wire [31:0] rts_ready;
 
     logic [4:0] port_index;
+    
+    wire packet_out_valid, packet_in_valid, receive_handler_handled;
 
     assign packet_out_valid = packet_out_user_data_valid && packet_out_header_data_valid;
 
@@ -210,7 +212,6 @@ module dircc_processing (
         .write_state_valid              (write_state_state_valid_compute_handler)           //             .valid
     );
 
-    let max(a,b) = (a > b) ? a : b;
 
     always_ff @(posedge clk or negedge reset_n) begin
         if (!reset_n) begin
@@ -225,7 +226,7 @@ module dircc_processing (
 
             if (receive_done) begin
                 // update lamport on receive, before handler
-                lamport <= max(lamport, packet_in.lamport) + 1;
+                lamport <= ((lamport > packet_in.lamport) ? lamport : packet_in.lamport) + 1;
             end
 
             if (receive_handler_handled) begin
@@ -263,12 +264,16 @@ module dircc_processing (
             end
         end
     end
-    
-    // right most one
-    always_comb begin
-       port_index=0;
-       while (port_index<32 && !rts_ready[port_index] && rts_ready) port_index++;
-    end
+
+    always_comb begin : left_most_one
+        port_index='0;
+        
+       for (int i=0; i < 32; i++) begin
+            if (rts_ready[i]) begin
+                port_index = i[4:0];
+            end
+       end
+    end : left_most_one
     
 endmodule : dircc_processing
 

@@ -1,10 +1,8 @@
 
-`DIRCC_RTS_FLAGS_COMPUTE 0x80000000
+`define DIRCC_RTS_FLAGS_COMPUTE 'h80000000
+`define DEVICE_ID 0
 
-import dircc_types_pkg::*;
-import dircc_application_pkg::*;
-
-module dircc_processing_counter (
+module dircc_processing (
     clk,
     reset_n,
 
@@ -20,7 +18,14 @@ module dircc_processing_counter (
     output_startofpacket,
     output_endofpacket,
     output_ready,
-    output_valid
+    output_valid,
+
+    mem_address,
+    mem_readdata,
+    mem_write,
+    mem_writedata,
+
+    address
 );
 
     parameter BITS_PER_SYMBOL = 8;
@@ -28,6 +33,17 @@ module dircc_processing_counter (
     parameter INPUT_FIFO_DEPTH = 8;
     localparam DATA_WIDTH = BITS_PER_SYMBOL * SYMBOLS_PER_BEAT;
     localparam EMPTY_WIDTH = $clog2(SYMBOLS_PER_BEAT);
+
+        // Do not change these paramters!!
+    parameter MEM_WIDTH = 16;
+    parameter ADDRESS_WIDTH = 15;
+    parameter BYTE_WIDTH = 8;
+    parameter DEV_MEM_WIDTH = 12;
+    parameter EDGE_MEM_WIDTH = 12;
+    parameter MEM_ADDRESS_WIDTH = 32;
+
+    import dircc_types_pkg::*;
+    import dircc_application_pkg::*;
 
 
     input                        clk;
@@ -47,18 +63,33 @@ module dircc_processing_counter (
     output reg                   output_valid;
     input                        output_ready;
 
+    input	 [ADDRESS_WIDTH-1:0]	    mem_address;
+    input		                        mem_write;
+    output reg	[MEM_WIDTH-1:0]	        mem_readdata;
+    input	    [MEM_WIDTH-1:0]	        mem_writedata;
+
+    input    [MEM_ADDRESS_WIDTH-1:0] address;
+
     wire receive_done, receive_nearly_done;
     wire sending;
 
-    packet_t write_packet, read_packet;
+    packet_t packet_in, packet_out;
+
+    reg write_state_valid;
+    wire write_state_state_valid_send_handler, write_state_state_valid_receive_handler, write_state_state_valid_compute_handler;
+    device_state_t read_state, write_state, write_state_receive_handler, write_state_send_handler, write_state_compute_handler;
 
     reg [31:0] lamport;
 
+    reg packet_out_header_data_valid, packet_out_user_data_valid;
+
+    wire [31:0] rts_ready;
+
+    logic [4:0] port_index;
+    
+    wire packet_out_valid, packet_in_valid, receive_handler_handled;
+
     assign packet_out_valid = packet_out_user_data_valid && packet_out_header_data_valid;
-
-    reg write_state_valid;
-
-    device_state_t write_state;
 
     dircc_avalon_st_packet_receiver #(
         .BITS_PER_SYMBOL(BITS_PER_SYMBOL),
@@ -78,7 +109,7 @@ module dircc_processing_counter (
         .packet_valid   (packet_in_valid),
         .packet_data    (packet_in),
 
-        .receive_nearly_done    (receive_nearly_done)
+        .receive_nearly_done    (receive_nearly_done),
         .receive_done           (receive_done)
     );
 
@@ -117,36 +148,48 @@ module dircc_processing_counter (
         .write_state_valid              (write_state_valid)                 //             .valid
     );
 
-    dircc_receive_handler receive_handler (
+    dircc_receive_handler #(
+        .MEM_ADDRESS_WIDTH(MEM_ADDRESS_WIDTH)
+    ) receive_handler (
         .clk            (clk),
         .reset_n        (reset_n),
 
+        .address        (address),
+
         .receive_done   (receive_done),
-        .packet_in      (packet_in),
+        .packet_in      (packet_in.data),
         .packet_in_valid(packet_in_valid),
         .packet_handled (receive_handler_handled),
 
         .read_state                     (read_state),                                //  read_state.state
 
         .write_state                    (write_state_receive_handler),               //  write_state.state
-        .write_state_valid              (write_state_state_valid_receive_handler),   //             .valid
+        .write_state_valid              (write_state_state_valid_receive_handler)    //             .valid
     );
 
-    dircc_rts_handler rts_handler (
+    dircc_rts_handler #(
+        .MEM_ADDRESS_WIDTH(MEM_ADDRESS_WIDTH)
+    ) rts_handler (
         .clk            (clk),
         .reset_n        (reset_n),
 
+        .address        (address),
+
         .rts_ready      (rts_ready),
 
-        .read_state     (read_state),                       //  read_state.state
+        .read_state     (read_state)                        //  read_state.state
 
     );
 
-    dircc_send_handler send_handler (
+    dircc_send_handler #(
+        .MEM_ADDRESS_WIDTH(MEM_ADDRESS_WIDTH)
+    ) send_handler (
         .clk                            (clk),
         .reset_n                        (reset_n),
 
-        .packet_out                     (packet_out),
+        .address                        (address),
+
+        .packet_out                     (packet_out.data),
         .packet_out_valid               (packet_out_user_data_valid),
 
         .read_state                     (read_state),                                    //  read_state.state
@@ -155,9 +198,13 @@ module dircc_processing_counter (
         .write_state_valid              (write_state_state_valid_send_handler)           //             .valid
     );
 
-    dircc_compute_handler compute_handler (
+    dircc_compute_handler #(
+        .MEM_ADDRESS_WIDTH(MEM_ADDRESS_WIDTH)
+    ) compute_handler (
         .clk                            (clk),
         .reset_n                        (reset_n),
+
+        .address                        (address),
 
         .read_state                     (read_state),                                       //  read_state.state
 
@@ -165,37 +212,70 @@ module dircc_processing_counter (
         .write_state_valid              (write_state_state_valid_compute_handler)           //             .valid
     );
 
+
     always_ff @(posedge clk or negedge reset_n) begin
         if (!reset_n) begin
 
             lamport <= 0;
             write_state_valid <= 0;
             packet_out_header_data_valid <= 0;
-            output_valid <= 0;
-
+            
         end else begin
 
-            packet_out.lamport <= lamport;
+            packet_out_header_data_valid <= 0;
+
+            if (receive_done) begin
+                // update lamport on receive, before handler
+                lamport <= ((lamport > packet_in.lamport) ? lamport : packet_in.lamport) + 1;
+            end
 
             if (receive_handler_handled) begin
                 // Update state after receive handler has processed the packet
+
                 write_state_valid <= write_state_state_valid_receive_handler;
                 write_state <= write_state_receive_handler;
-            end else if ((rts_ready & ~DIRCC_RTS_FLAGS_COMPUTE) && !sending) begin
+
+            end else if ((rts_ready & ~`DIRCC_RTS_FLAGS_COMPUTE) && !sending) begin
                 // Send the packet
+
                 write_state_valid <= write_state_state_valid_send_handler;
                 write_state <= write_state_send_handler;
+
+                // Get the correct output header
+                packet_out.dest_addr <= dircc_thread_contexts[address].devices[`DEVICE_ID].targets[port_index].targets[0];
+                packet_out_header_data_valid <= 1;
+
+                // Current value has not yet incremented due to packet sending
+                packet_out.lamport <= lamport + 1;
+                lamport <= lamport + 1;
+
+                packet_out.src_addr <= '{
+                    hw_addr: address,
+                    sw_addr: `DEVICE_ID,
+                    port: port_index,
+                    flag: 0
+                };
             end else begin
                 // Compute
+
                 write_state_valid <= write_state_state_valid_compute_handler;
                 write_state <= write_state_compute_handler;
+
             end
         end
     end
 
-    let max(a,b) = (a > b) ? a : b;
+    always_comb begin : left_most_one
+        port_index='0;
+        
+       for (int i=0; i < 32; i++) begin
+            if (rts_ready[i]) begin
+                port_index = i[4:0];
+            end
+       end
+    end : left_most_one
     
-endmodule : dircc_processing_counter
+endmodule : dircc_processing
 
-// TODO: Add lamport
+// TODO: Add multicast messages
 // TODO: Add multi cycle support for send, compute and rts handler

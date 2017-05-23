@@ -1,69 +1,106 @@
 
-`define DIRCC_BINDING_NONE 0
+`define DIRCC_BINDING_NONE '{}
+`define DIRCC_ADDRESS_FLAG_NONE 0
 
 package dircc_application_pkg;
 
     import dircc_types_pkg::*; 
 
-    int THREAD_COUNT = 2;
+    parameter int THREAD_COUNT = 2;
 
-    int DEVICE_INSTANCE_COUNT = 2;
-    int DEVICE_INSTANCE_COUNT_thread0 = 1;
-    int DEVICE_INSTANCE_COUNT_thread1 = 1;
+    parameter int DEVICE_INSTANCE_COUNT = 2;
+    parameter int DEVICE_INSTANCE_COUNT_thread0 = 1;
+    parameter int DEVICE_INSTANCE_COUNT_thread1 = 1;
 
-    int DEV0_OUT_PORT_NUM = 1;
-    int DEV0_IN_PORT_NUM = 1;
-    int DEV0_PORT0_OUT_ADDRESS_NUM = 1;
-    int DEV0_PORT0_SOURCE_BINDING_NUM = 0;
+    parameter int DEV0_OUT_PORT_NUM = 1;
+    parameter int DEV0_IN_PORT_NUM = 1;
+    parameter int DEV0_PORT0_OUT_ADDRESS_NUM = 1;
+    parameter int DEV0_PORT0_SOURCE_BINDING_NUM = 0;
 
-    struct packed {
+    parameter int INPUT_COUNT_dev = 1;
+    parameter int INPUT_INDEX_dev_in = 0;
+    
+    parameter int OUTPUT_COUNT_dev = 1;
+    parameter int OUTPUT_INDEX_dev_out = 0;
+    parameter int OUTPUT_FLAG_dev_out = 1;
+
+    typedef struct {
         int maxTime;
     } graph_props;
 
-    struct packed {
+    typedef struct {
         int numSources;
-        
+        address_t sourceBindings [0:0];
     } InputPortSources;
 
-    graph_props inst0_props = '{
+    typedef struct {
+        int numTargets;
+        address_t targets [0:0];
+    } OutputPortTargets;
+
+    typedef struct {
+        int properties;
+        int index;
+        OutputPortTargets targets [0:0];
+        InputPortSources sources [0:0];
+        int rtsFlags;
+        bool rtc;
+    } DeviceContext;
+
+    typedef struct {
+        int threadId;
+        graph_props graphProps;
+        int numDevices;
+        DeviceContext devices [0:0];
+    } PThreadContext;
+    
+    parameter address_t NULL_INPUT_SOURCE[0:0] = '{
+            '{
+                    hw_addr : 0,
+                    sw_addr : 0,
+                    port : 0,
+                    flag : `DIRCC_ADDRESS_FLAG_NONE
+            }
+    };
+
+    parameter graph_props inst_props = '{
             maxTime : 10
     };
 
     // fanout out
-    address_t dev0_out_addresses[DEV0_PORT0_OUT_ADDRESS_NUM] = '{
+    parameter address_t dev0_out_addresses[0:0] = '{
             '{
-                    hw_node : 1,
-                    sw_node : 0,
+                    hw_addr : 1,
+                    sw_addr : 0,
                     port : INPUT_INDEX_dev_in,
-                    flag : DIRCC_ADDRESS_FLAG_NONE
+                    flag : `DIRCC_ADDRESS_FLAG_NONE
             }
     };
 
-    InputPortSources dev0_sources[DEV0_IN_PORT_NUM] = '{
+    parameter InputPortSources dev0_sources[0:0] = '{
             '{
                     numSources : DEV0_PORT0_SOURCE_BINDING_NUM,
-                    sourceBindings : DIRCC_BINDING_NONE
+                    sourceBindings : NULL_INPUT_SOURCE
             }
     };
 
-    OutputPortTargets dev0_targets[DEV0_OUT_PORT_NUM] = '{
+    parameter OutputPortTargets dev0_targets[0:0] = '{
             '{
                     numTargets : DEV0_PORT0_OUT_ADDRESS_NUM,
                     targets : dev0_out_addresses
             }
     };
 
-    DeviceContext DEVICE_INSTANCE_CONTEXTS_thread0[DEVICE_INSTANCE_COUNT_thread0] =
+    parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread0[0:0] = '{
             '{
-                    '{
-                            properties : 0,
-                            index : 0,
-                            targets : dev0_targets,
-                            sources : dev0_sources,
-                            rtsFlags : 0,
-                            rtc : FALSE
-                    }
-            };
+                    properties : 0,
+                    index : 0,
+                    targets : dev0_targets,
+                    sources : dev0_sources,
+                    rtsFlags : 0,
+                    rtc : FALSE
+            }
+    };
 
 
     // // Thread 1
@@ -109,27 +146,24 @@ package dircc_application_pkg;
     //                 }
     //         };
 
-    PThreadContext dircc_thread_contexts[THREAD_COUNT] = {
-            {
-                    .threadId = 0,
-                    .graphProps = &inst0_props,
-                    .numVTables =  DEVICE_TYPE_COUNT,
-                    .vtables = DEVICE_TYPE_VTABLES,
-                    .numDevices = DEVICE_INSTANCE_COUNT_thread0,
-                    .devices = DEVICE_INSTANCE_CONTEXTS_thread0,
-                    .lamport = 0
-            },
-            {
-                    .threadId = 1,
-                    .graphProps = &inst1_props,
-                    .numVTables =  DEVICE_TYPE_COUNT,
-                    .vtables = DEVICE_TYPE_VTABLES,
-                    .numDevices = DEVICE_INSTANCE_COUNT_thread1,
-                    .devices = DEVICE_INSTANCE_CONTEXTS_thread1,
-                    .lamport = 0
+    parameter PThreadContext dircc_thread_contexts[0:0] = '{
+            '{
+                    threadId : 0,
+                    graphProps : inst_props,
+                    numDevices : DEVICE_INSTANCE_COUNT_thread0,
+                    devices : DEVICE_INSTANCE_CONTEXTS_thread0
+        //     },
+        //     {
+        //             .threadId = 1,
+        //             .graphProps = &inst1_props,
+        //             .numVTables =  DEVICE_TYPE_COUNT,
+        //             .vtables = DEVICE_TYPE_VTABLES,
+        //             .numDevices = DEVICE_INSTANCE_COUNT_thread1,
+        //             .devices = DEVICE_INSTANCE_CONTEXTS_thread1,
+        //             .lamport = 0
             }
     };
 
-    int dircc_thread_count = THREAD_COUNT;
+    parameter int dircc_thread_count = THREAD_COUNT;
 
 endpackage : dircc_application_pkg

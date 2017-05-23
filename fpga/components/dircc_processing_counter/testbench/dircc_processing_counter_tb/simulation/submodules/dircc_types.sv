@@ -4,8 +4,8 @@
 
 package dircc_types_pkg;
 
-    localparam MAX_DEVICE_USER_STATE_BYTES = 8;
-    localparam MAX_EDGE_USER_STATE_BYTES = 5;
+    parameter int MAX_DEVICE_USER_STATE_BYTES = 8;
+    parameter int MAX_EDGE_USER_STATE_BYTES = 5;
 
     typedef enum { FALSE, TRUE } bool;
 

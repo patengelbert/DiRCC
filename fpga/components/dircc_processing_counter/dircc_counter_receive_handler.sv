@@ -4,6 +4,8 @@ module dircc_receive_handler(
     clk,
     reset_n,
 
+    address,
+
     receive_done,
     packet_in,
     packet_in_valid,
@@ -15,48 +17,44 @@ module dircc_receive_handler(
     write_state_valid
 );
 
+    parameter MEM_ADDRESS_WIDTH = 32;
+    parameter MAX_DEVICE_USER_STATE_BYTES = 8;
+
     import dircc_types_pkg::*;
+    import dircc_application_pkg::*;
 
     input wire                      clk;
     input wire                      reset_n;
 
+    input wire [MEM_ADDRESS_WIDTH-1:0] address;
+
     input wire                      receive_done;
-    input packet_t                  packet_in;
+    input wire [95:0]               packet_in;
     input wire                      packet_in_valid;
     output reg                      packet_handled;
 
-    input dircc_state_t             read_state;
+    input device_state_t            read_state;
 
-    output dircc_state_t            write_state;
+    output device_state_t           write_state;
     output reg                      write_state_valid;
 
-    struct packed {
+    typedef struct packed {
         bit [63:0] tick;
-    } tick_msg;
+    } tick_msg_t;
 
-    struct packed {
-        bit [15:0] count;
+    typedef struct packed {
         bit [15:0] rts;
-    } dev_state;
+        bit [15:0] count;
+    } dev_state_t;
 
-    union {
-        bit [95:0] data;
-        tick_msg   formatted_data;
-    } packet_data_u;
+    tick_msg_t packet_data;
 
-    union {
-        bit [(8*`MAX_DEVICE_USER_STATE_BYTES)-1:0] data;
-        dev_state formatted_data;
-    } user_state_u;
+    dev_state_t dev_state_new;
+    dev_state_t dev_state_old;
 
-    packet_data_u packet_data;
-
-    dev_state_u dev_state_new;
-    dev_state_u dev_state_old;
-
-    assign packet_data.data = packet_in.data;
-    assign dev_state_old.data = read_state.user_state;
-    assign write_state.user_state = dev_state_new.data;
+    assign packet_data = packet_in[63:0];
+    assign dev_state_old = read_state.user_state[31:0];
+    assign write_state.user_state = {'0, dev_state_new};
 
     assign write_state.dircc_state = read_state.dircc_state;
     assign write_state.dircc_state_extra = read_state.dircc_state_extra;
@@ -67,8 +65,8 @@ module dircc_receive_handler(
             packet_handled <= 0;
         end else begin
             if (receive_done && packet_in_valid) begin
-                dev_state_new.formatted_data.count <= dev_state_old.formatted_data.count + 1;
-                dev_state_new.formatted_data.rts <= 1;
+                dev_state_new.count <= dev_state_old.count + 16'h0001;
+                dev_state_new.rts <= 1;
                 write_state_valid <= 1;
                 packet_handled <= 1;
             end else begin;
@@ -78,4 +76,4 @@ module dircc_receive_handler(
         end
     end
 
-endmodule : dircc_counter_receive_handler
+endmodule : dircc_receive_handler
