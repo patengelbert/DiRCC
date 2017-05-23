@@ -568,7 +568,7 @@ module dircc_processing_counter_test();
                     port: 0,
                     flag: 0
                 },
-                lamport: 4,
+                lamport: 3,
                 data: 1
             }
             
@@ -620,9 +620,10 @@ module dircc_processing_counter_test();
         checkPacket(expectedPacket[0], receivedPacket, rv);
 
         // Wait until packet has been sent
+        // 1 clock cycle to initialse rts
         // 1 clock cycle to setup packet data
         // 8 clock cycles to send
-        repeat(9) @(posedge clk);
+        repeat(10) @(posedge clk);
 
         // Packet should have been sent by now as well
         assert(tb.dircc_processing_counter_inst_output_bfm.get_transaction_queue_size() == 8)

@@ -93,7 +93,7 @@ module dircc_processing (
     reg [95:0] send_handler_packet_out_data;
     reg        send_handler_packet_out_valid; 
 
-    int        target_id;
+    reg [31:0] target_id;
 
     assign packet_out_valid = packet_out_user_data_valid && packet_out_header_data_valid;
 
@@ -253,10 +253,15 @@ module dircc_processing (
                     port: port_index,
                     flag: 0
                 };
-                $display("Sent packet through port %d", port_index);
+                $display("Sent packet through port %d to target %d", port_index, target_id);
 
-                // Clear flag for sent target
-                rts_ready <= 0;
+                if (dircc_thread_contexts[address].devices[`DEVICE_ID].targets[port_index].numTargets - target_id != 1) begin
+                    // There are still targets to send to
+                    target_id <= target_id + 1;
+                end else begin
+                    // Clear flag for sent target
+                    rts_ready <= 0;
+                end
             end
 
 
@@ -281,6 +286,9 @@ module dircc_processing (
                 // Store data for all outgoing packets
                 packet_out <= send_handler_packet_out_data;
                 packet_out_user_data_valid <= send_handler_packet_out_valid;
+
+                // Set initial target
+                target_id <= 0;
             end else begin
                 // Compute
 
