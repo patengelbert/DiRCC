@@ -261,25 +261,25 @@ module dircc_processing_counter_test();
         // Dest Address
         assert (a.dest_addr.hw_addr == b.dest_addr.hw_addr)
         else begin 
-            $sformat(message, "%m: - TEST ERROR: Dest HW Addr mismatch");
+            $sformat(message, "%m: - TEST ERROR: Dest HW Addr mismatch %d != %d", a.dest_addr.hw_addr, b.dest_addr.hw_addr);
             print(VERBOSITY_ERROR, message);
             rv = FALSE;
         end  
         assert (a.dest_addr.sw_addr == b.dest_addr.sw_addr)
         else begin 
-            $sformat(message, "%m: - TEST ERROR: Dest SW Addr mismatch");
+            $sformat(message, "%m: - TEST ERROR: Dest SW Addr mismatch %d != %d", a.dest_addr.sw_addr, b.dest_addr.sw_addr);
             print(VERBOSITY_ERROR, message);
             rv = FALSE;
         end  
         assert (a.dest_addr.port == b.dest_addr.port)
         else begin 
-            $sformat(message, "%m: - TEST ERROR: Dest Port mismatch");
+            $sformat(message, "%m: - TEST ERROR: Dest Port mismatch %d != %d", a.dest_addr.port, b.dest_addr.port);
             print(VERBOSITY_ERROR, message);
             rv = FALSE;
         end  
         assert (a.dest_addr.flag == b.dest_addr.flag)
         else begin 
-            $sformat(message, "%m: - TEST ERROR: Dest Flag mismatch");
+            $sformat(message, "%m: - TEST ERROR: Dest Flag mismatch %d != %d", a.dest_addr.flag, b.dest_addr.flag);
             print(VERBOSITY_ERROR, message);
             rv = FALSE;
         end  
@@ -287,26 +287,26 @@ module dircc_processing_counter_test();
         // Src Address
         assert (a.src_addr.hw_addr == b.src_addr.hw_addr)
         else begin 
-            $sformat(message, "%m: - TEST ERROR: Src HW Addr mismatch");
+            $sformat(message, "%m: - TEST ERROR: Src HW Addr mismatch %d != %d", a.src_addr.hw_addr, b.src_addr.hw_addr);
             print(VERBOSITY_ERROR, message);
             rv = FALSE;
         end  
 
         assert (a.src_addr.sw_addr == b.src_addr.sw_addr)
         else begin 
-            $sformat(message, "%m: - TEST ERROR: Src SW Addr mismatch");
+            $sformat(message, "%m: - TEST ERROR: Src SW Addr mismatch %d != %d", a.src_addr.sw_addr, b.src_addr.sw_addr);
             print(VERBOSITY_ERROR, message);
             rv = FALSE;
         end  
         assert (a.src_addr.port == b.src_addr.port)
         else begin 
-            $sformat(message, "%m: - TEST ERROR: Src Port mismatch");
+            $sformat(message, "%m: - TEST ERROR: Src Port mismatch %d != %d", a.src_addr.port, b.src_addr.port);
             print(VERBOSITY_ERROR, message);
             rv = FALSE;
         end  
         assert (a.src_addr.flag == b.src_addr.flag)
         else begin 
-            $sformat(message, "%m: - TEST ERROR: Src Flag mismatch");
+            $sformat(message, "%m: - TEST ERROR: Src Flag mismatch %d != %d", a.src_addr.flag, b.src_addr.flag);
             print(VERBOSITY_ERROR, message);
             rv = FALSE;
         end  
@@ -322,7 +322,7 @@ module dircc_processing_counter_test();
         // Data
         assert (a.data == b.data)
         else begin 
-            $sformat(message, "%m: - TEST ERROR: Data mismatch");
+            $sformat(message, "%m: - TEST ERROR: Data mismatch %d != %d", a.data, b.data);
             print(VERBOSITY_ERROR, message);
             rv = FALSE;
         end  
@@ -481,9 +481,11 @@ module dircc_processing_counter_test();
         tb.dircc_processing_counter_inst_status_bfm.set_command_address('b1010);
         tb.dircc_processing_counter_inst_status_bfm.push_command();
 
-        waitForResponse(tb.dircc_processing_counter_inst_status_bfm.signal_all_transactions_complete, TIMEOUT, rv);
-
-        repeat(8) @(posedge clk);
+        // Wait until packet has been sent
+        // 1 Clock cycle to initialise rts
+        // 1 clock cycle to setup packet data
+        // 8 clock cycles to send
+        repeat(10) @(posedge clk);
 
         // Packet should have been sent by now as well
         assert(tb.dircc_processing_counter_inst_output_bfm.get_transaction_queue_size() == 8)
@@ -517,11 +519,149 @@ module dircc_processing_counter_test();
         printSuccess(rv);
     endtask : test_packetOutHandlerUsed
 
+    task automatic test_multipleDestSamePortSent();
+        automatic bool rv;
+        automatic bit [15:0] response_data;
+        automatic packet_t packetToSend = '{
+            dest_addr: '{
+                hw_addr: $random,
+                sw_addr: $random,
+                port: $random,
+                flag: 0
+            },
+            src_addr: '{
+                hw_addr: $random,
+                sw_addr: $random,
+                port: $random,
+                flag: 0
+            },
+            lamport: 1,
+            data: $random
+        };
+        automatic packet_t expectedPacket [$] = '{
+            '{
+                dest_addr: '{
+                    hw_addr: 1,
+                    sw_addr: 0,
+                    port: 0,
+                    flag: 0
+                },
+                src_addr: '{
+                    hw_addr: tb.dircc_processing_counter_inst_address,
+                    sw_addr: 0,
+                    port: 0,
+                    flag: 0
+                },
+                lamport: 3,
+                data: 1
+            },
+            '{
+                dest_addr: '{
+                    hw_addr: 2,
+                    sw_addr: 0,
+                    port: 0,
+                    flag: 0
+                },
+                src_addr: '{
+                    hw_addr: tb.dircc_processing_counter_inst_address,
+                    sw_addr: 0,
+                    port: 0,
+                    flag: 0
+                },
+                lamport: 4,
+                data: 1
+            }
+            
+        };
+        automatic packet_t receivedPacket;
+
+        setupTest();
+
+        sendPacket(packetToSend, 0, 7);
+
+        waitForResponse(tb.dircc_processing_counter_inst_input_bfm.signal_src_transaction_complete, TIMEOUT, rv);
+
+        // 3 Clock cycles input packet -> state change
+        // 3 Clock cycles state change -> output packet
+        repeat(6) @(posedge clk);
+
+        // Word 1
+        tb.dircc_processing_counter_inst_status_bfm.set_command_request(REQ_READ);
+        tb.dircc_processing_counter_inst_status_bfm.set_command_address('b100);
+        tb.dircc_processing_counter_inst_status_bfm.push_command();
+        // Word 2
+        tb.dircc_processing_counter_inst_status_bfm.set_command_request(REQ_READ);
+        tb.dircc_processing_counter_inst_status_bfm.set_command_address('b110);
+        tb.dircc_processing_counter_inst_status_bfm.push_command();
+        // Word 3
+        tb.dircc_processing_counter_inst_status_bfm.set_command_request(REQ_READ);
+        tb.dircc_processing_counter_inst_status_bfm.set_command_address('b1000);
+        tb.dircc_processing_counter_inst_status_bfm.push_command();
+        // Word 4
+        tb.dircc_processing_counter_inst_status_bfm.set_command_request(REQ_READ);
+        tb.dircc_processing_counter_inst_status_bfm.set_command_address('b1010);
+        tb.dircc_processing_counter_inst_status_bfm.push_command();
+
+        // Wait until packet has been sent
+        // 1 Clock cycle to initialise rts
+        // 1 clock cycle to setup packet data
+        // 8 clock cycles to send
+        repeat(10) @(posedge clk);
+
+        // Packet should have been sent by now as well
+        assert(tb.dircc_processing_counter_inst_output_bfm.get_transaction_queue_size() == 8)
+        else begin
+            rv = FALSE;
+            $sformat(message, "%m: - TEST ERROR: Packet 1 not fully received. %d/%d", 
+                tb.dircc_processing_counter_inst_output_bfm.get_transaction_queue_size(), 8);
+            print(VERBOSITY_ERROR, message);
+        end
+        receivePacket(receivedPacket, rv);
+        checkPacket(expectedPacket[0], receivedPacket, rv);
+
+        // Wait until packet has been sent
+        // 1 clock cycle to setup packet data
+        // 8 clock cycles to send
+        repeat(9) @(posedge clk);
+
+        // Packet should have been sent by now as well
+        assert(tb.dircc_processing_counter_inst_output_bfm.get_transaction_queue_size() == 8)
+        else begin
+            rv = FALSE;
+            $sformat(message, "%m: - TEST ERROR: Packet 2 not fully received. %d/%d", 
+                tb.dircc_processing_counter_inst_output_bfm.get_transaction_queue_size(), 8);
+            print(VERBOSITY_ERROR, message);
+        end
+        receivePacket(receivedPacket, rv);
+        checkPacket(expectedPacket[1], receivedPacket, rv);
+
+        if (rv == TRUE) begin
+            tb.dircc_processing_counter_inst_status_bfm.pop_response();
+            response_data = tb.dircc_processing_counter_inst_status_bfm.get_response_data(0);
+            printAssert(1, response_data, rv);
+
+            tb.dircc_processing_counter_inst_status_bfm.pop_response();
+            response_data = tb.dircc_processing_counter_inst_status_bfm.get_response_data(0);
+            printAssert(0, response_data, rv);
+
+            tb.dircc_processing_counter_inst_status_bfm.pop_response();
+            response_data = tb.dircc_processing_counter_inst_status_bfm.get_response_data(0);
+            printAssert(0, response_data, rv);
+
+            tb.dircc_processing_counter_inst_status_bfm.pop_response();
+            response_data = tb.dircc_processing_counter_inst_status_bfm.get_response_data(0);
+            printAssert(0, response_data, rv);
+
+        end
+        printSuccess(rv);
+    endtask : test_multipleDestSamePortSent
+
     initial begin
         repeat(100) @(posedge clk);
         test_reset();
         test_packetInHandlerUsed();
         test_packetOutHandlerUsed();
+        test_multipleDestSamePortSent();
     end
 
 endmodule : dircc_processing_counter_test

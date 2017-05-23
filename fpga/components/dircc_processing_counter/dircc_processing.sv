@@ -83,11 +83,17 @@ module dircc_processing (
 
     reg packet_out_header_data_valid, packet_out_user_data_valid;
 
-    wire [31:0] rts_ready;
+    wire [31:0] rts_ready_new;
+    reg  [31:0] rts_ready;
 
     logic [4:0] port_index;
     
     wire packet_out_valid, packet_in_valid, receive_handler_handled;
+
+    reg [95:0] send_handler_packet_out_data;
+    reg        send_handler_packet_out_valid; 
+
+    int        target_id;
 
     assign packet_out_valid = packet_out_user_data_valid && packet_out_header_data_valid;
 
@@ -175,7 +181,7 @@ module dircc_processing (
 
         .address        (address),
 
-        .rts_ready      (rts_ready),
+        .rts_ready      (rts_ready_new),
 
         .read_state     (read_state)                        //  read_state.state
 
@@ -189,8 +195,8 @@ module dircc_processing (
 
         .address                        (address),
 
-        .packet_out                     (packet_out.data),
-        .packet_out_valid               (packet_out_user_data_valid),
+        .packet_out                     (send_handler_packet_out_data),
+        .packet_out_valid               (send_handler_packet_out_valid),
 
         .read_state                     (read_state),                                    //  read_state.state
 
@@ -219,7 +225,10 @@ module dircc_processing (
             lamport <= 0;
             write_state_valid <= 0;
             packet_out_header_data_valid <= 0;
-            
+            packet_out_user_data_valid <= 0;
+            rts_ready <= 0;
+            target_id <= 0;
+
         end else begin
 
             packet_out_header_data_valid <= 0;
@@ -229,25 +238,14 @@ module dircc_processing (
                 lamport <= ((lamport > packet_in.lamport) ? lamport : packet_in.lamport) + 1;
             end
 
-            if (receive_handler_handled) begin
-                // Update state after receive handler has processed the packet
 
-                write_state_valid <= write_state_state_valid_receive_handler;
-                write_state <= write_state_receive_handler;
-
-            end else if ((rts_ready & ~`DIRCC_RTS_FLAGS_COMPUTE) && !sending) begin
-                // Send the packet
-
-                write_state_valid <= write_state_state_valid_send_handler;
-                write_state <= write_state_send_handler;
+            if (rts_ready && !sending && !packet_out_valid) begin
+                // Send next outstanding packet
 
                 // Get the correct output header
-                packet_out.dest_addr <= dircc_thread_contexts[address].devices[`DEVICE_ID].targets[port_index].targets[0];
+                packet_out.dest_addr <= dircc_thread_contexts[address].devices[`DEVICE_ID].targets[port_index].targets[target_id];
                 packet_out_header_data_valid <= 1;
-
-                // Current value has not yet incremented due to packet sending
-                packet_out.lamport <= lamport + 1;
-                lamport <= lamport + 1;
+                packet_out.lamport <= lamport;
 
                 packet_out.src_addr <= '{
                     hw_addr: address,
@@ -255,6 +253,34 @@ module dircc_processing (
                     port: port_index,
                     flag: 0
                 };
+                $display("Sent packet through port %d", port_index);
+
+                // Clear flag for sent target
+                rts_ready <= 0;
+            end
+
+
+            if (receive_handler_handled) begin
+                // Update state after receive handler has processed the packet
+
+                $display("Calling receive handler");
+                write_state_valid <= write_state_state_valid_receive_handler;
+                write_state <= write_state_receive_handler;
+
+            end else if (rts_ready_new && !rts_ready && !packet_out_valid) begin
+                // We have sent all outstanding packets
+                // Run the send handler once
+                rts_ready <= rts_ready_new & ~`DIRCC_RTS_FLAGS_COMPUTE;
+
+                $display("Calling send handler");
+
+                lamport <= lamport + 1;
+                write_state_valid <= write_state_state_valid_send_handler;
+                write_state <= write_state_send_handler;
+
+                // Store data for all outgoing packets
+                packet_out <= send_handler_packet_out_data;
+                packet_out_user_data_valid <= send_handler_packet_out_valid;
             end else begin
                 // Compute
 
@@ -265,15 +291,17 @@ module dircc_processing (
         end
     end
 
-    always_comb begin : left_most_one
+    always_comb begin : right_most_one
         port_index='0;
         
-       for (int i=0; i < 32; i++) begin
+        // We do not care about the last bit
+        // This is the compute flag
+        for (int i=30; i >= 0; i--) begin
             if (rts_ready[i]) begin
                 port_index = i[4:0];
             end
-       end
-    end : left_most_one
+        end
+    end : right_most_one
     
 endmodule : dircc_processing
 

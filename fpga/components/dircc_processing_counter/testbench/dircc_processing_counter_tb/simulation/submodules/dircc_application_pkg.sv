@@ -12,17 +12,22 @@ package dircc_application_pkg;
     parameter int DEVICE_INSTANCE_COUNT_thread0 = 1;
     parameter int DEVICE_INSTANCE_COUNT_thread1 = 1;
 
-    parameter int DEV0_OUT_PORT_NUM = 1;
+    parameter int DEV0_OUT_PORT_NUM = 2;
     parameter int DEV0_IN_PORT_NUM = 1;
     parameter int DEV0_PORT0_OUT_ADDRESS_NUM = 1;
     parameter int DEV0_PORT0_SOURCE_BINDING_NUM = 0;
+
+    parameter int DEV0_PORT1_OUT_ADDRESS_NUM = 1;
 
     parameter int INPUT_COUNT_dev = 1;
     parameter int INPUT_INDEX_dev_in = 0;
     
     parameter int OUTPUT_COUNT_dev = 1;
-    parameter int OUTPUT_INDEX_dev_out = 0;
-    parameter int OUTPUT_FLAG_dev_out = 1;
+    parameter int OUTPUT_INDEX_dev_port0 = 0;
+    parameter int OUTPUT_FLAG_dev_port0 = 1;
+
+    parameter int OUTPUT_INDEX_dev_port1 = 1;
+    parameter int OUTPUT_FLAG_dev_port1 = 2;
 
     typedef struct {
         int maxTime;
@@ -41,7 +46,7 @@ package dircc_application_pkg;
     typedef struct {
         int properties;
         int index;
-        OutputPortTargets targets [0:0];
+        OutputPortTargets targets [DEV0_OUT_PORT_NUM-1:0];
         InputPortSources sources [0:0];
         int rtsFlags;
         bool rtc;
@@ -68,9 +73,18 @@ package dircc_application_pkg;
     };
 
     // fanout out
-    parameter address_t dev0_out_addresses[0:0] = '{
+    parameter address_t dev0_port0_out_addresses[0:0] = '{
             '{
                     hw_addr : 1,
+                    sw_addr : 0,
+                    port : INPUT_INDEX_dev_in,
+                    flag : `DIRCC_ADDRESS_FLAG_NONE
+            }
+    };
+
+    parameter address_t dev0_port1_out_addresses[0:0] = '{
+            '{
+                    hw_addr : 0,
                     sw_addr : 0,
                     port : INPUT_INDEX_dev_in,
                     flag : `DIRCC_ADDRESS_FLAG_NONE
@@ -84,10 +98,14 @@ package dircc_application_pkg;
             }
     };
 
-    parameter OutputPortTargets dev0_targets[0:0] = '{
+    parameter OutputPortTargets dev0_targets[DEV0_OUT_PORT_NUM-1:0] = '{
+            '{
+                    numTargets : DEV0_PORT1_OUT_ADDRESS_NUM,
+                    targets : dev0_port1_out_addresses
+            },
             '{
                     numTargets : DEV0_PORT0_OUT_ADDRESS_NUM,
-                    targets : dev0_out_addresses
+                    targets : dev0_port0_out_addresses 
             }
     };
 

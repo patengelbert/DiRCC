@@ -43,7 +43,7 @@ module dircc_rts_handler(
             if (dev_state.rts && 
                 (dev_state.count < dircc_thread_contexts[address].graphProps.maxTime) // stillGoing
                 ) begin
-                rts_ready <= OUTPUT_FLAG_dev_out;
+                rts_ready <= OUTPUT_FLAG_dev_port0;
             end else begin
                 rts_ready <= 0;
             end
