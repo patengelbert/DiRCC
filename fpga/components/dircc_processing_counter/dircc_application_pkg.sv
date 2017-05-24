@@ -5,36 +5,36 @@ package dircc_application_pkg;
 
     import dircc_types_pkg::*;
 
-    parameter int THREAD_COUNT = 1;
+    parameter THREAD_COUNT = 1;
 
-    parameter int DEVICE_INSTANCE_COUNT = 2;
-    parameter int DEVICE_INSTANCE_COUNT_thread0 = 1;
-    parameter int DEVICE_INSTANCE_COUNT_thread1 = 1;
+    parameter DEVICE_INSTANCE_COUNT = 2;
+    parameter DEVICE_INSTANCE_COUNT_thread0 = 1;
+    parameter DEVICE_INSTANCE_COUNT_thread1 = 1;
 
-    parameter int DEV0_OUT_PORT_NUM = 2;
-    parameter int DEV0_IN_PORT_NUM = 1;
-    parameter int DEV0_PORT0_OUT_ADDRESS_NUM = 2;
-    parameter int DEV0_PORT0_SOURCE_BINDING_NUM = 0;
+    parameter DEV0_OUT_PORT_NUM = 2;
+    parameter DEV0_IN_PORT_NUM = 1;
+    parameter DEV0_PORT0_OUT_ADDRESS_NUM = 2;
+    parameter DEV0_PORT0_SOURCE_BINDING_NUM = 0;
 
-    parameter int DEV0_PORT1_OUT_ADDRESS_NUM = 1;
+    parameter DEV0_PORT1_OUT_ADDRESS_NUM = 1;
 
-    parameter int INPUT_COUNT_dev = 1;
-    parameter int INPUT_INDEX_dev_in = 0;
+    parameter INPUT_COUNT_dev = 1;
+    parameter INPUT_INDEX_dev_in = 0;
     
-    parameter int OUTPUT_COUNT_dev = 1;
-    parameter int OUTPUT_INDEX_dev_port0 = 0;
-    parameter int OUTPUT_FLAG_dev_port0 = 1;
+    parameter OUTPUT_COUNT_dev = 1;
+    parameter OUTPUT_INDEX_dev_port0 = 0;
+    parameter OUTPUT_FLAG_dev_port0 = 1;
 
-    parameter int OUTPUT_INDEX_dev_port1 = 1;
-    parameter int OUTPUT_FLAG_dev_port1 = 2;
+    parameter OUTPUT_INDEX_dev_port1 = 1;
+    parameter OUTPUT_FLAG_dev_port1 = 2;
 
-    parameter int THREAD0_DEVICE_CONTEXT_NUM = 1;
+    parameter THREAD0_DEVICE_CONTEXT_NUM = 1;
 
-    parameter int MAX_SOURCE_BINDING_NUM = 1;
-    parameter int MAX_OUTPUT_TARGETS = 2;
-    parameter int MAX_OUTPUT_PORTS = 2;
-    parameter int MAX_INPUT_PORTS = 1;
-    parameter int MAX_DEVICES = 1;
+    parameter MAX_SOURCE_BINDING_NUM = 1;
+    parameter MAX_OUTPUT_TARGETS = 2;
+    parameter MAX_OUTPUT_PORTS = 2;
+    parameter MAX_INPUT_PORTS = 1;
+    parameter MAX_DEVICES = 1;
 
     typedef struct {
         int maxTime;

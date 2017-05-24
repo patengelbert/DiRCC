@@ -11,14 +11,13 @@ module dircc_status_register(
     read_state,
 
     write_state,
-    write_state_valid                 //             .valid
+    write_state_valid
     
 );
     // Do not change these paramters!!
     parameter MEM_WIDTH = 16;
     parameter DATA_WIDTH = 32;
     parameter ADDRESS_WIDTH = 15;
-    parameter BYTE_WIDTH = 8;
     parameter DEV_MEM_WIDTH = 12;
     parameter EDGE_MEM_WIDTH = 12;
 
@@ -37,7 +36,7 @@ module dircc_status_register(
     input device_state_t                write_state;
     input                               write_state_valid;
 
-    reg [BYTE_WIDTH-1:0] dev_mem [DEV_MEM_WIDTH-1:0];
+    byte dev_mem [DEV_MEM_WIDTH-1:0];
 
     assign read_state.user_state = {dev_mem[11], dev_mem[10], dev_mem[9],dev_mem[8],dev_mem[7],dev_mem[6],dev_mem[5],dev_mem[4]};
     assign read_state.dircc_state = {dev_mem[1],dev_mem[0]};
@@ -55,7 +54,7 @@ module dircc_status_register(
                 {dev_mem[11], dev_mem[10], dev_mem[9],dev_mem[8],dev_mem[7],dev_mem[6],dev_mem[5],dev_mem[4]} <= write_state.user_state;
                 {dev_mem[1],dev_mem[0]} <= write_state.dircc_state;
                 {dev_mem[3],dev_mem[2]} <= write_state.dircc_state_extra;
-            end else if(mem_write) begin
+            end else if (mem_write) begin
                 // We are writing the device data
                 {dev_mem[mem_address+1], dev_mem[mem_address]} <= mem_writedata;
             end

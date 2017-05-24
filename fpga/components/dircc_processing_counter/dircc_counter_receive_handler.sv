@@ -17,8 +17,7 @@ module dircc_receive_handler(
     write_state_valid
 );
 
-    parameter MEM_ADDRESS_WIDTH = 32;
-    parameter MAX_DEVICE_USER_STATE_BYTES = 8;
+    parameter ADDRESS_MEM_WIDTH = 32;
 
     import dircc_types_pkg::*;
     import dircc_application_pkg::*;
@@ -26,10 +25,10 @@ module dircc_receive_handler(
     input wire                      clk;
     input wire                      reset_n;
 
-    input wire [MEM_ADDRESS_WIDTH-1:0] address;
+    input wire [ADDRESS_MEM_WIDTH-1:0] address;
 
     input wire                      receive_done;
-    input wire [95:0]               packet_in;
+    input packet_data_t             packet_in;
     input wire                      packet_in_valid;
     output reg                      packet_handled;
 
@@ -39,7 +38,7 @@ module dircc_receive_handler(
     output reg                      write_state_valid;
 
     typedef struct packed {
-        bit [63:0] tick;
+        bit[PACKET_DATA_WIDTH-1:0] tick;
     } tick_msg_t;
 
     typedef struct packed {
@@ -52,7 +51,7 @@ module dircc_receive_handler(
     dev_state_t dev_state_new;
     dev_state_t dev_state_old;
 
-    assign packet_data = packet_in[63:0];
+    assign packet_data = packet_in;
     assign dev_state_old = read_state.user_state[31:0];
     assign write_state.user_state = {'0, dev_state_new};
 

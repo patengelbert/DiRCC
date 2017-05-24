@@ -22,7 +22,6 @@ module dircc_avalon_st_packet_receiver(
   parameter INPUT_FIFO_DEPTH = 8;
   localparam DATA_WIDTH = BITS_PER_SYMBOL * SYMBOLS_PER_BEAT;
   localparam EMPTY_WIDTH = $clog2(SYMBOLS_PER_BEAT);
-  localparam NULL_BYTE = 8'b0;
 
   import dircc_types_pkg::*;
 
@@ -42,7 +41,7 @@ module dircc_avalon_st_packet_receiver(
   output reg                    receive_done;
   output reg                    receive_nearly_done;
   
-  typedef enum logic[5:0] {IDLE, DEST_ADDR0, DEST_ADDR1, SRC_ADDR0, SRC_ADDR1, LAMPORT, DATA0, DATA1, DATA2} packet_state_t;
+  typedef enum {IDLE, DEST_ADDR0, DEST_ADDR1, SRC_ADDR0, SRC_ADDR1, LAMPORT, DATA0, DATA1, DATA2} packet_state_t;
   
   wire [DATA_WIDTH-1:0]   input_fifo_out_data;
   wire [EMPTY_WIDTH-1:0]  input_fifo_out_empty;

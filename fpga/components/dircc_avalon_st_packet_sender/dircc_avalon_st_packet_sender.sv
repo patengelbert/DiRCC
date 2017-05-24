@@ -39,12 +39,12 @@ module dircc_avalon_st_packet_sender(
   
   output wire                   sending;
   
-  typedef enum logic[5:0] {IDLE, DEST_ADDR0, DEST_ADDR1, SRC_ADDR0, SRC_ADDR1, LAMPORT, DATA0, DATA1, DATA2} packet_state_t;
+  typedef enum {IDLE, DEST_ADDR0, DEST_ADDR1, SRC_ADDR0, SRC_ADDR1, LAMPORT, DATA0, DATA1, DATA2} packet_state_t;
   
   packet_t packet_to_send;
   packet_state_t packet_state;
   
-  assign sending = (packet_state != IDLE) ? 1 : 0;
+  assign sending = (packet_state != IDLE) ? '1 : '0;
   
   always_ff @(posedge clk or negedge reset_n) begin
     if(!reset_n) begin

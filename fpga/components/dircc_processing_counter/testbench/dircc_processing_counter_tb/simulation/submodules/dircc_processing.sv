@@ -35,12 +35,15 @@ module dircc_processing (
     localparam EMPTY_WIDTH = $clog2(SYMBOLS_PER_BEAT);
 
         // Do not change these paramters!!
-    parameter MEM_WIDTH = 16;
-    parameter ADDRESS_WIDTH = 15;
-    parameter BYTE_WIDTH = 8;
-    parameter DEV_MEM_WIDTH = 12;
-    parameter EDGE_MEM_WIDTH = 12;
-    parameter MEM_ADDRESS_WIDTH = 32;
+    parameter STATUS_MEM_WIDTH = 16;
+    parameter STATUS_ADDRESS_WIDTH = 15;
+    parameter STATUS_BYTE_WIDTH = 8;
+    parameter STATUS_DEV_MEM_WIDTH = 12;
+    parameter STATUS_EDGE_MEM_WIDTH = 12;
+    parameter ADDRESS_MEM_WIDTH = 32;
+
+    parameter RTS_READY_WIDTH = 32;
+    localparam PORT_INDEX_WIDTH = $clog2(RTS_READY_WIDTH);
 
     import dircc_types_pkg::*;
     import dircc_application_pkg::*;
@@ -63,12 +66,12 @@ module dircc_processing (
     output reg                   output_valid;
     input                        output_ready;
 
-    input	 [ADDRESS_WIDTH-1:0]	    mem_address;
-    input		                        mem_write;
-    output reg	[MEM_WIDTH-1:0]	        mem_readdata;
-    input	    [MEM_WIDTH-1:0]	        mem_writedata;
+    input	 [STATUS_ADDRESS_WIDTH-1:0]	    mem_address;
+    input		                            mem_write;
+    output reg	[STATUS_MEM_WIDTH-1:0]	    mem_readdata;
+    input	    [STATUS_MEM_WIDTH-1:0]	    mem_writedata;
 
-    input    [MEM_ADDRESS_WIDTH-1:0] address;
+    input    [ADDRESS_MEM_WIDTH-1:0] address;
 
     wire receive_done, receive_nearly_done;
     wire sending;
@@ -79,19 +82,19 @@ module dircc_processing (
     wire write_state_state_valid_send_handler, write_state_state_valid_receive_handler, write_state_state_valid_compute_handler;
     device_state_t read_state, write_state, write_state_receive_handler, write_state_send_handler, write_state_compute_handler;
 
-    reg [31:0] lamport;
+    lamport_t lamport;
 
     reg packet_out_header_data_valid, packet_out_user_data_valid;
 
-    wire [31:0] rts_ready_new;
-    reg  [31:0] rts_ready;
+    wire [RTS_READY_WIDTH-1:0] rts_ready_new;
+    reg  [RTS_READY_WIDTH-1:0] rts_ready;
 
-    logic [4:0] port_index;
+    logic [PORT_INDEX_WIDTH-1:0] port_index;
     
     wire packet_out_valid, packet_in_valid, receive_handler_handled;
 
-    reg [95:0] send_handler_packet_out_data;
-    reg        send_handler_packet_out_valid; 
+    packet_data_t send_handler_packet_out_data;
+    reg           send_handler_packet_out_valid; 
 
     reg [31:0] target_id;
 
@@ -139,7 +142,12 @@ module dircc_processing (
         .sending        (sending)
     );
 
-    dircc_status_register status_register (
+    dircc_status_register #(
+        .MEM_WIDTH(STATUS_MEM_WIDTH),
+        .ADDRESS_WIDTH(STATUS_ADDRESS_WIDTH),
+        .DEV_MEM_WIDTH(STATUS_DEV_MEM_WIDTH),
+        .EDGE_MEM_WIDTH(STATUS_EDGE_MEM_WIDTH)
+        ) status_register (
         .clk                            (clk),
         .reset_n                        (reset_n),
 
@@ -155,7 +163,7 @@ module dircc_processing (
     );
 
     dircc_receive_handler #(
-        .MEM_ADDRESS_WIDTH(MEM_ADDRESS_WIDTH)
+        .ADDRESS_MEM_WIDTH(ADDRESS_MEM_WIDTH)
     ) receive_handler (
         .clk            (clk),
         .reset_n        (reset_n),
@@ -174,7 +182,7 @@ module dircc_processing (
     );
 
     dircc_rts_handler #(
-        .MEM_ADDRESS_WIDTH(MEM_ADDRESS_WIDTH)
+        .ADDRESS_MEM_WIDTH(ADDRESS_MEM_WIDTH)
     ) rts_handler (
         .clk            (clk),
         .reset_n        (reset_n),
@@ -188,7 +196,7 @@ module dircc_processing (
     );
 
     dircc_send_handler #(
-        .MEM_ADDRESS_WIDTH(MEM_ADDRESS_WIDTH)
+        .ADDRESS_MEM_WIDTH(ADDRESS_MEM_WIDTH)
     ) send_handler (
         .clk                            (clk),
         .reset_n                        (reset_n),
@@ -205,7 +213,7 @@ module dircc_processing (
     );
 
     dircc_compute_handler #(
-        .MEM_ADDRESS_WIDTH(MEM_ADDRESS_WIDTH)
+        .ADDRESS_MEM_WIDTH(ADDRESS_MEM_WIDTH)
     ) compute_handler (
         .clk                            (clk),
         .reset_n                        (reset_n),
@@ -284,7 +292,7 @@ module dircc_processing (
                 write_state <= write_state_send_handler;
 
                 // Store data for all outgoing packets
-                packet_out <= send_handler_packet_out_data;
+                packet_out.data <= send_handler_packet_out_data;
                 packet_out_user_data_valid <= send_handler_packet_out_valid;
 
                 // Set initial target
@@ -304,14 +312,13 @@ module dircc_processing (
         
         // We do not care about the last bit
         // This is the compute flag
-        for (int i=30; i >= 0; i--) begin
+        for (int i=RTS_READY_WIDTH-2; i >= 0; i--) begin
             if (rts_ready[i]) begin
-                port_index = i[4:0];
+                port_index = i[PORT_INDEX_WIDTH-1:0];
             end
         end
     end : right_most_one
     
 endmodule : dircc_processing
 
-// TODO: Add multicast messages
 // TODO: Add multi cycle support for send, compute and rts handler

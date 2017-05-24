@@ -1,6 +1,4 @@
 
-
-
 module dircc_rts_handler(
     clk,
     reset_n,
@@ -12,8 +10,7 @@ module dircc_rts_handler(
     rts_ready
 );
 
-    parameter MEM_ADDRESS_WIDTH = 32;
-    parameter MAX_DEVICE_USER_STATE_BYTES = 8;
+    parameter ADDRESS_MEM_WIDTH = 32;
 
     import dircc_types_pkg::*;
     import dircc_application_pkg::*;
@@ -21,7 +18,7 @@ module dircc_rts_handler(
     input wire                      clk;
     input wire                      reset_n;
 
-    input wire [MEM_ADDRESS_WIDTH-1:0] address;
+    input wire [ADDRESS_MEM_WIDTH-1:0] address;
 
     input device_state_t            read_state;
 

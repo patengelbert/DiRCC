@@ -11,7 +11,7 @@ module dircc_compute_handler(
     write_state_valid
 );
 
-    parameter MEM_ADDRESS_WIDTH = 32;
+    parameter ADDRESS_MEM_WIDTH = 32;
 
     import dircc_types_pkg::*;
     import dircc_application_pkg::*;
@@ -19,12 +19,12 @@ module dircc_compute_handler(
     input wire                  clk;
     input wire                  reset_n;
 
-    input wire [MEM_ADDRESS_WIDTH-1:0] address;
+    input wire [ADDRESS_MEM_WIDTH-1:0] address;
 
     input device_state_t         read_state;
 
     output device_state_t        write_state;
-    output reg                  write_state_valid;
+    output reg                   write_state_valid;
 
     always_ff @(posedge clk, negedge reset_n) begin
         if (!reset_n) begin
