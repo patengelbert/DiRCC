@@ -46,8 +46,8 @@ module dircc_processing (
     localparam PORT_INDEX_WIDTH = $clog2(RTS_READY_WIDTH);
 
     import dircc_types_pkg::*;
+    import dircc_system_states_pkg::*;
     import dircc_application_pkg::*;
-
 
     input                        clk;
     input                        reset_n;
@@ -226,20 +226,27 @@ module dircc_processing (
         .write_state_valid              (write_state_state_valid_compute_handler)           //             .valid
     );
 
-
     always_ff @(posedge clk or negedge reset_n) begin
         if (!reset_n) begin
 
             lamport <= 0;
-            write_state_valid <= 0;
             packet_out_header_data_valid <= 0;
             packet_out_user_data_valid <= 0;
             rts_ready <= 0;
             target_id <= 0;
 
+            // This will be picked up on the first non-reset clk cycle
+            write_state <= '{
+                dircc_state : DIRCC_STATE_BOOTED,
+                dircc_state_extra : '0,
+                user_state : '0
+            };
+            write_state_valid <= 1;
+
         end else begin
 
             packet_out_header_data_valid <= 0;
+            write_state_valid <= 0;
 
             if (receive_done) begin
                 // update lamport on receive, before handler
@@ -272,37 +279,47 @@ module dircc_processing (
                 end
             end
 
+            if (read_state.dircc_state & DIRCC_STATE_RUNNING) begin
+                // We are running
+                if (receive_handler_handled) begin
+                    // Update state after receive handler has processed the packet
 
-            if (receive_handler_handled) begin
-                // Update state after receive handler has processed the packet
+                    $display("Calling receive handler");
+                    write_state_valid <= write_state_state_valid_receive_handler;
+                    write_state <= write_state_receive_handler;
 
-                $display("Calling receive handler");
-                write_state_valid <= write_state_state_valid_receive_handler;
-                write_state <= write_state_receive_handler;
+                end else if (rts_ready_new && !rts_ready && !packet_out_valid) begin
+                    // We have sent all outstanding packets
+                    // Run the send handler once
+                    rts_ready <= rts_ready_new & ~`DIRCC_RTS_FLAGS_COMPUTE;
 
-            end else if (rts_ready_new && !rts_ready && !packet_out_valid) begin
-                // We have sent all outstanding packets
-                // Run the send handler once
-                rts_ready <= rts_ready_new & ~`DIRCC_RTS_FLAGS_COMPUTE;
+                    $display("Calling send handler");
 
-                $display("Calling send handler");
+                    lamport <= lamport + 1;
+                    write_state_valid <= write_state_state_valid_send_handler;
+                    write_state <= write_state_send_handler;
 
-                lamport <= lamport + 1;
-                write_state_valid <= write_state_state_valid_send_handler;
-                write_state <= write_state_send_handler;
+                    // Store data for all outgoing packets
+                    packet_out.data <= send_handler_packet_out_data;
+                    packet_out_user_data_valid <= send_handler_packet_out_valid;
 
-                // Store data for all outgoing packets
-                packet_out.data <= send_handler_packet_out_data;
-                packet_out_user_data_valid <= send_handler_packet_out_valid;
+                    // Set initial target
+                    target_id <= 0;
+                end else begin
+                    // Compute
 
-                // Set initial target
-                target_id <= 0;
-            end else begin
-                // Compute
+                    write_state_valid <= write_state_state_valid_compute_handler;
+                    write_state <= write_state_compute_handler;
 
-                write_state_valid <= write_state_state_valid_compute_handler;
-                write_state <= write_state_compute_handler;
-
+                end
+            end else if (read_state.dircc_state & (DIRCC_STATE_DISABLED | DIRCC_STATE_STOPPED)) begin
+                // Swallow all packets and throw error if any received
+                if (receive_done) begin
+                    // Show error on received packet
+                    $display("Error received unexpected packet");
+                    write_state.dircc_state <= (read_state.dircc_state | DIRCC_STATE_ERROR);
+                    write_state_valid <= 1;
+                end
             end
         end
     end

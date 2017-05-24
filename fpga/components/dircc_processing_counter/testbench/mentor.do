@@ -26,7 +26,7 @@ com
 # the top level. (These are all the files required for simulation other
 # than the files compiled by the Quartus-generated IP simulation script)
 #
-eval vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_processing_counter_tb/simulation/dircc_processing_counter_test.sv" -L altera_common_sv_packages -L dircc_sv_packages
+eval vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/dircc_processing_counter_tb/simulation/dircc_processing_counter_test.sv" -L altera_common_sv_packages -L dircc_sv_packages -L dircc_application_sv_packages
 #
 # Set the top-level simulation or testbench module/entity name, which is
 # used by the elab command to elaborate the top level.

@@ -4,6 +4,8 @@
 import dircc_types_pkg::*;
 import verbosity_pkg::*;
 import avalon_mm_pkg::*;
+import dircc_system_states_pkg::*;
+import dircc_application_pkg::*;
 
 module dircc_processing_counter_test();
     parameter TIMEOUT = 1000000000;
@@ -40,6 +42,8 @@ module dircc_processing_counter_test();
             end : checkTimout 
         join : WaitWithTimeout
         rv = tb.dircc_processing_counter_inst_status_bfm.all_transactions_complete() ? TRUE : FALSE;
+        // Prevent this from happening multiple times in the same clock cycle
+        @(posedge clk);
     endtask : waitForResponse
 
     task automatic printSuccess(input bool rv);
@@ -54,7 +58,7 @@ module dircc_processing_counter_test();
         print(VERBOSITY_INFO, message);
     endtask
 
-    task automatic printAssert(input a, input b, inout bool rv);
+    task automatic printAssert(input longint a, input longint b, inout bool rv);
         assert(a == b)
         else begin
             rv = FALSE;
@@ -329,9 +333,54 @@ module dircc_processing_counter_test();
 
     endtask : checkPacket
 
+    task automatic launchDevice(inout bool rv);
+        automatic dircc_state_t response_data;
+
+        setState(DIRCC_STATE_RUNNING, rv);
+        if (rv == TRUE) begin
+            $sformat(message, "%m: - Device launch attempt");
+            print(VERBOSITY_INFO, message);
+        end
+
+        tb.dircc_processing_counter_inst_status_bfm.set_command_request(REQ_READ);
+        tb.dircc_processing_counter_inst_status_bfm.set_command_address('b0);
+        tb.dircc_processing_counter_inst_status_bfm.push_command();
+
+
+        waitForResponse(tb.dircc_processing_counter_inst_status_bfm.signal_all_transactions_complete, TIMEOUT, rv);
+
+        if (rv == TRUE) begin
+            tb.dircc_processing_counter_inst_status_bfm.pop_response();
+            response_data = tb.dircc_processing_counter_inst_status_bfm.get_response_data(0);
+            printAssert(DIRCC_STATE_RUNNING, response_data, rv);
+        end
+        if (rv == FALSE) begin
+            $sformat(message, "%m: - Device launch failed");
+            print(VERBOSITY_ERROR, message);
+        end else begin
+            $sformat(message, "%m: - Device launch succeeded");
+            print(VERBOSITY_INFO, message);
+        end
+
+    endtask : launchDevice
+
+    task automatic setState(input dircc_state_t state, inout bool rv);
+        tb.dircc_processing_counter_inst_status_bfm.set_command_request(REQ_WRITE);
+        tb.dircc_processing_counter_inst_status_bfm.set_command_address('b0);
+        tb.dircc_processing_counter_inst_status_bfm.set_command_data(state, 0);
+        tb.dircc_processing_counter_inst_status_bfm.push_command();
+
+        waitForResponse(tb.dircc_processing_counter_inst_status_bfm.signal_all_transactions_complete, TIMEOUT, rv);
+
+        // Drain responnses
+        for(int i = 0; i < tb.dircc_processing_counter_inst_status_bfm.get_response_queue_size(); i++) begin
+            tb.dircc_processing_counter_inst_status_bfm.pop_response();
+        end
+    endtask : setState
+
     task automatic test_reset();
         automatic bool rv;
-        automatic bit [15:0] response_data;
+        automatic dircc_state_t response_data;
 
         setupTest();
 
@@ -344,7 +393,7 @@ module dircc_processing_counter_test();
         if (rv == TRUE) begin
             tb.dircc_processing_counter_inst_status_bfm.pop_response();
             response_data = tb.dircc_processing_counter_inst_status_bfm.get_response_data(0);
-            printAssert(0, response_data, rv);
+            printAssert(DIRCC_STATE_BOOTED, response_data, rv);
         end
         printSuccess(rv);
     endtask : test_reset
@@ -368,14 +417,21 @@ module dircc_processing_counter_test();
             lamport: 1,
             data: $random
         };
+
+        $sformat(message,  "%m: -  Starting Test %m");
+        print(VERBOSITY_INFO, message);
+
         setupTest();
+
+        launchDevice(rv);
 
         sendPacket(packetToSend, 0, 7);
 
         waitForResponse(tb.dircc_processing_counter_inst_input_bfm.signal_src_transaction_complete, TIMEOUT, rv);
 
         // 3 Clock cycles input packet -> state change
-        repeat(3) @(posedge clk);
+        // -1 as waitForResponse has 1 included
+        repeat(2) @(posedge clk);
 
         // Word 1
         tb.dircc_processing_counter_inst_status_bfm.set_command_request(REQ_READ);
@@ -454,7 +510,12 @@ module dircc_processing_counter_test();
         };
         automatic packet_t receivedPacket;
 
+        $sformat(message,  "%m: -  Starting Test %m");
+        print(VERBOSITY_INFO, message);
+
         setupTest();
+
+        launchDevice(rv);
 
         sendPacket(packetToSend, 0, 7);
 
@@ -462,7 +523,8 @@ module dircc_processing_counter_test();
 
         // 3 Clock cycles input packet -> state change
         // 3 Clock cycles state change -> output packet
-        repeat(6) @(posedge clk);
+        // -1 as waitForResponse has 1 included
+        repeat(5) @(posedge clk);
 
         // Word 1
         tb.dircc_processing_counter_inst_status_bfm.set_command_request(REQ_READ);
@@ -535,7 +597,7 @@ module dircc_processing_counter_test();
                 port: $random,
                 flag: 0
             },
-            lamport: 1,
+            lamport: 5,
             data: $random
         };
         automatic packet_t expectedPacket [$] = '{
@@ -552,7 +614,7 @@ module dircc_processing_counter_test();
                     port: 0,
                     flag: 0
                 },
-                lamport: 3,
+                lamport: 7,
                 data: 1
             },
             '{
@@ -568,14 +630,19 @@ module dircc_processing_counter_test();
                     port: 0,
                     flag: 0
                 },
-                lamport: 3,
+                lamport: 7,
                 data: 1
             }
             
         };
         automatic packet_t receivedPacket;
 
+        $sformat(message,  "%m: -  Starting Test %m");
+        print(VERBOSITY_INFO, message);
+
         setupTest();
+
+        launchDevice(rv);
 
         sendPacket(packetToSend, 0, 7);
 
@@ -583,7 +650,8 @@ module dircc_processing_counter_test();
 
         // 3 Clock cycles input packet -> state change
         // 3 Clock cycles state change -> output packet
-        repeat(6) @(posedge clk);
+        // -1 as waitForResponse has 1 included
+        repeat(5) @(posedge clk);
 
         // Word 1
         tb.dircc_processing_counter_inst_status_bfm.set_command_request(REQ_READ);
@@ -657,12 +725,150 @@ module dircc_processing_counter_test();
         printSuccess(rv);
     endtask : test_multipleDestSamePortSent
 
+    task automatic test_disabled();
+        automatic bool rv;
+        automatic bit [15:0] response_data;
+        automatic packet_t packetToSend = '{
+            dest_addr: '{
+                hw_addr: $random,
+                sw_addr: $random,
+                port: $random,
+                flag: 0
+            },
+            src_addr: '{
+                hw_addr: $random,
+                sw_addr: $random,
+                port: $random,
+                flag: 0
+            },
+            lamport: 1,
+            data: $random
+        };
+
+        $sformat(message,  "%m: -  Starting Test %m");
+        print(VERBOSITY_INFO, message);
+
+        setupTest();
+    
+        setState(DIRCC_STATE_DISABLED, rv);
+        if (rv == TRUE) begin
+            $sformat(message, "%m: - Device disabled");
+            print(VERBOSITY_INFO, message);
+        end
+
+        sendPacket(packetToSend, 0, 7);
+
+        waitForResponse(tb.dircc_processing_counter_inst_input_bfm.signal_src_transaction_complete, TIMEOUT, rv);
+
+        // 3 Clock cycles input packet -> state change
+        // 3 Clock cycles state change -> output packet
+        // -1 as waitForResponse has 1 included
+        repeat(10) @(posedge clk);
+
+        tb.dircc_processing_counter_inst_status_bfm.set_command_request(REQ_READ);
+        tb.dircc_processing_counter_inst_status_bfm.set_command_address('b000);
+        tb.dircc_processing_counter_inst_status_bfm.push_command();
+
+        // Wait until packet may have been sent
+        // 1 clock cycle to initialse rts
+        // 1 clock cycle to setup packet data
+        // 8 clock cycles to send
+        repeat(10) @(posedge clk);
+
+        // Packet should not have been sent
+        assert(tb.dircc_processing_counter_inst_output_bfm.get_transaction_queue_size() == 0)
+        else begin
+            rv = FALSE;
+            $sformat(message, "%m: - TEST ERROR: Packet received");
+            print(VERBOSITY_ERROR, message);
+        end
+        
+        if (rv == TRUE) begin
+            tb.dircc_processing_counter_inst_status_bfm.pop_response();
+            response_data = tb.dircc_processing_counter_inst_status_bfm.get_response_data(0);
+            printAssert((DIRCC_STATE_ERROR | DIRCC_STATE_DISABLED), response_data, rv);
+        end
+        printSuccess(rv);
+    endtask : test_disabled
+
+    task automatic test_done();
+        automatic bool rv;
+        automatic bit [15:0] response_data;
+        automatic packet_t packetToSend = '{
+            dest_addr: '{
+                hw_addr: $random,
+                sw_addr: $random,
+                port: $random,
+                flag: 0
+            },
+            src_addr: '{
+                hw_addr: $random,
+                sw_addr: $random,
+                port: $random,
+                flag: 0
+            },
+            lamport: 1,
+            data: $random
+        };
+
+        $sformat(message,  "%m: -  Starting Test %m");
+        print(VERBOSITY_INFO, message);
+
+        setupTest();
+        
+        launchDevice(rv);
+
+        for (int i = 0; i < inst_props.maxTime; i++) begin
+            sendPacket(packetToSend, 0, 7);
+
+            waitForResponse(tb.dircc_processing_counter_inst_input_bfm.signal_src_transaction_complete, TIMEOUT, rv);
+
+            // 3 Clock cycles input packet -> state change
+            // 3 Clock cycles state change -> output packet
+            // -1 as waitForResponse has 1 included
+            repeat(5) @(posedge clk);
+
+            // Wait for 2 packets to send
+            repeat(20) @(posedge clk);
+            while (tb.dircc_processing_counter_inst_output_bfm.get_transaction_queue_size()) begin
+                tb.dircc_processing_counter_inst_output_bfm.pop_transaction();
+            end
+        end
+
+        // Word 1
+        tb.dircc_processing_counter_inst_status_bfm.set_command_request(REQ_READ);
+        tb.dircc_processing_counter_inst_status_bfm.set_command_address('b000);
+        tb.dircc_processing_counter_inst_status_bfm.push_command();
+
+        waitForResponse(tb.dircc_processing_counter_inst_status_bfm.signal_all_transactions_complete, TIMEOUT, rv);
+
+        // Packet should not have been sent
+        assert(tb.dircc_processing_counter_inst_output_bfm.get_transaction_queue_size() == 0)
+        else begin
+            rv = FALSE;
+            $sformat(message, "%m: - TEST ERROR: Packet received. Received %d",
+                tb.dircc_processing_counter_inst_output_bfm.get_transaction_queue_size());
+            print(VERBOSITY_ERROR, message);
+        end
+        
+        if (rv == TRUE) begin
+            tb.dircc_processing_counter_inst_status_bfm.pop_response();
+            response_data = tb.dircc_processing_counter_inst_status_bfm.get_response_data(0);
+            printAssert((DIRCC_STATE_STOPPED | DIRCC_STATE_DONE), response_data, rv);
+        end
+        printSuccess(rv);
+    endtask : test_done
+
+        
+
     initial begin
         repeat(100) @(posedge clk);
         test_reset();
         test_packetInHandlerUsed();
         test_packetOutHandlerUsed();
         test_multipleDestSamePortSent();
+        test_disabled();
+        test_done();
     end
 
 endmodule : dircc_processing_counter_test
