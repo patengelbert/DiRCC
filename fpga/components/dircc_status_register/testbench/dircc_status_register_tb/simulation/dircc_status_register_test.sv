@@ -20,6 +20,7 @@ module dircc_avalon_st_terminal_test;
         ->reset_asserted;
         repeat(10) @(posedge clk);
         tb.dircc_status_register_inst_reset_bfm.reset_deassert();
+        tb.dircc_status_register_inst_write_state_valid = 0;
         repeat(2) @(posedge clk);
         ->reset_deasserted;
     endtask : setupTest
@@ -236,6 +237,8 @@ module dircc_avalon_st_terminal_test;
         end
         $sformat(message, "%m: Test Complete");
         print(VERBOSITY_INFO, message);
+
+        tb.dircc_status_register_inst_write_state_valid = 0;
     endtask : test_dirccStateRead
 
     initial begin
