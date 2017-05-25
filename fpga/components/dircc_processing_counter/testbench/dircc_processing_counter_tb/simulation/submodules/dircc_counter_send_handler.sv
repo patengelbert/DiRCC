@@ -54,7 +54,6 @@ module dircc_send_handler(
 
     assign packet_data.tick = {'0, dev_state_new.count};
 
-    assign dev_state_new.rts = 0;
     assign dev_state_new.count = dev_state_old.count;
 
     assign write_state.dircc_state = read_state.dircc_state;
@@ -66,9 +65,11 @@ module dircc_send_handler(
             packet_out_valid <= 0;
             write_state_valid <= 0;
         end else begin
+            assert (dev_state_old.rts >= 0);
             if (dev_state_old.rts) begin
                 write_state_valid <= 1;
                 packet_out_valid <= 1;
+                dev_state_new.rts = dev_state_old.rts - 1;
             end else begin
                 packet_out_valid <= 0;
                 write_state_valid <= 0;

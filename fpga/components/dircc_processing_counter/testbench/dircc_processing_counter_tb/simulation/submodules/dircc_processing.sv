@@ -73,6 +73,8 @@ module dircc_processing (
 
     input    [ADDRESS_MEM_WIDTH-1:0] address;
 
+    typedef enum {RECEIVE_HANDLER, SEND_HANDLER, COMPUTE_HANDLER} handler_update_t;
+
     wire receive_done, receive_nearly_done;
     wire sending;
 
@@ -98,6 +100,10 @@ module dircc_processing (
 
     reg [31:0] target_id;
 
+    reg           booting;
+
+    handler_update_t handler_updater;
+
     assign packet_out_valid = packet_out_user_data_valid && packet_out_header_data_valid;
 
     dircc_avalon_st_packet_receiver #(
@@ -119,7 +125,9 @@ module dircc_processing (
         .packet_data    (packet_in),
 
         .receive_nearly_done    (receive_nearly_done),
-        .receive_done           (receive_done)
+        .receive_done           (receive_done),
+
+        .booting                (booting)
     );
 
     dircc_avalon_st_packet_sender #(
@@ -242,6 +250,7 @@ module dircc_processing (
                 user_state : '0
             };
             write_state_valid <= 1;
+            booting <= 1;
 
         end else begin
 
@@ -250,6 +259,7 @@ module dircc_processing (
 
             if (receive_done) begin
                 // update lamport on receive, before handler
+                $display("Read packet %d for state %d", packet_in.lamport, read_state.dircc_state);
                 lamport <= ((lamport > packet_in.lamport) ? lamport : packet_in.lamport) + 1;
             end
 
@@ -280,6 +290,8 @@ module dircc_processing (
             end
 
             if (read_state.dircc_state & DIRCC_STATE_RUNNING) begin
+
+                booting <= 0;
                 // We are running
                 if (receive_handler_handled) begin
                     // Update state after receive handler has processed the packet
@@ -313,6 +325,8 @@ module dircc_processing (
 
                 end
             end else if (read_state.dircc_state & (DIRCC_STATE_DISABLED | DIRCC_STATE_STOPPED)) begin
+
+                booting <= 0;
                 // Swallow all packets and throw error if any received
                 if (receive_done) begin
                     // Show error on received packet
