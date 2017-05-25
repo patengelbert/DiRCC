@@ -20,6 +20,7 @@ module dircc_avalon_st_packet_receiver_tb (
 	wire		 dircc_avalon_st_packet_receiver_inst_receive_nearly_done;
 	wire         dircc_avalon_st_packet_receiver_inst_packet_valid;
 	packet_t     dircc_avalon_st_packet_receiver_inst_packet_data;
+	logic 		 dircc_avalon_st_packet_receiver_inst_booting;
 
 	dircc_avalon_st_packet_receiver dircc_avalon_st_packet_receiver_inst (
 		.clk	                    (dircc_avalon_st_packet_receiver_inst_clk_bfm_clk_clk),                   //          clk.clk
@@ -33,8 +34,9 @@ module dircc_avalon_st_packet_receiver_tb (
 		.receive_done				(dircc_avalon_st_packet_receiver_inst_receive_done),					  //	  receive.done
 		.receive_nearly_done		(dircc_avalon_st_packet_receiver_inst_receive_nearly_done),				  //             .nearly_done
 		.packet_valid				(dircc_avalon_st_packet_receiver_inst_packet_valid),					  //       packet.valid
-		.packet_data				(dircc_avalon_st_packet_receiver_inst_packet_data)						  //             .data
-	);
+		.packet_data				(dircc_avalon_st_packet_receiver_inst_packet_data),						  //             .data
+		.booting					(dircc_avalon_st_packet_receiver_inst_booting)						  	  //      booting.active
+);
 
 	altera_avalon_clock_source #(
 		.CLOCK_RATE (50000000),

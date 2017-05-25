@@ -14,7 +14,9 @@ module dircc_avalon_st_packet_receiver(
   packet_data,
 
   receive_done,
-  receive_nearly_done
+  receive_nearly_done,
+
+  booting
 );
 
   parameter BITS_PER_SYMBOL = 8;
@@ -40,6 +42,8 @@ module dircc_avalon_st_packet_receiver(
 
   output reg                    receive_done;
   output reg                    receive_nearly_done;
+
+  input wire                    booting;
   
   typedef enum {IDLE, DEST_ADDR0, DEST_ADDR1, SRC_ADDR0, SRC_ADDR1, LAMPORT, DATA0, DATA1, DATA2} packet_state_t;
   
@@ -107,10 +111,10 @@ module dircc_avalon_st_packet_receiver(
     else begin
       receive_done <= 0;
       receive_nearly_done <= 0;
-      input_fifo_out_ready <= 1;
+      input_fifo_out_ready <= ~booting;
       case(packet_state)
         DEST_ADDR0: begin
-          if (input_fifo_out_valid) begin
+          if (input_fifo_out_valid && input_fifo_out_ready) begin
             assert(input_fifo_out_startofpacket && !input_fifo_out_endofpacket)
             else $display("Expected startofpacket = %d. Expected no endofpacket = %d", input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             temp_packet.dest_addr.hw_addr <= input_fifo_out_data;
@@ -118,7 +122,7 @@ module dircc_avalon_st_packet_receiver(
           end
         end
         DEST_ADDR1: begin
-          if (input_fifo_out_valid) begin
+          if (input_fifo_out_valid && input_fifo_out_ready) begin
             assert(!input_fifo_out_startofpacket && !input_fifo_out_endofpacket)
             else $display("Expected no startofpacket = %d. Expected no endofpacket = %d", input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             {temp_packet.dest_addr.sw_addr, temp_packet.dest_addr.port, temp_packet.dest_addr.flag} <= input_fifo_out_data[31:8];
@@ -126,7 +130,7 @@ module dircc_avalon_st_packet_receiver(
           end
         end
         SRC_ADDR0: begin
-          if (input_fifo_out_valid) begin
+          if (input_fifo_out_valid&& input_fifo_out_ready) begin
             assert(!input_fifo_out_startofpacket && !input_fifo_out_endofpacket)
             else $display("Expected no startofpacket = %d. Expected no endofpacket = %d", input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             temp_packet.src_addr.hw_addr <= input_fifo_out_data;
@@ -134,7 +138,7 @@ module dircc_avalon_st_packet_receiver(
           end
         end
         SRC_ADDR1: begin
-          if (input_fifo_out_valid) begin
+          if (input_fifo_out_valid && input_fifo_out_ready) begin
             assert(!input_fifo_out_startofpacket && !input_fifo_out_endofpacket)
             else $display("Expected no startofpacket = %d. Expected no endofpacket = %d", input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             {temp_packet.src_addr.sw_addr, temp_packet.src_addr.port, temp_packet.src_addr.flag} <= input_fifo_out_data[31:8];
@@ -142,7 +146,7 @@ module dircc_avalon_st_packet_receiver(
           end
         end
         LAMPORT: begin
-          if (input_fifo_out_valid) begin
+          if (input_fifo_out_valid && input_fifo_out_ready) begin
             assert(!input_fifo_out_startofpacket && !input_fifo_out_endofpacket)
             else $display("Expected no startofpacket = %d. Expected no endofpacket = %d", input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             temp_packet.lamport <= input_fifo_out_data;
@@ -150,7 +154,7 @@ module dircc_avalon_st_packet_receiver(
           end
         end
         DATA0: begin
-          if (input_fifo_out_valid) begin
+          if (input_fifo_out_valid && input_fifo_out_ready) begin
             assert(!input_fifo_out_startofpacket && !input_fifo_out_endofpacket)
             else $display("Expected no startofpacket = %d. Expected no endofpacket = %d", input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             temp_packet.data[31:0] <= input_fifo_out_data;
@@ -158,7 +162,7 @@ module dircc_avalon_st_packet_receiver(
           end
         end
         DATA1: begin
-          if (input_fifo_out_valid) begin
+          if (input_fifo_out_valid && input_fifo_out_ready) begin
             assert(!input_fifo_out_startofpacket && !input_fifo_out_endofpacket)
             else $display("Expected no startofpacket = %d. Expected no endofpacket = %d", input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             temp_packet.data[63:32] <= input_fifo_out_data;
@@ -167,7 +171,7 @@ module dircc_avalon_st_packet_receiver(
           end
         end
         DATA2: begin
-          if (input_fifo_out_valid) begin
+          if (input_fifo_out_valid && input_fifo_out_ready) begin
             assert(!input_fifo_out_startofpacket && input_fifo_out_endofpacket)
             else $display("Expected no startofpacket = %d. Expected endofpacket = %d", input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             packet_data <= temp_packet;
