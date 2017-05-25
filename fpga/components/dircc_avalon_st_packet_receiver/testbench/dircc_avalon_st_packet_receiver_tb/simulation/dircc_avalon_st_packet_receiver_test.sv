@@ -14,15 +14,8 @@ module dircc_avalon_st_packet_receiver_test;
     alias reset = tb.dircc_avalon_st_packet_receiver_inst_reset_bfm_reset_reset;
     alias clk = tb.dircc_avalon_st_packet_receiver_inst_clk_bfm_clk_clk;
 
-    event reset_asserted, reset_deasserted, receiving_done, receiving_nearly_done;
+    event reset_asserted, reset_deasserted;
 
-    always @(posedge tb.dircc_avalon_st_packet_receiver_inst_receive_done) begin
-        -> receiving_done;
-    end
-
-    always @(posedge tb.dircc_avalon_st_packet_receiver_inst_receive_nearly_done) begin
-        -> receiving_nearly_done;
-    end
 
     task automatic setupTest();
         tb.dircc_avalon_st_packet_receiver_inst_reset_bfm.reset_assert();
@@ -33,7 +26,7 @@ module dircc_avalon_st_packet_receiver_test;
         -> reset_deasserted;
     endtask : setupTest
 
-    task automatic waitWithTimeout(input event ev, input int timeout);
+    task automatic waitWithTimeout(input event ev, input int timeout, inout bool rv);
         fork: waitWithTimeoutFork 
             begin : checkReceived
                 wait(ev.triggered);
@@ -42,10 +35,13 @@ module dircc_avalon_st_packet_receiver_test;
             begin : checkTimout
                 repeat(timeout) @(posedge clk);
                 $sformat(message, "%m: - TEST Timeout %d", timeout);
+                rv = FALSE;
                 print(VERBOSITY_ERROR, message);  
                 disable waitWithTimeoutFork;
             end : checkTimout 
         join : waitWithTimeoutFork
+        // Prevent this from happening multiple times in the same clock cycle
+        @(posedge clk);
     endtask : waitWithTimeout
 
     task automatic sendPacket(packet_t packet, int startPacket, int endPacket);
@@ -138,13 +134,12 @@ module dircc_avalon_st_packet_receiver_test;
 
         end
 
-        $sformat(message, "%m: - Sent %d words", tb.dircc_avalon_st_packet_receiver_inst_input_bfm.get_transaction_queue_size());
+        $sformat(message, "%m: - Sent %d words", endPacket - startPacket + 1);
         print(VERBOSITY_INFO, message);
 
     endtask : sendPacket
 
-    task automatic checkPacket(packet_t a, packet_t b, output bool rv);
-        rv = TRUE;
+    task automatic checkPacket(packet_t a, packet_t b, inout bool rv);
         // Dest Address
         assert (a.dest_addr.hw_addr == b.dest_addr.hw_addr)
         else begin 
@@ -216,8 +211,30 @@ module dircc_avalon_st_packet_receiver_test;
 
     endtask : checkPacket
 
+    task automatic printSuccess(input bool rv);
+        if (rv == TRUE) begin
+            $sformat(message, "%m: TEST SUCCESS");
+            print(VERBOSITY_INFO, message);
+        end else begin
+            $sformat(message, "%m: TEST ERROR");
+            print(VERBOSITY_ERROR, message);
+        end
+        $sformat(message, "%m: Test Complete");
+        print(VERBOSITY_INFO, message);
+    endtask
+
+    task automatic printAssert(input longint a, input longint b, inout bool rv);
+        assert(a == b)
+        else begin
+            rv = FALSE;
+            $sformat(message, "%m: - Expected: %d. Got %d", a, b);
+            print(VERBOSITY_ERROR, message);
+        end
+
+    endtask
+
     task automatic test_resetCorrect();
-        automatic bool rv = FALSE;
+        automatic bool rv = TRUE;
         automatic packet_t packetToSend = '{
             dest_addr: '{
                 hw_addr: $random,
@@ -234,36 +251,24 @@ module dircc_avalon_st_packet_receiver_test;
             lamport: 0,
             data: $random
         };
+
+        $sformat(message,  "%m: -  Starting Test %m");
+        print(VERBOSITY_INFO, message);
+
         setupTest();
         tb.dircc_avalon_st_packet_receiver_inst_reset_bfm.reset_assert();
         repeat(10) @(posedge clk);
         tb.dircc_avalon_st_packet_receiver_inst_reset_bfm.reset_deassert();
         repeat(10) @(posedge clk);
-        assert (!tb.dircc_avalon_st_packet_receiver_inst_receive_nearly_done)
-        assert (!tb.dircc_avalon_st_packet_receiver_inst_receive_done)
-        else begin
-            $sformat(message, "%m: - TEST ERROR");
-            print(VERBOSITY_ERROR, message);  
-        end
-        sendPacket(packetToSend, 0, 7);
-        waitWithTimeout(tb.dircc_avalon_st_packet_receiver_inst_input_bfm.signal_src_transaction_complete, TIMEOUT);
 
-        rv = tb.dircc_avalon_st_packet_receiver_inst_input_bfm.get_transaction_queue_size() == 0 ? TRUE : FALSE;
+        printAssert(0, tb.dircc_avalon_st_packet_receiver_inst_receive_nearly_done, rv);
+        printAssert(0, tb.dircc_avalon_st_packet_receiver_inst_receive_done, rv);
 
-        assert(rv == TRUE) begin
-            $sformat(message, "%m: - TEST SUCCESS");
-            print(VERBOSITY_INFO, message);  
-        end else begin
-            $sformat(message, "%m: - TEST ERROR");
-            print(VERBOSITY_ERROR, message);  
-        end
-
-        $sformat(message, "%m: - Test Complete.");
-        print(VERBOSITY_INFO, message);  
+        printSuccess(rv);
     endtask : test_resetCorrect
 
     task automatic test_receivePacket();
-        automatic bool rv = FALSE;
+        automatic bool rv = TRUE;
         automatic packet_t packetToSend = '{
             dest_addr: '{
                 hw_addr: $random,
@@ -281,18 +286,19 @@ module dircc_avalon_st_packet_receiver_test;
             data: $random
         };
         automatic packet_t receivedPacket;
+
+        $sformat(message,  "%m: -  Starting Test %m");
+        print(VERBOSITY_INFO, message);
+
         setupTest();
 
         sendPacket(packetToSend, 0, 7);
-        waitWithTimeout(receiving_done, TIMEOUT);
+        
+        waitWithTimeout(tb.dircc_avalon_st_packet_receiver_inst_input_bfm.signal_src_transaction_complete, TIMEOUT, rv);
 
-        if(tb.dircc_avalon_st_packet_receiver_inst_receive_done) begin
-            assert (!tb.dircc_avalon_st_packet_receiver_inst_receive_nearly_done)
-            else begin
-                $sformat(message, "%m: - Packet nearly done not deasserted");
-                print(VERBOSITY_ERROR, message);  
-                rv = FALSE;
-            end
+        if(rv == TRUE) begin
+        
+            printAssert(0, tb.dircc_avalon_st_packet_receiver_inst_receive_nearly_done, rv);
             checkPacket (tb.dircc_avalon_st_packet_receiver_inst_packet_data, packetToSend, rv);
         end else begin
             $sformat(message, "%m: - Packet not fully received");
@@ -300,20 +306,11 @@ module dircc_avalon_st_packet_receiver_test;
             rv = FALSE;
         end
 
-        assert(rv == TRUE) begin
-            $sformat(message, "%m: - TEST SUCCESS");
-            print(VERBOSITY_INFO, message);  
-        end else begin
-            $sformat(message, "%m: - TEST ERROR");
-            print(VERBOSITY_ERROR, message);  
-        end
-
-        $sformat(message, "%m: - Test Complete.");
-        print(VERBOSITY_INFO, message);  
+        printSuccess(rv);
     endtask : test_receivePacket
 
     task automatic test_receivePartialPacket();
-        automatic bool rv = FALSE;
+        automatic bool rv = TRUE;
         automatic packet_t packetToSend = '{
             dest_addr: '{
                 hw_addr: $random,
@@ -331,18 +328,71 @@ module dircc_avalon_st_packet_receiver_test;
             data: $random
         };
         automatic packet_t receivedPacket;
+
+        $sformat(message,  "%m: -  Starting Test %m");
+        print(VERBOSITY_INFO, message);
+
         setupTest();
 
         sendPacket(packetToSend, 0, 6);
-        waitWithTimeout(receiving_nearly_done, TIMEOUT);
+        waitWithTimeout(tb.dircc_avalon_st_packet_receiver_inst_input_bfm.signal_src_transaction_complete, TIMEOUT, rv);
 
-        if(tb.dircc_avalon_st_packet_receiver_inst_receive_nearly_done) begin
+        printSuccess(rv);
+    endtask : test_receivePartialPacket
+
+    task automatic test_packetNotDeletedBeforeRead();
+        automatic bool rv = FALSE;
+        automatic packet_t packetsToSend[$] = '{
+            '{
+                dest_addr: '{
+                    hw_addr: $random,
+                    sw_addr: $random,
+                    port: $random,
+                    flag: 0
+                },
+                src_addr: '{
+                    hw_addr: $random,
+                    sw_addr: $random,
+                    port: $random,
+                    flag: 0
+                },
+                lamport: 0,
+                data: $random
+            },
+            '{
+                dest_addr: '{
+                    hw_addr: $random,
+                    sw_addr: $random,
+                    port: $random,
+                    flag: 0
+                },
+                src_addr: '{
+                    hw_addr: $random,
+                    sw_addr: $random,
+                    port: $random,
+                    flag: 0
+                },
+                lamport: 1,
+                data: $random
+            }
+        };
+        automatic packet_t receivedPacket;
+        setupTest();
+
+        sendPacket(packetsToSend[0], 0, 7);
+        waitWithTimeout(tb.dircc_avalon_st_packet_receiver_inst_input_bfm.signal_src_transaction_complete, TIMEOUT, rv);
+        sendPacket(packetsToSend[1], 0, 7);
+        waitWithTimeout(tb.dircc_avalon_st_packet_receiver_inst_input_bfm.signal_src_transaction_complete, TIMEOUT, rv);
+
+        if(tb.dircc_avalon_st_packet_receiver_inst_receive_done) begin
             rv = TRUE;
         end else begin
-            $sformat(message, "%m: - Receive Nearly Done not asserted");
+            $sformat(message, "%m: - Receive Done not asserted");
             print(VERBOSITY_ERROR, message);  
             rv = FALSE;
         end
+
+        checkPacket (tb.dircc_avalon_st_packet_receiver_inst_packet_data, packetsToSend[0], rv);
 
         assert(rv == TRUE) begin
             $sformat(message, "%m: - TEST SUCCESS");
@@ -354,7 +404,7 @@ module dircc_avalon_st_packet_receiver_test;
 
         $sformat(message, "%m: - Test Complete.");
         print(VERBOSITY_INFO, message);  
-    endtask : test_receivePartialPacket
+    endtask : test_packetNotDeletedBeforeRead
 
     initial begin
         repeat(100) @(posedge clk);
@@ -363,6 +413,7 @@ module dircc_avalon_st_packet_receiver_test;
         test_resetCorrect();
         test_receivePacket();
         test_receivePartialPacket();
+        test_packetNotDeletedBeforeRead();
     end
 
 endmodule : dircc_avalon_st_packet_receiver_test
