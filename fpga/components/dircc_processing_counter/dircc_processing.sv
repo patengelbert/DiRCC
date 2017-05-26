@@ -104,6 +104,8 @@ module dircc_processing (
 
     handler_update_t handler_updater;
 
+    reg [ADDRESS_MEM_WIDTH-1:0] thread_index;
+
     assign packet_out_valid = packet_out_user_data_valid && packet_out_header_data_valid;
 
     dircc_avalon_st_packet_receiver #(
@@ -176,7 +178,7 @@ module dircc_processing (
         .clk            (clk),
         .reset_n        (reset_n),
 
-        .address        (address),
+        .address        (thread_index),
 
         .receive_done   (receive_done),
         .packet_in      (packet_in.data),
@@ -195,7 +197,7 @@ module dircc_processing (
         .clk            (clk),
         .reset_n        (reset_n),
 
-        .address        (address),
+        .address        (thread_index),
 
         .rts_ready      (rts_ready_new),
 
@@ -209,7 +211,7 @@ module dircc_processing (
         .clk                            (clk),
         .reset_n                        (reset_n),
 
-        .address                        (address),
+        .address                        (thread_index),
 
         .packet_out                     (send_handler_packet_out_data),
         .packet_out_valid               (send_handler_packet_out_valid),
@@ -226,7 +228,7 @@ module dircc_processing (
         .clk                            (clk),
         .reset_n                        (reset_n),
 
-        .address                        (address),
+        .address                        (thread_index),
 
         .read_state                     (read_state),                                       //  read_state.state
 
@@ -268,7 +270,7 @@ module dircc_processing (
                 // Send next outstanding packet
 
                 // Get the correct output header
-                packet_out.dest_addr <= dircc_thread_contexts[address].devices[DEVICE_ID].targets[port_index].targets[target_id];
+                packet_out.dest_addr <= dircc_thread_contexts[thread_index].devices[DEVICE_ID].targets[port_index].targets[target_id];
                 packet_out_header_data_valid <= 1;
                 packet_out.lamport <= lamport;
 
@@ -280,7 +282,7 @@ module dircc_processing (
                 };
                 $display("Sent packet through port %d to target %d", port_index, target_id);
 
-                if (dircc_thread_contexts[address].devices[DEVICE_ID].targets[port_index].numTargets - target_id != 1) begin
+                if (dircc_thread_contexts[thread_index].devices[DEVICE_ID].targets[port_index].numTargets - target_id != 1) begin
                     // There are still targets to send to
                     target_id <= target_id + 1;
                 end else begin
@@ -337,6 +339,16 @@ module dircc_processing (
             end
         end
     end
+
+    always_comb begin : select_thread_index
+        thread_index = '0;
+        for (int i = 0; i < THREAD_COUNT; i++) begin
+            if (dircc_thread_contexts[i].threadId == address) begin
+                thread_index = i[ADDRESS_MEM_WIDTH-1:0];
+                $display("Using thread index %d for address %d", thread_index, address);
+            end
+        end
+    end : select_thread_index
 
     always_comb begin : right_most_one
         port_index='0;
