@@ -1,0 +1,45 @@
+	dircc_processing_counter_test_sys u0 (
+		.clk_clk                  (<connected-to-clk_clk>),                  //            clk.clk
+		.east_0_mem_readdata      (<connected-to-east_0_mem_readdata>),      //     east_0_mem.readdata
+		.east_0_mem_address       (<connected-to-east_0_mem_address>),       //               .address
+		.east_0_mem_read_n        (<connected-to-east_0_mem_read_n>),        //               .read_n
+		.node_0_mem_address       (<connected-to-node_0_mem_address>),       //     node_0_mem.address
+		.node_0_mem_readdata      (<connected-to-node_0_mem_readdata>),      //               .readdata
+		.node_0_mem_write         (<connected-to-node_0_mem_write>),         //               .write
+		.node_0_mem_writedata     (<connected-to-node_0_mem_writedata>),     //               .writedata
+		.node_1_mem_address       (<connected-to-node_1_mem_address>),       //     node_1_mem.address
+		.node_1_mem_readdata      (<connected-to-node_1_mem_readdata>),      //               .readdata
+		.node_1_mem_write         (<connected-to-node_1_mem_write>),         //               .write
+		.node_1_mem_writedata     (<connected-to-node_1_mem_writedata>),     //               .writedata
+		.north_0_mem_readdata     (<connected-to-north_0_mem_readdata>),     //    north_0_mem.readdata
+		.north_0_mem_address      (<connected-to-north_0_mem_address>),      //               .address
+		.north_0_mem_read_n       (<connected-to-north_0_mem_read_n>),       //               .read_n
+		.north_1_mem_readdata     (<connected-to-north_1_mem_readdata>),     //    north_1_mem.readdata
+		.north_1_mem_address      (<connected-to-north_1_mem_address>),      //               .address
+		.north_1_mem_read_n       (<connected-to-north_1_mem_read_n>),       //               .read_n
+		.reset_reset_n            (<connected-to-reset_reset_n>),            //          reset.reset_n
+		.south_0_mem_readdata     (<connected-to-south_0_mem_readdata>),     //    south_0_mem.readdata
+		.south_0_mem_address      (<connected-to-south_0_mem_address>),      //               .address
+		.south_0_mem_read_n       (<connected-to-south_0_mem_read_n>),       //               .read_n
+		.south_1_mem_readdata     (<connected-to-south_1_mem_readdata>),     //    south_1_mem.readdata
+		.south_1_mem_address      (<connected-to-south_1_mem_address>),      //               .address
+		.south_1_mem_read_n       (<connected-to-south_1_mem_read_n>),       //               .read_n
+		.west_0_mem_readdata      (<connected-to-west_0_mem_readdata>),      //     west_0_mem.readdata
+		.west_0_mem_address       (<connected-to-west_0_mem_address>),       //               .address
+		.west_0_mem_read_n        (<connected-to-west_0_mem_read_n>),        //               .read_n
+		.node_65536_mem_address   (<connected-to-node_65536_mem_address>),   // node_65536_mem.address
+		.node_65536_mem_readdata  (<connected-to-node_65536_mem_readdata>),  //               .readdata
+		.node_65536_mem_write     (<connected-to-node_65536_mem_write>),     //               .write
+		.node_65536_mem_writedata (<connected-to-node_65536_mem_writedata>), //               .writedata
+		.node_65537_mem_address   (<connected-to-node_65537_mem_address>),   // node_65537_mem.address
+		.node_65537_mem_readdata  (<connected-to-node_65537_mem_readdata>),  //               .readdata
+		.node_65537_mem_write     (<connected-to-node_65537_mem_write>),     //               .write
+		.node_65537_mem_writedata (<connected-to-node_65537_mem_writedata>), //               .writedata
+		.east_1_mem_readdata      (<connected-to-east_1_mem_readdata>),      //     east_1_mem.readdata
+		.east_1_mem_address       (<connected-to-east_1_mem_address>),       //               .address
+		.east_1_mem_read_n        (<connected-to-east_1_mem_read_n>),        //               .read_n
+		.west_1_mem_readdata      (<connected-to-west_1_mem_readdata>),      //     west_1_mem.readdata
+		.west_1_mem_address       (<connected-to-west_1_mem_address>),       //               .address
+		.west_1_mem_read_n        (<connected-to-west_1_mem_read_n>)         //               .read_n
+	);
+

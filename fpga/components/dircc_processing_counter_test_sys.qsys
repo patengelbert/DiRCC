@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element clk_0
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element dircc_processing_counter_test_sys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element node_0
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element node_1
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element node_65536
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element node_65537
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element terminal_east_0
+   {
+      datum _sortIndex
+      {
+         value = "9";
+         type = "int";
+      }
+   }
+   element terminal_east_1
+   {
+      datum _sortIndex
+      {
+         value = "10";
+         type = "int";
+      }
+   }
+   element terminal_north_0
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element terminal_north_1
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element terminal_south_0
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element terminal_south_1
+   {
+      datum _sortIndex
+      {
+         value = "8";
+         type = "int";
+      }
+   }
+   element terminal_west_0
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
+      }
+   }
+   element terminal_west_1
+   {
+      datum _sortIndex
+      {
+         value = "12";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="5CSEMA5F31C6" />
+ <parameter name="deviceFamily" value="Cyclone V" />
+ <parameter name="deviceSpeedGrade" value="6" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="lockedInterfaceDefinition" value="" />
+ <parameter name="maxAdditionalLatency" value="1" />
+ <parameter name="projectName" value="" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceScript></instanceScript>
+ <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
+ <interface
+   name="east_0_mem"
+   internal="terminal_east_0.status"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="east_1_mem"
+   internal="terminal_east_1.status"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="node_0_mem"
+   internal="node_0.processing_mem"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="node_1_mem"
+   internal="node_1.processing_mem"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="node_65536_mem"
+   internal="node_65536.processing_mem"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="node_65537_mem"
+   internal="node_65537.processing_mem"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="north_0_mem"
+   internal="terminal_north_0.status"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="north_1_mem"
+   internal="terminal_north_1.status"
+   type="avalon"
+   dir="end" />
+ <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <interface
+   name="south_0_mem"
+   internal="terminal_south_0.status"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="south_1_mem"
+   internal="terminal_south_1.status"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="west_0_mem"
+   internal="terminal_west_0.status"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="west_1_mem"
+   internal="terminal_west_1.status"
+   type="avalon"
+   dir="end" />
+ <module name="clk_0" kind="clock_source" version="16.1" enabled="1">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module
+   name="node_0"
+   kind="dircc_processing_counter_node"
+   version="1.0"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID" value="$${FILENAME}_node_0" />
+  <parameter name="address" value="0" />
+ </module>
+ <module
+   name="node_1"
+   kind="dircc_processing_counter_node"
+   version="1.0"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID" value="$${FILENAME}_node_1" />
+  <parameter name="address" value="1" />
+ </module>
+ <module
+   name="node_65536"
+   kind="dircc_processing_counter_node"
+   version="1.0"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_node_65536</parameter>
+  <parameter name="address" value="65536" />
+ </module>
+ <module
+   name="node_65537"
+   kind="dircc_processing_counter_node"
+   version="1.0"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_node_65537</parameter>
+  <parameter name="address" value="65537" />
+ </module>
+ <module
+   name="terminal_east_0"
+   kind="dircc_avalon_st_terminal"
+   version="1.0"
+   enabled="1">
+  <parameter name="DATA_WIDTH" value="32" />
+ </module>
+ <module
+   name="terminal_east_1"
+   kind="dircc_avalon_st_terminal"
+   version="1.0"
+   enabled="1">
+  <parameter name="DATA_WIDTH" value="32" />
+ </module>
+ <module
+   name="terminal_north_0"
+   kind="dircc_avalon_st_terminal"
+   version="1.0"
+   enabled="1">
+  <parameter name="DATA_WIDTH" value="32" />
+ </module>
+ <module
+   name="terminal_north_1"
+   kind="dircc_avalon_st_terminal"
+   version="1.0"
+   enabled="1">
+  <parameter name="DATA_WIDTH" value="32" />
+ </module>
+ <module
+   name="terminal_south_0"
+   kind="dircc_avalon_st_terminal"
+   version="1.0"
+   enabled="1">
+  <parameter name="DATA_WIDTH" value="32" />
+ </module>
+ <module
+   name="terminal_south_1"
+   kind="dircc_avalon_st_terminal"
+   version="1.0"
+   enabled="1">
+  <parameter name="DATA_WIDTH" value="32" />
+ </module>
+ <module
+   name="terminal_west_0"
+   kind="dircc_avalon_st_terminal"
+   version="1.0"
+   enabled="1">
+  <parameter name="DATA_WIDTH" value="32" />
+ </module>
+ <module
+   name="terminal_west_1"
+   kind="dircc_avalon_st_terminal"
+   version="1.0"
+   enabled="1">
+  <parameter name="DATA_WIDTH" value="32" />
+ </module>
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_0.output_east"
+   end="node_1.input_west" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_65536.output_east"
+   end="node_65537.input_west" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_1.output_east"
+   end="terminal_east_0.s1" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_65537.output_east"
+   end="terminal_east_1.s1" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_65537.output_north"
+   end="node_1.input_south" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_65536.output_north"
+   end="node_0.input_south" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_0.output_north"
+   end="terminal_north_0.s1" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_1.output_north"
+   end="terminal_north_1.s1" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_1.output_south"
+   end="node_65537.input_north" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_0.output_south"
+   end="node_65536.input_north" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_65536.output_south"
+   end="terminal_south_0.s1" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_65537.output_south"
+   end="terminal_south_1.s1" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_1.output_west"
+   end="node_0.input_east" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_65537.output_west"
+   end="node_65536.input_east" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_0.output_west"
+   end="terminal_west_0.s1" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="node_65536.output_west"
+   end="terminal_west_1.s1" />
+ <connection kind="clock" version="16.1" start="clk_0.clk" end="node_0.clk" />
+ <connection kind="clock" version="16.1" start="clk_0.clk" end="node_1.clk" />
+ <connection kind="clock" version="16.1" start="clk_0.clk" end="node_65536.clk" />
+ <connection kind="clock" version="16.1" start="clk_0.clk" end="node_65537.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_0.clk"
+   end="terminal_north_0.clock" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_0.clk"
+   end="terminal_north_1.clock" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_0.clk"
+   end="terminal_south_0.clock" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_0.clk"
+   end="terminal_south_1.clock" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_0.clk"
+   end="terminal_east_0.clock" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_0.clk"
+   end="terminal_west_0.clock" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_0.clk"
+   end="terminal_east_1.clock" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_0.clk"
+   end="terminal_west_1.clock" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="node_0.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="node_1.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="terminal_north_0.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="terminal_north_1.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="terminal_south_0.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="terminal_south_1.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="terminal_east_0.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="terminal_west_0.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="node_65536.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="node_65537.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="terminal_east_1.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="terminal_west_1.reset" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
+</system>

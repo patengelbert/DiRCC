@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="simulation/submodules/dircc_router.sv"
+   type="SYSTEM_VERILOG"
+   library="router" />
+ <file
+   path="simulation/submodules/dircc_processing_counter_test_sys_node_0_routing_output_demux.sv"
+   type="SYSTEM_VERILOG"
+   library="output_demux" />
+ <file
+   path="simulation/submodules/dircc_processing_counter_test_sys_node_0_routing_input_mux.sv"
+   type="SYSTEM_VERILOG"
+   library="input_mux" />
+ <file
+   path="simulation/submodules/altera_avalon_sc_fifo.v"
+   type="VERILOG"
+   library="input_fifo_east" />
+ <file
+   path="simulation/submodules/dircc_processing_counter_test_sys_node_65537_routing.v"
+   type="VERILOG"
+   library="routing" />
+ <file
+   path="simulation/submodules/dircc_processing_counter_test_sys_node_65536_routing.v"
+   type="VERILOG"
+   library="routing" />
+ <file
+   path="simulation/submodules/dircc_processing_counter_test_sys_node_1_routing.v"
+   type="VERILOG"
+   library="routing" />
+ <file
+   path="simulation/submodules/dircc_processing_counter_test_sys_node_0_routing.v"
+   type="VERILOG"
+   library="routing" />
+ <file
+   path="simulation/submodules/dircc_types.sv"
+   type="SYSTEM_VERILOG"
+   library="dircc_processing_counter" />
+ <file
+   path="simulation/submodules/dircc_system_states_pkg.sv"
+   type="SYSTEM_VERILOG"
+   library="dircc_processing_counter" />
+ <file
+   path="simulation/submodules/dircc_application_pkg.sv"
+   type="SYSTEM_VERILOG"
+   library="dircc_processing_counter" />
+ <file
+   path="simulation/submodules/dircc_counter_compute_handler.sv"
+   type="SYSTEM_VERILOG"
+   library="dircc_processing_counter" />
+ <file
+   path="simulation/submodules/dircc_counter_receive_handler.sv"
+   type="SYSTEM_VERILOG"
+   library="dircc_processing_counter" />
+ <file
+   path="simulation/submodules/dircc_counter_rts_handler.sv"
+   type="SYSTEM_VERILOG"
+   library="dircc_processing_counter" />
+ <file
+   path="simulation/submodules/dircc_counter_send_handler.sv"
+   type="SYSTEM_VERILOG"
+   library="dircc_processing_counter" />
+ <file
+   path="simulation/submodules/dircc_processing.sv"
+   type="SYSTEM_VERILOG"
+   library="dircc_processing_counter" />
+ <file
+   path="simulation/submodules/dircc_avalon_st_packet_sender.sv"
+   type="SYSTEM_VERILOG"
+   library="dircc_processing_counter" />
+ <file
+   path="simulation/submodules/altera_avalon_sc_fifo.v"
+   type="VERILOG"
+   library="dircc_processing_counter" />
+ <file
+   path="simulation/submodules/dircc_avalon_st_packet_receiver.sv"
+   type="SYSTEM_VERILOG"
+   library="dircc_processing_counter" />
+ <file
+   path="simulation/submodules/dircc_status_register.sv"
+   type="SYSTEM_VERILOG"
+   library="dircc_processing_counter" />
+ <file
+   path="simulation/submodules/dircc_address_gen.sv"
+   type="SYSTEM_VERILOG"
+   library="address" />
+ <file
+   path="simulation/submodules/altera_reset_controller.v"
+   type="VERILOG"
+   library="rst_controller" />
+ <file
+   path="simulation/submodules/altera_reset_synchronizer.v"
+   type="VERILOG"
+   library="rst_controller" />
+ <file
+   path="simulation/submodules/altera_reset_controller.sdc"
+   type="SDC"
+   library="rst_controller" />
+ <file
+   path="simulation/submodules/dircc_avalon_st_terminal.v"
+   type="VERILOG"
+   library="terminal_east_0" />
+ <file
+   path="simulation/submodules/dircc_processing_counter_test_sys_node_65537.v"
+   type="VERILOG"
+   library="node_65537" />
+ <file
+   path="simulation/submodules/dircc_processing_counter_test_sys_node_65536.v"
+   type="VERILOG"
+   library="node_65536" />
+ <file
+   path="simulation/submodules/dircc_processing_counter_test_sys_node_1.v"
+   type="VERILOG"
+   library="node_1" />
+ <file
+   path="simulation/submodules/dircc_processing_counter_test_sys_node_0.v"
+   type="VERILOG"
+   library="node_0" />
+ <file path="simulation/dircc_processing_counter_test_sys.v" type="VERILOG" />
+ <topLevel name="dircc_processing_counter_test_sys" />
+ <deviceFamily name="cyclonev" />
+</simPackage>

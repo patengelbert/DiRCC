@@ -1,0 +1,25 @@
+
+WORK > DEFAULT
+DEFAULT:                  ./libraries/work/                    
+work:                     ./libraries/work/                    
+router:                   ./libraries/router/                  
+output_demux:             ./libraries/output_demux/            
+input_mux:                ./libraries/input_mux/               
+input_fifo_east:          ./libraries/input_fifo_east/         
+routing:                  ./libraries/routing/                 
+dircc_processing_counter: ./libraries/dircc_processing_counter/
+address:                  ./libraries/address/                 
+rst_controller:           ./libraries/rst_controller/          
+terminal_east_0:          ./libraries/terminal_east_0/         
+node_65537:               ./libraries/node_65537/              
+node_65536:               ./libraries/node_65536/              
+node_1:                   ./libraries/node_1/                  
+node_0:                   ./libraries/node_0/                  
+altera_ver:               ./libraries/altera_ver/              
+lpm_ver:                  ./libraries/lpm_ver/                 
+sgate_ver:                ./libraries/sgate_ver/               
+altera_mf_ver:            ./libraries/altera_mf_ver/           
+altera_lnsim_ver:         ./libraries/altera_lnsim_ver/        
+cyclonev_ver:             ./libraries/cyclonev_ver/            
+cyclonev_hssi_ver:        ./libraries/cyclonev_hssi_ver/       
+cyclonev_pcie_hip_ver:    ./libraries/cyclonev_pcie_hip_ver/   
