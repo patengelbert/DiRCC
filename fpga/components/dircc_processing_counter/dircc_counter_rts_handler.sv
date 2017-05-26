@@ -38,8 +38,7 @@ module dircc_rts_handler(
         if (!reset_n) begin
             rts_ready <= 0;
         end else begin
-            if (dev_state.rts
-                && (dev_state.count < dircc_thread_contexts[address].graphProps.maxTime) // stillGoing
+            if (dev_state.rts // There are still packets remaining
                 && (read_state.dircc_state & DIRCC_STATE_RUNNING)
                 ) begin
                 rts_ready <= OUTPUT_FLAG_dev_port0;

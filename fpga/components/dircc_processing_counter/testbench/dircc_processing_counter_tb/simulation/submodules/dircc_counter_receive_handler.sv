@@ -73,10 +73,10 @@ module dircc_receive_handler(
                 write_state_valid <= 1;
                 if (dev_state_old.count + 16'h0001 >= dircc_thread_contexts[address].graphProps.maxTime) begin
                     $display("Woo! Device has finished");
-                    write_state.dircc_state <= (DIRCC_STATE_DONE | DIRCC_STATE_STOPPED);
+                    write_state.dircc_state <= (DIRCC_STATE_DONE | (dev_state_old.rts ? read_state.dircc_state : DIRCC_STATE_STOPPED));
                     dev_state_new.rts <= dev_state_old.rts;
                 end else begin
-                    dev_state_new.rts <= dev_state_old.rts + 1;
+                    dev_state_new.rts <= dev_state_old.rts + 16'h0001;
                 end
                 packet_handled <= 1;
             end else begin;

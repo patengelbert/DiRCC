@@ -19,6 +19,7 @@ module dircc_send_handler(
     parameter ADDRESS_MEM_WIDTH = 32;
 
     import dircc_types_pkg::*;
+    import dircc_system_states_pkg::*;
     import dircc_application_pkg::*;
 
     input wire                          clk;
@@ -56,7 +57,6 @@ module dircc_send_handler(
 
     assign dev_state_new.count = dev_state_old.count;
 
-    assign write_state.dircc_state = read_state.dircc_state;
     assign write_state.dircc_state_extra = read_state.dircc_state_extra;
     assign write_state.user_state = {'0, dev_state_new};
 
@@ -67,9 +67,14 @@ module dircc_send_handler(
         end else begin
             assert (dev_state_old.rts >= 0);
             if (dev_state_old.rts) begin
+                write_state.dircc_state <= read_state.dircc_state;
                 write_state_valid <= 1;
                 packet_out_valid <= 1;
-                dev_state_new.rts = dev_state_old.rts - 1;
+                dev_state_new.rts <= dev_state_old.rts - 16'h0001;
+                if (dev_state_old.rts - 1 == 0 && read_state.dircc_state & DIRCC_STATE_DONE) begin
+                    // We have finished and transmitted all p=outstanding packets
+                    write_state.dircc_state <= (DIRCC_STATE_DONE | DIRCC_STATE_STOPPED);
+                end
             end else begin
                 packet_out_valid <= 0;
                 write_state_valid <= 0;

@@ -897,7 +897,7 @@ module dircc_processing_counter_test();
 
         launchDevice(rv);
 
-        repeat(400) @(posedge clk);
+        repeat(900) @(posedge clk);
 
         // Word 1
         tb.dircc_processing_counter_inst_status_bfm.set_command_request(REQ_READ);

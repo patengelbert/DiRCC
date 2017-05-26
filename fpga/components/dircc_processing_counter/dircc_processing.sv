@@ -1,7 +1,4 @@
 
-`define DIRCC_RTS_FLAGS_COMPUTE 'h80000000
-`define DEVICE_ID 0
-
 module dircc_processing (
     clk,
     reset_n,
@@ -44,6 +41,9 @@ module dircc_processing (
 
     parameter RTS_READY_WIDTH = 32;
     localparam PORT_INDEX_WIDTH = $clog2(RTS_READY_WIDTH);
+
+    parameter DEVICE_ID = 32'h0;
+    parameter DIRCC_RTS_FLAGS_COMPUTE = 32'h80000000;
 
     import dircc_types_pkg::*;
     import dircc_system_states_pkg::*;
@@ -268,19 +268,19 @@ module dircc_processing (
                 // Send next outstanding packet
 
                 // Get the correct output header
-                packet_out.dest_addr <= dircc_thread_contexts[address].devices[`DEVICE_ID].targets[port_index].targets[target_id];
+                packet_out.dest_addr <= dircc_thread_contexts[address].devices[DEVICE_ID].targets[port_index].targets[target_id];
                 packet_out_header_data_valid <= 1;
                 packet_out.lamport <= lamport;
 
                 packet_out.src_addr <= '{
                     hw_addr: address,
-                    sw_addr: `DEVICE_ID,
+                    sw_addr: DEVICE_ID,
                     port: port_index,
                     flag: 0
                 };
                 $display("Sent packet through port %d to target %d", port_index, target_id);
 
-                if (dircc_thread_contexts[address].devices[`DEVICE_ID].targets[port_index].numTargets - target_id != 1) begin
+                if (dircc_thread_contexts[address].devices[DEVICE_ID].targets[port_index].numTargets - target_id != 1) begin
                     // There are still targets to send to
                     target_id <= target_id + 1;
                 end else begin
@@ -303,7 +303,7 @@ module dircc_processing (
                 end else if (rts_ready_new && !rts_ready && !packet_out_valid) begin
                     // We have sent all outstanding packets
                     // Run the send handler once
-                    rts_ready <= rts_ready_new & ~`DIRCC_RTS_FLAGS_COMPUTE;
+                    rts_ready <= rts_ready_new & ~DIRCC_RTS_FLAGS_COMPUTE;
 
                     $display("Calling send handler");
 
@@ -328,11 +328,11 @@ module dircc_processing (
 
                 booting <= 0;
                 // Swallow all packets and throw error if any received
+                write_state.dircc_state <= (read_state.dircc_state | DIRCC_STATE_ERROR);
+                write_state_valid <= receive_done;
                 if (receive_done) begin
                     // Show error on received packet
-                    $display("Error received unexpected packet");
-                    write_state.dircc_state <= (read_state.dircc_state | DIRCC_STATE_ERROR);
-                    write_state_valid <= 1;
+                    $display("ERROR: received unexpected packet");
                 end
             end
         end
