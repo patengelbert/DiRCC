@@ -24,13 +24,13 @@ static dircc_state_map dircc_state_translation[] = {
 void translate_state(uint16_t state, char* rv)
 {
     dircc_state_map map;
+    strcpy(rv, "");
     for (unsigned i = 0; i < DIRCC_STATE_NUM; i++) {
         map = dircc_state_translation[i];
         if (state & map.state)
         {
-            strcat(rv, map.state_name);
-//            strcat(rv, " | ");
+        	sprintf(rv, "%s%s,", rv, map.state_name);
         }
     }
-//    rv[strlen(rv)-1] = 0;
+    rv[strlen(rv)-1] = 0;
 }

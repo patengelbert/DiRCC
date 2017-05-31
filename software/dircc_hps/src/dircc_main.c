@@ -150,6 +150,7 @@ static void watchThreadTask(void* pvParameters)
     TickType_t      nextWakeTime = xTaskGetTickCount();
     PThreadContext* ctxt         = pvParameters;
     uint16_t        oldDirccStates[ctxt->numDevices];
+    char 			translated[80];
 
     // Clear array
     memset(&oldDirccStates[0], 0, sizeof(uint16_t) * ctxt->numDevices);
@@ -171,7 +172,6 @@ static void watchThreadTask(void* pvParameters)
                 DeviceContext* dCtxt        = ctxt->devices + i;
                 DeviceState*   dThreadState = threadStates + dCtxt->index;
                 if (dThreadState->dirccState != oldDirccStates[i]) {
-                    char translated[80] = "";
                     translate_state(dThreadState->dirccState, translated);
                     ALT_PRINTF("State of %d:%d = %s\n", ctxt->threadId, dCtxt->index, translated);
                     oldDirccStates[i] = dThreadState->dirccState;
@@ -203,6 +203,7 @@ static void watchTerminalTask(void* pvParameters)
 {
     TickType_t nextWakeTime = xTaskGetTickCount();
     uint16_t   oldDirccStates[num_terminals];
+    char 	   translated[80];
 
     // Clear array
     memset(&oldDirccStates[0], 0, sizeof(uint16_t) * num_terminals);
@@ -214,7 +215,6 @@ static void watchTerminalTask(void* pvParameters)
         for (unsigned i = 0; i < num_terminals; i++) {
             uint16_t* dTermState = dircc_terminal_addresses[i];
             if (*dTermState != 0) {
-                char translated[80] = "";
                 translate_state(*dTermState, translated);
                 ALT_PRINTF("State of terminal %d = %s\n", i, translated);
             }

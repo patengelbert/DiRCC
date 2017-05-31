@@ -4,9 +4,8 @@
 	<comment></comment>
 	<projects>
 		<project>dircc_application_counter_rtl</project>
-		<project>dircc_application_dual_counter_hps</project>
-		<project>hwlib</project>
 		<project>FreeRTOS</project>
+		<project>hwlib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
