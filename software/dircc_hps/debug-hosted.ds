@@ -13,7 +13,7 @@ set semihosting enabled false
 #
 # Load the SPL preloader into memory.
 #
-loadfile "/home/patrick/Documents/Coursework/DiRCC/software/spl_bsp/uboot-socfpga/spl/u-boot-spl" 0x0
+loadfile "/home/patrick/Documents/Coursework/DiRCC/software/spl_bsp_counter_rtl/uboot-socfpga/spl/u-boot-spl" 0x0
 #loadfile "$sdir/u-boot-spl_demo" 0x0
 #loadfile "$sdir/u-boot-spl_rtos" 0x0
 

@@ -2,9 +2,9 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>spl</BspType>
         <BspVersion>1.0</BspVersion>
-        <BspGeneratedTimeStamp>May 7, 2017 5:36:30 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1494174990475</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>/home/patrick/Documents/Coursework/DiRCC/software/spl_bsp</BspGeneratedLocation>
+        <BspGeneratedTimeStamp>31-May-2017 14:19:21</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1496236761169</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>./</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <HpsSettingsPath>../../fpga/hps_isw_handoff/dircc_system_node_dual_hps_HPS/</HpsSettingsPath>
         <JdiFile>default</JdiFile>

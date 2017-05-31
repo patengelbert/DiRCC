@@ -8,9 +8,11 @@
 #ifndef DIRCC_STATE_H_
 #define DIRCC_STATE_H_
 
-#define DIRCC_STATE_MAX (1 << 16)
-#define DIRCC_STATE_MASK 0xFFFF
+#include <stdint.h>
 
+#define DIRCC_STATE_NUM 16
+#define DIRCC_STATE_MAX (1 << DIRCC_STATE_NUM)
+#define DIRCC_STATE_MASK 0xFFFF
 typedef enum _dircc_state
 {
 	DIRCC_STATE_UNKNOWN 	= 	(1 << 0),
@@ -28,5 +30,13 @@ typedef enum _dircc_state
 
 	DIRCC_STATE_ERROR		=	(1 << 15),
 } dircc_state;
+
+typedef struct _dircc_state_map
+{
+    dircc_state state;
+    const char* state_name;
+} dircc_state_map;
+
+void translate_state(uint16_t state, char* rv);
 
 #endif /* DIRCC_STATE_H_ */

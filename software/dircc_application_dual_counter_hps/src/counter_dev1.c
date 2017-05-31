@@ -1,5 +1,5 @@
 #include "counter.h"
-#include "hps_soc_system.h"
+#include "HPS.h"
 
 #define DEVICE_INSTANCE_COUNT 2
 #define DEVICE_INSTANCE_COUNT_thread0 1
@@ -143,3 +143,14 @@ PThreadContext dircc_thread_contexts[THREAD_COUNT] = {
 
 uint32_t dircc_thread_count = THREAD_COUNT;
 
+uint32_t           num_addresses            = 4;
+thread_address_map dircc_thread_addresses[] = {{0x00000000, THREAD_PTR(NODE_0_DIRCC_PROCESSING_COUNTER_BASE)},
+                                               {0x00000001, THREAD_PTR(NODE_1_DIRCC_PROCESSING_COUNTER_BASE)},
+                                               {0x00010000, THREAD_PTR(NODE_65536_DIRCC_PROCESSING_COUNTER_BASE)},
+                                               {0x00010001, THREAD_PTR(NODE_65537_DIRCC_PROCESSING_COUNTER_BASE)}};
+
+uint32_t num_terminals              = 8;
+void*    dircc_terminal_addresses[] = {THREAD_PTR(TERMINAL_NORTH_0_BASE), THREAD_PTR(TERMINAL_NORTH_1_BASE),
+                                    THREAD_PTR(TERMINAL_EAST_0_BASE),  THREAD_PTR(TERMINAL_EAST_1_BASE),
+                                    THREAD_PTR(TERMINAL_SOUTH_0_BASE), THREAD_PTR(TERMINAL_SOUTH_1_BASE),
+                                    THREAD_PTR(TERMINAL_WEST_1_BASE),  THREAD_PTR(TERMINAL_WEST_1_BASE)};

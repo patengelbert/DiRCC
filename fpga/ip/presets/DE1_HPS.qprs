@@ -84,7 +84,7 @@
    <parameter name="MEM_RTT_WR" value="RZQ/4" />
    <parameter name="TIMING_TQH" value="0.38" />
    <parameter name="can1_clk_div" value="1" />
-   <parameter name="F2S_Width" value="1" />
+   <parameter name="F2S_Width" value="0" />
    <parameter name="l3_mp_clk_div" value="1" />
    <parameter name="UART1_PinMuxing" value="Unused" />
    <parameter name="S2FINTERRUPT_DMA_Enable" value="false" />
@@ -169,7 +169,7 @@
    <parameter name="MEM_CK_WIDTH" value="1" />
    <parameter name="CAN0_Mode" value="N/A" />
    <parameter name="TIMING_TDQSS" value="0.25" />
-   <parameter name="MPU_EVENTS_Enable" value="true" />
+   <parameter name="MPU_EVENTS_Enable" value="false" />
    <parameter name="TIMING_TDQSQ" value="125" />
    <parameter name="can0_clk_div" value="1" />
    <parameter name="FPGA_PERIPHERAL_OUTPUT_CLOCK_FREQ_EMAC1_GTX_CLK" value="125" />

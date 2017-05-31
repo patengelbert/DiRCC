@@ -13,6 +13,7 @@
 #include <stdint.h>
 #include "dircc_defines.h"
 #include "dircc_system_state.h"
+#include "dircc_hw.h"
 
 typedef struct _address {
 	uint32_t hw_node;    // hardware
@@ -155,15 +156,6 @@ extern PThreadContext dircc_thread_contexts[];
 
 extern uint32_t dircc_thread_count;
 
-// Assorted addresses to allow for interface to the hardware
-extern uint32_t dircc_fifo_in_csr_address;
-extern uint32_t dircc_fifo_in_data_address;
-extern uint32_t dircc_fifo_in_depth;
-
-extern uint32_t dircc_fifo_out_csr_address;
-extern uint32_t dircc_fifo_out_data_address;
-extern uint32_t dircc_fifo_out_depth;
-
-extern uint32_t dircc_address_data_address;
+extern uint32_t max_device_per_thread;
 
 #endif /* DIRCC_H_ */

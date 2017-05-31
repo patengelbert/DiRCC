@@ -37,14 +37,13 @@
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.fabi.299658018" name="Float ABI (-mfloat-abi)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.fabi" value="softfp" valueType="string"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.defsym.1787619315" name="Defined symbols (-D)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.defsym" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="soc_cv_av"/>
-									<listOptionValue builtIn="false" value="configQUEUE_REGISTRY_SIZE=32"/>
 									<listOptionValue builtIn="false" value="INCLUDE_xTaskGetIdleTaskHandle"/>
 									<listOptionValue builtIn="false" value="portREMOVE_STATIC_QUALIFIER"/>
 									<listOptionValue builtIn="false" value="PRINTF_HOST"/>
 								</option>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.other.436189315" name="Other flags" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.other" value="-mtune=cortex-a9 -std=c11  -fdata-sections -ffunction-sections" valueType="string"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.includepath.608458408" name="Include paths (-I)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.includepath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_dual_counter_hps}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_counter_rtl}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hwlib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FreeRTOS}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hwlib/include}&quot;"/>
@@ -52,6 +51,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FreeRTOS/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FreeRTOS/portable/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hwlib/include/soc_cv_av}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_counter_rtl/include}&quot;"/>
 								</option>
 								<inputType id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.input.950772123" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.input"/>
 							</tool>
@@ -69,13 +69,14 @@
 								</option>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.other.1959748435" name="Other flags" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.other" value="-mtune=cortex-a9" valueType="string"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.includes.1565417541" name="Include paths (-I)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_dual_counter_hps}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_counter_rtl}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hwlib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FreeRTOS}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_hps/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FreeRTOS/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FreeRTOS/portable/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hwlib/include/soc_cv_av}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_counter_rtl/include}&quot;"/>
 								</option>
 								<inputType id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.input.1435957860" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.input"/>
 							</tool>
@@ -83,13 +84,13 @@
 							<tool command="arm-altera-eabi-gcc" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="org.eclipse.cdt.core.GLDErrorParser" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.var.com.altera.ds5ae.toolchain.gcc.baremetal.969815532" name="GCC C Linker" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.var.com.altera.ds5ae.toolchain.gcc.baremetal">
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.option.script.331245670" name="Linker script" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.option.script" value="/media/DATA_LINUX/opt/intelFPGA_lite/16.1/embedded/host_tools/mentor/gnu/arm/baremetal/arm-altera-eabi/lib/cycloneV-dk-ram-hosted.ld" valueType="string"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.option.libs.1186461752" name="Libraries (-l)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.option.libs" valueType="libs">
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="dircc_application_dual_counter_hps"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="dircc_application_counter_rtl"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="hwlib"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="FreeRTOS"/>
 								</option>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.option.libsearch.2037146621" name="Library search path (-L)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.option.libsearch" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_dual_counter_hps/Debug}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hwlib/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_counter_rtl/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hwlib/Release}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FreeRTOS/Release}&quot;"/>
 								</option>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.option.extras.837385111" name="Other options (-Xlinker [option])" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.linker.option.extras" valueType="stringList">
@@ -112,25 +113,25 @@
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
-				<externalSettings containerId="FreeRTOS;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+				<externalSettings containerId="FreeRTOS;com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.release.var.com.altera.ds5ae.toolchain.gcc.baremetal.1093885383" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
 					<externalSetting>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/FreeRTOS"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/FreeRTOS/Release"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="FreeRTOS" srcPrefixMapping="" srcRootPath=""/>
 					</externalSetting>
 				</externalSettings>
-				<externalSettings containerId="hwlib;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+				<externalSettings containerId="hwlib;com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.toolchain.var.com.altera.ds5ae.toolchain.gcc.baremetal.1136842937.1174476963" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
 					<externalSetting>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/hwlib"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/hwlib/Debug"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/hwlib/Release"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="hwlib" srcPrefixMapping="" srcRootPath=""/>
 					</externalSetting>
 				</externalSettings>
-				<externalSettings containerId="dircc_application_dual_counter_hps;com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.92881346" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+				<externalSettings containerId="dircc_application_counter_rtl;com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.lib.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.429689342" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
 					<externalSetting>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/dircc_application_dual_counter_hps"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/dircc_application_dual_counter_hps/Debug"/>
-						<entry flags="RESOLVED" kind="libraryFile" name="dircc_application_dual_counter_hps" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/dircc_application_counter_rtl"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/dircc_application_counter_rtl/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="dircc_application_counter_rtl" srcPrefixMapping="" srcRootPath=""/>
 					</externalSetting>
 				</externalSettings>
 			</storageModule>
@@ -178,6 +179,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FreeRTOS/portable/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hwlib/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hwlib/include/soc_cv_av}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_counter_rtl/include}&quot;"/>
 								</option>
 								<inputType id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.input.1971155938" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.input"/>
 							</tool>
@@ -198,6 +200,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FreeRTOS/portable/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hwlib/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hwlib/include/soc_cv_av}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/dircc_application_counter_rtl/include}&quot;"/>
 								</option>
 								<inputType id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.input.755630490" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.input"/>
 							</tool>
@@ -250,7 +253,14 @@
 		<project id="dircc_hps.com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.exe.var.com.altera.ds5ae.toolchain.gcc.baremetal.623375461" name="Executable" projectType="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.exe.var.com.altera.ds5ae.toolchain.gcc.baremetal"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/dircc_hps"/>
+		</configuration>
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/dircc_hps"/>
+		</configuration>
+	</storageModule>
 	<storageModule moduleId="com.arm.projectSettings" version="5.25"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
