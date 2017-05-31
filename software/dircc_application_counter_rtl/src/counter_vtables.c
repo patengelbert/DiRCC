@@ -82,3 +82,4 @@ DeviceTypeVTable DEVICE_TYPE_VTABLES[DEVICE_TYPE_COUNT] = {
         (compute_handler_t)DIRCC_HANDLER_NONE // No compute handler
     }
 };
+

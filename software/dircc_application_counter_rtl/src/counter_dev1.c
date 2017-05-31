@@ -154,3 +154,8 @@ void*    dircc_terminal_addresses[] = {THREAD_PTR(TERMINAL_NORTH_0_BASE), THREAD
                                        THREAD_PTR(TERMINAL_EAST_0_BASE),  THREAD_PTR(TERMINAL_EAST_1_BASE),
                                        THREAD_PTR(TERMINAL_SOUTH_0_BASE), THREAD_PTR(TERMINAL_SOUTH_1_BASE),
                                        THREAD_PTR(TERMINAL_WEST_1_BASE),  THREAD_PTR(TERMINAL_WEST_1_BASE)};
+
+void data_format(const void *data_in, char *formatted)
+{
+	sprintf(formatted, "Count: %d", ((dev_state *)data_in)->count);
+}

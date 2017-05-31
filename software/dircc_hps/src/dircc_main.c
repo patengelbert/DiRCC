@@ -18,7 +18,7 @@ static void watchTerminalTask(void* pvParameters);
 #define mainQUEUE_INIT_TASK_PRIORITY (tskIDLE_PRIORITY + 2)
 #define mainQUEUE_WAIT_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
 
-#define mainQUEUE_CHECK_FREQUENCY_MS			( 100 / portTICK_PERIOD_MS )//( 1000 / portTICK_PERIOD_MS )
+#define mainQUEUE_CHECK_FREQUENCY_MS			( 10 / portTICK_PERIOD_MS )//( 1000 / portTICK_PERIOD_MS )
 #define mainQUEUE_CHECKBOOTED_FREQUENCY_MS		( 100 / portTICK_PERIOD_MS )//( 1000 / portTICK_PERIOD_MS )
 
 void dircc_main()
@@ -76,7 +76,7 @@ void dircc_main()
 static void dircc_print_arr(const void* x, int len)
 {
     const char const* x2 = x;
-    for (unsigned i = 0; i < len - 1; i++) {
+    for (unsigned i = 0; i < len; i++) {
         ALT_PRINTF("%02x:", x2[i]);
     }
 
@@ -165,8 +165,8 @@ static void watchThreadTask(void* pvParameters)
 
     while (true) {
         unsigned cnt = 0;
-        vTaskDelayUntil(&nextWakeTime, mainQUEUE_CHECK_FREQUENCY_MS);
         for (unsigned i = 0; i < ctxt->numDevices; i++) {
+            vTaskDelayUntil(&nextWakeTime, mainQUEUE_CHECK_FREQUENCY_MS);
             if (!(oldDirccStates[i] & DIRCC_STATE_STOPPED)) {
                 cnt++;
                 DeviceContext* dCtxt        = ctxt->devices + i;
@@ -189,6 +189,19 @@ static void watchThreadTask(void* pvParameters)
     ALT_PRINTF("Finished task watchThreadTask for thread %d\n", ctxt->threadId);
 
     // We can now unload the data from the thread
+
+    vTaskDelayUntil(&nextWakeTime, mainQUEUE_CHECK_FREQUENCY_MS);
+
+    for(unsigned i = 0; i < ctxt->numDevices; i++)
+    {
+		DeviceContext* dCtxt        = ctxt->devices + i;
+		DeviceState*   dThreadState = threadStates + dCtxt->index;
+		ALT_PRINTF("Finished State: ");
+        dircc_print_arr(&(dThreadState->userState), MAX_DEVICE_USER_STATE_BYTES);
+		data_format(&(dThreadState->userState), translated);
+		ALT_PRINTF("Thread %d:%d: State ->\n%s\n", ctxt->threadId, dCtxt->index, translated);
+    }
+
 
     /* Tasks must not attempt to return from their implementing
     function or otherwise exit.  In newer FreeRTOS port

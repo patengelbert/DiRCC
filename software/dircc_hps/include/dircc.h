@@ -158,4 +158,6 @@ extern uint32_t dircc_thread_count;
 
 extern uint32_t max_device_per_thread;
 
+void data_format(const void *data_in, char *formatted);
+
 #endif /* DIRCC_H_ */

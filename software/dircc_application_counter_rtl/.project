@@ -3,7 +3,6 @@
 	<name>dircc_application_counter_rtl</name>
 	<comment></comment>
 	<projects>
-		<project>dircc_hps</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
