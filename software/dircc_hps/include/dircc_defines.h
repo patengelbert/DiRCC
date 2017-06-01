@@ -41,11 +41,11 @@ typedef uint8_t port_index_t;
 #define MAX_DATA_LEN 10
 #define DIRCC_PACKET_SIZE sizeof(packet_t) / sizeof(uint32_t) // 8 32 bit words long
 
-#define MAX_INPUT_PORTS UINT8_MAX
-#define MAX_OUTPUT_PORTS UINT8_MAX
-#define MAX_ADDRESS UINT32_MAX
-#define MAX_VIRTUAL_ADDRESS UINT8_MAX
-#define MAX_SUPPORTED_EDGES UINT8_MAX
+#define MAX_INPUT_PORTS UINT8_MAX + 1
+#define MAX_OUTPUT_PORTS UINT8_MAX + 1
+#define MAX_ADDRESS UINT32_MAX + 1
+#define MAX_VIRTUAL_ADDRESS UINT8_MAX + 1
+#define MAX_SUPPORTED_EDGES UINT8_MAX + 1
 
 #define DIRCC_ADDRESS_FLAG_NONE (0)
 #define DIRCC_HANDLER_NONE (0)
@@ -57,6 +57,12 @@ typedef uint8_t port_index_t;
 #define IDLE_SWEEP_CHUNK_SIZE 32
 
 #define DIRCC_RTS_FLAGS_COMPUTE 0x80000000
+
+#ifdef USE_RTL
+#define MAX_DEVICES_PER_THREAD 1
+#else
+#define MAX_DEVICES_PER_THREAD MAX_VIRTUAL_ADDRESS
+#endif
 
 /* Remove some functions that are not needed */
 #define DIRCC_LOG_PRINTF(...) do {} while(0)

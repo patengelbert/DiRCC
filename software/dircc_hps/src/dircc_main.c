@@ -28,14 +28,14 @@ void dircc_main()
     // Init
     // Get a list of all connected devices
 
-    for (unsigned i = 0; i < dircc_thread_count; i++) {
-        PThreadContext* ctxt = dircc_thread_contexts + i;
+    for (unsigned i = 0; i < num_addresses; i++) {
+    	thread_address_map *thread_map = dircc_thread_addresses + i;
         // Launch task to init
         rv = xTaskCreate(
             initialiseThreadTask, // The function that implements the task.
             "InitThread", // The text name assigned to the task - for debug only as it is not used by the kernel.
             configMINIMAL_STACK_SIZE,     // The size of the stack to allocate to the task.
-            ctxt,                         // The parameter passed to the task - not used in this case.
+			thread_map,                         // The parameter passed to the task - not used in this case.
             mainQUEUE_INIT_TASK_PRIORITY, // The priority assigned to the task.
             NULL);                        // The task handle is not required, so NULL is passed.
         if (rv == pdPASS) {
@@ -48,7 +48,7 @@ void dircc_main()
             watchThreadTask, // The function that implements the task.
             "WatchThread",   // The text name assigned to the task - for debug only as it is not used by the kernel.
             configMINIMAL_STACK_SIZE,     // The size of the stack to allocate to the task.
-            ctxt,                         // The parameter passed to the task - not used in this case.
+			thread_map,                         // The parameter passed to the task - not used in this case.
             mainQUEUE_WAIT_TASK_PRIORITY, // The priority assigned to the task.
             NULL);                        // The task handle is not required, so NULL is passed.
         if (rv == pdPASS) {
@@ -99,42 +99,87 @@ static void* map_thread_to_address(uint32_t thread_id)
     return NULL;
 }
 
+static PThreadContext* map_address_to_thread(uint32_t thread_id)
+{
+    PThreadContext *ctxt;
+    for (int i = 0; i < dircc_thread_count; i++) {
+        ctxt = dircc_thread_contexts + i;
+        if (ctxt->threadId == thread_id) {
+            return ctxt;
+        }
+    }
+    ALT_PRINTF("INFO: Thread not used for thread id %d\n", thread_id);
+    return NULL;
+}
+
+static DeviceContext* map_index_to_device(const PThreadContext *pCtxt, uint32_t index)
+{
+	DeviceContext *ctxt;
+	if(pCtxt != NULL)
+		{
+		for (int i = 0; i < pCtxt->numDevices; i++) {
+			ctxt = pCtxt->devices + i;
+			if (ctxt->index == index) {
+				return ctxt;
+			}
+		}
+		ALT_PRINTF("INFO: Device %d not used for thread id %d\n", index, pCtxt->threadId);
+	}
+    return NULL;
+}
+
 static void initialiseThreadTask(void* pvParameters)
 {
     TickType_t      nextWakeTime = xTaskGetTickCount();
-    PThreadContext* ctxt         = pvParameters;
-    ALT_PRINTF("Starting task initialiseThreadTask for thread %d\n", ctxt->threadId);
+    thread_address_map* thread_data         = pvParameters;
+	ALT_PRINTF("Starting task initialiseThreadTask for thread %d\n", thread_data->thread_id);
+    PThreadContext *ctxt = map_address_to_thread(thread_data->thread_id);
+	unsigned thread_in_use = ctxt != NULL;
 
-    void* threadAddress = map_thread_to_address(ctxt->threadId);
-    ALT_PRINTF("Thread Address: 0x%08x\n", threadAddress);
+    ALT_PRINTF("Thread Address: 0x%08x\n", thread_data->address);
 
-    DeviceState* threadStates = threadAddress + DIRCC_DEVICE_STATE_OFFSET;
+    DeviceState* threadStates = thread_data->address + DIRCC_DEVICE_STATE_OFFSET;
     ALT_PRINTF("Device States: 0x%08x\n", threadStates);
 
-    for (unsigned i = 0; i < ctxt->numDevices; i++) {
-        DeviceContext* dCtxt        = ctxt->devices + i;
-        DeviceState*   dState       = dCtxt->state;
-        DeviceState*   dThreadState = threadStates + dCtxt->index;
+	if(!thread_in_use)
+	{
+		ALT_PRINTF("Thread %d not used. Disabling all devices.\n", thread_data->thread_id);
+	}
+
+    for (unsigned i = 0; i < MAX_DEVICES_PER_THREAD; i++) {
+		DeviceContext* dCtxt        = map_index_to_device(ctxt, i);
+		DeviceState*   dState       = dCtxt != NULL && thread_in_use ? dCtxt->state : NULL;
+        DeviceState*   dThreadState = threadStates + i;
+
         while (!(dThreadState->dirccState & DIRCC_STATE_BOOTED)) {
             vTaskDelayUntil(&nextWakeTime, mainQUEUE_CHECKBOOTED_FREQUENCY_MS);
         }
 
-        ALT_PRINTF("Copying data for %d:%d\n", ctxt->threadId, dCtxt->index);
+        if(dState != NULL)
+        {
+            ALT_PRINTF("Thread %d : Initialising device %d.\n", thread_data->thread_id, i);
+			ALT_PRINTF("Thread %d : Copying data for device %d\n", thread_data->thread_id, i);
 
-        ALT_PRINTF("Old Data: ");
-        dircc_print_arr(&(dThreadState->userState), MAX_DEVICE_USER_STATE_BYTES);
+			ALT_PRINTF("Old Data: ");
+			dircc_print_arr(&(dThreadState->userState), MAX_DEVICE_USER_STATE_BYTES);
 
-        memcpy(&(dThreadState->userState), dState->userState, sizeof(uint8_t) * MAX_DEVICE_USER_STATE_BYTES);
+			memcpy(&(dThreadState->userState), dState->userState, sizeof(uint8_t) * MAX_DEVICE_USER_STATE_BYTES);
 
-        ALT_PRINTF("New Data: ");
-        dircc_print_arr(&(dThreadState->userState), MAX_DEVICE_USER_STATE_BYTES);
+			ALT_PRINTF("New Data: ");
+			dircc_print_arr(&(dThreadState->userState), MAX_DEVICE_USER_STATE_BYTES);
 
-        // TODO: Copy edge state
-        ALT_PRINTF("Launching %d:%d\n", ctxt->threadId, dCtxt->index);
-        dThreadState->dirccState = DIRCC_STATE_RUNNING;
+			// TODO: Copy edge state
+			ALT_PRINTF("Thread %d : Launching device %d\n", thread_data->thread_id, i);
+			dThreadState->dirccState = DIRCC_STATE_RUNNING;
+        }
+        else
+        {
+			ALT_PRINTF("Thread %d : Disabling device %d\n", thread_data->thread_id, i);
+			dThreadState->dirccState = DIRCC_STATE_DISABLED;
+        }
     }
 
-    ALT_PRINTF("Finished task initialiseThreadTask for thread %d\n", ctxt->threadId);
+    ALT_PRINTF("Finished task initialiseThreadTask for thread %d\n", thread_data->thread_id);
 
     /* Tasks must not attempt to return from their implementing
     function or otherwise exit.  In newer FreeRTOS port
@@ -148,59 +193,50 @@ static void initialiseThreadTask(void* pvParameters)
 static void watchThreadTask(void* pvParameters)
 {
     TickType_t      nextWakeTime = xTaskGetTickCount();
-    PThreadContext* ctxt         = pvParameters;
-    uint16_t        oldDirccStates[ctxt->numDevices];
+    thread_address_map* thread_data         = pvParameters;
+    ALT_PRINTF("%s: Starting task watchThreadTask for thread %d\n", __FUNCTION__, thread_data->thread_id);
+
+    uint16_t        oldDirccStates[MAX_DEVICES_PER_THREAD];
     char 			translated[80];
 
     // Clear array
-    memset(&oldDirccStates[0], 0, sizeof(uint16_t) * ctxt->numDevices);
+    memset(&oldDirccStates[0], 0, sizeof(uint16_t) * MAX_DEVICES_PER_THREAD);
 
-    ALT_PRINTF("%s: Starting task watchThreadTask for thread %d\n", __FUNCTION__, ctxt->threadId);
+    ALT_PRINTF("%s: Thread Address: 0x%08x\n", __FUNCTION__, thread_data->address);
 
-    void* threadAddress = map_thread_to_address(ctxt->threadId);
-    ALT_PRINTF("%s: Thread Address: 0x%08x\n", __FUNCTION__, threadAddress);
-
-    DeviceState* threadStates = threadAddress + DIRCC_DEVICE_STATE_OFFSET;
+    DeviceState* threadStates = thread_data->address + DIRCC_DEVICE_STATE_OFFSET;
     ALT_PRINTF("%s: Device States: 0x%08x\n", __FUNCTION__, threadStates);
 
     while (true) {
-        unsigned cnt = 0;
-        for (unsigned i = 0; i < ctxt->numDevices; i++) {
+        unsigned completed = 0;
+        for (unsigned i = 0; i < MAX_DEVICES_PER_THREAD; i++) {
+
+            DeviceState*   dThreadState = threadStates + i;
             vTaskDelayUntil(&nextWakeTime, mainQUEUE_CHECK_FREQUENCY_MS);
+
             if (!(oldDirccStates[i] & DIRCC_STATE_STOPPED)) {
-                cnt++;
-                DeviceContext* dCtxt        = ctxt->devices + i;
-                DeviceState*   dThreadState = threadStates + dCtxt->index;
                 if (dThreadState->dirccState != oldDirccStates[i]) {
                     translate_state(dThreadState->dirccState, translated);
-                    ALT_PRINTF("State of %d:%d = %s\n", ctxt->threadId, dCtxt->index, translated);
+                    ALT_PRINTF("Thread %d : State of device %d = %s\n", thread_data->thread_id, i, translated);
                     oldDirccStates[i] = dThreadState->dirccState;
                 }
+            } else if (!(oldDirccStates[i] & DIRCC_STATE_DISABLED)){
+            	// Unload the data
+				ALT_PRINTF("Thread %d : Device %d : Completed\n", thread_data->thread_id, i);
+				data_format(&(dThreadState->userState), translated);
+				ALT_PRINTF("Thread %d : Device %d : State ->\n%s\n", thread_data->thread_id, i, translated);
+				completed++;
             }
         }
-        ALT_PRINTF("Thread %d: %d devices running\n", ctxt->threadId, cnt);
-        if (cnt == 0) {
+//        ALT_PRINTF("Thread %d: %d devices completed\n", thread_data->thread_id, completed);
+        if (completed == MAX_DEVICES_PER_THREAD) {
             // All done
-            ALT_PRINTF("Thread %d: All devices done\n", ctxt->threadId);
+            ALT_PRINTF("Thread %d: All devices done\n", thread_data->thread_id);
             break;
         }
     }
 
-    ALT_PRINTF("Finished task watchThreadTask for thread %d\n", ctxt->threadId);
-
-    // We can now unload the data from the thread
-
-    vTaskDelayUntil(&nextWakeTime, mainQUEUE_CHECK_FREQUENCY_MS);
-
-    for(unsigned i = 0; i < ctxt->numDevices; i++)
-    {
-		DeviceContext* dCtxt        = ctxt->devices + i;
-		DeviceState*   dThreadState = threadStates + dCtxt->index;
-		ALT_PRINTF("Finished State: ");
-        dircc_print_arr(&(dThreadState->userState), MAX_DEVICE_USER_STATE_BYTES);
-		data_format(&(dThreadState->userState), translated);
-		ALT_PRINTF("Thread %d:%d: State ->\n%s\n", ctxt->threadId, dCtxt->index, translated);
-    }
+    ALT_PRINTF("Finished task watchThreadTask for thread %d\n", thread_data->thread_id);
 
 
     /* Tasks must not attempt to return from their implementing

@@ -40,6 +40,7 @@
 									<listOptionValue builtIn="false" value="INCLUDE_xTaskGetIdleTaskHandle"/>
 									<listOptionValue builtIn="false" value="portREMOVE_STATIC_QUALIFIER"/>
 									<listOptionValue builtIn="false" value="PRINTF_HOST"/>
+									<listOptionValue builtIn="false" value="USE_RTL"/>
 								</option>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.other.436189315" name="Other flags" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.other" value="-mtune=cortex-a9 -std=c11  -fdata-sections -ffunction-sections" valueType="string"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.includepath.608458408" name="Include paths (-I)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.includepath" valueType="includePath">
@@ -66,6 +67,7 @@
 									<listOptionValue builtIn="false" value="INCLUDE_xTaskGetIdleTaskHandle"/>
 									<listOptionValue builtIn="false" value="portREMOVE_STATIC_QUALIFIER"/>
 									<listOptionValue builtIn="false" value="PRINTF_HOST"/>
+									<listOptionValue builtIn="false" value="USE_RTL"/>
 								</option>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.other.1959748435" name="Other flags" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.other" value="-mtune=cortex-a9" valueType="string"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.includes.1565417541" name="Include paths (-I)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.includes" valueType="includePath">
@@ -167,6 +169,7 @@
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.fabi.281285409" name="Float ABI (-mfloat-abi)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.fabi" value="softfp" valueType="string"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.defsym.1423034261" name="Defined symbols (-D)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.defsym" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="soc_cv_av"/>
+									<listOptionValue builtIn="false" value="USE_RTL"/>
 								</option>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debugextra.245096928" name="Other debugging flags" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debugextra" value="-DNDEBUG" valueType="string"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.category.optextra.1713946992" name="Other optimization flags" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.category.optextra" value="" valueType="string"/>
@@ -190,6 +193,7 @@
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.fabi.163320834" name="Float ABI (-mfloat-abi)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.fabi" value="softfp" valueType="string"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.defsym.1396139102" name="Defined symbols (-D)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.defsym" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="soc_cv_av"/>
+									<listOptionValue builtIn="false" value="USE_RTL"/>
 								</option>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.other.698685085" name="Other flags" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.other" value="-mtune=cortex-a9" valueType="string"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.includes.389128317" name="Include paths (-I)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.includes" valueType="includePath">
