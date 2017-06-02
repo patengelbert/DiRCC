@@ -45,6 +45,8 @@ module dircc_processing (
     parameter DEVICE_ID = 32'h0;
     parameter DIRCC_RTS_FLAGS_COMPUTE = 32'h80000000;
 
+    parameter NODE_TYPE = "default";
+
     import dircc_types_pkg::*;
     import dircc_system_states_pkg::*;
     import dircc_application_pkg::*;
@@ -174,6 +176,7 @@ module dircc_processing (
 
     dircc_receive_handler #(
         .ADDRESS_MEM_WIDTH(ADDRESS_MEM_WIDTH)
+        .NODE_TYPE(NODE_TYPE)
     ) receive_handler (
         .clk            (clk),
         .reset_n        (reset_n),
@@ -193,6 +196,7 @@ module dircc_processing (
 
     dircc_rts_handler #(
         .ADDRESS_MEM_WIDTH(ADDRESS_MEM_WIDTH)
+        .NODE_TYPE(NODE_TYPE)
     ) rts_handler (
         .clk            (clk),
         .reset_n        (reset_n),
@@ -207,6 +211,7 @@ module dircc_processing (
 
     dircc_send_handler #(
         .ADDRESS_MEM_WIDTH(ADDRESS_MEM_WIDTH)
+        .NODE_TYPE(NODE_TYPE)
     ) send_handler (
         .clk                            (clk),
         .reset_n                        (reset_n),
@@ -224,6 +229,7 @@ module dircc_processing (
 
     dircc_compute_handler #(
         .ADDRESS_MEM_WIDTH(ADDRESS_MEM_WIDTH)
+        .NODE_TYPE(NODE_TYPE)
     ) compute_handler (
         .clk                            (clk),
         .reset_n                        (reset_n),

@@ -18,6 +18,7 @@ module dircc_receive_handler(
 );
 
     parameter ADDRESS_MEM_WIDTH = 32;
+    parameter NODE_TYPE = "default";
 
     import dircc_types_pkg::*;
     import dircc_system_states_pkg::*;
