@@ -11,6 +11,9 @@ module dircc_receive_handler(
     packet_in_valid,
     packet_handled,
 
+    edge_id,
+    port_id,
+
     read_state,
 
     write_state,
@@ -19,6 +22,7 @@ module dircc_receive_handler(
 
     parameter ADDRESS_MEM_WIDTH = 32;
     parameter NODE_TYPE = "default";
+    parameter DEVICE_ID = 0;
 
     import dircc_types_pkg::*;
     import dircc_system_states_pkg::*;
@@ -33,6 +37,8 @@ module dircc_receive_handler(
     input packet_data_t             packet_in;
     input wire                      packet_in_valid;
     output reg                      packet_handled;
+    input wire [7:0]                edge_id;
+    input wire [7:0]                port_id;
 
     input device_state_t            read_state;
 

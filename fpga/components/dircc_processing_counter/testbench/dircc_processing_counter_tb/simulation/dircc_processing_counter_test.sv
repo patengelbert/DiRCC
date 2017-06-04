@@ -38,10 +38,10 @@ module dircc_processing_counter_test();
                 repeat(timeout) @(posedge clk);
                 $sformat(message, "%m: - TEST Timeout %d", timeout);
                 print(VERBOSITY_ERROR, message);  
+                rv = FALSE;
                 disable WaitWithTimeout;
             end : checkTimout 
         join : WaitWithTimeout
-        rv = tb.dircc_processing_counter_inst_status_bfm.all_transactions_complete() ? TRUE : FALSE;
         // Prevent this from happening multiple times in the same clock cycle
         @(posedge clk);
     endtask : waitForResponse
@@ -379,7 +379,7 @@ module dircc_processing_counter_test();
     endtask : setState
 
     task automatic test_reset();
-        automatic bool rv;
+        automatic bool rv = TRUE;
         automatic dircc_state_t response_data;
 
         setupTest();
@@ -399,13 +399,13 @@ module dircc_processing_counter_test();
     endtask : test_reset
 
     task automatic test_packetInHandlerUsed();
-        automatic bool rv;
+        automatic bool rv = TRUE;
         automatic bit [15:0] response_data;
         automatic packet_t packetToSend = '{
             dest_addr: '{
-                hw_addr: $random,
-                sw_addr: $random,
-                port: $random,
+                hw_addr: 0,
+                sw_addr: 0,
+                port: 0,
                 flag: 0
             },
             src_addr: '{
@@ -476,13 +476,13 @@ module dircc_processing_counter_test();
     endtask : test_packetInHandlerUsed
 
     task automatic test_packetOutHandlerUsed();
-        automatic bool rv;
+        automatic bool rv = TRUE;
         automatic bit [15:0] response_data;
         automatic packet_t packetToSend = '{
             dest_addr: '{
-                hw_addr: $random,
-                sw_addr: $random,
-                port: $random,
+                hw_addr: 0,
+                sw_addr: 0,
+                port: 0,
                 flag: 0
             },
             src_addr: '{
@@ -584,13 +584,13 @@ module dircc_processing_counter_test();
     endtask : test_packetOutHandlerUsed
 
     task automatic test_multipleDestSamePortSent();
-        automatic bool rv;
+        automatic bool rv = TRUE;
         automatic bit [15:0] response_data;
         automatic packet_t packetToSend = '{
             dest_addr: '{
-                hw_addr: $random,
-                sw_addr: $random,
-                port: $random,
+                hw_addr: 0,
+                sw_addr: 0,
+                port: 0,
                 flag: 0
             },
             src_addr: '{
@@ -728,13 +728,13 @@ module dircc_processing_counter_test();
     endtask : test_multipleDestSamePortSent
 
     task automatic test_disabled();
-        automatic bool rv;
+        automatic bool rv = TRUE;
         automatic bit [15:0] response_data;
         automatic packet_t packetToSend = '{
             dest_addr: '{
-                hw_addr: $random,
-                sw_addr: $random,
-                port: $random,
+                hw_addr: 0,
+                sw_addr: 0,
+                port: 0,
                 flag: 0
             },
             src_addr: '{
@@ -794,13 +794,13 @@ module dircc_processing_counter_test();
     endtask : test_disabled
 
     task automatic test_done();
-        automatic bool rv;
+        automatic bool rv = TRUE;
         automatic bit [15:0] response_data;
         automatic packet_t packetToSend = '{
             dest_addr: '{
-                hw_addr: $random,
-                sw_addr: $random,
-                port: $random,
+                hw_addr: 0,
+                sw_addr: 0,
+                port: 0,
                 flag: 0
             },
             src_addr: '{
@@ -862,14 +862,14 @@ module dircc_processing_counter_test();
     endtask : test_done
 
     task automatic test_packetsNotLostBeforeStartup();
-        automatic bool rv;
+        automatic bool rv = TRUE;
         automatic bit [15:0] response_data;
         automatic packet_t temp_packet;
         automatic packet_t packetToSend = '{
             dest_addr: '{
-                hw_addr: $random,
-                sw_addr: $random,
-                port: $random,
+                hw_addr: 0,
+                sw_addr: 0,
+                port: 0,
                 flag: 0
             },
             src_addr: '{

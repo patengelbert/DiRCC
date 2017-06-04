@@ -18,6 +18,7 @@ module dircc_send_handler(
 
     parameter ADDRESS_MEM_WIDTH = 32;
     parameter NODE_TYPE = "default";
+    parameter DEVICE_ID = 0;
 
     import dircc_types_pkg::*;
     import dircc_system_states_pkg::*;
