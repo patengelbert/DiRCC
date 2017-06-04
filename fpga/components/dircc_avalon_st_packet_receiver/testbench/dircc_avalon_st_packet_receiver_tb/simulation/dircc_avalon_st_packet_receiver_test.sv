@@ -394,9 +394,10 @@ module dircc_avalon_st_packet_receiver_test;
 
         tb.dircc_avalon_st_packet_receiver_inst_booting = 0;
 
+        // 1 to write ready
         // 8 to load data
         // 1 to write to output
-        repeat(9) @ (posedge clk);
+        repeat(10) @ (posedge clk);
                 
         printAssert(1, tb.dircc_avalon_st_packet_receiver_inst_receive_done, rv);
         printAssert(0, tb.dircc_avalon_st_packet_receiver_inst_receive_nearly_done, rv);
