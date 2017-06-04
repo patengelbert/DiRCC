@@ -1,12 +1,12 @@
-# system info dircc_routing_tb on 2017.04.23.20:48:09
+# system info dircc_routing_tb on 2017.06.04.20:02:39
 system_info:
 name,value
 DEVICE,5CSEMA5F31C6
 DEVICE_FAMILY,Cyclone V
-GENERATION_ID,1492976888
+GENERATION_ID,1496602958
 #
 #
-# Files generated for dircc_routing_tb on 2017.04.23.20:48:09
+# Files generated for dircc_routing_tb on 2017.06.04.20:02:39
 files:
 filepath,kind,attributes,module,is_top
 dircc_routing/testbench/dircc_routing_tb/simulation/dircc_routing_tb.v,VERILOG,,dircc_routing_tb,true
