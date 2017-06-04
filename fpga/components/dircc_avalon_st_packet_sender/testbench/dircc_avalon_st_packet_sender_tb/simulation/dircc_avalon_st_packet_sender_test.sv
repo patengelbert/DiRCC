@@ -110,6 +110,7 @@ module dircc_avalon_st_packet_sender_test;
         tb.dircc_avalon_st_packet_sender_inst_packet_data = packet;
         tb.dircc_avalon_st_packet_sender_inst_write_packet = 1;
         @(posedge tb.dircc_avalon_st_packet_sender_inst_sending);
+        tb.dircc_avalon_st_packet_sender_inst_write_packet = 0;
     endtask : sendPacket
 
     task automatic test_resetCorrect();
