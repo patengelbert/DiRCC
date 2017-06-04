@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="System" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element clk_0
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element dircc_address
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element dircc_processing_gals_heat
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element routing
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element unsaved
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="5CSEMA5F31C6" />
+ <parameter name="deviceFamily" value="Cyclone V" />
+ <parameter name="deviceSpeedGrade" value="6" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="lockedInterfaceDefinition" value="" />
+ <parameter name="maxAdditionalLatency" value="1" />
+ <parameter name="projectName" value="" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceParameter
+   name="ADDRESS"
+   displayName="ADDRESS"
+   type="integer"
+   defaultValue="0"
+   legalRanges=""
+   description="" />
+ <instanceScript><![CDATA[# request a specific version of the scripting API
+package require -exact qsys 16.1
+
+# Set the name of the procedure to manipulate parameters
+set_module_property COMPOSITION_CALLBACK compose
+
+proc compose {} {
+    # manipulate parameters in here
+    # Example: set_instance_parameter_value child0 param0 [ get_parameter_value new_parameter_0 ]
+    set_instance_parameter_value dircc_address ADDRESS [ get_parameter_value ADDRESS ]
+}]]></instanceScript>
+ <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
+ <interface
+   name="input_east"
+   internal="routing.input_east"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="input_north"
+   internal="routing.input_north"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="input_south"
+   internal="routing.input_south"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="input_west"
+   internal="routing.input_west"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="mem"
+   internal="dircc_processing_gals_heat.mem"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="output_east"
+   internal="routing.output_east"
+   type="avalon_streaming"
+   dir="start" />
+ <interface
+   name="output_north"
+   internal="routing.output_north"
+   type="avalon_streaming"
+   dir="start" />
+ <interface
+   name="output_south"
+   internal="routing.output_south"
+   type="avalon_streaming"
+   dir="start" />
+ <interface
+   name="output_west"
+   internal="routing.output_west"
+   type="avalon_streaming"
+   dir="start" />
+ <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <module name="clk_0" kind="clock_source" version="16.1" enabled="1">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module name="dircc_address" kind="dircc_address" version="1.0" enabled="1">
+  <parameter name="ADDRESS" value="0" />
+ </module>
+ <module
+   name="dircc_processing_gals_heat"
+   kind="dircc_processing_gals_heat"
+   version="1.0"
+   enabled="1">
+  <parameter name="ADDRESS_MEM_WIDTH" value="32" />
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="DEVICE_ID" value="0" />
+  <parameter name="DIRCC_RTS_FLAGS_COMPUTE" value="2147483648" />
+  <parameter name="INPUT_FIFO_DEPTH" value="8" />
+  <parameter name="RTS_READY_WIDTH" value="32" />
+  <parameter name="STATUS_ADDRESS_WIDTH" value="15" />
+  <parameter name="STATUS_BYTE_WIDTH" value="8" />
+  <parameter name="STATUS_DEV_MEM_WIDTH" value="12" />
+  <parameter name="STATUS_EDGE_MEM_WIDTH" value="12" />
+  <parameter name="STATUS_MEM_WIDTH" value="16" />
+  <parameter name="SYMBOLS_PER_BEAT" value="4" />
+ </module>
+ <module name="routing" kind="dircc_routing" version="1.0" enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_routing</parameter>
+ </module>
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="dircc_processing_gals_heat.output"
+   end="routing.input_here" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="routing.output_here"
+   end="dircc_processing_gals_heat.input" />
+ <connection kind="clock" version="16.1" start="clk_0.clk" end="routing.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_0.clk"
+   end="dircc_processing_gals_heat.clock" />
+ <connection
+   kind="conduit"
+   version="16.1"
+   start="routing.address"
+   end="dircc_address.address_routing">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="16.1"
+   start="dircc_address.address_processing"
+   end="dircc_processing_gals_heat.address">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="dircc_processing_gals_heat.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="routing.reset" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
+</system>
