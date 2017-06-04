@@ -11,15 +11,11 @@ module dircc_avalon_st_terminal_inst #(
 		input  wire        valid,                       //                      .valid
 		input  wire        reset_n,                     //                 reset.reset_n
 		input  wire        clk,                         //                   clk.clk
-		input  wire [1:0]  address,                     //                status.address
+		input  wire [0:0]  address,                     //                status.address
 		output reg [15:0]  readdata,                    //                      .readdata
 		input  wire        read_n                       //                      .read_n
 	);
 
-	initial begin 
-    ready = 1'b0;
-		readdata = 16'b0;
-	end
   
   always @(posedge clk, negedge reset_n) begin
     if(!reset_n) begin
@@ -27,8 +23,15 @@ module dircc_avalon_st_terminal_inst #(
       readdata <= 16'b0;
     end else begin
       ready <= 1'b1;
+
+			if (!read_n) begin
+				// Reset
+				readdata <= 16'h0000;
+			end
+
       if (valid) begin
         // If data is valid, set error state.
+				$display("%m - ERROR: Received packet to %d", data);
         readdata <= 16'h8000;
       end
     end
