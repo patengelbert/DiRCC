@@ -133,22 +133,22 @@ package dircc_application_pkg;
     };
 
     parameter GraphProperties inst_props = '{
-            maxTime : 100
+            maxTime : 3
     };
 
     // Thread 0 (0, 1)
 
     // fanout out
     parameter address_t dev0_port0_out_addresses[MAX_OUTPUT_TARGETS-1:0] = '{
+            NULL_ADDRESS,
+            NULL_ADDRESS,
+            NULL_ADDRESS,
             '{
                     hw_addr : 32'h00010001,
                     sw_addr : 0,
                     port : INPUT_INDEX_dev_in,
                     flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            NULL_ADDRESS,
-            NULL_ADDRESS,
-            NULL_ADDRESS
+            }
     };
 
     parameter InputPortBinding dev0_port0_binding = '{
@@ -167,10 +167,10 @@ package dircc_application_pkg;
             '{
                     numSources : DEV0_PORT0_SOURCE_BINDING_NUM,
                     sourceBindings : '{
-                        dev0_port0_binding,
                         NULL_BINDING,
                         NULL_BINDING,
-                        NULL_BINDING
+                        NULL_BINDING,
+                        dev0_port0_binding
                     }
             }
     };
@@ -201,15 +201,15 @@ package dircc_application_pkg;
     // Thread 1 (1, 0)
 
     parameter address_t dev1_port0_out_addresses[MAX_OUTPUT_TARGETS-1:0] = '{
+            NULL_ADDRESS,
+            NULL_ADDRESS,
+            NULL_ADDRESS,
             '{
                     hw_addr : 32'h00010001,
                     sw_addr : 0,
                     port : INPUT_INDEX_dev_in,
                     flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            NULL_ADDRESS,
-            NULL_ADDRESS,
-            NULL_ADDRESS
+            }
     };
 
     parameter InputPortBinding dev1_port0_binding = '{
@@ -228,10 +228,10 @@ package dircc_application_pkg;
             '{
                     numSources : DEV1_PORT0_SOURCE_BINDING_NUM,
                     sourceBindings : '{
-                        dev1_port0_binding,
                         NULL_BINDING,
                         NULL_BINDING,
-                        NULL_BINDING
+                        NULL_BINDING,
+                        dev1_port0_binding
                     }
             }
     };
@@ -374,15 +374,15 @@ package dircc_application_pkg;
     // Thread 3 (1, 2)
 
     parameter address_t dev3_port0_out_addresses[MAX_OUTPUT_TARGETS-1:0] = '{
+            NULL_ADDRESS,
+            NULL_ADDRESS,
+            NULL_ADDRESS,
             '{
                     hw_addr : 32'h00010001,
                     sw_addr : 0,
                     port : INPUT_INDEX_dev_in,
                     flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            NULL_ADDRESS,
-            NULL_ADDRESS,
-            NULL_ADDRESS
+            }
     };
 
     parameter InputPortBinding dev3_port0_binding = '{
@@ -401,10 +401,10 @@ package dircc_application_pkg;
             '{
                     numSources : DEV3_PORT0_SOURCE_BINDING_NUM,
                     sourceBindings : '{
-                        dev3_port0_binding,
                         NULL_BINDING,
                         NULL_BINDING,
-                        NULL_BINDING
+                        NULL_BINDING,
+                        dev3_port0_binding
                     }
             }
     };
@@ -435,15 +435,15 @@ package dircc_application_pkg;
     // Thread 4 (2, 1)
 
     parameter address_t dev4_port0_out_addresses[MAX_OUTPUT_TARGETS-1:0] = '{
+            NULL_ADDRESS,
+            NULL_ADDRESS,
+            NULL_ADDRESS,
             '{
                     hw_addr : 32'h00010001,
                     sw_addr : 0,
                     port : INPUT_INDEX_dev_in,
                     flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            NULL_ADDRESS,
-            NULL_ADDRESS,
-            NULL_ADDRESS
+            }
     };
 
     parameter InputPortBinding dev4_port0_binding = '{
@@ -462,10 +462,10 @@ package dircc_application_pkg;
             '{
                     numSources : DEV4_PORT0_SOURCE_BINDING_NUM,
                     sourceBindings : '{
-                        dev4_port0_binding,
                         NULL_BINDING,
                         NULL_BINDING,
-                        NULL_BINDING
+                        NULL_BINDING,
+                        dev4_port0_binding
                     }
             }
     };

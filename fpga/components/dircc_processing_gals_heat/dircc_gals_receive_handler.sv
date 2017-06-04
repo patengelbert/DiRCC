@@ -67,22 +67,22 @@ module dircc_receive_handler(
             if (receive_done) begin
 
                 if(packet_data.t == dev_state_old.t) begin
-                    $display("Received packet for current time");
+                    $display("%0t:THREAD %d - Received packet for current time -> %d", $time, address, packet_data.t);
                     dev_state_new.seenNow <= dev_state_old.seenNow + 1;
                     dev_state_new.accNow <= dev_state_old.accNow + (packet_data.temp * dircc_thread_contexts[address].devices[DEVICE_ID].sources[port_id].sourceBindings[edge_id].properties.weight);
-                end else if (packet_data.t == dev_state_old.t + 1) begin
-                    $display("Received packet for next time");
+                end else if (packet_data.t == (dev_state_old.t + 1)) begin
+                    $display("%0t:THREAD %d - Received packet for next time -> %d", $time, address, packet_data.t);
                     dev_state_new.seenNext <= dev_state_old.seenNext + 1;
                     dev_state_new.accNext <= dev_state_old.accNext + (packet_data.temp * dircc_thread_contexts[address].devices[DEVICE_ID].sources[port_id].sourceBindings[edge_id].properties.weight);
                 end else begin
-                    $display("ERROR: Received packet of unknown timestamp %d", packet_data.t);
+                    $display("%0t:THREAD %d - ERROR: Received packet of unknown timestamp %d", $time, address, packet_data.t);
                 end
                 write_state_valid <= 1;
                 packet_handled <= 1;
 
                 if (dev_state_old.t == dircc_thread_contexts[address].properties.maxTime
                     && dev_state_old.seenNow + 1 == dircc_thread_contexts[address].devices[DEVICE_ID].properties.neighbourCount) begin
-                    $display("Woo! Device has finished");
+                    $display("%0t:THREAD %d - Woo! Device has finished", $time, address);
                     write_state.dircc_state <= (DIRCC_STATE_DONE | DIRCC_STATE_STOPPED);
                 end
             end else begin;

@@ -37,11 +37,11 @@ module dircc_processing_gals_test();
             begin : checkTimout
                 repeat(timeout) @(posedge clk);
                 $sformat(message, "%m: - TEST Timeout %d", timeout);
-                print(VERBOSITY_ERROR, message);  
+                print(VERBOSITY_ERROR, message); 
+                rv = FALSE; 
                 disable WaitWithTimeout;
             end : checkTimout 
         join : WaitWithTimeout
-        rv = tb.dircc_processing_gals_inst_status_bfm.all_transactions_complete() ? TRUE : FALSE;
         // Prevent this from happening multiple times in the same clock cycle
         @(posedge clk);
     endtask : waitForResponse
@@ -261,7 +261,6 @@ module dircc_processing_gals_test();
     endtask : receivePacket
 
     task automatic checkPacket(packet_t a, packet_t b, inout bool rv);
-        rv = TRUE;
         // Dest Address
         assert (a.dest_addr.hw_addr == b.dest_addr.hw_addr)
         else begin 
@@ -334,7 +333,6 @@ module dircc_processing_gals_test();
     endtask : checkPacket
 
     task automatic checkState(input dev_state_t a, input dev_state_t b, inout bool rv);
-        rv = TRUE;
         // Dest Address
         assert (a.t == b.t)
         else begin 
@@ -476,7 +474,7 @@ module dircc_processing_gals_test();
     endtask : setState
 
     task automatic test_reset();
-        automatic bool rv;
+        automatic bool rv = TRUE;
         automatic dircc_state_t response_data;
 
         setupTest();
@@ -496,7 +494,7 @@ module dircc_processing_gals_test();
     endtask : test_reset
 
     task automatic test_packetInHandlerUsed();
-        automatic bool rv;
+        automatic bool rv = TRUE;
         automatic dev_state_t response_data;
         automatic temp_msg_t msg = '{
             temp : 10,
@@ -589,7 +587,7 @@ module dircc_processing_gals_test();
     endtask : test_packetInHandlerUsed
 
     task automatic test_packetOutHandlerUsed();
-        automatic bool rv;
+        automatic bool rv = TRUE;
         automatic dev_state_t response_data;
         automatic temp_msg_t msg = '{
             temp : 10,
@@ -835,7 +833,7 @@ module dircc_processing_gals_test();
     endtask : test_packetOutHandlerUsed
 
     task automatic test_done();
-        automatic bool rv;
+        automatic bool rv = TRUE;
         automatic bit [15:0] response_data;
         automatic packet_t packetToSend = '{
             dest_addr: '{
