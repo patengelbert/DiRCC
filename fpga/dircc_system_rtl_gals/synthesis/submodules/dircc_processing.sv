@@ -281,8 +281,15 @@ module dircc_processing (
 
             if (receive_done) begin
                 // update lamport on receive, before handler
-                $display("Read packet %d for state %d", packet_in.lamport, read_state.dircc_state);
+                $display("%0t:THREAD %d - Read packet from %d. Lamport : %d for state %d", $time, thread_index, packet_in.src_addr.hw_addr, packet_in.lamport, read_state.dircc_state);
                 lamport <= ((lamport > packet_in.lamport) ? lamport : packet_in.lamport) + 1;
+                assert(packet_in_valid && packet_in.dest_addr == '{
+                    hw_addr: address,
+                    sw_addr: DEVICE_ID,
+                    port: 0,
+                    flag: 0
+                }) else $display("%0t:THREAD %d - ERROR: Received unexpected packet to %d:%d:%d:%d", $time, thread_index,
+                    packet_in.dest_addr.hw_addr, packet_in.dest_addr.sw_addr, packet_in.dest_addr.port, packet_in.dest_addr.flag);
             end
 
 
@@ -299,12 +306,14 @@ module dircc_processing (
                     port: port_index,
                     flag: 0
                 };
-                $display("Sent packet through port %d to target %d", port_index, target_id);
+                $display("%0t:THREAD %0d - Sent packet through port %0d to target %0d", $time, thread_index, port_index, dircc_thread_contexts[thread_index].devices[DEVICE_ID].targets[port_index].targets[target_id].hw_addr);
 
                 if (dircc_thread_contexts[thread_index].devices[DEVICE_ID].targets[port_index].numTargets - target_id != 1) begin
                     // There are still targets to send to
+                    $display("%0t:THREAD %0d - %0d packets left to send", $time, thread_index, dircc_thread_contexts[thread_index].devices[DEVICE_ID].targets[port_index].numTargets - target_id - 1);
                     target_id <= target_id + 1;
                 end else begin
+                    $display("%0t:THREAD %0d - No packets left to send", $time, thread_index);
                     // Clear flag for sent target
                     rts_ready <= 0;
                 end
@@ -317,7 +326,7 @@ module dircc_processing (
                 if (receive_handler_handled) begin
                     // Update state after receive handler has processed the packet
 
-                    $display("Calling receive handler");
+                    $display("%0t:THREAD %0d - Calling receive handler", $time, thread_index);
                     write_state_valid <= write_state_state_valid_receive_handler;
                     write_state <= write_state_receive_handler;
 
@@ -326,7 +335,7 @@ module dircc_processing (
                     // Run the send handler once
                     rts_ready <= rts_ready_new & ~DIRCC_RTS_FLAGS_COMPUTE;
 
-                    $display("Calling send handler");
+                    $display("%0t:THREAD %0d - Calling send handler", $time, thread_index);
 
                     lamport <= lamport + 1;
                     write_state_valid <= write_state_state_valid_send_handler;
@@ -354,18 +363,19 @@ module dircc_processing (
                 write_state_valid <= receive_done;
                 if (receive_done) begin
                     // Show error on received packet
-                    $display("ERROR: received unexpected packet");
+                    $display("%m:THREAD %0d - ERROR: Received unextpected packet to %d:%d:%d:%d", $time,
+                    packet_in.dest_addr.hw_addr, packet_in.dest_addr.sw_addr, packet_in.dest_addr.port, packet_in.dest_addr.flag);
                 end
             end
         end
     end
 
     always_comb begin : select_thread_index
-        thread_index = '0;
+        thread_index = 'x;
         for (int i = 0; i < THREAD_COUNT; i++) begin
             if (dircc_thread_contexts[i].threadId == address) begin
                 thread_index = i[ADDRESS_MEM_WIDTH-1:0];
-                $display("Using thread index %d for address %d", thread_index, address);
+                $display("%0t:Using thread index %0d for address %0d", $time, thread_index, address);
             end
         end
     end : select_thread_index

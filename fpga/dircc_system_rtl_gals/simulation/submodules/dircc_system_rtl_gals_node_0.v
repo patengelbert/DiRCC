@@ -77,7 +77,7 @@ module dircc_system_rtl_gals_node_0 (
 	wire         rst_controller_reset_out_reset;                  // rst_controller:reset_out -> [dircc_processing_gals_heat:reset_n, routing:reset_reset_n]
 
 	dircc_address_gen #(
-		.ADDRESS (32'h00000000)
+		.ADDRESS (0)
 	) dircc_address (
 		.address_processing (dircc_address_address_processing_address), // address_processing.address
 		.address_routing    (dircc_address_address_routing_address)     //    address_routing.address

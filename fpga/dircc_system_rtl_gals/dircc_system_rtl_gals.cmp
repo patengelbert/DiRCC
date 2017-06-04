@@ -1,7 +1,6 @@
 	component dircc_system_rtl_gals is
 		port (
 			clk_clk                        : in    std_logic                     := 'X';             -- clk
-			reset_reset_n                  : in    std_logic                     := 'X';             -- reset_n
 			hps_io_hps_io_gpio_inst_GPIO53 : inout std_logic                     := 'X';             -- hps_io_gpio_inst_GPIO53
 			hps_io_hps_io_gpio_inst_GPIO54 : inout std_logic                     := 'X';             -- hps_io_gpio_inst_GPIO54
 			memory_mem_a                   : out   std_logic_vector(14 downto 0);                    -- mem_a
@@ -19,7 +18,8 @@
 			memory_mem_dqs_n               : inout std_logic_vector(3 downto 0)  := (others => 'X'); -- mem_dqs_n
 			memory_mem_odt                 : out   std_logic;                                        -- mem_odt
 			memory_mem_dm                  : out   std_logic_vector(3 downto 0);                     -- mem_dm
-			memory_oct_rzqin               : in    std_logic                     := 'X'              -- oct_rzqin
+			memory_oct_rzqin               : in    std_logic                     := 'X';             -- oct_rzqin
+			reset_reset_n                  : in    std_logic                     := 'X'              -- reset_n
 		);
 	end component dircc_system_rtl_gals;
 

@@ -92,7 +92,7 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 16.1 203 linux 2017.06.02.20:53:49
+# ACDS 16.1 203 linux 2017.06.04.21:30:30
 
 # ----------------------------------------
 # Initialize variables
@@ -160,42 +160,80 @@ if ![ string match "*ModelSim ALTERA*" [ vsim -version ] ] {
   ensure_lib                       ./libraries/cyclonev_pcie_hip_ver/
   vmap       cyclonev_pcie_hip_ver ./libraries/cyclonev_pcie_hip_ver/
 }
-ensure_lib                            ./libraries/router/                    
-vmap       router                     ./libraries/router/                    
-ensure_lib                            ./libraries/output_demux/              
-vmap       output_demux               ./libraries/output_demux/              
-ensure_lib                            ./libraries/input_mux/                 
-vmap       input_mux                  ./libraries/input_mux/                 
-ensure_lib                            ./libraries/input_fifo_east/           
-vmap       input_fifo_east            ./libraries/input_fifo_east/           
-ensure_lib                            ./libraries/routing/                   
-vmap       routing                    ./libraries/routing/                   
-ensure_lib                            ./libraries/dircc_processing_gals_heat/
-vmap       dircc_processing_gals_heat ./libraries/dircc_processing_gals_heat/
-ensure_lib                            ./libraries/dircc_address/             
-vmap       dircc_address              ./libraries/dircc_address/             
-ensure_lib                            ./libraries/rst_controller/            
-vmap       rst_controller             ./libraries/rst_controller/            
-ensure_lib                            ./libraries/terminal_east_0/           
-vmap       terminal_east_0            ./libraries/terminal_east_0/           
-ensure_lib                            ./libraries/node_65538/                
-vmap       node_65538                 ./libraries/node_65538/                
-ensure_lib                            ./libraries/node_65537/                
-vmap       node_65537                 ./libraries/node_65537/                
-ensure_lib                            ./libraries/node_65536/                
-vmap       node_65536                 ./libraries/node_65536/                
-ensure_lib                            ./libraries/node_2/                    
-vmap       node_2                     ./libraries/node_2/                    
-ensure_lib                            ./libraries/node_131074/               
-vmap       node_131074                ./libraries/node_131074/               
-ensure_lib                            ./libraries/node_131073/               
-vmap       node_131073                ./libraries/node_131073/               
-ensure_lib                            ./libraries/node_131072/               
-vmap       node_131072                ./libraries/node_131072/               
-ensure_lib                            ./libraries/node_1/                    
-vmap       node_1                     ./libraries/node_1/                    
-ensure_lib                            ./libraries/node_0/                    
-vmap       node_0                     ./libraries/node_0/                    
+ensure_lib                               ./libraries/altera_common_sv_packages/    
+vmap       altera_common_sv_packages     ./libraries/altera_common_sv_packages/    
+ensure_lib                               ./libraries/error_adapter_0/              
+vmap       error_adapter_0               ./libraries/error_adapter_0/              
+ensure_lib                               ./libraries/router/                       
+vmap       router                        ./libraries/router/                       
+ensure_lib                               ./libraries/output_demux/                 
+vmap       output_demux                  ./libraries/output_demux/                 
+ensure_lib                               ./libraries/input_mux/                    
+vmap       input_mux                     ./libraries/input_mux/                    
+ensure_lib                               ./libraries/border/                       
+vmap       border                        ./libraries/border/                       
+ensure_lib                               ./libraries/avalon_st_adapter/            
+vmap       avalon_st_adapter             ./libraries/avalon_st_adapter/            
+ensure_lib                               ./libraries/node_0_mem_rsp_width_adapter/ 
+vmap       node_0_mem_rsp_width_adapter  ./libraries/node_0_mem_rsp_width_adapter/ 
+ensure_lib                               ./libraries/rsp_mux/                      
+vmap       rsp_mux                       ./libraries/rsp_mux/                      
+ensure_lib                               ./libraries/rsp_demux/                    
+vmap       rsp_demux                     ./libraries/rsp_demux/                    
+ensure_lib                               ./libraries/cmd_mux/                      
+vmap       cmd_mux                       ./libraries/cmd_mux/                      
+ensure_lib                               ./libraries/cmd_demux/                    
+vmap       cmd_demux                     ./libraries/cmd_demux/                    
+ensure_lib                               ./libraries/node_0_mem_burst_adapter/     
+vmap       node_0_mem_burst_adapter      ./libraries/node_0_mem_burst_adapter/     
+ensure_lib                               ./libraries/HPS_h2f_axi_master_wr_limiter/
+vmap       HPS_h2f_axi_master_wr_limiter ./libraries/HPS_h2f_axi_master_wr_limiter/
+ensure_lib                               ./libraries/router_002/                   
+vmap       router_002                    ./libraries/router_002/                   
+ensure_lib                               ./libraries/node_0_mem_agent_rsp_fifo/    
+vmap       node_0_mem_agent_rsp_fifo     ./libraries/node_0_mem_agent_rsp_fifo/    
+ensure_lib                               ./libraries/node_0_mem_agent/             
+vmap       node_0_mem_agent              ./libraries/node_0_mem_agent/             
+ensure_lib                               ./libraries/HPS_h2f_axi_master_agent/     
+vmap       HPS_h2f_axi_master_agent      ./libraries/HPS_h2f_axi_master_agent/     
+ensure_lib                               ./libraries/node_0_mem_translator/        
+vmap       node_0_mem_translator         ./libraries/node_0_mem_translator/        
+ensure_lib                               ./libraries/routing/                      
+vmap       routing                       ./libraries/routing/                      
+ensure_lib                               ./libraries/dircc_processing_gals_heat/   
+vmap       dircc_processing_gals_heat    ./libraries/dircc_processing_gals_heat/   
+ensure_lib                               ./libraries/dircc_address/                
+vmap       dircc_address                 ./libraries/dircc_address/                
+ensure_lib                               ./libraries/hps_io/                       
+vmap       hps_io                        ./libraries/hps_io/                       
+ensure_lib                               ./libraries/fpga_interfaces/              
+vmap       fpga_interfaces               ./libraries/fpga_interfaces/              
+ensure_lib                               ./libraries/rst_controller/               
+vmap       rst_controller                ./libraries/rst_controller/               
+ensure_lib                               ./libraries/mm_interconnect_0/            
+vmap       mm_interconnect_0             ./libraries/mm_interconnect_0/            
+ensure_lib                               ./libraries/terminal_east_0/              
+vmap       terminal_east_0               ./libraries/terminal_east_0/              
+ensure_lib                               ./libraries/node_65538/                   
+vmap       node_65538                    ./libraries/node_65538/                   
+ensure_lib                               ./libraries/node_65537/                   
+vmap       node_65537                    ./libraries/node_65537/                   
+ensure_lib                               ./libraries/node_65536/                   
+vmap       node_65536                    ./libraries/node_65536/                   
+ensure_lib                               ./libraries/node_2/                       
+vmap       node_2                        ./libraries/node_2/                       
+ensure_lib                               ./libraries/node_131074/                  
+vmap       node_131074                   ./libraries/node_131074/                  
+ensure_lib                               ./libraries/node_131073/                  
+vmap       node_131073                   ./libraries/node_131073/                  
+ensure_lib                               ./libraries/node_131072/                  
+vmap       node_131072                   ./libraries/node_131072/                  
+ensure_lib                               ./libraries/node_1/                       
+vmap       node_1                        ./libraries/node_1/                       
+ensure_lib                               ./libraries/node_0/                       
+vmap       node_0                        ./libraries/node_0/                       
+ensure_lib                               ./libraries/HPS/                          
+vmap       HPS                           ./libraries/HPS/                          
 
 # ----------------------------------------
 # Compile device library files
@@ -221,59 +259,113 @@ alias dev_com {
 # Compile the design files in correct order
 alias com {
   echo "\[exec\] com"
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_types.sv"                                       -work dircc_processing_gals_heat
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_router.sv"                                      -L dircc_processing_gals_heat -work router                    
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_0_routing_output_demux.sv" -work output_demux              
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_0_routing_input_mux.sv"    -work input_mux                 
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/altera_avalon_sc_fifo.v"                              -work input_fifo_east           
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_65538_routing.v"           -work routing                   
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_65537_routing.v"           -work routing                   
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_65536_routing.v"           -work routing                   
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_2_routing.v"               -work routing                   
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_131074_routing.v"          -work routing                   
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_131073_routing.v"          -work routing                   
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_131072_routing.v"          -work routing                   
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_1_routing.v"               -work routing                   
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_0_routing.v"               -work routing                   
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_states_pkg.sv"                           -work dircc_processing_gals_heat
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_application_pkg.sv"                             -work dircc_processing_gals_heat
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_gals_compute_handler.sv"                        -work dircc_processing_gals_heat
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_gals_receive_handler.sv"                        -work dircc_processing_gals_heat
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_gals_rts_handler.sv"                            -work dircc_processing_gals_heat
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_gals_send_handler.sv"                           -work dircc_processing_gals_heat
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_processing.sv"                                  -work dircc_processing_gals_heat
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_avalon_st_packet_sender.sv"                     -work dircc_processing_gals_heat
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/altera_avalon_sc_fifo.v"                              -work dircc_processing_gals_heat
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_avalon_st_packet_receiver.sv"                   -work dircc_processing_gals_heat
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_status_register.sv"                             -work dircc_processing_gals_heat
-  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_address_gen.sv"                                 -work dircc_address             
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/altera_reset_controller.v"                            -work rst_controller            
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/altera_reset_synchronizer.v"                          -work rst_controller            
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_avalon_st_terminal.v"                           -work terminal_east_0           
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_65538.v"                   -work node_65538                
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_65537.v"                   -work node_65537                
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_65536.v"                   -work node_65536                
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_2.v"                       -work node_2                    
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_131074.v"                  -work node_131074               
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_131073.v"                  -work node_131073               
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_131072.v"                  -work node_131072               
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_1.v"                       -work node_1                    
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_0.v"                       -work node_0                    
-  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_system_rtl_gals.v"                                                                         
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/verbosity_pkg.sv"                                                                                          -work altera_common_sv_packages    
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/avalon_utilities_pkg.sv"                                                                                   -work altera_common_sv_packages    
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/avalon_mm_pkg.sv"                                                                                          -work altera_common_sv_packages    
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv" -L altera_common_sv_packages -work error_adapter_0              
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_router.sv"                                                              -L altera_common_sv_packages -work router                       
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_0_routing_output_demux.sv"                         -L altera_common_sv_packages -work output_demux                 
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_0_routing_input_mux.sv"                            -L altera_common_sv_packages -work input_mux                    
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_mm_slave_bfm.sv"                                                -L altera_common_sv_packages -work border                       
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_interrupt_sink.sv"                                              -L altera_common_sv_packages -work border                       
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_clock_source.sv"                                                -L altera_common_sv_packages -work border                       
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_reset_source.sv"                                                -L altera_common_sv_packages -work border                       
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_HPS_hps_io_border_memory.sv"                            -L altera_common_sv_packages -work border                       
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_HPS_hps_io_border_hps_io.sv"                            -L altera_common_sv_packages -work border                       
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_HPS_hps_io_border.sv"                                   -L altera_common_sv_packages -work border                       
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_mm_interconnect_0_avalon_st_adapter.v"                                               -work avalon_st_adapter            
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_width_adapter.sv"                                               -L altera_common_sv_packages -work node_0_mem_rsp_width_adapter 
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_address_alignment.sv"                                           -L altera_common_sv_packages -work node_0_mem_rsp_width_adapter 
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_burst_uncompressor.sv"                                          -L altera_common_sv_packages -work node_0_mem_rsp_width_adapter 
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_mm_interconnect_0_rsp_mux.sv"                           -L altera_common_sv_packages -work rsp_mux                      
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_arbitrator.sv"                                                  -L altera_common_sv_packages -work rsp_mux                      
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_mm_interconnect_0_rsp_demux.sv"                         -L altera_common_sv_packages -work rsp_demux                    
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_mm_interconnect_0_cmd_mux.sv"                           -L altera_common_sv_packages -work cmd_mux                      
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_arbitrator.sv"                                                  -L altera_common_sv_packages -work cmd_mux                      
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_mm_interconnect_0_cmd_demux.sv"                         -L altera_common_sv_packages -work cmd_demux                    
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_burst_adapter.sv"                                               -L altera_common_sv_packages -work node_0_mem_burst_adapter     
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_burst_adapter_uncmpr.sv"                                        -L altera_common_sv_packages -work node_0_mem_burst_adapter     
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_burst_adapter_13_1.sv"                                          -L altera_common_sv_packages -work node_0_mem_burst_adapter     
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_burst_adapter_new.sv"                                           -L altera_common_sv_packages -work node_0_mem_burst_adapter     
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_incr_burst_converter.sv"                                               -L altera_common_sv_packages -work node_0_mem_burst_adapter     
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_wrap_burst_converter.sv"                                               -L altera_common_sv_packages -work node_0_mem_burst_adapter     
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_default_burst_converter.sv"                                            -L altera_common_sv_packages -work node_0_mem_burst_adapter     
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_address_alignment.sv"                                           -L altera_common_sv_packages -work node_0_mem_burst_adapter     
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_st_pipeline_stage.sv"                                           -L altera_common_sv_packages -work node_0_mem_burst_adapter     
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_st_pipeline_base.v"                                             -L altera_common_sv_packages -work node_0_mem_burst_adapter     
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_traffic_limiter.sv"                                             -L altera_common_sv_packages -work HPS_h2f_axi_master_wr_limiter
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_reorder_memory.sv"                                              -L altera_common_sv_packages -work HPS_h2f_axi_master_wr_limiter
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_sc_fifo.v"                                                      -L altera_common_sv_packages -work HPS_h2f_axi_master_wr_limiter
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_st_pipeline_base.v"                                             -L altera_common_sv_packages -work HPS_h2f_axi_master_wr_limiter
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_mm_interconnect_0_router_002.sv"                        -L altera_common_sv_packages -work router_002                   
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_mm_interconnect_0_router.sv"                            -L altera_common_sv_packages -work router                       
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/altera_avalon_sc_fifo.v"                                                                                   -work node_0_mem_agent_rsp_fifo    
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_slave_agent.sv"                                                 -L altera_common_sv_packages -work node_0_mem_agent             
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_burst_uncompressor.sv"                                          -L altera_common_sv_packages -work node_0_mem_agent             
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_axi_master_ni.sv"                                               -L altera_common_sv_packages -work HPS_h2f_axi_master_agent     
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_address_alignment.sv"                                           -L altera_common_sv_packages -work HPS_h2f_axi_master_agent     
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_slave_translator.sv"                                            -L altera_common_sv_packages -work node_0_mem_translator        
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_65538_routing.v"                                                                -work routing                      
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_65537_routing.v"                                                                -work routing                      
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_65536_routing.v"                                                                -work routing                      
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_2_routing.v"                                                                    -work routing                      
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_131074_routing.v"                                                               -work routing                      
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_131073_routing.v"                                                               -work routing                      
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_131072_routing.v"                                                               -work routing                      
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_1_routing.v"                                                                    -work routing                      
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_0_routing.v"                                                                    -work routing                      
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_types.sv"                                                               -L altera_common_sv_packages -work dircc_processing_gals_heat   
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_states_pkg.sv"                                                   -L altera_common_sv_packages -work dircc_processing_gals_heat   
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_application_pkg.sv"                                                     -L altera_common_sv_packages -work dircc_processing_gals_heat   
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_gals_compute_handler.sv"                                                -L altera_common_sv_packages -work dircc_processing_gals_heat   
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_gals_receive_handler.sv"                                                -L altera_common_sv_packages -work dircc_processing_gals_heat   
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_gals_rts_handler.sv"                                                    -L altera_common_sv_packages -work dircc_processing_gals_heat   
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_gals_send_handler.sv"                                                   -L altera_common_sv_packages -work dircc_processing_gals_heat   
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_processing.sv"                                                          -L altera_common_sv_packages -work dircc_processing_gals_heat   
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_avalon_st_packet_sender.sv"                                             -L altera_common_sv_packages -work dircc_processing_gals_heat   
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/altera_avalon_sc_fifo.v"                                                                                   -work dircc_processing_gals_heat   
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_avalon_st_packet_receiver.sv"                                           -L altera_common_sv_packages -work dircc_processing_gals_heat   
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_status_register.sv"                                                     -L altera_common_sv_packages -work dircc_processing_gals_heat   
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_address_gen.sv"                                                         -L altera_common_sv_packages -work dircc_address                
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_HPS_hps_io.v"                                                                        -work hps_io                       
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_mm_slave_bfm.sv"                                                -L altera_common_sv_packages -work fpga_interfaces              
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/questa_mvc_svapi.svh"                                                         -L altera_common_sv_packages -work fpga_interfaces              
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/mgc_common_axi.sv"                                                            -L altera_common_sv_packages -work fpga_interfaces              
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/mgc_axi_master.sv"                                                            -L altera_common_sv_packages -work fpga_interfaces              
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/mgc_axi_slave.sv"                                                             -L altera_common_sv_packages -work fpga_interfaces              
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_interrupt_sink.sv"                                              -L altera_common_sv_packages -work fpga_interfaces              
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_clock_source.sv"                                                -L altera_common_sv_packages -work fpga_interfaces              
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_reset_source.sv"                                                -L altera_common_sv_packages -work fpga_interfaces              
+  eval  vlog -sv $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_HPS_fpga_interfaces.sv"                                 -L altera_common_sv_packages -work fpga_interfaces              
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/altera_reset_controller.v"                                                                                 -work rst_controller               
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/altera_reset_synchronizer.v"                                                                               -work rst_controller               
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_mm_interconnect_0.v"                                                                 -work mm_interconnect_0            
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_avalon_st_terminal.v"                                                                                -work terminal_east_0              
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_65538.v"                                                                        -work node_65538                   
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_65537.v"                                                                        -work node_65537                   
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_65536.v"                                                                        -work node_65536                   
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_2.v"                                                                            -work node_2                       
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_131074.v"                                                                       -work node_131074                  
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_131073.v"                                                                       -work node_131073                  
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_131072.v"                                                                       -work node_131072                  
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_1.v"                                                                            -work node_1                       
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_node_0.v"                                                                            -work node_0                       
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/dircc_system_rtl_gals_HPS.v"                                                                               -work HPS                          
+  eval  vlog $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/dircc_system_rtl_gals.v"                                                                                                                                 
 }
 
 # ----------------------------------------
 # Elaborate top level design
 alias elab {
   echo "\[exec\] elab"
-  eval vsim -t ps $ELAB_OPTIONS $USER_DEFINED_ELAB_OPTIONS -L work -L work_lib -L router -L output_demux -L input_mux -L input_fifo_east -L routing -L dircc_processing_gals_heat -L dircc_address -L rst_controller -L terminal_east_0 -L node_65538 -L node_65537 -L node_65536 -L node_2 -L node_131074 -L node_131073 -L node_131072 -L node_1 -L node_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
+  eval vsim -t ps $ELAB_OPTIONS $USER_DEFINED_ELAB_OPTIONS -L work -L work_lib -L altera_common_sv_packages -L error_adapter_0 -L router -L output_demux -L input_mux -L border -L avalon_st_adapter -L node_0_mem_rsp_width_adapter -L rsp_mux -L rsp_demux -L cmd_mux -L cmd_demux -L node_0_mem_burst_adapter -L HPS_h2f_axi_master_wr_limiter -L router_002 -L node_0_mem_agent_rsp_fifo -L node_0_mem_agent -L HPS_h2f_axi_master_agent -L node_0_mem_translator -L routing -L dircc_processing_gals_heat -L dircc_address -L hps_io -L fpga_interfaces -L rst_controller -L mm_interconnect_0 -L terminal_east_0 -L node_65538 -L node_65537 -L node_65536 -L node_2 -L node_131074 -L node_131073 -L node_131072 -L node_1 -L node_0 -L HPS -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
 }
 
 # ----------------------------------------
 # Elaborate the top level design with novopt option
 alias elab_debug {
   echo "\[exec\] elab_debug"
-  eval vsim -novopt -t ps $ELAB_OPTIONS $USER_DEFINED_ELAB_OPTIONS -L work -L work_lib -L router -L output_demux -L input_mux -L input_fifo_east -L routing -L dircc_processing_gals_heat -L dircc_address -L rst_controller -L terminal_east_0 -L node_65538 -L node_65537 -L node_65536 -L node_2 -L node_131074 -L node_131073 -L node_131072 -L node_1 -L node_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
+  eval vsim -novopt -t ps $ELAB_OPTIONS $USER_DEFINED_ELAB_OPTIONS -L work -L work_lib -L altera_common_sv_packages -L error_adapter_0 -L router -L output_demux -L input_mux -L border -L avalon_st_adapter -L node_0_mem_rsp_width_adapter -L rsp_mux -L rsp_demux -L cmd_mux -L cmd_demux -L node_0_mem_burst_adapter -L HPS_h2f_axi_master_wr_limiter -L router_002 -L node_0_mem_agent_rsp_fifo -L node_0_mem_agent -L HPS_h2f_axi_master_agent -L node_0_mem_translator -L routing -L dircc_processing_gals_heat -L dircc_address -L hps_io -L fpga_interfaces -L rst_controller -L mm_interconnect_0 -L terminal_east_0 -L node_65538 -L node_65537 -L node_65536 -L node_2 -L node_131074 -L node_131073 -L node_131072 -L node_1 -L node_0 -L HPS -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
 }
 
 # ----------------------------------------

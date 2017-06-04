@@ -31,6 +31,7 @@ module dircc_avalon_st_terminal_inst #(
 
       if (valid) begin
         // If data is valid, set error state.
+				$display("%m - ERROR: Received packet to %d", data);
         readdata <= 16'h8000;
       end
     end

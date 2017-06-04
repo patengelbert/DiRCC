@@ -221,12 +221,6 @@ module dircc_system_rtl_gals_node_0_routing_input_mux (
       end
    end
 
-    always_comb begin
-      if(in0_valid) begin
-        $display("in0_data: %d", in0_data);
-      end
-    end
-
 
 
    // ---------------------------------------------------------------------

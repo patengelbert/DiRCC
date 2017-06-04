@@ -7,7 +7,44 @@
 
 `timescale 1 ps / 1 ps
 module dircc_system_rtl_gals_mm_interconnect_0 (
+		input  wire [11:0] HPS_h2f_axi_master_awid,                                        //                                       HPS_h2f_axi_master.awid
+		input  wire [29:0] HPS_h2f_axi_master_awaddr,                                      //                                                         .awaddr
+		input  wire [3:0]  HPS_h2f_axi_master_awlen,                                       //                                                         .awlen
+		input  wire [2:0]  HPS_h2f_axi_master_awsize,                                      //                                                         .awsize
+		input  wire [1:0]  HPS_h2f_axi_master_awburst,                                     //                                                         .awburst
+		input  wire [1:0]  HPS_h2f_axi_master_awlock,                                      //                                                         .awlock
+		input  wire [3:0]  HPS_h2f_axi_master_awcache,                                     //                                                         .awcache
+		input  wire [2:0]  HPS_h2f_axi_master_awprot,                                      //                                                         .awprot
+		input  wire        HPS_h2f_axi_master_awvalid,                                     //                                                         .awvalid
+		output wire        HPS_h2f_axi_master_awready,                                     //                                                         .awready
+		input  wire [11:0] HPS_h2f_axi_master_wid,                                         //                                                         .wid
+		input  wire [31:0] HPS_h2f_axi_master_wdata,                                       //                                                         .wdata
+		input  wire [3:0]  HPS_h2f_axi_master_wstrb,                                       //                                                         .wstrb
+		input  wire        HPS_h2f_axi_master_wlast,                                       //                                                         .wlast
+		input  wire        HPS_h2f_axi_master_wvalid,                                      //                                                         .wvalid
+		output wire        HPS_h2f_axi_master_wready,                                      //                                                         .wready
+		output wire [11:0] HPS_h2f_axi_master_bid,                                         //                                                         .bid
+		output wire [1:0]  HPS_h2f_axi_master_bresp,                                       //                                                         .bresp
+		output wire        HPS_h2f_axi_master_bvalid,                                      //                                                         .bvalid
+		input  wire        HPS_h2f_axi_master_bready,                                      //                                                         .bready
+		input  wire [11:0] HPS_h2f_axi_master_arid,                                        //                                                         .arid
+		input  wire [29:0] HPS_h2f_axi_master_araddr,                                      //                                                         .araddr
+		input  wire [3:0]  HPS_h2f_axi_master_arlen,                                       //                                                         .arlen
+		input  wire [2:0]  HPS_h2f_axi_master_arsize,                                      //                                                         .arsize
+		input  wire [1:0]  HPS_h2f_axi_master_arburst,                                     //                                                         .arburst
+		input  wire [1:0]  HPS_h2f_axi_master_arlock,                                      //                                                         .arlock
+		input  wire [3:0]  HPS_h2f_axi_master_arcache,                                     //                                                         .arcache
+		input  wire [2:0]  HPS_h2f_axi_master_arprot,                                      //                                                         .arprot
+		input  wire        HPS_h2f_axi_master_arvalid,                                     //                                                         .arvalid
+		output wire        HPS_h2f_axi_master_arready,                                     //                                                         .arready
+		output wire [11:0] HPS_h2f_axi_master_rid,                                         //                                                         .rid
+		output wire [31:0] HPS_h2f_axi_master_rdata,                                       //                                                         .rdata
+		output wire [1:0]  HPS_h2f_axi_master_rresp,                                       //                                                         .rresp
+		output wire        HPS_h2f_axi_master_rlast,                                       //                                                         .rlast
+		output wire        HPS_h2f_axi_master_rvalid,                                      //                                                         .rvalid
+		input  wire        HPS_h2f_axi_master_rready,                                      //                                                         .rready
 		input  wire        clk_0_clk_clk,                                                  //                                                clk_0_clk.clk
+		input  wire        HPS_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, // HPS_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
 		input  wire        node_0_reset_reset_bridge_in_reset_reset,                       //                       node_0_reset_reset_bridge_in_reset.reset
 		input  wire        terminal_north_0_reset_reset_bridge_in_reset_reset,             //             terminal_north_0_reset_reset_bridge_in_reset.reset
 		output wire [14:0] node_0_mem_address,                                             //                                               node_0_mem.address
@@ -588,6 +625,16 @@ module dircc_system_rtl_gals_mm_interconnect_0 (
 	wire          terminal_south_2_status_agent_rdata_fifo_src_valid;          // terminal_south_2_status_agent:rdata_fifo_src_valid -> terminal_south_2_status_agent_rdata_fifo:in_valid
 	wire   [17:0] terminal_south_2_status_agent_rdata_fifo_src_data;           // terminal_south_2_status_agent:rdata_fifo_src_data -> terminal_south_2_status_agent_rdata_fifo:in_data
 	wire          terminal_south_2_status_agent_rdata_fifo_src_ready;          // terminal_south_2_status_agent_rdata_fifo:in_ready -> terminal_south_2_status_agent:rdata_fifo_src_ready
+	wire          hps_h2f_axi_master_agent_write_cp_valid;                     // HPS_h2f_axi_master_agent:write_cp_valid -> router:sink_valid
+	wire  [128:0] hps_h2f_axi_master_agent_write_cp_data;                      // HPS_h2f_axi_master_agent:write_cp_data -> router:sink_data
+	wire          hps_h2f_axi_master_agent_write_cp_ready;                     // router:sink_ready -> HPS_h2f_axi_master_agent:write_cp_ready
+	wire          hps_h2f_axi_master_agent_write_cp_startofpacket;             // HPS_h2f_axi_master_agent:write_cp_startofpacket -> router:sink_startofpacket
+	wire          hps_h2f_axi_master_agent_write_cp_endofpacket;               // HPS_h2f_axi_master_agent:write_cp_endofpacket -> router:sink_endofpacket
+	wire          hps_h2f_axi_master_agent_read_cp_valid;                      // HPS_h2f_axi_master_agent:read_cp_valid -> router_001:sink_valid
+	wire  [128:0] hps_h2f_axi_master_agent_read_cp_data;                       // HPS_h2f_axi_master_agent:read_cp_data -> router_001:sink_data
+	wire          hps_h2f_axi_master_agent_read_cp_ready;                      // router_001:sink_ready -> HPS_h2f_axi_master_agent:read_cp_ready
+	wire          hps_h2f_axi_master_agent_read_cp_startofpacket;              // HPS_h2f_axi_master_agent:read_cp_startofpacket -> router_001:sink_startofpacket
+	wire          hps_h2f_axi_master_agent_read_cp_endofpacket;                // HPS_h2f_axi_master_agent:read_cp_endofpacket -> router_001:sink_endofpacket
 	wire          node_0_mem_agent_rp_valid;                                   // node_0_mem_agent:rp_valid -> router_002:sink_valid
 	wire  [110:0] node_0_mem_agent_rp_data;                                    // node_0_mem_agent:rp_data -> router_002:sink_data
 	wire          node_0_mem_agent_rp_ready;                                   // router_002:sink_ready -> node_0_mem_agent:rp_ready
@@ -699,24 +746,46 @@ module dircc_system_rtl_gals_mm_interconnect_0 (
 	wire   [20:0] router_src_channel;                                          // router:src_channel -> HPS_h2f_axi_master_wr_limiter:cmd_sink_channel
 	wire          router_src_startofpacket;                                    // router:src_startofpacket -> HPS_h2f_axi_master_wr_limiter:cmd_sink_startofpacket
 	wire          router_src_endofpacket;                                      // router:src_endofpacket -> HPS_h2f_axi_master_wr_limiter:cmd_sink_endofpacket
+	wire  [128:0] hps_h2f_axi_master_wr_limiter_cmd_src_data;                  // HPS_h2f_axi_master_wr_limiter:cmd_src_data -> cmd_demux:sink_data
+	wire          hps_h2f_axi_master_wr_limiter_cmd_src_ready;                 // cmd_demux:sink_ready -> HPS_h2f_axi_master_wr_limiter:cmd_src_ready
+	wire   [20:0] hps_h2f_axi_master_wr_limiter_cmd_src_channel;               // HPS_h2f_axi_master_wr_limiter:cmd_src_channel -> cmd_demux:sink_channel
+	wire          hps_h2f_axi_master_wr_limiter_cmd_src_startofpacket;         // HPS_h2f_axi_master_wr_limiter:cmd_src_startofpacket -> cmd_demux:sink_startofpacket
+	wire          hps_h2f_axi_master_wr_limiter_cmd_src_endofpacket;           // HPS_h2f_axi_master_wr_limiter:cmd_src_endofpacket -> cmd_demux:sink_endofpacket
 	wire          rsp_mux_src_valid;                                           // rsp_mux:src_valid -> HPS_h2f_axi_master_wr_limiter:rsp_sink_valid
 	wire  [128:0] rsp_mux_src_data;                                            // rsp_mux:src_data -> HPS_h2f_axi_master_wr_limiter:rsp_sink_data
 	wire          rsp_mux_src_ready;                                           // HPS_h2f_axi_master_wr_limiter:rsp_sink_ready -> rsp_mux:src_ready
 	wire   [20:0] rsp_mux_src_channel;                                         // rsp_mux:src_channel -> HPS_h2f_axi_master_wr_limiter:rsp_sink_channel
 	wire          rsp_mux_src_startofpacket;                                   // rsp_mux:src_startofpacket -> HPS_h2f_axi_master_wr_limiter:rsp_sink_startofpacket
 	wire          rsp_mux_src_endofpacket;                                     // rsp_mux:src_endofpacket -> HPS_h2f_axi_master_wr_limiter:rsp_sink_endofpacket
+	wire          hps_h2f_axi_master_wr_limiter_rsp_src_valid;                 // HPS_h2f_axi_master_wr_limiter:rsp_src_valid -> HPS_h2f_axi_master_agent:write_rp_valid
+	wire  [128:0] hps_h2f_axi_master_wr_limiter_rsp_src_data;                  // HPS_h2f_axi_master_wr_limiter:rsp_src_data -> HPS_h2f_axi_master_agent:write_rp_data
+	wire          hps_h2f_axi_master_wr_limiter_rsp_src_ready;                 // HPS_h2f_axi_master_agent:write_rp_ready -> HPS_h2f_axi_master_wr_limiter:rsp_src_ready
+	wire   [20:0] hps_h2f_axi_master_wr_limiter_rsp_src_channel;               // HPS_h2f_axi_master_wr_limiter:rsp_src_channel -> HPS_h2f_axi_master_agent:write_rp_channel
+	wire          hps_h2f_axi_master_wr_limiter_rsp_src_startofpacket;         // HPS_h2f_axi_master_wr_limiter:rsp_src_startofpacket -> HPS_h2f_axi_master_agent:write_rp_startofpacket
+	wire          hps_h2f_axi_master_wr_limiter_rsp_src_endofpacket;           // HPS_h2f_axi_master_wr_limiter:rsp_src_endofpacket -> HPS_h2f_axi_master_agent:write_rp_endofpacket
 	wire          router_001_src_valid;                                        // router_001:src_valid -> HPS_h2f_axi_master_rd_limiter:cmd_sink_valid
 	wire  [128:0] router_001_src_data;                                         // router_001:src_data -> HPS_h2f_axi_master_rd_limiter:cmd_sink_data
 	wire          router_001_src_ready;                                        // HPS_h2f_axi_master_rd_limiter:cmd_sink_ready -> router_001:src_ready
 	wire   [20:0] router_001_src_channel;                                      // router_001:src_channel -> HPS_h2f_axi_master_rd_limiter:cmd_sink_channel
 	wire          router_001_src_startofpacket;                                // router_001:src_startofpacket -> HPS_h2f_axi_master_rd_limiter:cmd_sink_startofpacket
 	wire          router_001_src_endofpacket;                                  // router_001:src_endofpacket -> HPS_h2f_axi_master_rd_limiter:cmd_sink_endofpacket
+	wire  [128:0] hps_h2f_axi_master_rd_limiter_cmd_src_data;                  // HPS_h2f_axi_master_rd_limiter:cmd_src_data -> cmd_demux_001:sink_data
+	wire          hps_h2f_axi_master_rd_limiter_cmd_src_ready;                 // cmd_demux_001:sink_ready -> HPS_h2f_axi_master_rd_limiter:cmd_src_ready
+	wire   [20:0] hps_h2f_axi_master_rd_limiter_cmd_src_channel;               // HPS_h2f_axi_master_rd_limiter:cmd_src_channel -> cmd_demux_001:sink_channel
+	wire          hps_h2f_axi_master_rd_limiter_cmd_src_startofpacket;         // HPS_h2f_axi_master_rd_limiter:cmd_src_startofpacket -> cmd_demux_001:sink_startofpacket
+	wire          hps_h2f_axi_master_rd_limiter_cmd_src_endofpacket;           // HPS_h2f_axi_master_rd_limiter:cmd_src_endofpacket -> cmd_demux_001:sink_endofpacket
 	wire          rsp_mux_001_src_valid;                                       // rsp_mux_001:src_valid -> HPS_h2f_axi_master_rd_limiter:rsp_sink_valid
 	wire  [128:0] rsp_mux_001_src_data;                                        // rsp_mux_001:src_data -> HPS_h2f_axi_master_rd_limiter:rsp_sink_data
 	wire          rsp_mux_001_src_ready;                                       // HPS_h2f_axi_master_rd_limiter:rsp_sink_ready -> rsp_mux_001:src_ready
 	wire   [20:0] rsp_mux_001_src_channel;                                     // rsp_mux_001:src_channel -> HPS_h2f_axi_master_rd_limiter:rsp_sink_channel
 	wire          rsp_mux_001_src_startofpacket;                               // rsp_mux_001:src_startofpacket -> HPS_h2f_axi_master_rd_limiter:rsp_sink_startofpacket
 	wire          rsp_mux_001_src_endofpacket;                                 // rsp_mux_001:src_endofpacket -> HPS_h2f_axi_master_rd_limiter:rsp_sink_endofpacket
+	wire          hps_h2f_axi_master_rd_limiter_rsp_src_valid;                 // HPS_h2f_axi_master_rd_limiter:rsp_src_valid -> HPS_h2f_axi_master_agent:read_rp_valid
+	wire  [128:0] hps_h2f_axi_master_rd_limiter_rsp_src_data;                  // HPS_h2f_axi_master_rd_limiter:rsp_src_data -> HPS_h2f_axi_master_agent:read_rp_data
+	wire          hps_h2f_axi_master_rd_limiter_rsp_src_ready;                 // HPS_h2f_axi_master_agent:read_rp_ready -> HPS_h2f_axi_master_rd_limiter:rsp_src_ready
+	wire   [20:0] hps_h2f_axi_master_rd_limiter_rsp_src_channel;               // HPS_h2f_axi_master_rd_limiter:rsp_src_channel -> HPS_h2f_axi_master_agent:read_rp_channel
+	wire          hps_h2f_axi_master_rd_limiter_rsp_src_startofpacket;         // HPS_h2f_axi_master_rd_limiter:rsp_src_startofpacket -> HPS_h2f_axi_master_agent:read_rp_startofpacket
+	wire          hps_h2f_axi_master_rd_limiter_rsp_src_endofpacket;           // HPS_h2f_axi_master_rd_limiter:rsp_src_endofpacket -> HPS_h2f_axi_master_agent:read_rp_endofpacket
 	wire          node_0_mem_burst_adapter_source0_valid;                      // node_0_mem_burst_adapter:source0_valid -> node_0_mem_agent:cp_valid
 	wire  [110:0] node_0_mem_burst_adapter_source0_data;                       // node_0_mem_burst_adapter:source0_data -> node_0_mem_agent:cp_data
 	wire          node_0_mem_burst_adapter_source0_ready;                      // node_0_mem_agent:cp_ready -> node_0_mem_burst_adapter:source0_ready
