@@ -374,6 +374,9 @@ module dircc_avalon_st_packet_receiver_test;
             }
         };
         automatic packet_t receivedPacket;
+
+        $sformat(message,  "%m: -  Starting Test %m");
+        print(VERBOSITY_INFO, message);
         setupTest();
 
         tb.dircc_avalon_st_packet_receiver_inst_booting = 1;
@@ -391,14 +394,13 @@ module dircc_avalon_st_packet_receiver_test;
 
         tb.dircc_avalon_st_packet_receiver_inst_booting = 0;
 
-        // 1 to write data_ready
         // 8 to load data
         // 1 to write to output
-        repeat(10) @ (posedge clk);
+        repeat(9) @ (posedge clk);
                 
         printAssert(1, tb.dircc_avalon_st_packet_receiver_inst_receive_done, rv);
         printAssert(0, tb.dircc_avalon_st_packet_receiver_inst_receive_nearly_done, rv);
-        printAssert(1, tb.dircc_avalon_st_packet_receiver_inst_packet_valid, rv);s
+        printAssert(1, tb.dircc_avalon_st_packet_receiver_inst_packet_valid, rv);
 
         printSuccess(rv);
     endtask : test_stallsOnBoot
