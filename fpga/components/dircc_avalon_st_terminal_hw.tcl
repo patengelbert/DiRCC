@@ -39,19 +39,19 @@ add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
 set_fileset_property QUARTUS_SYNTH TOP_LEVEL dircc_avalon_st_terminal_inst
 set_fileset_property QUARTUS_SYNTH ENABLE_RELATIVE_INCLUDE_PATHS false
 set_fileset_property QUARTUS_SYNTH ENABLE_FILE_OVERWRITE_MODE true
-add_fileset_file dircc_avalon_st_terminal.v VERILOG PATH dircc_avalon_st_terminal/dircc_avalon_st_terminal.sv TOP_LEVEL_FILE
+add_fileset_file dircc_avalon_st_terminal.v VERILOG PATH dircc_avalon_st_terminal/dircc_avalon_st_terminal.v TOP_LEVEL_FILE
 
 add_fileset SIM_VERILOG SIM_VERILOG "" ""
 set_fileset_property SIM_VERILOG TOP_LEVEL dircc_avalon_st_terminal_inst
 set_fileset_property SIM_VERILOG ENABLE_RELATIVE_INCLUDE_PATHS false
 set_fileset_property SIM_VERILOG ENABLE_FILE_OVERWRITE_MODE true
-add_fileset_file dircc_avalon_st_terminal.v VERILOG PATH dircc_avalon_st_terminal/dircc_avalon_st_terminal.sv
+add_fileset_file dircc_avalon_st_terminal.v VERILOG PATH dircc_avalon_st_terminal/dircc_avalon_st_terminal.v
 
 add_fileset SIM_VHDL SIM_VHDL "" ""
 set_fileset_property SIM_VHDL TOP_LEVEL dircc_avalon_st_terminal_inst
 set_fileset_property SIM_VHDL ENABLE_RELATIVE_INCLUDE_PATHS false
 set_fileset_property SIM_VHDL ENABLE_FILE_OVERWRITE_MODE true
-add_fileset_file dircc_avalon_st_terminal.v VERILOG PATH dircc_avalon_st_terminal/dircc_avalon_st_terminal.sv
+add_fileset_file dircc_avalon_st_terminal.v VERILOG PATH dircc_avalon_st_terminal/dircc_avalon_st_terminal.v
 
 
 # 
