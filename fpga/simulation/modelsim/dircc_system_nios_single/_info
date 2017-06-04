@@ -1,0 +1,32 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/patrick/Documents/Coursework/DiRCC/fpga/simulation/modelsim
+vdircc_system_nios_single_processing_timer
+!s110 1493131508
+!i10b 1
+!s100 ;ABCi6=TBE?O1^b^[zK0P2
+IATHC2U1Vgnbomh><acz2Y0
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1493124244
+8/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_nios_single/submodules/dircc_system_nios_single_processing_timer.v
+F/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_nios_single/submodules/dircc_system_nios_single_processing_timer.v
+L0 21
+OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1493131508.000000
+!s107 /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_nios_single/submodules/dircc_system_nios_single_processing_timer.v|
+!s90 -reportprogress|300|-vlog01compat|-work|dircc_system_nios_single|+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_nios_single/submodules|/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_nios_single/submodules/dircc_system_nios_single_processing_timer.v|
+!i113 1
+o-vlog01compat -work dircc_system_nios_single
+!s92 -vlog01compat -work dircc_system_nios_single +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_nios_single/submodules
+tCvgOpt 0

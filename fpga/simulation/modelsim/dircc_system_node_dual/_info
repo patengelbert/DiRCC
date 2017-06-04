@@ -1,0 +1,32 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/patrick/Documents/Coursework/DiRCC/fpga/simulation/modelsim
+vdircc_system_node_dual_node_1_routing
+!s110 1493131508
+!i10b 1
+!s100 []AgaRmfAUNnc3bJBlJ523
+IT:fdgQLcDiz;B7OEICASh0
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1493124199
+8/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual/submodules/dircc_system_node_dual_node_1_routing.v
+F/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual/submodules/dircc_system_node_dual_node_1_routing.v
+L0 6
+OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1493131508.000000
+!s107 /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual/submodules/dircc_system_node_dual_node_1_routing.v|
+!s90 -reportprogress|300|-vlog01compat|-work|dircc_system_node_dual|+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual/submodules|/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual/submodules/dircc_system_node_dual_node_1_routing.v|
+!i113 1
+o-vlog01compat -work dircc_system_node_dual
+!s92 -vlog01compat -work dircc_system_node_dual +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual/submodules
+tCvgOpt 0

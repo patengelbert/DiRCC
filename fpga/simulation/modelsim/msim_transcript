@@ -1,0 +1,841 @@
+# do DIRCC_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying /media/DATA_LINUX/opt/intelFPGA_lite/16.1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlib dircc_system_node_dual_hps
+# ** Warning: (vlib-34) Library already exists at "dircc_system_node_dual_hps".
+# vmap dircc_system_node_dual_hps dircc_system_node_dual_hps
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap dircc_system_node_dual_hps dircc_system_node_dual_hps 
+# Modifying modelsim.ini
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/dircc_system_node_dual_hps.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:04 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/dircc_system_node_dual_hps.v 
+# -- Compiling module dircc_system_node_dual_hps
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps
+# End time: 16:54:04 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_mem_if_hhp_qseq_synth_top.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:04 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_mem_if_hhp_qseq_synth_top.v 
+# -- Compiling module altera_mem_if_hhp_qseq_synth_top
+# 
+# Top level modules:
+# 	altera_mem_if_hhp_qseq_synth_top
+# End time: 16:54:04 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_reset_controller.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:04 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_reset_controller.v 
+# -- Compiling module altera_reset_controller
+# 
+# Top level modules:
+# 	altera_reset_controller
+# End time: 16:54:04 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_reset_synchronizer.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:04 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_reset_synchronizer.v 
+# -- Compiling module altera_reset_synchronizer
+# 
+# Top level modules:
+# 	altera_reset_synchronizer
+# End time: 16:54:04 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/conduit_avalon_mm_bridge.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:04 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/conduit_avalon_mm_bridge.v 
+# -- Compiling module conduit_avalon_mm_bridge
+# 
+# Top level modules:
+# 	conduit_avalon_mm_bridge
+# End time: 16:54:04 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_HPS.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:04 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_HPS.v 
+# -- Compiling module dircc_system_node_dual_hps_HPS
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_HPS
+# End time: 16:54:04 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_HPS_hps_io.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:04 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_HPS_hps_io.v 
+# -- Compiling module dircc_system_node_dual_hps_HPS_hps_io
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_HPS_hps_io
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_mm_interconnect_0.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_mm_interconnect_0.v 
+# -- Compiling module dircc_system_node_dual_hps_mm_interconnect_0
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_mm_interconnect_0
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_mm_interconnect_0_avalon_st_adapter.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_mm_interconnect_0_avalon_st_adapter.v 
+# -- Compiling module dircc_system_node_dual_hps_mm_interconnect_0_avalon_st_adapter
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_mm_interconnect_0_avalon_st_adapter
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_avalon_st_adapter.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_avalon_st_adapter.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_avalon_st_adapter
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_avalon_st_adapter
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_avalon_st_adapter_001.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_avalon_st_adapter_001.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_avalon_st_adapter_001
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_avalon_st_adapter_001
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_cpu.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_cpu.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing_cpu
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_cpu_cpu.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_cpu_cpu.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_register_bank_a_module
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_register_bank_b_module
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci_debug
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci_break
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci_xbrk
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci_dbrk
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci_itrace
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci_td_mode
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci_dtrace
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci_compute_input_tm_cnt
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci_fifo_wrptr_inc
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci_fifo_cnt_inc
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci_fifo
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci_pib
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci_im
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_performance_monitors
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_avalon_reg
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_ociram_sp_ram_module
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_ocimem
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_oci
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing_cpu_cpu_nios2_performance_monitors
+# 	dircc_system_node_dual_hps_node_0_processing_cpu_cpu
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_cpu_cpu_debug_slave_sysclk.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_cpu_cpu_debug_slave_sysclk.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_debug_slave_sysclk
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing_cpu_cpu_debug_slave_sysclk
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_cpu_cpu_debug_slave_tck.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_cpu_cpu_debug_slave_tck.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_debug_slave_tck
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing_cpu_cpu_debug_slave_tck
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_cpu_cpu_debug_slave_wrapper.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_cpu_cpu_debug_slave_wrapper.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_debug_slave_wrapper
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing_cpu_cpu_debug_slave_wrapper
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_cpu_cpu_test_bench.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_cpu_cpu_test_bench.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_cpu_cpu_test_bench
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing_cpu_cpu_test_bench
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_fifo_in.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_fifo_in.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_fifo_in_dual_clock_fifo
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_fifo_in_dcfifo_with_controls
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_fifo_in_map_avalonst_to_avalonmm
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_fifo_in_dual_clock_fifo_for_other_info
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_fifo_in_map_avalonst_to_avalonmm_other_info
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_fifo_in
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing_fifo_in
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_fifo_out.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_fifo_out.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_fifo_out_dual_clock_fifo
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_fifo_out_dcfifo_with_controls
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_fifo_out_map_avalonmm_to_avalonst
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_fifo_out_dual_clock_fifo_for_other_info
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_fifo_out_map_avalonmm_to_avalonst_other_info
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_fifo_out_map_fifo_other_info_to_avalonst
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_fifo_out
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing_fifo_out
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_jtag_uart.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_jtag_uart.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_jtag_uart_sim_scfifo_w
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_jtag_uart_scfifo_w
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_jtag_uart_sim_scfifo_r
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_jtag_uart_scfifo_r
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_jtag_uart
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing_jtag_uart
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_mem.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_mem.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_mem
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing_mem
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_mm_interconnect_0.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_mm_interconnect_0.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_mm_interconnect_0
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing_mm_interconnect_0
+# End time: 16:54:05 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_mm_interconnect_0_avalon_st_adapter.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:05 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_mm_interconnect_0_avalon_st_adapter.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_mm_interconnect_0_avalon_st_adapter
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing_mm_interconnect_0_avalon_st_adapter
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_timer.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_processing_timer.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_processing_timer
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_processing_timer
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_routing.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_0_routing.v 
+# -- Compiling module dircc_system_node_dual_hps_node_0_routing
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_0_routing
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_1.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_1.v 
+# -- Compiling module dircc_system_node_dual_hps_node_1
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_1
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_1_processing.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_1_processing.v 
+# -- Compiling module dircc_system_node_dual_hps_node_1_processing
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_1_processing
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_1_processing_mem.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_1_processing_mem.v 
+# -- Compiling module dircc_system_node_dual_hps_node_1_processing_mem
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_1_processing_mem
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_1_routing.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_node_1_routing.v 
+# -- Compiling module dircc_system_node_dual_hps_node_1_routing
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_node_1_routing
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_pll.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_pll.v 
+# -- Compiling module dircc_system_node_dual_hps_pll
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_pll
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram.v 
+# -- Compiling module hps_sdram
+# 
+# Top level modules:
+# 	hps_sdram
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_acv_hard_addr_cmd_pads.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_acv_hard_addr_cmd_pads.v 
+# -- Compiling module hps_sdram_p0_acv_hard_addr_cmd_pads
+# 
+# Top level modules:
+# 	hps_sdram_p0_acv_hard_addr_cmd_pads
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_acv_hard_io_pads.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_acv_hard_io_pads.v 
+# -- Compiling module hps_sdram_p0_acv_hard_io_pads
+# 
+# Top level modules:
+# 	hps_sdram_p0_acv_hard_io_pads
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_acv_hard_memphy.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_acv_hard_memphy.v 
+# -- Compiling module hps_sdram_p0_acv_hard_memphy
+# 
+# Top level modules:
+# 	hps_sdram_p0_acv_hard_memphy
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_acv_ldc.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_acv_ldc.v 
+# -- Compiling module hps_sdram_p0_acv_ldc
+# 
+# Top level modules:
+# 	hps_sdram_p0_acv_ldc
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_altdqdqs.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_altdqdqs.v 
+# -- Compiling module hps_sdram_p0_altdqdqs
+# 
+# Top level modules:
+# 	hps_sdram_p0_altdqdqs
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_clock_pair_generator.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_clock_pair_generator.v 
+# -- Compiling module hps_sdram_p0_clock_pair_generator
+# 
+# Top level modules:
+# 	hps_sdram_p0_clock_pair_generator
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_generic_ddio.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/hps_sdram_p0_generic_ddio.v 
+# -- Compiling module hps_sdram_p0_generic_ddio
+# 
+# Top level modules:
+# 	hps_sdram_p0_generic_ddio
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga {/home/patrick/Documents/Coursework/DiRCC/fpga/DE1_SoC.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -sv -work work "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga" /home/patrick/Documents/Coursework/DiRCC/fpga/DE1_SoC.sv 
+# -- Compiling module DE1_SoC
+# 
+# Top level modules:
+# 	DE1_SoC
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altdq_dqs2_acv_connect_to_hard_phy_cyclonev.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altdq_dqs2_acv_connect_to_hard_phy_cyclonev.sv 
+# -- Compiling module altdq_dqs2_acv_connect_to_hard_phy_cyclonev
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altdq_dqs2_acv_connect_to_hard_phy_cyclonev.sv(199): (vlog-2597) '4294967295' is being treated as 32-bit signed integer and will overflow.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altdq_dqs2_acv_connect_to_hard_phy_cyclonev.sv(2258): (vlog-2186) SystemVerilog testbench feature
+# (randomization, coverage or assertion) detected in the design.
+# These features are only supported in Questasim.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altdq_dqs2_acv_connect_to_hard_phy_cyclonev.sv(2262): (vlog-2186) SystemVerilog testbench feature
+# (randomization, coverage or assertion) detected in the design.
+# These features are only supported in Questasim.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altdq_dqs2_acv_connect_to_hard_phy_cyclonev.sv(2242): (vlog-2186) SystemVerilog testbench feature
+# (randomization, coverage or assertion) detected in the design.
+# These features are only supported in Questasim.
+# 
+# Top level modules:
+# 	altdq_dqs2_acv_connect_to_hard_phy_cyclonev
+# End time: 16:54:06 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 4
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_avalon_sc_fifo.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:06 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_avalon_sc_fifo.v 
+# -- Compiling module altera_avalon_sc_fifo
+# 
+# Top level modules:
+# 	altera_avalon_sc_fifo
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_avalon_st_clock_crosser.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_avalon_st_clock_crosser.v 
+# -- Compiling module altera_avalon_st_clock_crosser
+# 
+# Top level modules:
+# 	altera_avalon_st_clock_crosser
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_avalon_st_handshake_clock_crosser.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_avalon_st_handshake_clock_crosser.v 
+# -- Compiling module altera_avalon_st_handshake_clock_crosser
+# 
+# Top level modules:
+# 	altera_avalon_st_handshake_clock_crosser
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_mem_if_dll_cyclonev.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_mem_if_dll_cyclonev.sv 
+# -- Compiling module altera_mem_if_dll_cyclonev
+# 
+# Top level modules:
+# 	altera_mem_if_dll_cyclonev
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_mem_if_hard_memory_controller_top_cyclonev.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_mem_if_hard_memory_controller_top_cyclonev.sv 
+# -- Compiling module altera_mem_if_hard_memory_controller_top_cyclonev
+# 
+# Top level modules:
+# 	altera_mem_if_hard_memory_controller_top_cyclonev
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_mem_if_oct_cyclonev.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_mem_if_oct_cyclonev.sv 
+# -- Compiling module altera_mem_if_oct_cyclonev
+# 
+# Top level modules:
+# 	altera_mem_if_oct_cyclonev
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_address_alignment.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_address_alignment.sv 
+# -- Compiling module altera_merlin_address_alignment
+# 
+# Top level modules:
+# 	altera_merlin_address_alignment
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_arbitrator.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_arbitrator.sv 
+# -- Compiling module altera_merlin_arbitrator
+# -- Compiling module altera_merlin_arb_adder
+# 
+# Top level modules:
+# 	altera_merlin_arbitrator
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_axi_master_ni.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_axi_master_ni.sv 
+# -- Compiling module altera_merlin_axi_master_ni
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_axi_master_ni.sv(763): (vlog-2186) SystemVerilog testbench feature
+# (randomization, coverage or assertion) detected in the design.
+# These features are only supported in Questasim.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_axi_master_ni.sv(767): (vlog-2186) SystemVerilog testbench feature
+# (randomization, coverage or assertion) detected in the design.
+# These features are only supported in Questasim.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_axi_master_ni.sv(701): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_axi_master_ni.sv(703): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_axi_master_ni.sv(705): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_axi_master_ni.sv(707): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_axi_master_ni.sv(722): (vlog-2186) SystemVerilog testbench feature
+# (randomization, coverage or assertion) detected in the design.
+# These features are only supported in Questasim.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_axi_master_ni.sv(738): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_axi_master_ni.sv(740): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_axi_master_ni.sv(742): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_axi_master_ni.sv(744): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	altera_merlin_axi_master_ni
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 11
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_burst_adapter.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_burst_adapter.sv 
+# -- Compiling module altera_merlin_burst_adapter
+# 
+# Top level modules:
+# 	altera_merlin_burst_adapter
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_burst_adapter_13_1.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_burst_adapter_13_1.sv 
+# -- Compiling module altera_merlin_burst_adapter_burstwrap_increment
+# -- Compiling module altera_merlin_burst_adapter_adder
+# -- Compiling module altera_merlin_burst_adapter_subtractor
+# -- Compiling module altera_merlin_burst_adapter_min
+# -- Compiling module altera_merlin_burst_adapter_13_1
+# 
+# Top level modules:
+# 	altera_merlin_burst_adapter_13_1
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_burst_uncompressor.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_burst_uncompressor.sv 
+# -- Compiling module altera_merlin_burst_uncompressor
+# 
+# Top level modules:
+# 	altera_merlin_burst_uncompressor
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_master_agent.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_master_agent.sv 
+# -- Compiling module altera_merlin_master_agent
+# 
+# Top level modules:
+# 	altera_merlin_master_agent
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_master_translator.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_master_translator.sv 
+# -- Compiling module altera_merlin_master_translator
+# 
+# Top level modules:
+# 	altera_merlin_master_translator
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_slave_agent.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_slave_agent.sv 
+# -- Compiling module altera_merlin_slave_agent
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_slave_agent.sv(618): (vlog-2186) SystemVerilog testbench feature
+# (randomization, coverage or assertion) detected in the design.
+# These features are only supported in Questasim.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_slave_agent.sv(488): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_slave_agent.sv(489): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_slave_agent.sv(490): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_slave_agent.sv(491): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_slave_agent.sv(34): (vlog-2186) SystemVerilog testbench feature
+# (randomization, coverage or assertion) detected in the design.
+# These features are only supported in Questasim.
+# 
+# Top level modules:
+# 	altera_merlin_slave_agent
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 6
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_slave_translator.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_slave_translator.sv 
+# -- Compiling module altera_merlin_slave_translator
+# 
+# Top level modules:
+# 	altera_merlin_slave_translator
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv 
+# -- Compiling module altera_merlin_traffic_limiter
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(531): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(602): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(603): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(604): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(605): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(606): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(607): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(612): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(614): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(617): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(618): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(644): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(646): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(647): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(648): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(649): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(650): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(655): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(657): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(660): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_traffic_limiter.sv(661): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	altera_merlin_traffic_limiter
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 21
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_width_adapter.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_merlin_width_adapter.sv 
+# -- Compiling module altera_merlin_width_adapter
+# 
+# Top level modules:
+# 	altera_merlin_width_adapter
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_std_synchronizer_nocut.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -vlog01compat -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/altera_std_synchronizer_nocut.v 
+# -- Compiling module altera_std_synchronizer_nocut
+# 
+# Top level modules:
+# 	altera_std_synchronizer_nocut
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_address_gen.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:07 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_address_gen.sv 
+# -- Compiling module dircc_address_gen
+# 
+# Top level modules:
+# 	dircc_address_gen
+# End time: 16:54:07 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_router.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:08 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_router.sv 
+# -- Compiling module dircc_router
+# -- Compiling module poets_routing_output_router_1stage_pipeline
+# 
+# Top level modules:
+# 	dircc_router
+# End time: 16:54:08 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_HPS_fpga_interfaces.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:08 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_HPS_fpga_interfaces.sv 
+# -- Compiling module dircc_system_node_dual_hps_HPS_fpga_interfaces
+# 
+# Top level modules:
+# 	dircc_system_node_dual_hps_HPS_fpga_interfaces
+# End time: 16:54:08 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_HPS_hps_io_border.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:54:08 on May 10,2017
+# vlog -reportprogress 300 -sv -work dircc_system_node_dual_hps "+incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules" /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_HPS_hps_io_border.sv 
+# -- Compiling module dircc_system_node_dual_hps_HPS_hps_io_border
+# ** Error: /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_HPS_hps_io_border.sv(37): (vlog-2730) Undefined variable: 'intermediate'.
+# ** Error (suppressible): /home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules/dircc_system_node_dual_hps_HPS_hps_io_border.sv(40): (vlog-2388) 'intermediate' already declared in this scope (dircc_system_node_dual_hps_HPS_hps_io_border).
+# End time: 16:54:08 on May 10,2017, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# ** Error: /media/DATA_LINUX/opt/intelFPGA_lite/16.1/modelsim_ase/linuxaloem/vlog failed.
+# Error in macro ./DIRCC_run_msim_rtl_verilog.do line 74
+# /media/DATA_LINUX/opt/intelFPGA_lite/16.1/modelsim_ase/linuxaloem/vlog failed.
+#     while executing
+# "vlog -sv -work dircc_system_node_dual_hps +incdir+/home/patrick/Documents/Coursework/DiRCC/fpga/db/ip/dircc_system_node_dual_hps/submodules {/home/pat..."
+vsim work.DE1_SoC
+# vsim work.DE1_SoC 
+# Start time: 16:54:20 on May 10,2017
+# Loading sv_std.std
+# Loading work.DE1_SoC
+# ** Error: (vsim-3033) /home/patrick/Documents/Coursework/DiRCC/fpga/DE1_SoC.sv(210): Instantiation of 'dircc_system_node_dual_hps' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /DE1_SoC File: /home/patrick/Documents/Coursework/DiRCC/fpga/DE1_SoC.sv
+#         Searched libraries:
+#             /home/patrick/Documents/Coursework/DiRCC/fpga/simulation/modelsim/rtl_work
+# Error loading design
+# End time: 16:54:21 on May 10,2017, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+ls
+# DIRCC.sft
+# DIRCC.vo
+# DIRCC_modelsim.xrf
+# DIRCC_run_msim_rtl_verilog.do
+# DIRCC_run_msim_rtl_verilog.do.bak
+# DIRCC_run_msim_rtl_verilog.do.bak1
+# dircc_system_nios_single
+# dircc_system_nios_single_processing_cpu_cpu_ociram_default_contents.mif
+# dircc_system_nios_single_processing_cpu_cpu_rf_ram_a.mif
+# dircc_system_nios_single_processing_cpu_cpu_rf_ram_b.mif
+# dircc_system_nios_single_processing_mem.hex
+# dircc_system_node_dual
+# dircc_system_node_dual_hps
+# dircc_system_node_dual_hps_node_0_processing_cpu_cpu_ociram_default_contents.mif
+# dircc_system_node_dual_hps_node_0_processing_cpu_cpu_rf_ram_a.mif
+# dircc_system_node_dual_hps_node_0_processing_cpu_cpu_rf_ram_b.mif
+# dircc_system_node_dual_hps_node_0_processing_mem.hex
+# dircc_system_node_dual_hps_node_1_processing_mem.hex
+# dircc_system_node_dual_node_0_processing_cpu_cpu_ociram_default_contents.mif
+# dircc_system_node_dual_node_0_processing_cpu_cpu_rf_ram_a.mif
+# dircc_system_node_dual_node_0_processing_cpu_cpu_rf_ram_b.mif
+# dircc_system_node_dual_node_0_processing_mem.hex
+# dircc_system_node_dual_node_1_processing_mem.hex
+# dircc_system_node_single
+# dircc_system_node_single_node_0_processing_cpu_cpu_ociram_default_contents.mif
+# dircc_system_node_single_node_0_processing_cpu_cpu_rf_ram_a.mif
+# dircc_system_node_single_node_0_processing_cpu_cpu_rf_ram_b.mif
+# dircc_system_node_single_node_0_processing_mem.hex
+# hps_AC_ROM.hex
+# hps_inst_ROM.hex
+# modelsim.ini
+# msim_transcript
+# rtl_work
+cd ~
+# reading /media/DATA_LINUX/opt/intelFPGA_lite/16.1/modelsim_ase/linuxaloem/../modelsim.ini
+ls
+# DS-5-Workspace
+# Desktop
+# Documents
+# Downloads
+# Makefile
+# Music
+# Pictures
+# Public
+# Templates
+# Videos
+# generated
+# hs_err_pid6350.log
+# preloader.ds
+# sbt4e-16.1-workspace
+# transcript
+# uboot.ds
+# vsim.wlf
+# workspaceSigasi
+cd Documents/Coursework/DiRCC/fpga/dircc_avalon_st_terminal_test/testbench/mentor/msim_setup.tcl
+# couldn't change working directory to "Documents/Coursework/DiRCC/fpga/dircc_avalon_st_terminal_test/testbench/mentor/msim_setup.tcl": not a directory
+cd Documents/Coursework/DiRCC/fpga/dircc_avalon_st_terminal_test/testbench/

@@ -7,10 +7,12 @@
 db/
 
 # Simulation files
-fpga/simulation
 **/*_sim/
 **/libraries/
 transcript
+**/cadence/
+**/aldec/
+**/synopsys/
 
 # Quartus build folder
 build/*
