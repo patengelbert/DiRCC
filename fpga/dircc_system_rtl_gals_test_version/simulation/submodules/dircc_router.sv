@@ -102,15 +102,10 @@ module dircc_router #(
     end
 
     always_comb begin
-      if(in_startofpacket && in_valid && address == 'h00010001) begin
-        $display("%0t:ROUTER %d - Received packet to %d", $time, address, in_data);
-      end
-    end
-
-    always_comb begin
         in_ready = out_ready || ~out_valid;
     end
     
+    reg [31:0] cnt;
     reg [31:0] dest_addr;
     // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //| Capture Decision
@@ -135,15 +130,18 @@ module dircc_router #(
         end
 
         if(in_ready && in_valid) begin
+          cnt <= cnt + 1;
           payload_valid <= in_valid;
           in_payload <= {in_data, in_startofpacket, in_endofpacket, in_empty};
           if (in_startofpacket) begin
+            cnt <= 1;
             dest_addr <= in_data;
-            $display("%0t:ROUTER %d - Routing packet to %d", $time, address, in_data);
+            // $display("%0t:ROUTER %d - Routing packet to %d", $time, address, in_data);
             payload_channel <= decision; // we only want to capture the decision if we have the start of a packet
           end 
           if (in_endofpacket) begin
-            $display("%0t:ROUTER %d - End packet to %d", $time, address, dest_addr);
+            assert(cnt == 7) else $display("%0t:ROUTER %d - ERROR - End packet received after %d words", $time, address, cnt);
+            // $display("%0t:ROUTER %d - End packet to %d", $time, address, dest_addr);
             dest_addr <= 'x;
           end
         end
@@ -153,9 +151,9 @@ module dircc_router #(
     // ---------------------------------------------------------------------
     //| Output Mapping
     // ---------------------------------------------------------------------
-    always_comb begin
-      if (out_valid)
-        $display("%0t:ROUTER %d - Sending data: %d to %d", $time, address, out_data, out_channel);
-    end
+    // always_comb begin
+    //   if (out_valid)
+    //     $display("%0t:ROUTER %d - Sending data: %d to %d", $time, address, out_data, out_channel);
+    // end
 
 endmodule

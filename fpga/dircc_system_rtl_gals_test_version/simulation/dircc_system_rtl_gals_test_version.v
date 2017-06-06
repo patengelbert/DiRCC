@@ -1163,7 +1163,7 @@ module dircc_system_rtl_gals_test_version (
 		.output_west_startofpacket  (node_131076_output_west_startofpacket),  //             .startofpacket
 		.output_west_endofpacket    (node_131076_output_west_endofpacket),    //             .endofpacket
 		.output_west_empty          (node_131076_output_west_empty),          //             .empty
-		.reset_reset_n              (reset_13_reset_n)                        //        reset.reset_n
+		.reset_reset_n              (reset_reset_n)                           //        reset.reset_n
 	);
 
 	dircc_system_rtl_gals_test_version_node_131077 node_131077 (

@@ -5,7 +5,7 @@ package dircc_application_pkg;
 
     import dircc_types_pkg::*;
 
-    parameter THREAD_COUNT = 27;
+    parameter THREAD_COUNT = 21;
 
     parameter DEVICE_INSTANCE_COUNT_thread0 = 1;
     parameter DEVICE_INSTANCE_COUNT_thread1 = 1;
@@ -28,12 +28,6 @@ package dircc_application_pkg;
     parameter DEVICE_INSTANCE_COUNT_thread18 = 1;
     parameter DEVICE_INSTANCE_COUNT_thread19 = 1;
     parameter DEVICE_INSTANCE_COUNT_thread20 = 1;
-    parameter DEVICE_INSTANCE_COUNT_thread21 = 1;
-    parameter DEVICE_INSTANCE_COUNT_thread22 = 1;
-    parameter DEVICE_INSTANCE_COUNT_thread23 = 1;
-    parameter DEVICE_INSTANCE_COUNT_thread24 = 1;
-    parameter DEVICE_INSTANCE_COUNT_thread25 = 1;
-    parameter DEVICE_INSTANCE_COUNT_thread26 = 1;
 
     parameter DEV0_OUT_PORT_NUM = 1;
     parameter DEV0_IN_PORT_NUM = 1;
@@ -125,6 +119,7 @@ package dircc_application_pkg;
     parameter DEV17_PORT0_OUT_ADDRESS_NUM = 3;
     parameter DEV17_PORT0_SOURCE_BINDING_NUM = 3;
 
+
     parameter DEV18_OUT_PORT_NUM = 1;
     parameter DEV18_IN_PORT_NUM = 1;
     parameter DEV18_PORT0_OUT_ADDRESS_NUM = 3;
@@ -139,36 +134,6 @@ package dircc_application_pkg;
     parameter DEV20_IN_PORT_NUM = 1;
     parameter DEV20_PORT0_OUT_ADDRESS_NUM = 3;
     parameter DEV20_PORT0_SOURCE_BINDING_NUM = 3;
-
-    parameter DEV21_OUT_PORT_NUM = 1;
-    parameter DEV21_IN_PORT_NUM = 1;
-    parameter DEV21_PORT0_OUT_ADDRESS_NUM = 3;
-    parameter DEV21_PORT0_SOURCE_BINDING_NUM = 3;
-
-    parameter DEV22_OUT_PORT_NUM = 1;
-    parameter DEV22_IN_PORT_NUM = 1;
-    parameter DEV22_PORT0_OUT_ADDRESS_NUM = 4;
-    parameter DEV22_PORT0_SOURCE_BINDING_NUM = 4;
-
-    parameter DEV23_OUT_PORT_NUM = 1;
-    parameter DEV23_IN_PORT_NUM = 1;
-    parameter DEV23_PORT0_OUT_ADDRESS_NUM = 3;
-    parameter DEV23_PORT0_SOURCE_BINDING_NUM = 3;
-
-    parameter DEV24_OUT_PORT_NUM = 1;
-    parameter DEV24_IN_PORT_NUM = 1;
-    parameter DEV24_PORT0_OUT_ADDRESS_NUM = 3;
-    parameter DEV24_PORT0_SOURCE_BINDING_NUM = 3;
-
-    parameter DEV25_OUT_PORT_NUM = 1;
-    parameter DEV25_IN_PORT_NUM = 1;
-    parameter DEV25_PORT0_OUT_ADDRESS_NUM = 4;
-    parameter DEV25_PORT0_SOURCE_BINDING_NUM = 4;
-
-    parameter DEV26_OUT_PORT_NUM = 1;
-    parameter DEV26_IN_PORT_NUM = 1;
-    parameter DEV26_PORT0_OUT_ADDRESS_NUM = 3;
-    parameter DEV26_PORT0_SOURCE_BINDING_NUM = 3;
 
 
     parameter INPUT_COUNT_dev = 1;
@@ -464,19 +429,19 @@ package dircc_application_pkg;
     };
 
 
-    // Thread 3 (0, 8)
+    // Thread 3 (0, 6)
 
     parameter address_t dev3_port0_out_addresses[MAX_OUTPUT_TARGETS-1:0] = '{
             NULL_ADDRESS,            
             NULL_ADDRESS,
             '{
-                    hw_addr : 32'h00000007,
+                    hw_addr : 32'h00000005,
                     sw_addr : 0,
                     port : INPUT_INDEX_dev_in,
                     flag : `DIRCC_ADDRESS_FLAG_NONE
             },
             '{
-                    hw_addr : 32'h00010008,
+                    hw_addr : 32'h00010006,
                     sw_addr : 0,
                     port : INPUT_INDEX_dev_in,
                     flag : `DIRCC_ADDRESS_FLAG_NONE
@@ -735,24 +700,24 @@ package dircc_application_pkg;
             }
     };
 
-    // Thread 7 (1, 8)
+    // Thread 7 (1, 6)
 
     parameter address_t dev7_port0_out_addresses[MAX_OUTPUT_TARGETS-1:0] = '{
             NULL_ADDRESS,
             '{
-                    hw_addr : 32'h00000008,
+                    hw_addr : 32'h00000006,
                     sw_addr : 0,
                     port : INPUT_INDEX_dev_in,
                     flag : `DIRCC_ADDRESS_FLAG_NONE
             },
             '{
-                    hw_addr : 32'h00010007,
+                    hw_addr : 32'h00010005,
                     sw_addr : 0,
                     port : INPUT_INDEX_dev_in,
                     flag : `DIRCC_ADDRESS_FLAG_NONE
             },
             '{
-                    hw_addr : 32'h00020008,
+                    hw_addr : 32'h00020006,
                     sw_addr : 0,
                     port : INPUT_INDEX_dev_in,
                     flag : `DIRCC_ADDRESS_FLAG_NONE
@@ -994,19 +959,19 @@ package dircc_application_pkg;
             }
     };
 
-    // Thread 11 (2, 8)
+    // Thread 11 (2, 6)
 
     parameter address_t dev11_port0_out_addresses[MAX_OUTPUT_TARGETS-1:0] = '{
             NULL_ADDRESS,
             NULL_ADDRESS,
             '{
-                    hw_addr : 32'h00020007,
+                    hw_addr : 32'h00020005,
                     sw_addr : 0,
                     port : INPUT_INDEX_dev_in,
                     flag : `DIRCC_ADDRESS_FLAG_NONE
             },
             '{
-                    hw_addr : 32'h00010008,
+                    hw_addr : 32'h00010006,
                     sw_addr : 0,
                     port : INPUT_INDEX_dev_in,
                     flag : `DIRCC_ADDRESS_FLAG_NONE
@@ -1664,412 +1629,6 @@ package dircc_application_pkg;
             }
     };
 
-    // Thread 21 (0, 6)
-
-    parameter address_t dev21_port0_out_addresses[MAX_OUTPUT_TARGETS-1:0] = '{
-            NULL_ADDRESS,
-            '{
-                    hw_addr : 32'h00000005,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00010006,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00000007,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            }
-    };
-
-    parameter InputPortBinding dev21_port0_binding = '{
-        address : NULL_ADDRESS,
-        properties : '{
-                    weight : 1
-        }
-    };
-
-    parameter InputPortSources dev21_sources[MAX_INPUT_PORTS-1:0] = '{
-            '{
-                    numSources : DEV21_PORT0_SOURCE_BINDING_NUM,
-                    sourceBindings : '{
-                        NULL_BINDING,
-                        dev21_port0_binding,
-                        dev21_port0_binding,
-                        dev21_port0_binding
-                    }
-            }
-    };
-
-    parameter OutputPortTargets dev21_targets[MAX_OUTPUT_PORTS-1:0] = '{
-            '{
-                    numTargets : DEV21_PORT0_OUT_ADDRESS_NUM,
-                    targets : dev21_port0_out_addresses 
-            }
-    };
-
-    parameter DeviceProperties dev21_properties = '{
-            neighbourCount : 3,
-            selfWeight : 1,
-            initValue : 1,
-            isDirichlet : 1
-    };
-
-    parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread21[MAX_DEVICES-1:0] = '{
-            '{
-                    properties : dev21_properties,
-                    index : 0,
-                    targets : dev21_targets,
-                    sources : dev21_sources
-            }
-    };
-
-    // Thread 22 (1, 6)
-
-    parameter address_t dev22_port0_out_addresses[MAX_OUTPUT_TARGETS-1:0] = '{
-            '{
-                    hw_addr : 32'h00000006,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00010005,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00010007,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00020006,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            }
-    };
-
-    parameter InputPortBinding dev22_port0_binding = '{
-        address : NULL_ADDRESS,
-        properties : '{
-                    weight : 1
-        }
-    };
-
-    parameter InputPortSources dev22_sources[MAX_INPUT_PORTS-1:0] = '{
-            '{
-                    numSources : DEV22_PORT0_SOURCE_BINDING_NUM,
-                    sourceBindings : '{
-                        dev22_port0_binding,
-                        dev22_port0_binding,
-                        dev22_port0_binding,
-                        dev22_port0_binding
-                    }
-            }
-    };
-
-    parameter OutputPortTargets dev22_targets[MAX_OUTPUT_PORTS-1:0] = '{
-            '{
-                    numTargets : DEV22_PORT0_OUT_ADDRESS_NUM,
-                    targets : dev22_port0_out_addresses 
-            }
-    };
-
-    parameter DeviceProperties dev22_properties = '{
-            neighbourCount : 4,
-            selfWeight : 1,
-            initValue : 0,
-            isDirichlet : 0
-    };
-
-    parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread22[MAX_DEVICES-1:0] = '{
-            '{
-                    properties : dev22_properties,
-                    index : 0,
-                    targets : dev22_targets,
-                    sources : dev22_sources
-            }
-    };
-
-    // Thread 23 (2, 6)
-
-    parameter address_t dev23_port0_out_addresses[MAX_OUTPUT_TARGETS-1:0] = '{
-            NULL_ADDRESS,
-            '{
-                    hw_addr : 32'h00010006,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00020007,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00020005,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            }
-    };
-
-    parameter InputPortBinding dev23_port0_binding = '{
-        address : NULL_ADDRESS,
-        properties : '{
-                    weight : 1
-        }
-    };
-
-    parameter InputPortSources dev23_sources[MAX_INPUT_PORTS-1:0] = '{
-            '{
-                    numSources : DEV23_PORT0_SOURCE_BINDING_NUM,
-                    sourceBindings : '{
-                        NULL_BINDING,
-                        dev23_port0_binding,
-                        dev23_port0_binding,
-                        dev23_port0_binding
-                    }
-            }
-    };
-
-    parameter OutputPortTargets dev23_targets[MAX_OUTPUT_PORTS-1:0] = '{
-            '{
-                    numTargets : DEV23_PORT0_OUT_ADDRESS_NUM,
-                    targets : dev23_port0_out_addresses 
-            }
-    };
-
-    parameter DeviceProperties dev23_properties = '{
-            neighbourCount : 3,
-            selfWeight : 1,
-            initValue : 0,
-            isDirichlet : 0
-    };
-
-    parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread23[MAX_DEVICES-1:0] = '{
-            '{
-                    properties : dev23_properties,
-                    index : 0,
-                    targets : dev23_targets,
-                    sources : dev23_sources
-            }
-    };
-
-    // Thread 24 (0, 7)
-
-    parameter address_t dev24_port0_out_addresses[MAX_OUTPUT_TARGETS-1:0] = '{
-            NULL_ADDRESS,
-            '{
-                    hw_addr : 32'h00000006,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00010007,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00000008,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            }
-    };
-
-    parameter InputPortBinding dev24_port0_binding = '{
-        address : NULL_ADDRESS,
-        properties : '{
-                    weight : 1
-        }
-    };
-
-    parameter InputPortSources dev24_sources[MAX_INPUT_PORTS-1:0] = '{
-            '{
-                    numSources : DEV24_PORT0_SOURCE_BINDING_NUM,
-                    sourceBindings : '{
-                        NULL_BINDING,
-                        dev24_port0_binding,
-                        dev24_port0_binding,
-                        dev24_port0_binding
-                    }
-            }
-    };
-
-    parameter OutputPortTargets dev24_targets[MAX_OUTPUT_PORTS-1:0] = '{
-            '{
-                    numTargets : DEV24_PORT0_OUT_ADDRESS_NUM,
-                    targets : dev24_port0_out_addresses 
-            }
-    };
-
-    parameter DeviceProperties dev24_properties = '{
-            neighbourCount : 3,
-            selfWeight : 1,
-            initValue : 1,
-            isDirichlet : 1
-    };
-
-    parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread24[MAX_DEVICES-1:0] = '{
-            '{
-                    properties : dev24_properties,
-                    index : 0,
-                    targets : dev24_targets,
-                    sources : dev24_sources
-            }
-    };
-
-    // Thread 25 (1, 7)
-
-    parameter address_t dev25_port0_out_addresses[MAX_OUTPUT_TARGETS-1:0] = '{
-            '{
-                    hw_addr : 32'h00000007,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00010006,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00010008,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00020007,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            }
-    };
-
-    parameter InputPortBinding dev25_port0_binding = '{
-        address : NULL_ADDRESS,
-        properties : '{
-                    weight : 1
-        }
-    };
-
-    parameter InputPortSources dev25_sources[MAX_INPUT_PORTS-1:0] = '{
-            '{
-                    numSources : DEV25_PORT0_SOURCE_BINDING_NUM,
-                    sourceBindings : '{
-                        dev25_port0_binding,
-                        dev25_port0_binding,
-                        dev25_port0_binding,
-                        dev25_port0_binding
-                    }
-            }
-    };
-
-    parameter OutputPortTargets dev25_targets[MAX_OUTPUT_PORTS-1:0] = '{
-            '{
-                    numTargets : DEV25_PORT0_OUT_ADDRESS_NUM,
-                    targets : dev25_port0_out_addresses 
-            }
-    };
-
-    parameter DeviceProperties dev25_properties = '{
-            neighbourCount : 4,
-            selfWeight : 1,
-            initValue : 0,
-            isDirichlet : 0
-    };
-
-    parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread25[MAX_DEVICES-1:0] = '{
-            '{
-                    properties : dev25_properties,
-                    index : 0,
-                    targets : dev25_targets,
-                    sources : dev25_sources
-            }
-    };
-
-    // Thread 26 (2, 7)
-
-    parameter address_t dev26_port0_out_addresses[MAX_OUTPUT_TARGETS-1:0] = '{
-            NULL_ADDRESS,
-            '{
-                    hw_addr : 32'h00010007,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00020008,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            },
-            '{
-                    hw_addr : 32'h00020006,
-                    sw_addr : 0,
-                    port : INPUT_INDEX_dev_in,
-                    flag : `DIRCC_ADDRESS_FLAG_NONE
-            }
-    };
-
-    parameter InputPortBinding dev26_port0_binding = '{
-        address : NULL_ADDRESS,
-        properties : '{
-                    weight : 1
-        }
-    };
-
-    parameter InputPortSources dev26_sources[MAX_INPUT_PORTS-1:0] = '{
-            '{
-                    numSources : DEV26_PORT0_SOURCE_BINDING_NUM,
-                    sourceBindings : '{
-                        NULL_BINDING,
-                        dev26_port0_binding,
-                        dev26_port0_binding,
-                        dev26_port0_binding
-                    }
-            }
-    };
-
-    parameter OutputPortTargets dev26_targets[MAX_OUTPUT_PORTS-1:0] = '{
-            '{
-                    numTargets : DEV26_PORT0_OUT_ADDRESS_NUM,
-                    targets : dev26_port0_out_addresses 
-            }
-    };
-
-    parameter DeviceProperties dev26_properties = '{
-            neighbourCount : 3,
-            selfWeight : 1,
-            initValue : 0,
-            isDirichlet : 0
-    };
-
-    parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread26[MAX_DEVICES-1:0] = '{
-            '{
-                    properties : dev26_properties,
-                    index : 0,
-                    targets : dev26_targets,
-                    sources : dev26_sources
-            }
-    };
-
     parameter PThreadContext dircc_thread_contexts[THREAD_COUNT-1:0] = '{
             '{
                     threadId : 32'h00000000,
@@ -2090,7 +1649,7 @@ package dircc_application_pkg;
                     devices : DEVICE_INSTANCE_CONTEXTS_thread2
             },
             '{
-                    threadId : 32'h00000008,
+                    threadId : 32'h00000006,
                     properties : inst_props,
                     numDevices : DEVICE_INSTANCE_COUNT_thread3,
                     devices : DEVICE_INSTANCE_CONTEXTS_thread3
@@ -2114,7 +1673,7 @@ package dircc_application_pkg;
                     devices : DEVICE_INSTANCE_CONTEXTS_thread6
             },
             '{
-                    threadId : 32'h00010008,
+                    threadId : 32'h00010006,
                     properties : inst_props,
                     numDevices : DEVICE_INSTANCE_COUNT_thread7,
                     devices : DEVICE_INSTANCE_CONTEXTS_thread7
@@ -2138,7 +1697,7 @@ package dircc_application_pkg;
                     devices : DEVICE_INSTANCE_CONTEXTS_thread10
             },
             '{
-                    threadId : 32'h00020008,
+                    threadId : 32'h00020006,
                     properties : inst_props,
                     numDevices : DEVICE_INSTANCE_COUNT_thread11,
                     devices : DEVICE_INSTANCE_CONTEXTS_thread11
@@ -2196,42 +1755,6 @@ package dircc_application_pkg;
                     properties : inst_props,
                     numDevices : DEVICE_INSTANCE_COUNT_thread20,
                     devices : DEVICE_INSTANCE_CONTEXTS_thread20
-            },
-            '{
-                    threadId : 32'h00000006,
-                    properties : inst_props,
-                    numDevices : DEVICE_INSTANCE_COUNT_thread21,
-                    devices : DEVICE_INSTANCE_CONTEXTS_thread21
-            },
-            '{
-                    threadId : 32'h00010006,
-                    properties : inst_props,
-                    numDevices : DEVICE_INSTANCE_COUNT_thread22,
-                    devices : DEVICE_INSTANCE_CONTEXTS_thread22
-            },
-            '{
-                    threadId : 32'h00020006,
-                    properties : inst_props,
-                    numDevices : DEVICE_INSTANCE_COUNT_thread23,
-                    devices : DEVICE_INSTANCE_CONTEXTS_thread23
-            },
-            '{
-                    threadId : 32'h00000007,
-                    properties : inst_props,
-                    numDevices : DEVICE_INSTANCE_COUNT_thread24,
-                    devices : DEVICE_INSTANCE_CONTEXTS_thread24
-            },
-            '{
-                    threadId : 32'h00010007,
-                    properties : inst_props,
-                    numDevices : DEVICE_INSTANCE_COUNT_thread25,
-                    devices : DEVICE_INSTANCE_CONTEXTS_thread25
-            },
-            '{
-                    threadId : 32'h00020007,
-                    properties : inst_props,
-                    numDevices : DEVICE_INSTANCE_COUNT_thread26,
-                    devices : DEVICE_INSTANCE_CONTEXTS_thread26
             }
     };
 

@@ -119,7 +119,7 @@ module dircc_avalon_st_packet_receiver(
             else $display("%0t:%m - Expected startofpacket = %0d. Expected no endofpacket = %0d", $time, input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             temp_packet.dest_addr.hw_addr <= input_fifo_out_data;
             packet_state <= DEST_ADDR1;
-            $display("%0t:%m - Received dest_hw_addr = %d", $time, input_fifo_out_data);
+            // $display("%0t:%m - Received dest_hw_addr = %d", $time, input_fifo_out_data);
           end
         end
         DEST_ADDR1: begin
@@ -128,7 +128,7 @@ module dircc_avalon_st_packet_receiver(
             else $display("%0t:%m - Expected no startofpacket = %0d. Expected no endofpacket = %0d", $time, input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             {temp_packet.dest_addr.sw_addr, temp_packet.dest_addr.port, temp_packet.dest_addr.flag} <= input_fifo_out_data[31:8];
             packet_state <= SRC_ADDR0;
-            $display("%0t:%m - Received dest_sw_addr = %d", $time, input_fifo_out_data);
+            // $display("%0t:%m - Received dest_sw_addr = %d", $time, input_fifo_out_data);
           end
         end
         SRC_ADDR0: begin
@@ -137,7 +137,7 @@ module dircc_avalon_st_packet_receiver(
             else $display("%0t:%m - Expected no startofpacket = %0d. Expected no endofpacket = %0d", $time, input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             temp_packet.src_addr.hw_addr <= input_fifo_out_data;
             packet_state <= SRC_ADDR1;
-            $display("%0t:%m - Received src_hw_addr = %d", $time, input_fifo_out_data);
+            // $display("%0t:%m - Received src_hw_addr = %d", $time, input_fifo_out_data);
           end
         end
         SRC_ADDR1: begin
@@ -146,7 +146,7 @@ module dircc_avalon_st_packet_receiver(
             else $display("%0t:%m - Expected no startofpacket = %0d. Expected no endofpacket = %0d", $time, input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             {temp_packet.src_addr.sw_addr, temp_packet.src_addr.port, temp_packet.src_addr.flag} <= input_fifo_out_data[31:8];
             packet_state <= LAMPORT;
-            $display("%0t:%m - Received src_sw_addr = %d", $time, input_fifo_out_data);
+            // $display("%0t:%m - Received src_sw_addr = %d", $time, input_fifo_out_data);
           end
         end
         LAMPORT: begin
@@ -155,7 +155,7 @@ module dircc_avalon_st_packet_receiver(
             else $display("%0t:%m - Expected no startofpacket = %0d. Expected no endofpacket = %0d", $time, input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             temp_packet.lamport <= input_fifo_out_data;
             packet_state <= DATA0;
-            $display("%0t:%m - Received lamport = %d", $time, input_fifo_out_data);
+            // $display("%0t:%m - Received lamport = %d", $time, input_fifo_out_data);
           end
         end
         DATA0: begin
@@ -164,7 +164,7 @@ module dircc_avalon_st_packet_receiver(
             else $display("%0t:%m - Expected no startofpacket = %0d. Expected no endofpacket = %0d", $time, input_fifo_out_startofpacket, input_fifo_out_endofpacket);
             temp_packet.data[31:0] <= input_fifo_out_data;
             packet_state <= DATA1;
-            $display("%0t:%m - Received data0 = %d", $time, input_fifo_out_data);
+            // $display("%0t:%m - Received data0 = %d", $time, input_fifo_out_data);
           end
         end
         DATA1: begin
@@ -174,7 +174,7 @@ module dircc_avalon_st_packet_receiver(
             temp_packet.data[63:32] <= input_fifo_out_data;
             receive_nearly_done <= 1;
             packet_state <= DATA2;
-            $display("%0t:%m - Received data1 = %d", $time, input_fifo_out_data);
+            // $display("%0t:%m - Received data1 = %d", $time, input_fifo_out_data);
           end
         end
         DATA2: begin
@@ -186,7 +186,7 @@ module dircc_avalon_st_packet_receiver(
             packet_state <= DEST_ADDR0;
             packet_valid <= 1;
             receive_done <= 1;
-            $display("%0t:%m - Received data2 = %d", $time, input_fifo_out_data);
+            // $display("%0t:%m - Received data2 = %d", $time, input_fifo_out_data);
           end
         end
       endcase
