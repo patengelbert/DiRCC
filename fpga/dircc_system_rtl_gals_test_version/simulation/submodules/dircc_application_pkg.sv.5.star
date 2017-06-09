@@ -57,15 +57,19 @@ package dircc_application_pkg;
     parameter MAX_INPUT_PORTS = 1;
     parameter MAX_DEVICES = 1;
 
-    typedef struct packed {
+     typedef struct packed {
         bit[12:0] t;
-        bit[14:0] temp;
+        bit[13:0] temp;
+        bit[31:0] source;
+        bit[31:0] count;
+        bit isDesignatedPacket;
     } temp_msg_t;
 
     typedef struct packed {
+        bit isDesignatedSender;
         bit [12:0] t;
-        bit [14:0] heat;
-        bit [14:0] accNow;
+        bit [13:0] heat;
+        bit [13:0] accNow;
         bit [2:0] seenNow;
         bit [14:0] accNext;
         bit [2:0] seenNext;
@@ -84,6 +88,7 @@ package dircc_application_pkg;
         int selfWeight;         // Weighting of self in relaxation kernel.
         int initValue;          // Value at startup
         int isDirichlet;           // Indicates cells that have a forcing condition
+        int isSender;
     } DeviceProperties;
 
     typedef struct packed {
