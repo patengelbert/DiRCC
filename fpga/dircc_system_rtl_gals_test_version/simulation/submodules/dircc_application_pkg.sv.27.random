@@ -191,18 +191,18 @@ package dircc_application_pkg;
     parameter MAX_DEVICES = 1;
 
     typedef struct packed {
-        bit[31:0] t;
-        bit[14:0] temp;
+        bit[12:0] t;
+        bit[13:0] temp;
         bit[31:0] source;
-        bit[11:0] count;
+        bit[31:0] count;
         bit isDesignatedPacket;
     } temp_msg_t;
 
     typedef struct packed {
         bit isDesignatedSender;
-        bit [11:0] t;
-        bit [14:0] heat;
-        bit [14:0] accNow;
+        bit [12:0] t;
+        bit [13:0] heat;
+        bit [13:0] accNow;
         bit [2:0] seenNow;
         bit [14:0] accNext;
         bit [2:0] seenNext;
@@ -326,7 +326,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread0[MAX_DEVICES-1:0] = '{
@@ -396,7 +396,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread1[MAX_DEVICES-1:0] = '{
@@ -467,7 +467,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread2[MAX_DEVICES-1:0] = '{
@@ -532,7 +532,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread3[MAX_DEVICES-1:0] = '{
@@ -604,7 +604,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 0,
             isDirichlet : 0,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread4[MAX_DEVICES-1:0] = '{
@@ -680,7 +680,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread5[MAX_DEVICES-1:0] = '{
@@ -756,7 +756,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread6[MAX_DEVICES-1:0] = '{
@@ -826,7 +826,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread7[MAX_DEVICES-1:0] = '{
@@ -890,7 +890,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread8[MAX_DEVICES-1:0] = '{
@@ -960,7 +960,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread9[MAX_DEVICES-1:0] = '{
@@ -1030,7 +1030,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread10[MAX_DEVICES-1:0] = '{
@@ -1094,7 +1094,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread11[MAX_DEVICES-1:0] = '{
@@ -1164,7 +1164,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread12[MAX_DEVICES-1:0] = '{
@@ -1240,7 +1240,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 0,
             isDirichlet : 0,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread13[MAX_DEVICES-1:0] = '{
@@ -1310,7 +1310,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread14[MAX_DEVICES-1:0] = '{
@@ -1380,7 +1380,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread15[MAX_DEVICES-1:0] = '{
@@ -1456,7 +1456,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 0,
             isDirichlet : 0,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread16[MAX_DEVICES-1:0] = '{
@@ -1526,7 +1526,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread17[MAX_DEVICES-1:0] = '{
@@ -1596,7 +1596,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread18[MAX_DEVICES-1:0] = '{
@@ -1672,7 +1672,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 0,
             isDirichlet : 0,
-            isSender : 0
+            isSender : 1
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread19[MAX_DEVICES-1:0] = '{
@@ -1742,7 +1742,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread20[MAX_DEVICES-1:0] = '{
@@ -1812,7 +1812,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread21[MAX_DEVICES-1:0] = '{
@@ -1888,7 +1888,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 0,
             isDirichlet : 0,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread22[MAX_DEVICES-1:0] = '{
@@ -1958,7 +1958,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread23[MAX_DEVICES-1:0] = '{
@@ -2028,7 +2028,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread24[MAX_DEVICES-1:0] = '{
@@ -2104,7 +2104,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 0,
             isDirichlet : 0,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread25[MAX_DEVICES-1:0] = '{
@@ -2174,7 +2174,7 @@ package dircc_application_pkg;
             selfWeight : 1,
             initValue : 1,
             isDirichlet : 1,
-            isSender : 1
+            isSender : 0
     };
 
     parameter DeviceContext DEVICE_INSTANCE_CONTEXTS_thread26[MAX_DEVICES-1:0] = '{

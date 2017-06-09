@@ -191,8 +191,8 @@ package dircc_application_pkg;
     parameter MAX_DEVICES = 1;
 
     typedef struct packed {
-        bit[11:0] t;
-        bit[14:0] temp;
+        bit[12:0] t;
+        bit[13:0] temp;
         bit[31:0] source;
         bit[31:0] count;
         bit isDesignatedPacket;
@@ -200,9 +200,9 @@ package dircc_application_pkg;
 
     typedef struct packed {
         bit isDesignatedSender;
-        bit [11:0] t;
-        bit [14:0] heat;
-        bit [14:0] accNow;
+        bit [12:0] t;
+        bit [13:0] heat;
+        bit [13:0] accNow;
         bit [2:0] seenNow;
         bit [14:0] accNext;
         bit [2:0] seenNext;
