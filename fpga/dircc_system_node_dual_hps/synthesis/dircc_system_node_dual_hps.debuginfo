@@ -5,7 +5,7 @@
  version="16.1"
  fabric="QSYS">
  <!-- Format version 16.1 203 (Future versions may contain additional information.) -->
- <!-- 2017.05.12.16:47:15 -->
+ <!-- 2017.06.05.19:35:51 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -57,7 +57,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1494603968</value>
+  <value>1496687682</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -39762,7 +39762,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1494603968</value>
+   <value>1496687682</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -42585,7 +42585,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1494603968</value>
+   <value>1496687682</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -53664,7 +53664,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1494603968</value>
+   <value>1496687682</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -60842,7 +60842,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1494603968</value>
+   <value>1496687682</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -63665,7 +63665,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1494603968</value>
+   <value>1496687682</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -74744,7 +74744,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1494603968</value>
+   <value>1496687682</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -94959,5 +94959,5 @@ parameters are a RESULT of the module parameters. -->
   <version>16.1</version>
  </plugin>
  <reportVersion>16.1 203</reportVersion>
- <uniqueIdentifier>7C5CF827F7180000015BFD5721F7</uniqueIdentifier>
+ <uniqueIdentifier>8E79A33EB7180000015C798A1C7A</uniqueIdentifier>
 </EnsembleReport>

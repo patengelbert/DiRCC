@@ -974,16 +974,11 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name BOARD "DE1-SoC Board"
 set_global_assignment -name EDA_RUN_TOOL_AUTOMATICALLY OFF -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS NOT_USED -section_id eda_simulation
-set_global_assignment -name QSYS_FILE dircc_system_rtl_counter.qsys
-set_global_assignment -name SYSTEMVERILOG_FILE DE1_SoC.sv
-set_global_assignment -name SDC_FILE DE1_SoC.sdc
-set_global_assignment -name CDF_FILE ../build/build_chain.cdf
 set_global_assignment -name ALLOW_ANY_RAM_SIZE_FOR_RECOGNITION ON
 set_global_assignment -name ALLOW_ANY_ROM_SIZE_FOR_RECOGNITION ON
 set_global_assignment -name ALLOW_ANY_SHIFT_REGISTER_SIZE_FOR_RECOGNITION ON
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE ../build/dircc_counter_rtl.stp
-set_global_assignment -name SIGNALTAP_FILE ../build/dircc_counter_rtl.stp
 set_global_assignment -name SLD_NODE_CREATOR_ID 110 -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_ENTITY_NAME sld_signaltap -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_clk -to CLOCK_50 -section_id auto_signaltap_0
@@ -1110,5 +1105,14 @@ set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[16] -
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[23] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[24] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[28] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_global_assignment -name SLD_FILE db/dircc_counter_rtl_auto_stripped.stp
+set_global_assignment -name SYSTEMVERILOG_FILE components/dircc_processing_gals_heat/dircc_system_states_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE components/dircc_processing_gals_heat/dircc_types.sv
+set_global_assignment -name QSYS_FILE dircc_system_rtl_gals.qsys
+set_global_assignment -name QSYS_FILE dircc_system_rtl_counter.qsys
+set_global_assignment -name SYSTEMVERILOG_FILE DE1_SoC.sv
+set_global_assignment -name SDC_FILE DE1_SoC.sdc
+set_global_assignment -name CDF_FILE ../build/build_chain.cdf
+set_global_assignment -name SIGNALTAP_FILE ../build/dircc_counter_rtl.stp
+set_global_assignment -name SEARCH_PATH components/dircc_processing_gals_heat
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SLD_FILE db/dircc_counter_rtl_auto_stripped.stp

@@ -66,23 +66,29 @@ module dircc_receive_handler(
             write_state.dircc_state <= read_state.dircc_state;
             if (receive_done) begin
 
+                if (dircc_thread_contexts[address].devices[DEVICE_ID].properties.isSender && packet_data.isDesignatedPacket) begin
+                    $display("%0t:THREAD %d - ERROR: Received packet even though not designated receiver", $time, (THREAD_COUNT - address - 1));
+                end else if (packet_data.isDesignatedPacket) begin
+                    $display("%0t:THREAD %d - Received packet %d after %0t->%0t=%0t clk", $time, (THREAD_COUNT - address - 1), packet_data.t, packet_data.count,($time/2000), (packet_data.count-($time/2000)));
+                end
+
                 if(packet_data.t == dev_state_old.t) begin
-                    $display("%0t:THREAD %d - Received packet for current time -> %d", $time, address, packet_data.t);
+                    // $display("%0t:THREAD %d - Received packet for current time -> %d from source %d", $time, (THREAD_COUNT - address - 1), packet_data.t, (THREAD_COUNT - packet_data.source - 1));
                     dev_state_new.seenNow <= dev_state_old.seenNow + 1;
                     dev_state_new.accNow <= dev_state_old.accNow + (packet_data.temp * dircc_thread_contexts[address].devices[DEVICE_ID].sources[port_id].sourceBindings[edge_id].properties.weight);
                 end else if (packet_data.t == (dev_state_old.t + 1)) begin
-                    $display("%0t:THREAD %d - Received packet for next time -> %d", $time, address, packet_data.t);
+                    // $display("%0t:THREAD %d - Received packet for next time -> %d from source %d", $time, (THREAD_COUNT - address - 1), packet_data.t, (THREAD_COUNT - packet_data.source - 1));
                     dev_state_new.seenNext <= dev_state_old.seenNext + 1;
                     dev_state_new.accNext <= dev_state_old.accNext + (packet_data.temp * dircc_thread_contexts[address].devices[DEVICE_ID].sources[port_id].sourceBindings[edge_id].properties.weight);
                 end else begin
-                    $display("%0t:THREAD %d - ERROR: Received packet of unknown timestamp %d", $time, address, packet_data.t);
+                    $display("%0t:THREAD %d - ERROR: Received packet of unknown timestamp %d from source %d", $time, (THREAD_COUNT - address - 1), packet_data.t, (THREAD_COUNT - packet_data.source - 1));
                 end
                 write_state_valid <= 1;
                 packet_handled <= 1;
 
                 if (dev_state_old.t == dircc_thread_contexts[address].properties.maxTime
                     && dev_state_old.seenNow + 1 == dircc_thread_contexts[address].devices[DEVICE_ID].properties.neighbourCount) begin
-                    $display("%0t:THREAD %d - Woo! Device has finished", $time, address);
+                    $display("%0t:THREAD %d - Woo! Device has finished", $time, (THREAD_COUNT - address - 1));
                     write_state.dircc_state <= (DIRCC_STATE_DONE | DIRCC_STATE_STOPPED);
                 end
             end else begin;

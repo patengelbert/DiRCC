@@ -95,8 +95,8 @@ module dircc_router #(
       else if (x_packet_address > x_address) decision = EAST; // Send it east
       else if (y_packet_address > y_address) decision = SOUTH; // Send it south
       else if (x_packet_address < x_address) decision = WEST; // Send it west
-      else begin
-        $display("Unknown addresses");
+      else if (reset_n) begin
+        $display("%0t:ROUTER %d - Unknown addresses %d:%d -> %d", $time, address, y_packet_address, x_packet_address, in_data);
         decision = NORTH;
       end
     end

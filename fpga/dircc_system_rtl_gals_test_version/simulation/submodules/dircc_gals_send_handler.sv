@@ -56,6 +56,12 @@ module dircc_send_handler(
         end else begin
             dev_state_new.t <= dev_state_old.t + 1;
             packet_data.t <= dev_state_old.t + 1;
+            packet_data.count <= ($time/2000);
+            packet_data.source <= address;
+
+            if (dev_state_old.isDesignatedSender) begin
+                packet_data.isDesignatedPacket <= 1;
+            end
 
             if(dircc_thread_contexts[address].devices[DEVICE_ID].properties.isDirichlet) begin
                 dev_state_new.heat <= dev_state_old.accNow + dircc_thread_contexts[address].devices[DEVICE_ID].properties.initValue;
@@ -68,7 +74,7 @@ module dircc_send_handler(
                     dircc_thread_contexts[address].devices[DEVICE_ID].properties.selfWeight;
                 packet_data.temp <= dev_state_old.accNow;
             end
-
+            dev_state_new.isDesignatedSender <= dev_state_old.isDesignatedSender;
             dev_state_new.seenNow <= dev_state_old.seenNext;
             dev_state_new.seenNext <= 0;
             dev_state_new.accNext <= 0;
