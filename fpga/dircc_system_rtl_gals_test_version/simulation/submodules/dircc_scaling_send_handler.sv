@@ -54,18 +54,14 @@ module dircc_send_handler(
             packet_out_valid <= 0;
             write_state_valid <= 0;
         end else begin
-            if (dev_state_old.isDesignatedSender) begin
-                dev_state_new.count <= dev_state_old.count + 1;
-                dev_state_new.isDesignatedSender <= dev_state_old.isDesignatedSender;
-                packet_data.isDesignatedPacket <= 1'b1;
-                packet_data.id <= dev_state_old.count;
-                packet_data.tick <= ($time/2000);
-                write_state_valid <= 1;
-            end else begin
-                packet_data.isDesignatedPacket <= 1'b0;
-                write_state_valid <= 0;
-            end
+            dev_state_new.count <= dev_state_old.count;
+            dev_state_new.accumulate <= dev_state_old.accumulate;
+            dev_state_new.sent <= 1'b1;
+            packet_data.count <= dev_state_old.count;
+            packet_data.source <= (THREAD_COUNT - address - 1);
             packet_out_valid <= 1;
+            
+            write_state_valid <= 1;
         end
     end
 

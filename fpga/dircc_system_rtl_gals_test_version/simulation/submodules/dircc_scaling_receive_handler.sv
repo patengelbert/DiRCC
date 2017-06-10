@@ -62,25 +62,23 @@ module dircc_receive_handler(
             packet_handled <= 0;
             dev_state_new <= 0;
         end else begin
-            dev_state_new <= dev_state_old;
             write_state.dircc_state <= read_state.dircc_state;
+            dev_state_new.accumulate <= dev_state_old.accumulate;
+            dev_state_new.sent <= dev_state_old.sent;
+            dev_state_new.count <= dev_state_old.count;
             if (receive_done) begin
-                if (dircc_thread_contexts[address].devices[DEVICE_ID].properties.isSender) begin
-                    $display("%0t:THREAD %d - ERROR: Received packet even though not designated receiver", $time, (THREAD_COUNT - address - 1));
-                    write_state_valid <= 0;
-                end else begin
-                    if (packet_data.isDesignatedPacket) begin
-                    $display("%0t:THREAD %d - Received packet %d after %0t clk", $time, (THREAD_COUNT - address - 1), packet_data.id, (($time/2000)-packet_data.tick));
-                        dev_state_new.count <= dev_state_old.count + 1;
-                    end else begin
-                        dev_state_new.count <= dev_state_old.count;
-                    end
-                    write_state_valid <= 1;
-                end
+                $display("%0t:THREAD %d - Received packet with count %d from source %d", $time, (THREAD_COUNT - address - 1), packet_data.count, packet_data.source);
                 packet_handled <= 1;
+                dev_state_new.accumulate <= dev_state_old.accumulate + packet_data.count;
+
+                if ((dev_state_old.accumulate + packet_data.count) >= dircc_thread_contexts[address].properties.total) begin
+                    $display("%0t:THREAD %d - Woo! Device has finished", $time, (THREAD_COUNT - address - 1));
+                    write_state.dircc_state <= (DIRCC_STATE_DONE | DIRCC_STATE_STOPPED);
+                end
+                write_state_valid <= 1;
             end else begin;
-                write_state_valid <= 0;
                 packet_handled <= 0;
+                write_state_valid <= 0;
             end
         end
     end
