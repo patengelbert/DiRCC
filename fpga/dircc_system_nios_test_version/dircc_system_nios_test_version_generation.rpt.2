@@ -1,0 +1,382 @@
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate /home/patrick/Documents/Coursework/DiRCC/fpga/dircc_system_nios_test_version.qsys --synthesis=VERILOG --output-directory=/home/patrick/Documents/Coursework/DiRCC/fpga/dircc_system_nios_test_version/synthesis --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading fpga/dircc_system_nios_test_version.qsys
+Progress: Reading input file
+Progress: Adding HPS [altera_hps 16.1]
+Progress: Parameterizing module HPS
+Progress: Adding clk [clock_source 16.1]
+Progress: Parameterizing module clk
+Progress: Adding node_0 [dircc_node 1.0]
+Progress: Reading input file
+Progress: Adding clk_processing [clock_source 16.1]
+Progress: Parameterizing module clk_processing
+Progress: Adding clk_routing [clock_source 16.1]
+Progress: Parameterizing module clk_routing
+Progress: Adding dircc_address [dircc_address 1.0]
+Progress: Parameterizing module dircc_address
+Progress: Adding processing [dircc_nios_processing 1.0]
+Progress: Reading input file
+Progress: Adding address [conduit_avalon_mm_bridge 1.0]
+Progress: Parameterizing module address
+Progress: Adding clk_processing [clock_source 16.1]
+Progress: Parameterizing module clk_processing
+Progress: Adding clk_routing [clock_source 16.1]
+Progress: Parameterizing module clk_routing
+Progress: Adding cpu [altera_nios2_gen2 16.1]
+Progress: Parameterizing module cpu
+Progress: Adding fifo_in [altera_avalon_fifo 16.1]
+Progress: Parameterizing module fifo_in
+Progress: Adding fifo_out [altera_avalon_fifo 16.1]
+Progress: Parameterizing module fifo_out
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 16.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding mem [altera_avalon_onchip_memory2 16.1]
+Progress: Parameterizing module mem
+Progress: Adding timer [altera_avalon_timer 16.1]
+Progress: Parameterizing module timer
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Progress: Parameterizing module processing
+Progress: Adding routing [dircc_routing 1.0]
+Progress: Reading input file
+Progress: Adding clk [clock_source 16.1]
+Progress: Parameterizing module clk
+Progress: Adding input_fifo_east [altera_avalon_sc_fifo 16.1]
+Progress: Parameterizing module input_fifo_east
+Progress: Adding input_fifo_north [altera_avalon_sc_fifo 16.1]
+Progress: Parameterizing module input_fifo_north
+Progress: Adding input_fifo_south [altera_avalon_sc_fifo 16.1]
+Progress: Parameterizing module input_fifo_south
+Progress: Adding input_fifo_west [altera_avalon_sc_fifo 16.1]
+Progress: Parameterizing module input_fifo_west
+Progress: Adding input_mux [multiplexer 16.1]
+Progress: Parameterizing module input_mux
+Progress: Adding output_demux [demultiplexer 16.1]
+Progress: Parameterizing module output_demux
+Progress: Adding router [dircc_router 1.0]
+Progress: Parameterizing module router
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Progress: Parameterizing module routing
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Progress: Parameterizing module node_0
+Progress: Adding node_1 [dircc_node 1.0]
+Progress: Parameterizing module node_1
+Progress: Adding node_131072 [dircc_node 1.0]
+Progress: Parameterizing module node_131072
+Progress: Adding node_131073 [dircc_node 1.0]
+Progress: Parameterizing module node_131073
+Progress: Adding node_131074 [dircc_node 1.0]
+Progress: Parameterizing module node_131074
+Progress: Adding node_2 [dircc_node 1.0]
+Progress: Parameterizing module node_2
+Progress: Adding node_65536 [dircc_node 1.0]
+Progress: Parameterizing module node_65536
+Progress: Adding node_65537 [dircc_node 1.0]
+Progress: Parameterizing module node_65537
+Progress: Adding node_65538 [dircc_node 1.0]
+Progress: Parameterizing module node_65538
+Progress: Adding terminal_east_0 [dircc_avalon_st_terminal 1.0]
+Progress: Parameterizing module terminal_east_0
+Progress: Adding terminal_east_1 [dircc_avalon_st_terminal 1.0]
+Progress: Parameterizing module terminal_east_1
+Progress: Adding terminal_east_2 [dircc_avalon_st_terminal 1.0]
+Progress: Parameterizing module terminal_east_2
+Progress: Adding terminal_north_0 [dircc_avalon_st_terminal 1.0]
+Progress: Parameterizing module terminal_north_0
+Progress: Adding terminal_north_1 [dircc_avalon_st_terminal 1.0]
+Progress: Parameterizing module terminal_north_1
+Progress: Adding terminal_north_2 [dircc_avalon_st_terminal 1.0]
+Progress: Parameterizing module terminal_north_2
+Progress: Adding terminal_south_0 [dircc_avalon_st_terminal 1.0]
+Progress: Parameterizing module terminal_south_0
+Progress: Adding terminal_south_1 [dircc_avalon_st_terminal 1.0]
+Progress: Parameterizing module terminal_south_1
+Progress: Adding terminal_south_2 [dircc_avalon_st_terminal 1.0]
+Progress: Parameterizing module terminal_south_2
+Progress: Adding terminal_west_0 [dircc_avalon_st_terminal 1.0]
+Progress: Parameterizing module terminal_west_0
+Progress: Adding terminal_west_1 [dircc_avalon_st_terminal 1.0]
+Progress: Parameterizing module terminal_west_1
+Progress: Adding terminal_west_2 [dircc_avalon_st_terminal 1.0]
+Progress: Parameterizing module terminal_west_2
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: dircc_system_nios_test_version.HPS: HPS Main PLL counter settings: n = 0  m = 73
+Info: dircc_system_nios_test_version.HPS: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: dircc_system_nios_test_version.HPS: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: dircc_system_nios_test_version.HPS: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Info: dircc_system_nios_test_version.node_0.processing.fifo_in: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_0.processing.fifo_out: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_0.processing.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: dircc_system_nios_test_version.node_0.routing.output_here/processing.stream_in: Ready latency is 0 for source and 1 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_0.processing.stream_out/routing.input_here: Ready latency is 1 for source and 0 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_1.processing.fifo_in: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_1.processing.fifo_out: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_1.processing.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: dircc_system_nios_test_version.node_1.routing.output_here/processing.stream_in: Ready latency is 0 for source and 1 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_1.processing.stream_out/routing.input_here: Ready latency is 1 for source and 0 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_131072.processing.fifo_in: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_131072.processing.fifo_out: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_131072.processing.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: dircc_system_nios_test_version.node_131072.routing.output_here/processing.stream_in: Ready latency is 0 for source and 1 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_131072.processing.stream_out/routing.input_here: Ready latency is 1 for source and 0 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_131073.processing.fifo_in: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_131073.processing.fifo_out: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_131073.processing.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: dircc_system_nios_test_version.node_131073.routing.output_here/processing.stream_in: Ready latency is 0 for source and 1 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_131073.processing.stream_out/routing.input_here: Ready latency is 1 for source and 0 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_131074.processing.fifo_in: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_131074.processing.fifo_out: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_131074.processing.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: dircc_system_nios_test_version.node_131074.routing.output_here/processing.stream_in: Ready latency is 0 for source and 1 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_131074.processing.stream_out/routing.input_here: Ready latency is 1 for source and 0 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_2.processing.fifo_in: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_2.processing.fifo_out: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_2.processing.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: dircc_system_nios_test_version.node_2.routing.output_here/processing.stream_in: Ready latency is 0 for source and 1 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_2.processing.stream_out/routing.input_here: Ready latency is 1 for source and 0 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_65536.processing.fifo_in: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_65536.processing.fifo_out: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_65536.processing.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: dircc_system_nios_test_version.node_65536.routing.output_here/processing.stream_in: Ready latency is 0 for source and 1 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_65536.processing.stream_out/routing.input_here: Ready latency is 1 for source and 0 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_65537.processing.fifo_in: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_65537.processing.fifo_out: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_65537.processing.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: dircc_system_nios_test_version.node_65537.routing.output_here/processing.stream_in: Ready latency is 0 for source and 1 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_65537.processing.stream_out/routing.input_here: Ready latency is 1 for source and 0 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_65538.processing.fifo_in: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_65538.processing.fifo_out: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+Info: dircc_system_nios_test_version.node_65538.processing.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: dircc_system_nios_test_version.node_65538.routing.output_here/processing.stream_in: Ready latency is 0 for source and 1 for sink. Avalon-ST Adapter will be inserted..
+Info: dircc_system_nios_test_version.node_65538.processing.stream_out/routing.input_here: Ready latency is 1 for source and 0 for sink. Avalon-ST Adapter will be inserted..
+Warning: dircc_system_nios_test_version.node_0.input_north: node_0.input_north must be connected to an Avalon-ST source
+Warning: dircc_system_nios_test_version.node_0.input_west: node_0.input_west must be connected to an Avalon-ST source
+Warning: dircc_system_nios_test_version.node_1.input_north: node_1.input_north must be connected to an Avalon-ST source
+Warning: dircc_system_nios_test_version.node_131072.input_south: node_131072.input_south must be connected to an Avalon-ST source
+Warning: dircc_system_nios_test_version.node_131072.input_west: node_131072.input_west must be connected to an Avalon-ST source
+Warning: dircc_system_nios_test_version.node_131073.input_south: node_131073.input_south must be connected to an Avalon-ST source
+Warning: dircc_system_nios_test_version.node_131074.input_east: node_131074.input_east must be connected to an Avalon-ST source
+Warning: dircc_system_nios_test_version.node_131074.input_south: node_131074.input_south must be connected to an Avalon-ST source
+Warning: dircc_system_nios_test_version.node_2.input_east: node_2.input_east must be connected to an Avalon-ST source
+Warning: dircc_system_nios_test_version.node_2.input_north: node_2.input_north must be connected to an Avalon-ST source
+Warning: dircc_system_nios_test_version.node_65536.input_west: node_65536.input_west must be connected to an Avalon-ST source
+Warning: dircc_system_nios_test_version.node_65538.input_east: node_65538.input_east must be connected to an Avalon-ST source
+Info: dircc_system_nios_test_version: Generating dircc_system_nios_test_version "dircc_system_nios_test_version" for QUARTUS_SYNTH
+Info: HPS: "Running  for module: HPS"
+Info: HPS: HPS Main PLL counter settings: n = 0  m = 73
+Info: HPS: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: HPS: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: HPS: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Info: HPS: "dircc_system_nios_test_version" instantiated altera_hps "HPS"
+Info: avalon_st_adapter: Inserting timing_adapter: timing_adapter_0
+Info: avalon_st_adapter_001: Inserting timing_adapter: timing_adapter_0
+Info: node_0: "dircc_system_nios_test_version" instantiated dircc_node "node_0"
+Info: avalon_st_adapter: Inserting timing_adapter: timing_adapter_0
+Info: avalon_st_adapter_001: Inserting timing_adapter: timing_adapter_0
+Info: node_1: "dircc_system_nios_test_version" instantiated dircc_node "node_1"
+Info: avalon_st_adapter: Inserting timing_adapter: timing_adapter_0
+Info: avalon_st_adapter_001: Inserting timing_adapter: timing_adapter_0
+Info: node_131072: "dircc_system_nios_test_version" instantiated dircc_node "node_131072"
+Info: avalon_st_adapter: Inserting timing_adapter: timing_adapter_0
+Info: avalon_st_adapter_001: Inserting timing_adapter: timing_adapter_0
+Info: node_131073: "dircc_system_nios_test_version" instantiated dircc_node "node_131073"
+Info: avalon_st_adapter: Inserting timing_adapter: timing_adapter_0
+Info: avalon_st_adapter_001: Inserting timing_adapter: timing_adapter_0
+Info: node_131074: "dircc_system_nios_test_version" instantiated dircc_node "node_131074"
+Info: avalon_st_adapter: Inserting timing_adapter: timing_adapter_0
+Info: avalon_st_adapter_001: Inserting timing_adapter: timing_adapter_0
+Info: node_2: "dircc_system_nios_test_version" instantiated dircc_node "node_2"
+Info: avalon_st_adapter: Inserting timing_adapter: timing_adapter_0
+Info: avalon_st_adapter_001: Inserting timing_adapter: timing_adapter_0
+Info: node_65536: "dircc_system_nios_test_version" instantiated dircc_node "node_65536"
+Info: avalon_st_adapter: Inserting timing_adapter: timing_adapter_0
+Info: avalon_st_adapter_001: Inserting timing_adapter: timing_adapter_0
+Info: node_65537: "dircc_system_nios_test_version" instantiated dircc_node "node_65537"
+Info: avalon_st_adapter: Inserting timing_adapter: timing_adapter_0
+Info: avalon_st_adapter_001: Inserting timing_adapter: timing_adapter_0
+Info: node_65538: "dircc_system_nios_test_version" instantiated dircc_node "node_65538"
+Info: terminal_east_0: "dircc_system_nios_test_version" instantiated dircc_avalon_st_terminal "terminal_east_0"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_009: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_010: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_011: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_012: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_013: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_014: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_015: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_016: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_017: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_018: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_019: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_020: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "dircc_system_nios_test_version" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: rst_controller: "dircc_system_nios_test_version" instantiated altera_reset_controller "rst_controller"
+Info: fpga_interfaces: "HPS" instantiated altera_interface_generator "fpga_interfaces"
+Info: hps_io: "HPS" instantiated altera_hps_io "hps_io"
+Info: dircc_address: "node_0" instantiated dircc_address "dircc_address"
+Info: processing: "node_0" instantiated dircc_nios_processing "processing"
+Info: routing: "node_0" instantiated dircc_routing "routing"
+Info: avalon_st_adapter: "node_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: avalon_st_adapter_001: "node_0" instantiated altera_avalon_st_adapter "avalon_st_adapter_001"
+Info: processing: "node_1" instantiated dircc_nios_processing "processing"
+Info: routing: "node_1" instantiated dircc_routing "routing"
+Info: processing: "node_131072" instantiated dircc_nios_processing "processing"
+Info: routing: "node_131072" instantiated dircc_routing "routing"
+Info: processing: "node_131073" instantiated dircc_nios_processing "processing"
+Info: routing: "node_131073" instantiated dircc_routing "routing"
+Info: processing: "node_131074" instantiated dircc_nios_processing "processing"
+Info: routing: "node_131074" instantiated dircc_routing "routing"
+Info: processing: "node_2" instantiated dircc_nios_processing "processing"
+Info: routing: "node_2" instantiated dircc_routing "routing"
+Info: processing: "node_65536" instantiated dircc_nios_processing "processing"
+Info: routing: "node_65536" instantiated dircc_routing "routing"
+Info: processing: "node_65537" instantiated dircc_nios_processing "processing"
+Info: routing: "node_65537" instantiated dircc_routing "routing"
+Info: processing: "node_65538" instantiated dircc_nios_processing "processing"
+Info: routing: "node_65538" instantiated dircc_routing "routing"
+Info: node_0_processing_mem_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "node_0_processing_mem_translator"
+Info: HPS_h2f_axi_master_agent: "mm_interconnect_0" instantiated altera_merlin_axi_master_ni "HPS_h2f_axi_master_agent"
+Info: node_0_processing_mem_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "node_0_processing_mem_agent"
+Info: node_0_processing_mem_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "node_0_processing_mem_agent_rsp_fifo"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: HPS_h2f_axi_master_wr_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "HPS_h2f_axi_master_wr_limiter"
+Info: Reusing file /home/patrick/Documents/Coursework/DiRCC/fpga/dircc_system_nios_test_version/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: node_0_processing_mem_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "node_0_processing_mem_burst_adapter"
+Info: Reusing file /home/patrick/Documents/Coursework/DiRCC/fpga/dircc_system_nios_test_version/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file /home/patrick/Documents/Coursework/DiRCC/fpga/dircc_system_nios_test_version/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file /home/patrick/Documents/Coursework/DiRCC/fpga/dircc_system_nios_test_version/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: node_0_processing_mem_rsp_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "node_0_processing_mem_rsp_width_adapter"
+Info: Reusing file /home/patrick/Documents/Coursework/DiRCC/fpga/dircc_system_nios_test_version/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file /home/patrick/Documents/Coursework/DiRCC/fpga/dircc_system_nios_test_version/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: border: "hps_io" instantiated altera_interface_generator "border"
+Info: address: "processing" instantiated conduit_avalon_mm_bridge "address"
+Info: cpu: "processing" instantiated altera_nios2_gen2 "cpu"
+Info: fifo_in: Starting RTL generation for module 'dircc_system_nios_test_version_node_0_processing_fifo_in'
+Info: fifo_in:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/bin/perl -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/common -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo/generate_rtl.pl --name=dircc_system_nios_test_version_node_0_processing_fifo_in --dir=/tmp/alt7331_4089387749822980303.dir/0020_fifo_in_gen/ --quartus_dir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus --verilog --config=/tmp/alt7331_4089387749822980303.dir/0020_fifo_in_gen//dircc_system_nios_test_version_node_0_processing_fifo_in_component_configuration.pl  --do_build_sim=0  ]
+Info: fifo_in: Done RTL generation for module 'dircc_system_nios_test_version_node_0_processing_fifo_in'
+Info: fifo_in: "processing" instantiated altera_avalon_fifo "fifo_in"
+Info: fifo_out: Starting RTL generation for module 'dircc_system_nios_test_version_node_0_processing_fifo_out'
+Info: fifo_out:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/bin/perl -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/common -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo/generate_rtl.pl --name=dircc_system_nios_test_version_node_0_processing_fifo_out --dir=/tmp/alt7331_4089387749822980303.dir/0021_fifo_out_gen/ --quartus_dir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus --verilog --config=/tmp/alt7331_4089387749822980303.dir/0021_fifo_out_gen//dircc_system_nios_test_version_node_0_processing_fifo_out_component_configuration.pl  --do_build_sim=0  ]
+Info: fifo_out: Done RTL generation for module 'dircc_system_nios_test_version_node_0_processing_fifo_out'
+Info: fifo_out: "processing" instantiated altera_avalon_fifo "fifo_out"
+Info: jtag_uart: Starting RTL generation for module 'dircc_system_nios_test_version_node_0_processing_jtag_uart'
+Info: jtag_uart:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/bin/perl -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/common -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=dircc_system_nios_test_version_node_0_processing_jtag_uart --dir=/tmp/alt7331_4089387749822980303.dir/0022_jtag_uart_gen/ --quartus_dir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus --verilog --config=/tmp/alt7331_4089387749822980303.dir/0022_jtag_uart_gen//dircc_system_nios_test_version_node_0_processing_jtag_uart_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart: Done RTL generation for module 'dircc_system_nios_test_version_node_0_processing_jtag_uart'
+Info: jtag_uart: "processing" instantiated altera_avalon_jtag_uart "jtag_uart"
+Info: mem: Starting RTL generation for module 'dircc_system_nios_test_version_node_0_processing_mem'
+Info: mem:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/bin/perl -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/common -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=dircc_system_nios_test_version_node_0_processing_mem --dir=/tmp/alt7331_4089387749822980303.dir/0023_mem_gen/ --quartus_dir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus --verilog --config=/tmp/alt7331_4089387749822980303.dir/0023_mem_gen//dircc_system_nios_test_version_node_0_processing_mem_component_configuration.pl  --do_build_sim=0  ]
+Info: mem: Done RTL generation for module 'dircc_system_nios_test_version_node_0_processing_mem'
+Info: mem: "processing" instantiated altera_avalon_onchip_memory2 "mem"
+Info: timer: Starting RTL generation for module 'dircc_system_nios_test_version_node_0_processing_timer'
+Info: timer:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64//perl/bin/perl -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64//perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/common -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=dircc_system_nios_test_version_node_0_processing_timer --dir=/tmp/alt7331_4089387749822980303.dir/0024_timer_gen/ --quartus_dir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus --verilog --config=/tmp/alt7331_4089387749822980303.dir/0024_timer_gen//dircc_system_nios_test_version_node_0_processing_timer_component_configuration.pl  --do_build_sim=0  ]
+Info: timer: Done RTL generation for module 'dircc_system_nios_test_version_node_0_processing_timer'
+Info: timer: "processing" instantiated altera_avalon_timer "timer"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "processing" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: irq_mapper: "processing" instantiated altera_irq_mapper "irq_mapper"
+Info: input_mux: "routing" instantiated multiplexer "input_mux"
+Info: output_demux: "routing" instantiated demultiplexer "output_demux"
+Info: router: "routing" instantiated dircc_router "router"
+Info: timing_adapter_0: "avalon_st_adapter" instantiated timing_adapter "timing_adapter_0"
+Info: timing_adapter_0: "avalon_st_adapter_001" instantiated timing_adapter "timing_adapter_0"
+Info: mem: Starting RTL generation for module 'dircc_system_nios_test_version_node_1_processing_mem'
+Info: mem:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/bin/perl -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/common -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=dircc_system_nios_test_version_node_1_processing_mem --dir=/tmp/alt7331_4089387749822980303.dir/0031_mem_gen/ --quartus_dir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus --verilog --config=/tmp/alt7331_4089387749822980303.dir/0031_mem_gen//dircc_system_nios_test_version_node_1_processing_mem_component_configuration.pl  --do_build_sim=0  ]
+Info: mem: Done RTL generation for module 'dircc_system_nios_test_version_node_1_processing_mem'
+Info: mem: "processing" instantiated altera_avalon_onchip_memory2 "mem"
+Info: mem: Starting RTL generation for module 'dircc_system_nios_test_version_node_131072_processing_mem'
+Info: mem:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/bin/perl -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/common -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=dircc_system_nios_test_version_node_131072_processing_mem --dir=/tmp/alt7331_4089387749822980303.dir/0032_mem_gen/ --quartus_dir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus --verilog --config=/tmp/alt7331_4089387749822980303.dir/0032_mem_gen//dircc_system_nios_test_version_node_131072_processing_mem_component_configuration.pl  --do_build_sim=0  ]
+Info: mem: Done RTL generation for module 'dircc_system_nios_test_version_node_131072_processing_mem'
+Info: mem: "processing" instantiated altera_avalon_onchip_memory2 "mem"
+Info: mem: Starting RTL generation for module 'dircc_system_nios_test_version_node_131073_processing_mem'
+Info: mem:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/bin/perl -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/common -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=dircc_system_nios_test_version_node_131073_processing_mem --dir=/tmp/alt7331_4089387749822980303.dir/0033_mem_gen/ --quartus_dir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus --verilog --config=/tmp/alt7331_4089387749822980303.dir/0033_mem_gen//dircc_system_nios_test_version_node_131073_processing_mem_component_configuration.pl  --do_build_sim=0  ]
+Info: mem: Done RTL generation for module 'dircc_system_nios_test_version_node_131073_processing_mem'
+Info: mem: "processing" instantiated altera_avalon_onchip_memory2 "mem"
+Info: mem: Starting RTL generation for module 'dircc_system_nios_test_version_node_131074_processing_mem'
+Info: mem:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/bin/perl -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/common -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=dircc_system_nios_test_version_node_131074_processing_mem --dir=/tmp/alt7331_4089387749822980303.dir/0034_mem_gen/ --quartus_dir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus --verilog --config=/tmp/alt7331_4089387749822980303.dir/0034_mem_gen//dircc_system_nios_test_version_node_131074_processing_mem_component_configuration.pl  --do_build_sim=0  ]
+Info: mem: Done RTL generation for module 'dircc_system_nios_test_version_node_131074_processing_mem'
+Info: mem: "processing" instantiated altera_avalon_onchip_memory2 "mem"
+Info: mem: Starting RTL generation for module 'dircc_system_nios_test_version_node_2_processing_mem'
+Info: mem:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/bin/perl -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/common -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=dircc_system_nios_test_version_node_2_processing_mem --dir=/tmp/alt7331_4089387749822980303.dir/0035_mem_gen/ --quartus_dir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus --verilog --config=/tmp/alt7331_4089387749822980303.dir/0035_mem_gen//dircc_system_nios_test_version_node_2_processing_mem_component_configuration.pl  --do_build_sim=0  ]
+Info: mem: Done RTL generation for module 'dircc_system_nios_test_version_node_2_processing_mem'
+Info: mem: "processing" instantiated altera_avalon_onchip_memory2 "mem"
+Info: mem: Starting RTL generation for module 'dircc_system_nios_test_version_node_65536_processing_mem'
+Info: mem:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/bin/perl -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/common -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=dircc_system_nios_test_version_node_65536_processing_mem --dir=/tmp/alt7331_4089387749822980303.dir/0036_mem_gen/ --quartus_dir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus --verilog --config=/tmp/alt7331_4089387749822980303.dir/0036_mem_gen//dircc_system_nios_test_version_node_65536_processing_mem_component_configuration.pl  --do_build_sim=0  ]
+Info: mem: Done RTL generation for module 'dircc_system_nios_test_version_node_65536_processing_mem'
+Info: mem: "processing" instantiated altera_avalon_onchip_memory2 "mem"
+Info: mem: Starting RTL generation for module 'dircc_system_nios_test_version_node_65537_processing_mem'
+Info: mem:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/bin/perl -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/common -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=dircc_system_nios_test_version_node_65537_processing_mem --dir=/tmp/alt7331_4089387749822980303.dir/0037_mem_gen/ --quartus_dir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus --verilog --config=/tmp/alt7331_4089387749822980303.dir/0037_mem_gen//dircc_system_nios_test_version_node_65537_processing_mem_component_configuration.pl  --do_build_sim=0  ]
+Info: mem: Done RTL generation for module 'dircc_system_nios_test_version_node_65537_processing_mem'
+Info: mem: "processing" instantiated altera_avalon_onchip_memory2 "mem"
+Info: mem: Starting RTL generation for module 'dircc_system_nios_test_version_node_65538_processing_mem'
+Info: mem:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/bin/perl -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/common -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=dircc_system_nios_test_version_node_65538_processing_mem --dir=/tmp/alt7331_4089387749822980303.dir/0038_mem_gen/ --quartus_dir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus --verilog --config=/tmp/alt7331_4089387749822980303.dir/0038_mem_gen//dircc_system_nios_test_version_node_65538_processing_mem_component_configuration.pl  --do_build_sim=0  ]
+Info: mem: Done RTL generation for module 'dircc_system_nios_test_version_node_65538_processing_mem'
+Info: mem: "processing" instantiated altera_avalon_onchip_memory2 "mem"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: cpu: Starting RTL generation for module 'dircc_system_nios_test_version_node_0_processing_cpu_cpu'
+Info: cpu:   Generation command is [exec /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64//eperlcmd -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64//perl/lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/europa -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin/perl_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/sopc_builder/bin -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- /media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=dircc_system_nios_test_version_node_0_processing_cpu_cpu --dir=/tmp/alt7331_4089387749822980303.dir/0040_cpu_gen/ --quartus_bindir=/media/DATA_LINUX/opt/intelFPGA_lite/16.1/quartus/linux64/ --verilog --config=/tmp/alt7331_4089387749822980303.dir/0040_cpu_gen//dircc_system_nios_test_version_node_0_processing_cpu_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2017.06.14 16:31:03 (*) Starting Nios II generation
+Info: cpu: # 2017.06.14 16:31:03 (*)   Checking for plaintext license.
+Info: cpu: # 2017.06.14 16:31:04 (*)   Plaintext license not found.
+Info: cpu: # 2017.06.14 16:31:04 (*)   No license required to generate encrypted Nios II/e.
+Info: cpu: # 2017.06.14 16:31:04 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2017.06.14 16:31:04 (*)   Creating all objects for CPU
+Info: cpu: # 2017.06.14 16:31:05 (*)   Generating RTL from CPU objects
+Info: cpu: # 2017.06.14 16:31:05 (*)   Creating plain-text RTL
+Info: cpu: # 2017.06.14 16:31:06 (*) Done Nios II generation
+Info: cpu: Done RTL generation for module 'dircc_system_nios_test_version_node_0_processing_cpu_cpu'
+Info: cpu: "cpu" instantiated altera_nios2_gen2_unit "cpu"
+Info: cpu_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "cpu_data_master_translator"
+Info: cpu_data_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "cpu_data_master_agent"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: router_003: "mm_interconnect_0" instantiated altera_merlin_router "router_003"
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: Reusing file /home/patrick/Documents/Coursework/DiRCC/fpga/dircc_system_nios_test_version/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: cmd_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_001"
+Info: Reusing file /home/patrick/Documents/Coursework/DiRCC/fpga/dircc_system_nios_test_version/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file /home/patrick/Documents/Coursework/DiRCC/fpga/dircc_system_nios_test_version/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
+Info: Reusing file /home/patrick/Documents/Coursework/DiRCC/fpga/dircc_system_nios_test_version/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: dircc_system_nios_test_version: Done "dircc_system_nios_test_version" with 91 modules, 159 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

@@ -14,7 +14,7 @@ set QSYS_SIMDIR ./
 source $QSYS_SIMDIR/mentor/msim_setup.tcl
 #
 # Set any compilation options you require (this is unusual).
-set USER_DEFINED_COMPILE_OPTIONS "+define+DIRCC_SCALING_COUNT_LIMIT=10000 +define+DIRCC_SCALING_ACTIVE_THREADS=25"
+set USER_DEFINED_COMPILE_OPTIONS "+define+DIRCC_SCALING_COUNT_LIMIT=2500000 +define+DIRCC_SCALING_ACTIVE_THREADS=25"
 #
 # Call command to compile the Quartus EDA simulation library.
 dev_com

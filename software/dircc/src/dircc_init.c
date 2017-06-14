@@ -4,15 +4,6 @@
 #include "dircc_rts.h"
 #include "dircc_system_state.h"
 
-static void clear_array(uint8_t *arr, unsigned size)
-{
-	for (unsigned i=0; i < size; ++i)
-	{
-		*(arr+i) = 0;
-	}
-}
-
-
 static dircc_err_code dircc_init_fifos() {
 	dircc_err_code err = DIRCC_SUCCESS;
 	err |= dircc_init_fifo(dircc_fifo_in_csr_address,
@@ -24,6 +15,7 @@ static dircc_err_code dircc_init_fifos() {
 }
 
 DeviceState devStates[MAX_VIRTUAL_ADDRESS] __attribute__((section(".shared_dev_data")));
+#ifdef USE_EDGE_STATE
 EdgeState edgeStates[MAX_SUPPORTED_EDGES] __attribute__((section(".shared_edge_data")));
 
 
@@ -46,7 +38,9 @@ EdgeState *dircc_searchEdgeState(DeviceContext *dev, InputPortBinding *binding)
 	return NULL;
 }
 
-void dircc_LoadState(PThreadContext *pCtxt, DeviceContext *dev) {
+#endif
+
+static void dircc_LoadState(PThreadContext *pCtxt, DeviceContext *dev) {
 	DeviceState *dState = devStates + dev->index;
 	dState->dirccState=0;
 //	clear_array(dState->userState, MAX_DEVICE_USER_STATE_BYTES);
@@ -63,6 +57,7 @@ void dircc_LoadState(PThreadContext *pCtxt, DeviceContext *dev) {
 	dircc_setExclusiveState(dev, DIRCC_STATE_BOOTING, NULL);
 	DIRCC_LOG_PRINTF("Using state at address 0x%08x", dState);
 
+#ifdef USE_EDGE_STATE
 	if (dev->sources->numSources > 0)
 	{
 		// We have edge states or properties to look at
@@ -78,6 +73,7 @@ void dircc_LoadState(PThreadContext *pCtxt, DeviceContext *dev) {
 			}
 		}
 	}
+#endif
 
 }
 

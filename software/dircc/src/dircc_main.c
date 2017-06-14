@@ -182,9 +182,6 @@ int main() {
 
 		DIRCC_LOG_PRINTF("loop bottom");
 	}
-	DIRCC_LOG_PRINTF("exiting");
-
-	return EXIT_SUCCESS;
 }
 
 void dircc_exit(dircc_err_code status)

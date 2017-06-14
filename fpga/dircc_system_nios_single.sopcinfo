@@ -4,21 +4,12 @@
  kind="dircc_system_nios_single"
  version="1.0"
  fabric="QSYS">
-<<<<<<< Updated upstream
  <!-- Format version 16.1 196 (Future versions may contain additional information.) -->
  <!-- 2017.05.03.13:58:13 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
   <value>1493816293</value>
-=======
- <!-- Format version 16.1 203 (Future versions may contain additional information.) -->
- <!-- 2017.05.03.20:12:38 -->
- <!-- A collection of modules and connections -->
- <parameter name="AUTO_GENERATION_ID">
-  <type>java.lang.Integer</type>
-  <value>1493838758</value>
->>>>>>> Stashed changes
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -599,11 +590,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-<<<<<<< Updated upstream
    <value>1493816293</value>
-=======
-   <value>1493838758</value>
->>>>>>> Stashed changes
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>

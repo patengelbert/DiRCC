@@ -283,13 +283,15 @@ module dircc_processing (
                 // update lamport on receive, before handler
                 $display("%0t:THREAD %d - Read packet from %d. Lamport : %d for state %d", $time, thread_index, packet_in.src_addr.hw_addr, packet_in.lamport, read_state.dircc_state);
                 lamport <= ((lamport > packet_in.lamport) ? lamport : packet_in.lamport) + 1;
-                assert(packet_in_valid && packet_in.dest_addr == '{
-                    hw_addr: address,
-                    sw_addr: DEVICE_ID,
-                    port: 0,
-                    flag: 0
-                }) else $display("%0t:THREAD %d - ERROR: Received unexpected packet to %d:%d:%d:%d", $time, thread_index,
-                    packet_in.dest_addr.hw_addr, packet_in.dest_addr.sw_addr, packet_in.dest_addr.port, packet_in.dest_addr.flag);
+//                if(packet_in_valid && packet_in.dest_addr != '{
+//                    hw_addr: address,
+//                    sw_addr: DEVICE_ID,
+//                    port: 0,
+//                    flag: 0
+//                }) begin
+//                  $display("%0t:THREAD %d - ERROR: Received unexpected packet to %d:%d:%d:%d", $time, thread_index,
+//                    packet_in.dest_addr.hw_addr, packet_in.dest_addr.sw_addr, packet_in.dest_addr.port, packet_in.dest_addr.flag);
+//                end
             end
 
 

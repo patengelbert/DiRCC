@@ -3,7 +3,7 @@
 			address_address          : in  std_logic_vector(31 downto 0) := (others => 'X'); -- address
 			clk_processing_clk       : in  std_logic                     := 'X';             -- clk
 			clk_routing_clk          : in  std_logic                     := 'X';             -- clk
-			mem_address              : in  std_logic_vector(14 downto 0) := (others => 'X'); -- address
+			mem_address              : in  std_logic_vector(13 downto 0) := (others => 'X'); -- address
 			mem_chipselect           : in  std_logic                     := 'X';             -- chipselect
 			mem_clken                : in  std_logic                     := 'X';             -- clken
 			mem_write                : in  std_logic                     := 'X';             -- write

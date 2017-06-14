@@ -1,12 +1,12 @@
-# system info dircc_system_rtl_gals on 2017.06.04.21:30:29
+# system info dircc_system_rtl_gals on 2017.06.09.17:36:21
 system_info:
 name,value
 DEVICE,5CSEMA5F31C6
 DEVICE_FAMILY,Cyclone V
-GENERATION_ID,1496608205
+GENERATION_ID,1497026157
 #
 #
-# Files generated for dircc_system_rtl_gals on 2017.06.04.21:30:29
+# Files generated for dircc_system_rtl_gals on 2017.06.09.17:36:21
 files:
 filepath,kind,attributes,module,is_top
 simulation/dircc_system_rtl_gals.v,VERILOG,,dircc_system_rtl_gals,true

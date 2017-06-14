@@ -207,7 +207,7 @@ module DE1_SoC(
 //  Structural coding
 //=======================================================
 
-dircc_system_rtl_gals dircc_system (
+dircc_system_node_dual_hps dircc_system (
     .clk_clk            (CLOCK_50),             //    clk.clk
     .memory_mem_a       (HPS_DDR3_ADDR),        // memory.mem_a
     .memory_mem_ba      (HPS_DDR3_BA),          //       .mem_ba

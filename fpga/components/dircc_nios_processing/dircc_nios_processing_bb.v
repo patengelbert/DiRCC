@@ -28,7 +28,7 @@ module dircc_nios_processing (
 	input	[31:0]	address_address;
 	input		clk_processing_clk;
 	input		clk_routing_clk;
-	input	[14:0]	mem_address;
+	input	[13:0]	mem_address;
 	input		mem_chipselect;
 	input		mem_clken;
 	input		mem_write;

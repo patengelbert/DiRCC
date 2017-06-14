@@ -3,7 +3,7 @@
 # Machine generated for CPU 'node_0_processing_cpu' in SOPC Builder design 'dircc_system_node_dual_hps'
 # SOPC Builder design path: ../../fpga/dircc_system_node_dual_hps.sopcinfo
 #
-# Generated: Fri May 12 13:25:04 BST 2017
+# Generated: Wed Jun 14 17:20:47 BST 2017
 
 # DO NOT MODIFY THIS FILE
 #
@@ -47,4 +47,4 @@
 # by allowing GDB to cache memory contents on the host.
 
 # node_0_processing_mem
-memory 0x10000 0x1a000 cache
+memory 0x10000 0x17530 cache
