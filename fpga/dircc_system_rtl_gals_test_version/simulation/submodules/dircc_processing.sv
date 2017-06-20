@@ -326,7 +326,7 @@ module dircc_processing (
                 if (receive_handler_handled) begin
                     // Update state after receive handler has processed the packet
 
-                    // $display("%0t:THREAD %0d - Calling receive handler", $time, thread_index);
+                    $display("%0t:THREAD %0d - Calling receive handler", $time, thread_index);
                     write_state_valid <= write_state_state_valid_receive_handler;
                     write_state <= write_state_receive_handler;
 
@@ -335,7 +335,7 @@ module dircc_processing (
                     // Run the send handler once
                     rts_ready <= rts_ready_new & ~DIRCC_RTS_FLAGS_COMPUTE;
 
-                    // $display("%0t:THREAD %0d - Calling send handler", $time, thread_index);
+                    $display("%0t:THREAD %0d - Calling send handler", $time, thread_index);
 
                     lamport <= lamport + 1;
                     write_state_valid <= write_state_state_valid_send_handler;
