@@ -4,7 +4,7 @@ editor if you plan to continue editing the block that represents it in
 the Block Editor! File corruption is VERY likely to occur.
 */
 /*
-Copyright (C) 2016  Intel Corporation. All rights reserved.
+Copyright (C) 2017  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -43,7 +43,7 @@ agreement for further details.
 		(text "clk" (rect 85 67 188 144)(font "Arial" (color 0 0 0)))
 		(text "reset" (rect 51 83 132 179)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "reset_n" (rect 85 107 212 224)(font "Arial" (color 0 0 0)))
-		(text " dircc_system_nios_single " (rect 109 128 374 266)(font "Arial" ))
+		(text " system " (rect 189 128 426 266)(font "Arial" ))
 		(line (pt 80 32)(pt 144 32)(line_width 1))
 		(line (pt 144 32)(pt 144 128)(line_width 1))
 		(line (pt 80 128)(pt 144 128)(line_width 1))
