@@ -76,113 +76,113 @@ force -freeze sim:/dircc_system_rtl_gals_test_version/node_131080_mem_write 0 0
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_0_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_0_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_0_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_0_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_1_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_1_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_1_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 1000000000000000 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_1_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_2_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_2_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_2_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_2_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_3_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_3_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_3_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_3_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_4_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_4_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_4_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_4_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_5_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_5_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_5_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_5_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_6_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_6_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_6_mem_writedata 0 24ns, 1000 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_6_mem_writedata 0 24ns, 1000 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_7_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_7_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_7_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_7_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_8_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_8_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_8_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_8_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65536_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65536_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_65536_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_65536_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65537_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65537_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_65537_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_65537_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65538_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65538_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_65538_mem_writedata 0 24ns, 1000 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_65538_mem_writedata 0 24ns, 1000 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65539_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65539_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_65539_mem_writedata 0 24ns, 1000 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_65539_mem_writedata 0 24ns, 1000 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65540_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65540_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_65540_mem_writedata 0 24ns, 1000 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_65540_mem_writedata 0 24ns, 1000 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65541_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65541_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_65541_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_65541_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65542_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65542_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_65542_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_65542_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65543_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65543_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_65543_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_65543_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65544_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_65544_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_65544_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_65544_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131072_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131072_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_131072_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_131072_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131073_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131073_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_131073_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_131073_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131074_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131074_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_131074_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_131074_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131075_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131075_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_131075_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_131075_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131076_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131076_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_131076_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_131076_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131077_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131077_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_131077_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_131077_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131078_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131078_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_131078_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_131078_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131079_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131079_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_131079_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_131079_mem_writedata 0 24ns, 10000 26ns, 0 28ns, 100000000000000 30ns
 
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131080_mem_address 100 24ns, 110 26ns, 1000 28ns, 1010 30ns
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131080_mem_write 1 24ns, 1 26ns, 1 28ns, 1 30ns
-force -freeze sim:/dircc_system_rtl_gals_test_version/node_131080_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 0 30ns
+force -freeze sim:/dircc_system_rtl_gals_test_version/node_131080_mem_writedata 0 24ns, 1100 26ns, 0 28ns, 100000000000000 30ns
 
 
 
@@ -296,7 +296,7 @@ force -freeze sim:/dircc_system_rtl_gals_test_version/node_131080_mem_write 1 32
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131080_mem_writedata 100000 32ns, 0 34ns
 
 # Run the simulation.
-run -a
+run 100us
 #
 # Report success to the shell.
 # exit -code 0

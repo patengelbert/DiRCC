@@ -5,6 +5,7 @@ module dircc_receive_handler(
     reset_n,
 
     address,
+    thread_index,
 
     receive_done,
     packet_in,
@@ -32,6 +33,7 @@ module dircc_receive_handler(
     input wire                      reset_n;
 
     input wire [ADDRESS_MEM_WIDTH-1:0] address;
+    input wire [ADDRESS_MEM_WIDTH-1:0]  thread_index;
 
     input wire                      receive_done;
     input packet_data_t             packet_in;
@@ -69,7 +71,7 @@ module dircc_receive_handler(
                 if (dircc_thread_contexts[address].devices[DEVICE_ID].properties.isSender && packet_data.isDesignatedPacket) begin
                     $display("%0t:THREAD %d - ERROR: Received packet even though not designated receiver", $time, (THREAD_COUNT - address - 1));
                 end else if (packet_data.isDesignatedPacket) begin
-                    $display("%0t:THREAD %d - Received packet %d after %0t->%0t=%0t clk", $time, (THREAD_COUNT - address - 1), packet_data.t, packet_data.count,($time/2000), (packet_data.count-($time/2000)));
+                    $display("%0t:THREAD %d - Received packet %d after %d,%d,%0t clk", $time, (THREAD_COUNT - address - 1), packet_data.t, packet_data.source, thread_index, (($time/2000)-packet_data.count));
                 end
 
                 if(packet_data.t == dev_state_old.t) begin

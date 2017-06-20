@@ -296,7 +296,7 @@ force -freeze sim:/dircc_system_rtl_gals_test_version/node_131080_mem_write 1 32
 force -freeze sim:/dircc_system_rtl_gals_test_version/node_131080_mem_writedata 100000 32ns, 0 34ns
 
 # Run the simulation.
-run -a
+run 100us
 #
 # Report success to the shell.
 # exit -code 0

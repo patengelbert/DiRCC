@@ -188,6 +188,7 @@ module dircc_processing (
         .reset_n        (reset_n),
 
         .address        (thread_index),
+        .thread_index                   (address),
 
         .receive_done   (receive_done),
         .packet_in      (packet_in.data),
@@ -228,6 +229,7 @@ module dircc_processing (
         .reset_n                        (reset_n),
 
         .address                        (thread_index),
+        .thread_index                   (address),
 
         .packet_out                     (send_handler_packet_out_data),
         .packet_out_valid               (send_handler_packet_out_valid),

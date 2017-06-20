@@ -387,4 +387,14 @@ module dircc_system_rtl_gals_test_version_node_131075_routing (
 		.reset_n           (reset_reset_n)                // clk_reset.reset_n
 	);
 
+	// Count for bisection bandwidth
+	reg[63:0] count = 0;
+
+	always @(posedge clk_clk) begin
+		if (output_east_valid && output_east_ready) begin
+			count = count + 1;
+		end
+	end
+
+
 endmodule

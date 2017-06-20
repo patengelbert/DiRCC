@@ -5,6 +5,7 @@ module dircc_send_handler(
     reset_n,
 
     address,
+    thread_index,
 
     packet_out,
     packet_out_valid,
@@ -28,6 +29,7 @@ module dircc_send_handler(
     input wire                          reset_n;
 
     input wire [ADDRESS_MEM_WIDTH-1:0]  address;
+    input wire [ADDRESS_MEM_WIDTH-1:0]  thread_index;
     
     output packet_data_t                packet_out;
     output reg                          packet_out_valid;
@@ -57,7 +59,7 @@ module dircc_send_handler(
             dev_state_new.t <= dev_state_old.t + 1;
             packet_data.t <= dev_state_old.t + 1;
             packet_data.count <= ($time/2000);
-            packet_data.source <= address;
+            packet_data.source <= thread_index;
 
             if (dev_state_old.isDesignatedSender) begin
                 packet_data.isDesignatedPacket <= 1;
