@@ -60,7 +60,7 @@ set_global_assignment -name TOP_LEVEL_ENTITY dircc_system_node_single
 
 # Fitter Assignments
 # ==================
-set_global_assignment -name DEVICE AUTO
+set_global_assignment -name DEVICE 5CSEMA6F31C6
 set_global_assignment -name FAMILY "Cyclone V"
 
 # EDA Netlist Writer Assignments
@@ -130,13 +130,17 @@ set_global_assignment -name ENABLE_DRC_SETTINGS OFF
 
 
 set_global_assignment -name QSYS_FILE dircc_system_node_single.qsys
-set_global_assignment -name QSYS_FILE dircc_system_node_dual_hps.qsys
-set_global_assignment -name QIP_FILE dircc_system_rtl_gals/synthesis/dircc_system_rtl_gals.qip
-set_global_assignment -name QSYS_FILE dircc_system_nios_test_version.qsys
 set_global_assignment -name SYSTEMVERILOG_FILE DE1_SoC.sv
 set_global_assignment -name CDF_FILE ../build/build_chain.cdf
-set_global_assignment -name SIGNALTAP_FILE ../build/dircc_counter_rtl.stp
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name EDA_RUN_TOOL_AUTOMATICALLY OFF -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS NOT_USED -section_id eda_simulation
+set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE AREA"
+set_global_assignment -name TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS ON
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
